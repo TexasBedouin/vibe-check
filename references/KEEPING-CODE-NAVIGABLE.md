@@ -66,6 +66,8 @@ The practical instruction for the AI, written into the plan: *"Keep each kind of
 
 This is also what makes your app cheap to change. Want to tweak how pricing works? One place. That's the payoff.
 
+A close cousin of this is keeping the layers apart. Most apps have three: what the user sees (the screens), the logic that makes decisions (the rules), and where the data is saved (storage). Keep them in their own lanes. The screen asks the rules to do something, the rules ask storage to save it, and nobody reaches across to do another layer's job. When a screen starts calculating prices or talking straight to the database, the lanes have blurred, and that's exactly when a small change in one place breaks something three steps away. In plain terms for the plan: *"screens stay separate from the logic, and the logic stays separate from where data lives."*
+
 ---
 
 ## Beware the middleman (you already know this one)
