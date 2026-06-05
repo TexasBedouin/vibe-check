@@ -256,21 +256,28 @@ Compile everything into a structured plan with these sections:
 7. **System Architecture**: the diagram, beginner labels
 8. **Tech Stack**: every tool, what it does, why it's here, what it costs
 9. **Data Model**: what gets stored, in plain words ("a task has a title, a due date, a priority, and belongs to a user")
-10. **Integrations**: what the app connects to, and how. Note: official SDKs, not third-party wrappers.
-11. **Cost Breakdown**: monthly estimate with free-tier details. Include the architecture cost warnings.
-12. **Timeline**: phased, honest
-13. **Things to Handle Before Launch**: the security, legal, and accessibility checklist
-14. **Pre-Launch Audits**: drop in these three prompts for the user to run before they show the app to a single soul:
+10. **House Rules for Your AI**: a short, plain-language list of the rules your AI tool should follow on every line it writes. You don't have to understand these yourself. They exist so the AI builds the same way twice, and so the codebase stays one your AI can keep working in (this is the navigability idea from [references/KEEPING-CODE-NAVIGABLE.md](references/KEEPING-CODE-NAVIGABLE.md), written down where the AI will actually read it). Keep it to the handful that matter for this app, in words a beginner can read:
+    - *Don't repeat yourself.* If the same logic shows up in two places, pull it into one home (one place for prices, one place for login).
+    - *Keep it simple.* Boring and obvious beats clever. No pattern the plan didn't ask for.
+    - *Call things by the same name everywhere.* If it's a "pickup," it's always a "pickup," in the code and on the screens.
+    - *Handle the sad path.* Anything that can fail should show the user a friendly message and a way out, never a blank screen or a silent shrug.
+    - *Keep the layers apart.* What the user sees (the screens) stays separate from the logic that makes decisions, which stays separate from where data is saved. Don't let them bleed into each other.
+    - *Self-contained features.* Each feature lives in its own folder as one tidy piece, not smeared across the whole app.
+11. **Integrations**: what the app connects to, and how. Note: official SDKs, not third-party wrappers.
+12. **Cost Breakdown**: monthly estimate with free-tier details. Include the architecture cost warnings.
+13. **Timeline**: phased, honest
+14. **Things to Handle Before Launch**: the security, legal, and accessibility checklist
+15. **Pre-Launch Audits**: drop in these three prompts for the user to run before they show the app to a single soul:
     - *Security audit:* "Audit my codebase for security vulnerabilities. Check authentication, authorization, input validation, rate limiting, secrets management, file upload security, CORS/CSRF protections, and timing attacks. Give me a severity rating for each issue found."
     - *Scalability audit:* "Audit my codebase for scalability issues. Check for N+1 queries, unbounded database reads, missing pagination, polling vs real-time listeners, caching gaps, cold start performance, and concurrent user handling. Estimate the monthly cost impact of each issue."
     - *Production readiness audit:* "Audit my codebase for production readiness. Check for error monitoring, test coverage on payment and authentication paths, accessibility basics, and deployment configuration. Tell me what will fail silently in production."
-15. **Working With Your AI Tool**: practical stuff for the build:
+16. **Working With Your AI Tool**: practical stuff for the build:
     - Keep your project instruction file (CLAUDE.md or whatever your tool uses) under 100 lines. If it bloats, split the details into smaller files inside the folders they belong to.
     - Turn off AI-tool plugins and integrations you aren't actively using. They quietly eat your AI's working memory.
     - Treat every prompt like a tiny spec. Not "add login." Instead: "Add login with Google and email. Show a spinner while it's checking. If it fails, show a friendly error with a retry button. If they're already logged in, drop them straight on the dashboard." Specific prompts, fewer nasty surprises.
     - Before you let the AI apply a fix, ask it: "How does this change what my user sees? Will it make the app slower? What does this look like to my user on their worst day?"
-16. **Build Phases with Checkpoints**: (see below)
-17. **Open Questions**: whatever's still up in the air
+17. **Build Phases with Checkpoints**: (see below)
+18. **Open Questions**: whatever's still up in the air
 
 #### Build Phases with Checkpoints
 
