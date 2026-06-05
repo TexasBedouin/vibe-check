@@ -8,12 +8,14 @@ A skill for AI coding tools that guides complete beginners from a vague app idea
 
 When someone who's never coded before says "I want to build an app that does X," this skill turns their AI tool into a patient mentor that:
 
-1. **Discovers what they actually need** — not features, but the real problem they're solving
-2. **Maps the entire user experience** — happy flows, failure flows, and edge cases
-3. **Surfaces decisions they don't know they need to make** — auth, databases, payments, hosting, legal
-4. **Recommends a modern tech stack** — with plain-language explanations of what each piece does and why
-5. **Produces a complete plan document** — structured as the AI coding tool's onboarding manual
-6. **Includes build checkpoints** — so the beginner is never lost during construction. The AI stops after each phase to explain what was just built, why, and what's next.
+1. **Discovers what they actually need**: not features, but the real problem they're solving
+2. **Maps the entire user experience**: happy flows, failure flows, and edge cases
+3. **Surfaces decisions they don't know they need to make**: auth, databases, payments, hosting, legal
+4. **Recommends a modern tech stack**: with plain-language explanations of what each piece does and why
+5. **Produces a complete plan document**: structured as the AI coding tool's onboarding manual, plus a **visual HTML blueprint** the human opens in their browser
+6. **Includes build checkpoints**: so the beginner is never lost during construction. The AI stops after each phase to explain what was just built, why, and what's next.
+7. **Teaches the build-time basics** in language for someone who has never touched code: local vs. GitHub vs. live, how to save and back up code (commit/push/deploy), and keeping secret keys safe.
+8. **Keeps the app healthy as it grows**: a **Checkup Mode** that gently looks over a messy, grown codebase and tidies it safely, so the AI keeps building cleanly instead of breaking things.
 
 ## Who it's for
 
@@ -39,24 +41,25 @@ Copy the contents of `skills/vibe-check/SKILL.md` into your AI tool's system pro
 
 By the end of a vibe-check session, you'll have a plan document that includes:
 
-- **Problem statement** — in your own words
-- **User flows** — mermaid diagrams for happy path, failure path, and edge cases
-- **Feature breakdown** — V1 (build now) vs V2+ (build later)
-- **System architecture** — visual diagram with beginner-friendly labels
-- **Tech stack** — every tool, what it does, why it was chosen, what it costs
-- **Data model** — what gets stored, in plain language
-- **Cost breakdown** — monthly estimates with free tier details
-- **Pre-launch checklists** — security, legal, accessibility
-- **Build phases with checkpoints** — numbered phases with guided explanations at every step
+- **Problem statement**: in your own words
+- **User flows**: mermaid diagrams for happy path, failure path, and edge cases
+- **Feature breakdown**: V1 (build now) vs V2+ (build later)
+- **System architecture**: visual diagram with beginner-friendly labels
+- **Tech stack**: every tool, what it does, why it was chosen, what it costs
+- **Data model**: what gets stored, in plain language
+- **Cost breakdown**: monthly estimates with free tier details
+- **Pre-launch checklists**: security, legal, accessibility
+- **Build phases with checkpoints**: numbered phases with guided explanations at every step
 
 This plan is designed to be handed directly to your AI coding tool to start building.
 
 ## Inspiration
 
-- [grill-me](https://github.com/mattpocock/skills) by Matt Pocock — the relentless questioning energy
-- [/office-hours](https://github.com/garrytan/gstack) by Garry Tan — the problem reframing and premise challenging
-- [The Last Mile Playbook](https://github.com/TexasBedouin) by Amer Arab — the PM vs Engineer mindset, payment processor gotchas, and the hard-won lessons of shipping a real product as a non-developer
+- [grill-me](https://github.com/mattpocock/skills) by Matt Pocock: the relentless questioning energy
+- [improve-codebase-architecture](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) by Matt Pocock: the deep-vs-shallow module wisdom and the visual HTML report, translated here into beginner metaphors (Checkup Mode + the navigability guidance)
+- [/office-hours](https://github.com/garrytan/gstack) by Garry Tan: the problem reframing and premise challenging
+- [The Last Mile Playbook](https://github.com/TexasBedouin) by Amer Arab: the PM vs Engineer mindset, payment processor gotchas, and the hard-won lessons of shipping a real product as a non-developer
 
 ## License
 
-MIT — use it, modify it, share it.
+MIT licensed. Use it however you want.
