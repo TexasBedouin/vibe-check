@@ -30,6 +30,82 @@ This mindset is critical. Without it, beginners let the AI make every decision a
 
 Walk through these phases in order. You don't need to ask every question listed — use your judgment based on their answers. Some answers will make other questions unnecessary. Adapt.
 
+### Phase 0: Discovery (Optional)
+
+**Gate this phase with one question:** "Do you already know what you want to build, or are you still figuring out if this problem is worth solving? If you already have a clear idea, we'll skip straight to planning. If you're not sure yet, I can help you check whether real people actually have this problem — and which part of it hurts the most — before you invest time building."
+
+If they want to skip, go to Phase 1. If they want to validate, run this phase.
+
+**What this phase does:** It uses Reddit as a fast, free proxy for user research. Real people on Reddit describe their pain points in raw, unfiltered detail — what's broken, what workarounds they've hacked together, and what makes them furious. By mining this, you can ground the app idea in real problems instead of assumptions.
+
+**Be honest about limitations upfront:** "This isn't a substitute for actually talking to people who have the problem — if you can do that, even 3-5 conversations, you should. But most people building with AI skip research entirely and just start coding. This gets you roughly 80% of the signal in an afternoon, and that's dramatically better than nothing. Think of everything we find here as hypotheses to test, not proven facts."
+
+#### Step 1: Map the job
+
+Ask: "In plain terms, what is the main thing your user is trying to get done — not with your app, but in their life?"
+
+Then break that down into the chronological steps someone takes to accomplish that goal TODAY, without any app. These are the steps where friction, pain, and wasted time hide.
+
+Example for a moving-sale app:
+1. Figure out what's worth selling
+2. Research fair prices for each item
+3. Take photos and write descriptions
+4. Post listings on marketplace platforms
+5. Answer messages from interested buyers
+6. Coordinate pickup times and locations
+7. Collect payment
+
+Each step is a potential place where your app could remove friction. Ask the user to confirm or adjust these steps.
+
+#### Step 2: Mine Reddit for real pain
+
+Identify 3-5 subreddits where people who have this problem would vent, ask for help, or share workarounds. NOT tech subreddits — communities where the actual problem lives.
+
+Search those subreddits for struggle keywords:
+- "[current solution] is..."
+- "How do I deal with..."
+- "Tired of..."
+- "Does anyone else..."
+- "I gave up and just..."
+
+Suggest specific subreddits and search terms based on their idea. Help them find 5-10 high-engagement threads where people describe the problem in their own words.
+
+#### Step 3: Extract what people actually need
+
+From the Reddit threads, pull out the specific unmet needs — the things people wish were better. Frame each one as a simple statement:
+
+- **Reduce** the time it takes to [do something tedious]
+- **Reduce** the chance of [something going wrong]
+- **Reduce** the effort required to [figure something out]
+- **Increase** the confidence that [something will work out]
+- **Increase** the ease of [some complex process]
+
+Example extractions from Reddit threads about selling items:
+- From someone ranting about writing descriptions: → "Reduce the time it takes to create an accurate listing"
+- From someone complaining about no-shows: → "Reduce the chance of a buyer not showing up"
+- From someone giving stuff away for free to avoid hassle: → "Reduce the social friction of negotiating with strangers"
+
+#### Step 4: Spot the opportunity gaps
+
+Look at the Reddit engagement as a rough signal for what matters most:
+
+- **How important is this problem?** High upvotes, lots of "me too" comments, threads that recur month after month → people care deeply about this.
+- **How well are current tools solving it?** If comments describe elaborate workarounds ("I built a spreadsheet to track cross-posting across 4 platforms"), or if people say "I just gave up" → current solutions are failing them badly.
+
+The sweet spot — **the thing most worth building** — is where the problem is highly important to people AND current solutions are doing a terrible job of solving it. Frame this for the user:
+
+"Based on what we're seeing, the #1 underserved problem is ___. People care about it a lot [evidence], and the current tools are terrible at it [evidence]. If your app nailed this ONE thing, it would already be more useful than what's out there."
+
+#### Step 5: Define what to build first
+
+The discovery findings should directly shape the V1 scope. The biggest underserved need becomes the core feature. Everything else is V2.
+
+"Your MVP isn't 'a task app with 12 features.' Your MVP is the best solution to [biggest underserved need]. If you solve that one problem better than anyone else, you have a product. Everything else can come later."
+
+**Carry the findings forward.** The needs you extracted, the specific language people used, and the opportunity gaps all feed directly into Phase 1. The user now walks into planning with grounded evidence, not guesses.
+
+---
+
 ### Phase 1: The Dream
 
 Start here. Understand the outcome they want — not features, not technology. What does this app let them STOP worrying about? What does it free them up to do instead?
