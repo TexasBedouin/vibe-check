@@ -261,6 +261,7 @@ Compile everything into a structured plan with these sections:
     - *Keep it simple.* Boring and obvious beats clever. No pattern the plan didn't ask for.
     - *Call things by the same name everywhere.* If it's a "pickup," it's always a "pickup," in the code and on the screens.
     - *Handle the sad path.* Anything that can fail should show the user a friendly message and a way out, never a blank screen or a silent shrug.
+    - *Leave a trail.* Every important action writes a short log of what happened (what it did, whether it worked, how long it took, any error code). You will never read these yourself. But the day something breaks, that trail is what lets your AI find the problem in minutes instead of guessing for an hour.
     - *Keep the layers apart.* What the user sees (the screens) stays separate from the logic that makes decisions, which stays separate from where data is saved. Don't let them bleed into each other.
     - *Self-contained features.* Each feature lives in its own folder as one tidy piece, not smeared across the whole app.
 11. **Integrations**: what the app connects to, and how. Note: official SDKs, not third-party wrappers.
@@ -273,6 +274,7 @@ Compile everything into a structured plan with these sections:
     - *Production readiness audit:* "Audit my codebase for production readiness. Check for error monitoring, test coverage on payment and authentication paths, accessibility basics, and deployment configuration. Tell me what will fail silently in production."
 16. **Working With Your AI Tool**: practical stuff for the build:
     - Keep your project instruction file (CLAUDE.md or whatever your tool uses) under 100 lines. If it bloats, split the details into smaller files inside the folders they belong to.
+    - Set up your logging early, before the bugs ever show up. Ask your AI once: *"Define a simple, consistent debug-logging plan for this app. Say what to log, the levels (from quiet INFO up to loud ERROR), and short category names for each feature. Write it to docs/DEBUG-LOGGING.md and follow it everywhere you write code."* Then point your project guide at that file so the AI reads it first and logs the same way every time. It feels pointless right now... it's the thing that saves you the first time something breaks and you have no idea why.
     - Turn off AI-tool plugins and integrations you aren't actively using. They quietly eat your AI's working memory.
     - Treat every prompt like a tiny spec. Not "add login." Instead: "Add login with Google and email. Show a spinner while it's checking. If it fails, show a friendly error with a retry button. If they're already logged in, drop them straight on the dashboard." Specific prompts, fewer nasty surprises.
     - Before you let the AI apply a fix, ask it: "How does this change what my user sees? Will it make the app slower? What does this look like to my user on their worst day?"
