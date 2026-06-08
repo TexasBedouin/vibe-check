@@ -129,22 +129,39 @@ Example extractions from threads about selling stuff:
 - Someone fed up with no-shows → "Reduce the chance of a buyer not showing up"
 - Someone giving things away free just to avoid the hassle → "Reduce the social friction of haggling with strangers"
 
-#### Step 4: Spot the opportunity gaps
+#### Step 4: Score the opportunity gaps
 
-Read the Reddit engagement as a rough signal for what matters most:
+Don't eyeball this. Put a number on each need so the ranking is real and not a vibe. This is the engine of ODI (Outcome-Driven Innovation, from Tony Ulwick), in plain terms.
 
-- **How much does this problem hurt?** Lots of upvotes, a pile of "me too" comments, the same thread resurfacing month after month... people care deeply.
-- **How badly are today's tools handling it?** If the comments are full of elaborate workarounds ("I built a spreadsheet to track cross-posting across 4 platforms"), or people flat-out saying "I gave up," the current tools are letting them down.
+For each unmet need from Step 3, rate two things from 1 to 10, reading the Reddit signal:
 
-The sweet spot, the thing most worth building, is where the problem really hurts AND the existing tools are doing a terrible job. Frame it for the user:
+- **Pain: how much does it hurt?** Lots of upvotes, piles of "me too," the same complaint resurfacing month after month means high. A one-off gripe means low.
+- **Served: how well do today's tools already handle it?** Elaborate workarounds ("I built a spreadsheet for this"), or "I gave up," means badly served, so low. People shrugging "yeah the tools do that fine" means high.
 
-"Based on what we're seeing, the single most underserved problem is ___. People clearly care [evidence], and the tools out there are bad at it [evidence]. If your app nailed this ONE thing, it'd already beat what's on the market."
+Then score the gap:
 
-#### Step 5: Define what to build first
+> **Opportunity = Pain + (Pain − Served)**, and if a tool already handles it well, that gap never drops below zero.
 
-The discovery findings should shape V1 directly. The biggest underserved need becomes the core feature. Everything else is V2.
+So a need that hurts a lot AND is handled badly scores highest. A need that hurts but is already handled well scores lower (hold onto those, they become table stakes in Step 5). Rank every need by its score. A quick example:
 
-"Your MVP isn't 'a task app with 12 features.' Your MVP is the best answer anywhere to [biggest underserved need]. Solve that one thing better than everyone else and you've got a product. The rest can wait."
+| Need | Pain | Served | Opportunity |
+|---|---|---|---|
+| Create an accurate listing fast | 9 | 3 | 15 |
+| Stop buyers from no-showing | 8 | 2 | 14 |
+| Browse listings easily | 7 | 8 | 7 |
+
+The top of that list is where you can win. Frame it for the user: "The single most underserved need is ___ (opportunity 15). People clearly care [evidence] and today's tools are bad at it [evidence]. Nail this and you already beat the market on the thing that matters most." Keep the full ranked table, because Step 5 needs the bottom of it too.
+
+#### Step 5: Define V1 as the differentiator plus the table stakes
+
+Here's the trap most "MVP" advice walks into: "just solve the one unsolved problem better than anyone" is half the truth. It's necessary, not sufficient. Nobody leaves Spotify because you nailed one clever thing, if you're missing search, playlists, and playback that just works. The basics are the price of entry. So V1 has two parts, and the ranked table from Step 4 hands you both:
+
+- **The differentiator (build to win):** the top-scoring underserved need. This is your reason to exist, the one thing you do better than anyone. Usually there's just one.
+- **The table stakes (build to not lose):** the high-Pain, already-well-served needs (the high-Served rows at the bottom of your Step 4 table). Users expect these from any tool in the category. Skip them and your brilliant differentiator never gets a shot, because people won't switch to something that can't do the basics.
+
+Be ruthless about that second list. Table stakes means the *minimum* version of each basic that lets someone actually switch, not a polished clone of the incumbent. Anything that's neither the differentiator nor a true table stake goes to V2.
+
+"Your V1 is two things. One: the best answer anywhere to [top underserved need], that's why anyone picks you. Two: just enough of the basics ([the table stakes]) that nobody has a reason to stay with what they've already got. Everything else waits."
 
 **Carry the findings forward.** The needs you pulled out, the exact words people used, the gaps you spotted... all of it feeds straight into Phase 1. The user walks into planning with evidence instead of guesses.
 
