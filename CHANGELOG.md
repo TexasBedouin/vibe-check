@@ -2,6 +2,15 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [1.1.0] - 2026-06-08
+
+### Fixed
+- Discovery no longer assumes the AI can fetch reddit.com directly. Reddit blocks bots (Claude Code, for one, can't fetch it), which made Beat 2 fail for testers. Step 2 now reaches Reddit through a ladder: web search with `site:reddit.com` first (how Gemini-style tools read Reddit), then Reddit's `old.reddit.com` / `.json` / `search.json` read endpoints, then a manual hand-off where the user pastes threads back. Reddit-only, no widening to noisier sources.
+
+### Changed
+- Rank Reddit findings by signal: a high-upvote, recurring thread beats a stray comment.
+- Dropped the "go talk to real users" nudge. This skill validates through Reddit, not by sending people to do interviews.
+
 ## [1.0.0] - 2026-06-08
 
 First formally versioned release. Consolidates the skill as it stands after its initial build and several rounds of dogfooding.
