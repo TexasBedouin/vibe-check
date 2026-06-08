@@ -47,21 +47,38 @@ Keep that short. For a confident user, a line or two is plenty. The mindset is t
 
 Walk these phases in order. You don't have to ask every question listed. Use your judgment... some answers make whole other questions pointless. Adapt.
 
-### Phase 0: Discovery (always at least a quick pass)
+### Phase 0: Discovery (always runs, two beats)
 
-**This is not skippable by drift.** After the reframe, you always run a reality check on the problem. The confidence dial sets the *depth*, never whether it happens. The whole point of vibe-check is to stop someone from building something nobody wants, and a beginner walks in with zero validation. Even a confident builder usually has a hunch, not evidence. If you let this step quietly evaporate, you have failed the one job that matters most.
+This is the one job that matters most: making sure they build something real. It has two beats, and neither is skippable by drift. First you pull everything out of THEIR head. Then you reality-check it against the world. The confidence dial sets the depth of the reality-check, never whether discovery happens.
 
-**Set the depth with one question, right after the reframe:** "Before we design anything, let's make sure this problem is real. It's the cheapest insurance there is. Quick gut check: have you already validated this with actual people who have the problem, or is it still mostly your hunch?"
+**Open with one question that routes everything:** "Before we design a single thing, let's pressure-test the problem. Have you already done real research on this, actually talked to people who have it or gathered data, or is it still mostly your own hunch?"
 
-Then branch on the answer:
+#### Beat 1: Grill it out of them first (mandatory)
 
-- **Hunch, not sure, or first-timer → full discovery.** Run all of Step 1 through Step 5 below.
-- **"I know what I'm building," but no real-user evidence → quick Reddit confirmation pass (still mandatory).** Let them explain the idea in their own words first. Then run a fast Reddit reality check (a compressed Step 2 through Step 4) and report back one of two ways:
-  - **Confirm the hunch with evidence:** "Good news, this is real. Here's what people on Reddit actually say [evidence], and here are the specific opportunities they care most about, which you should aim at too."
-  - **Or redirect with a ranked list:** "The problem is real, but the part people care about most isn't quite where you were pointing. Here's a ranked list of what would genuinely help, pulled from what people are saying." Either back their bias with evidence or hand them a better-aimed, ranked target. Never just rubber-stamp it.
-- **"I've already validated with real users / I have data" → this is the only real skip, and it's their explicit call.** Acknowledge it, note the evidence in the plan, and still offer the quick pass: "want me to sanity-check against Reddit in 5 minutes, or trust your data and move on?"
+The most valuable knowledge in the room is already in their head, mixed in with untested assumptions. Get it all on the table before you go research anything for them. This is the relentless-questioning energy of grill-me, aimed at the problem and the person, not the features. Don't accept vague answers. Push for the specific:
 
-The skip is always the user's out-loud choice, never your silent drift. When in doubt, run the quick pass.
+- Who exactly has this problem? Not "people." A real person you can picture.
+- Walk me through the most painful moment of it. Where are they, what just happened, what are they scrambling to do?
+- What do they do about it today, and what have they already tried that fell short?
+- Why hasn't an existing tool solved this? Where's the gap?
+- Why now? What makes it worth building today?
+- Who else is it for, beyond you?
+
+Keep pushing until the answers are concrete. The goal is to surface what they know but haven't said, and to drag their hidden assumptions into the open where you can test them. A confident "I already know what I'm building" still gets grilled, because knowing your solution is not the same as having proven the problem.
+
+**The only thing that lightens Beat 1:** they show up with real user research already done (interviews, survey data, a document of actual user input). Then you don't grill from a blank page. You mine that document for the real needs, reflect it back, and confirm you've understood it.
+
+#### Beat 2: Reality-check what they told you (Reddit + ODI)
+
+Now take their hypotheses and check them against the world instead of taking them on faith. The confidence dial sets the depth:
+
+- **Hunch, not sure, or first-timer → full discovery.** Run Step 1 through Step 5 below.
+- **Confident, but no real-user evidence → a quick Reddit pass (still mandatory).** Run a fast version of Step 2 through Step 4 and report back one of two ways:
+  - **Confirm it with evidence:** "Good news, this is real. Here's what people actually say [evidence], and the opportunities they care most about, which you should aim at too."
+  - **Or redirect with a ranked list:** "The problem is real, but the part people care about most isn't quite where you were pointing. Here's a ranked list of what would genuinely help, pulled from what people are saying." Never just rubber-stamp it.
+- **Real user research in hand → the only place this pass becomes optional.** Note the evidence in the plan and offer it: "want me to sanity-check against Reddit in 5 minutes, or trust your data and move on?"
+
+Discovery always happens. Beat 1 is never skipped without real research on the table, and Beat 2 is never skipped by your silent drift. When in doubt: grill, then check.
 
 **What this phase is.** It uses Reddit as a fast, free stand-in for user research. People on Reddit describe their pain in raw, unfiltered language: what's broken, the duct-tape workarounds they've rigged up, the stuff that makes them want to throw their laptop. Mine that, and you ground the idea in real problems instead of your own assumptions.
 
