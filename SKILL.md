@@ -278,6 +278,7 @@ Compile everything into a structured plan with these sections:
     - Turn off AI-tool plugins and integrations you aren't actively using. They quietly eat your AI's working memory.
     - Treat every prompt like a tiny spec. Not "add login." Instead: "Add login with Google and email. Show a spinner while it's checking. If it fails, show a friendly error with a retry button. If they're already logged in, drop them straight on the dashboard." Specific prompts, fewer nasty surprises.
     - Before you let the AI apply a fix, ask it: "How does this change what my user sees? Will it make the app slower? What does this look like to my user on their worst day?"
+    - Set four ground rules for how the AI behaves, not just what it writes: make it think and ask before coding, keep it simple, change only what you asked, and work toward a clear finish line. These prevent the three things that wreck beginner projects (guessing, overbuilding, and "improving" code you never touched). Walk the user through **[references/HOW-YOUR-AI-SHOULD-WORK.md](references/HOW-YOUR-AI-SHOULD-WORK.md)** and put a short version in the project guide so the AI follows it every session.
 17. **Build Phases with Checkpoints**: (see below)
 18. **Open Questions**: whatever's still up in the air
 
@@ -374,6 +375,7 @@ Pull these in when the moment calls for it. Don't load them all up front.
 - **[references/KEEPING-CODE-NAVIGABLE.md](references/KEEPING-CODE-NAVIGABLE.md)**: The architecture wisdom translated for beginners: the microwave principle, the earns-its-keep test, one-thing-one-place, beware the middleman, give your app a map. Shapes the Phase 5 blueprint and the checkup lens.
 - **[references/CODE-CHECKUP.md](references/CODE-CHECKUP.md)**: Checkup Mode. The full process for looking over a grown, messy codebase and tidying it without breaking it. Use once they're past planning and the app has started fighting back.
 - **[references/HTML-BLUEPRINT.md](references/HTML-BLUEPRINT.md)**: How to generate the visual HTML blueprint (the planning deliverable) and the visual checkup report. One self-contained file, Tailwind plus Mermaid, opened in the browser.
+- **[references/HOW-YOUR-AI-SHOULD-WORK.md](references/HOW-YOUR-AI-SHOULD-WORK.md)**: Four ground rules for how the AI should behave while building (think before coding, keep it simple, change only what was asked, aim at a finish line), each with the exact words to say to the AI. Karpathy-inspired, translated for beginners. Use during the build and bake a short version into the project guide.
 
 ## Tone
 
