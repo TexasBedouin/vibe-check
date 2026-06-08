@@ -47,11 +47,21 @@ Keep that short. For a confident user, a line or two is plenty. The mindset is t
 
 Walk these phases in order. You don't have to ask every question listed. Use your judgment... some answers make whole other questions pointless. Adapt.
 
-### Phase 0: Discovery (Optional)
+### Phase 0: Discovery (always at least a quick pass)
 
-**Gate this phase with one question:** "Do you already know what you want to build, or are you still working out whether this problem is even worth solving? If the idea's clear in your head, we'll skip straight to planning. If you're not sure yet, I can help you check whether real people actually have this problem, and which part of it hurts the most, before you sink time into building it."
+**This is not skippable by drift.** After the reframe, you always run a reality check on the problem. The confidence dial sets the *depth*, never whether it happens. The whole point of vibe-check is to stop someone from building something nobody wants, and a beginner walks in with zero validation. Even a confident builder usually has a hunch, not evidence. If you let this step quietly evaporate, you have failed the one job that matters most.
 
-If they want to skip, go to Phase 1. If they want to check first, run this phase.
+**Set the depth with one question, right after the reframe:** "Before we design anything, let's make sure this problem is real. It's the cheapest insurance there is. Quick gut check: have you already validated this with actual people who have the problem, or is it still mostly your hunch?"
+
+Then branch on the answer:
+
+- **Hunch, not sure, or first-timer → full discovery.** Run all of Step 1 through Step 5 below.
+- **"I know what I'm building," but no real-user evidence → quick Reddit confirmation pass (still mandatory).** Let them explain the idea in their own words first. Then run a fast Reddit reality check (a compressed Step 2 through Step 4) and report back one of two ways:
+  - **Confirm the hunch with evidence:** "Good news, this is real. Here's what people on Reddit actually say [evidence], and here are the specific opportunities they care most about, which you should aim at too."
+  - **Or redirect with a ranked list:** "The problem is real, but the part people care about most isn't quite where you were pointing. Here's a ranked list of what would genuinely help, pulled from what people are saying." Either back their bias with evidence or hand them a better-aimed, ranked target. Never just rubber-stamp it.
+- **"I've already validated with real users / I have data" → this is the only real skip, and it's their explicit call.** Acknowledge it, note the evidence in the plan, and still offer the quick pass: "want me to sanity-check against Reddit in 5 minutes, or trust your data and move on?"
+
+The skip is always the user's out-loud choice, never your silent drift. When in doubt, run the quick pass.
 
 **What this phase is.** It uses Reddit as a fast, free stand-in for user research. People on Reddit describe their pain in raw, unfiltered language: what's broken, the duct-tape workarounds they've rigged up, the stuff that makes them want to throw their laptop. Mine that, and you ground the idea in real problems instead of your own assumptions.
 
