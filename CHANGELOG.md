@@ -1,0 +1,29 @@
+# Changelog
+
+All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
+
+## [1.0.0] - 2026-06-08
+
+First formally versioned release. Consolidates the skill as it stands after its initial build and several rounds of dogfooding.
+
+### Discovery and planning
+- Two modes: Planning Mode and Checkup Mode.
+- Confidence dial: read the person first, then match the pace.
+- Discovery always runs, in two beats: grill the user first, then reality-check on Reddit and ODI. The skip is always the user's explicit call.
+- Future press release for pulling out the vision when the grill stalls.
+- Opportunity scoring with real ODI math: Pain + (Pain - Served), ranked.
+- V1 scope split into the differentiator (build to win) and table stakes (build to not lose).
+- The struggling moment (demand-side) and the aha moment with onboarding-outward design.
+- Crazy 3s design directions with sharing and voting, plus the desirable / feasible / viable / usable lens.
+- User story mapping to derive the real feature list from the journey.
+
+### Building and beyond
+- Build phases with plain-language checkpoints.
+- Two deliverables: the markdown plan and a visual HTML blueprint.
+- GitHub and deployment basics for absolute beginners.
+- Keeping code navigable (the microwave principle), and Checkup Mode for a codebase that has grown messy.
+- How your AI should work (four ground rules) and the supervised improvement loop.
+- What a skill actually is, for when the idea being planned is itself an AI skill.
+
+### Credits
+grill-me and improve-codebase-architecture (Matt Pocock), office-hours (Garry Tan), autoresearch (Udit Goenka), teach (Matt Pocock), the Design Sprint (Jake Knapp), user story mapping (Jeff Patton), Jobs to be Done (Bob Moesta).
