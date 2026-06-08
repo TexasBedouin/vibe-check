@@ -65,6 +65,7 @@ Built by Amer Arab. I spent 12-plus years as a product manager, most of it takin
 - [autoresearch](https://github.com/uditgoenka/autoresearch) by Udit Goenka: the verify-and-iterate loop (one change, check it, keep or revert, repeat), translated here as the beginner's supervised improvement loop
 - [/office-hours](https://github.com/garrytan/gstack) by Garry Tan: the problem reframing and premise challenging
 - [The Design Sprint](https://designsprintkit.withgoogle.com/) by Jake Knapp / Google Ventures: the future press release (vision extraction) and Crazy 8s, adapted here to Crazy 3s with sharing and voting
+- [User Story Mapping](https://www.jpattonassociates.com/user-story-mapping/) by Jeff Patton: walking the chosen journey step by step to surface the features each step requires
 - [The Last Mile Playbook](https://github.com/TexasBedouin) by Amer Arab: the PM vs Engineer mindset, payment processor gotchas, and the hard-won lessons of shipping a real product as a non-developer
 
 ## License

@@ -199,7 +199,13 @@ Say it back: "So the real goal is ___. Right now you handle it by ___, which suc
 - Each aims at solving the problem in the simplest, fewest-taps way you can manage. UX simplicity is the target, not features.
 - Describe each in plain language or a rough text wireframe, so the user can picture it.
 - Then share and vote: walk them through all three and have them cherry-pick the bits they like from each.
-- Combine those picks into one direction that's simpler than any single sketch. That becomes the experience you map below.
+- Combine those picks into one direction that's simpler than any single sketch.
+- Before you lock it in, gut-check that combined direction against four quick lenses (the classic desirable / feasible / viable / usable test from product design):
+  - **Desirable:** do the people from discovery actually want this? You already have the evidence.
+  - **Usable:** could the least techy person in your audience figure it out with nobody helping? (The Grandma Test below.)
+  - **Feasible:** can your AI tool realistically build it, without exotic infrastructure?
+  - **Viable:** does it hold up cost-wise? Phase 6 prices it properly, but flag anything obviously pricey now.
+  If it stumbles on one, tweak the design before you commit. The winning direction becomes the experience you map below.
 
 Now map the chosen direction, screen by screen.
 
@@ -221,6 +227,14 @@ After that, generate THREE user-flow diagrams:
 3. **Edge Cases.** Weird but real. The power user with 500 items. The person who comes back after 3 months away. Two connected apps disagreeing about the data. Account deletion.
 
 Present them as mermaid diagrams. Talk through each one.
+
+**Then map the story, step by step (this is where the real feature list comes from).** Adapted from Jeff Patton's user story mapping, the technique that bridges discovery and delivery. Take the happy flow you just drew and walk it one step at a time. For each step, ask the same question: *what has to be true for the user to get through this step?*
+
+- Each answer is a feature or capability you actually need. "To reserve an item, the buyer has to see it's still available" means you need live availability. "To pay, they need a way to pay that they trust" means you need a real payment option.
+- Do it for every step, start to finish. The features fall out of the journey instead of being dreamed up and bolted on later.
+- This is how you catch the missing steps before you build, and how the table stakes from discovery turn into a concrete list. A journey with a step nobody can complete is a product that breaks exactly there.
+
+Carry that feature list straight into Phase 8. It's the spine of what V1 has to include.
 
 ### Phase 3: The Connections
 
