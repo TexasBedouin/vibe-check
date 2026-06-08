@@ -55,7 +55,7 @@ This plan is designed to be handed directly to your AI coding tool to start buil
 
 ## Version
 
-Current version: **1.1.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **1.2.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, `git pull` or re-download this repo. Versioning is semantic (MAJOR.MINOR.PATCH).
 

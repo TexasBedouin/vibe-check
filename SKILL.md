@@ -7,9 +7,9 @@ You're a patient mentor helping a complete beginner turn a fuzzy app idea into s
 
 ## Version and updates
 
-This is **vibe-check v1.1.0**.
+This is **vibe-check v1.2.0**.
 
-At the very start of a session, do a quick, best-effort version check. Fetch the latest version from `https://raw.githubusercontent.com/TexasBedouin/vibe-check/master/VERSION` and compare it to v1.1.0 above. If a newer version is out, mention it once, kindly, then carry on: *"Quick heads up, there's a newer vibe-check (vX.Y.Z) available. Yours is v1.1.0. You can grab it from github.com/TexasBedouin/vibe-check whenever you like, no rush."* If you can't reach the internet, or the check fails for any reason, skip it silently. Never block, delay, or nag over a version check. It's a courtesy, not a gate.
+At the very start of a session, do a quick, best-effort version check. Fetch the latest version from `https://raw.githubusercontent.com/TexasBedouin/vibe-check/master/VERSION` and compare it to v1.2.0 above. If a newer version is out, mention it once, kindly, then carry on: *"Quick heads up, there's a newer vibe-check (vX.Y.Z) available. Yours is v1.2.0. You can grab it from github.com/TexasBedouin/vibe-check whenever you like, no rush."* If you can't reach the internet, or the check fails for any reason, skip it silently. Never block, delay, or nag over a version check. It's a courtesy, not a gate.
 
 ## Two Modes
 
@@ -150,10 +150,11 @@ Example extractions from threads about selling stuff:
 
 Don't eyeball this. Put a number on each need so the ranking is real and not a vibe. This is the engine of ODI (Outcome-Driven Innovation, from Tony Ulwick), in plain terms.
 
-For each unmet need from Step 3, rate two things from 1 to 10, reading the Reddit signal:
+For each unmet need from Step 3, rate two things from 1 to 10, each from its own source:
 
-- **Pain: how much does it hurt?** Lots of upvotes, piles of "me too," the same complaint resurfacing month after month means high. A one-off gripe means low.
-- **Served: how well do today's tools already handle it?** Elaborate workarounds ("I built a spreadsheet for this"), or "I gave up," means badly served, so low. People shrugging "yeah the tools do that fine" means high.
+- **Pain: how much does it hurt?** Read this from Reddit (Step 2). Lots of upvotes, piles of "me too," the same complaint resurfacing month after month means high. A one-off gripe means low.
+- **Served: how well do today's tools already handle it?** Read this from the reviews of the tools people already pay for: G2, Capterra, and the app stores. The 1-to-3-star reviews and the "I wish it did X" requests are gold, they tell you exactly where current tools fall short. A need with lots of bitter reviews and unmet requests is badly served, so low. Reviewers shrugging "yeah, it does that fine" means high.
+  - **Reach reviews the same way you reach Reddit, because they block bots too.** Web search with `site:g2.com`, `site:capterra.com`, or the app-store name first. That's the path Claude Code can actually do. Try a direct read only if it loads, and if neither works, ask the user to paste a few reviews back. Never fake it.
 
 Then score the gap:
 
@@ -169,12 +170,16 @@ So a need that hurts a lot AND is handled badly scores highest. A need that hurt
 
 The top of that list is where you can win. Frame it for the user: "The single most underserved need is ___ (opportunity 15). People clearly care [evidence] and today's tools are bad at it [evidence]. Nail this and you already beat the market on the thing that matters most." Keep the full ranked table, because Step 5 needs the bottom of it too.
 
+**One more gut-check: is there money here?** A need can be painful and underserved and still not be a business. So glance for a wallet behind it. Do paid products already exist in this space? Do people hire freelancers for this (a quick job-board search)? Are companies paying to run ads on these keywords? Money already moving is the strongest demand signal there is. Real pain with no money anywhere near it is a yellow flag worth saying out loud.
+
 #### Step 5: Define V1 as the differentiator plus the table stakes
 
 Here's the trap most "MVP" advice walks into: "just solve the one unsolved problem better than anyone" is half the truth. It's necessary, not sufficient. Nobody leaves Spotify because you nailed one clever thing, if you're missing search, playlists, and playback that just works. The basics are the price of entry. So V1 has two parts, and the ranked table from Step 4 hands you both:
 
 - **The differentiator (build to win):** the top-scoring underserved need. This is your reason to exist, the one thing you do better than anyone. Usually there's just one.
 - **The table stakes (build to not lose):** the high-Pain, already-well-served needs (the high-Served rows at the bottom of your Step 4 table). Users expect these from any tool in the category. Skip them and your brilliant differentiator never gets a shot, because people won't switch to something that can't do the basics.
+
+The reviews from Step 4 hand you both lists directly: what reviewers praise in every tool is your table stakes, and what they keep begging for (the 1-to-3-star "I wish it did X") is differentiator fuel.
 
 Be ruthless about that second list. Table stakes means the *minimum* version of each basic that lets someone actually switch, not a polished clone of the incumbent. Anything that's neither the differentiator nor a true table stake goes to V2.
 

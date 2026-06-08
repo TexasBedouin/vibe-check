@@ -2,6 +2,13 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [1.2.0] - 2026-06-08
+
+### Added
+- Discovery now reads two sources, one per axis of the opportunity score. Reddit for Pain (how much it hurts), and the reviews of tools people already pay for (G2, Capterra, app stores) for Served (how well current tools handle it). The 1-to-3-star reviews and feature requests sharpen the Served rating and hand Step 5 its table-stakes and differentiator lists directly.
+- A willingness-to-pay gut-check in Step 4: is there money already moving in the space (paid products, freelancers hired, ads)? Real pain with no money near it is a yellow flag.
+- Review sites use the same fetch ladder as Reddit (site:g2.com / site:capterra.com web search first, then direct read, then manual paste), since they block bots too.
+
 ## [1.1.0] - 2026-06-08
 
 ### Fixed
