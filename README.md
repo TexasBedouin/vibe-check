@@ -53,6 +53,12 @@ By the end of a vibe-check session, you'll have a plan document that includes:
 
 This plan is designed to be handed directly to your AI coding tool to start building.
 
+## Version
+
+Current version: **1.0.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+
+When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, `git pull` or re-download this repo. Versioning is semantic (MAJOR.MINOR.PATCH).
+
 ## Who made this
 
 Built by Amer Arab. I spent 12-plus years as a product manager, most of it taking products from zero to one. Discovery is the part I care about most: working out whether a problem is real before anyone writes a line of code, then shaping something people actually want instead of something that merely works. Those years were also spent shoulder to shoulder with engineers, which is where the "you're the PM, the AI is the engineer" idea at the heart of this skill comes from. vibe-check is me handing a first-timer the instincts I had to learn the hard way.
