@@ -183,6 +183,8 @@ Start here. Get at the outcome they want. Not features, not tech. What does this
 - When this app is humming, what do they get to stop thinking about? Which worry disappears? Which chore do they never do by hand again?
 - Who else wants this? Just them? Friends? Coworkers? Strangers on the internet?
 
+**Demand is born in the struggling moment.** This is Bob Moesta's demand-side lens, and it's worth internalizing: the struggling moment creates the demand, not your product, and some of these moments sit unsolved for years with nobody fixing them. So when you dig out that worst moment above, you're not just collecting a sad story. You're standing exactly where demand lives. Study the context that makes the user's messy workaround feel completely rational to them. Nail that moment and you've found the real reason anyone would ever switch to the thing you build.
+
 **Lock in the three lines.** By the end of Phase 1, fill these in WITH the user and get a yes. They're the north star for every decision after:
 
 1. **What they're trying to accomplish** (the outcome... the real goal in their life, not a feature)
@@ -215,6 +217,20 @@ Now map the chosen direction, screen by screen.
 - What's there when there's nothing there yet? (Empty states. Beginners never think about these.)
 - What notifications or reminders does the user get?
 - Do users interact with other users inside the app?
+
+**Find the aha moment, then design from it outward.** The aha moment is the first instant the user actually feels the value, the quiet "oh, this is for me." Demand starts back at the struggling moment (Phase 1); the aha moment is where your product finally answers it. Pin it down with two questions:
+
+- What's the single moment a user first feels this was worth it?
+- How fast can they get there after signing up? Aim for the first 30 seconds.
+
+Then design the whole experience backward from that moment, onboarding outward:
+
+- Strip every blocker between signup and the aha moment. Cut the long forms and the setup chores. If a field isn't needed to reach the value, ask for it later.
+- No carousels or intro slideshows. People skip them anyway. Drop them straight into the core thing.
+- Borrow gentle game-design touches: reveal complexity only as the user needs it (progressive disclosure), and give a small, satisfying hit of success the instant they reach the value.
+- If you can, stack two aha moments back to back. The first proves it works, the second proves it's special. (ClearList, my own product, runs on three.) That back-to-back hit is where an MVP starts to feel like magic.
+
+The first 30 seconds should feel magical, not like homework. If a beginner has to slog through setup before the magic, they're already gone.
 
 **The Grandma Test.** Once the flows are mapped, ask: "Who's the least techy person who'd ever use this? Could THEY do everything we just described with nobody helping them? If not, what has to get simpler?" If it can't pass that test for their actual audience, simplify before you add a single feature.
 

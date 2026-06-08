@@ -66,6 +66,7 @@ Built by Amer Arab. I spent 12-plus years as a product manager, most of it takin
 - [/office-hours](https://github.com/garrytan/gstack) by Garry Tan: the problem reframing and premise challenging
 - [The Design Sprint](https://designsprintkit.withgoogle.com/) by Jake Knapp / Google Ventures: the future press release (vision extraction) and Crazy 8s, adapted here to Crazy 3s with sharing and voting
 - [User Story Mapping](https://www.jpattonassociates.com/user-story-mapping/) by Jeff Patton: walking the chosen journey step by step to surface the features each step requires
+- [Bob Moesta](https://www.bobmoesta.com/) (Jobs to be Done): demand is born in the struggling moment, the demand-side lens behind the worst-moment question
 - [The Last Mile Playbook](https://github.com/TexasBedouin) by Amer Arab: the PM vs Engineer mindset, payment processor gotchas, and the hard-won lessons of shipping a real product as a non-developer
 
 ## License
