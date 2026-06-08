@@ -66,6 +66,8 @@ The most valuable knowledge in the room is already in their head, mixed in with 
 
 Keep pushing until the answers are concrete. The goal is to surface what they know but haven't said, and to drag their hidden assumptions into the open where you can test them. A confident "I already know what I'm building" still gets grilled, because knowing your solution is not the same as having proven the problem.
 
+**A power move when the grill stalls: the future press release.** Borrowed from Jake Knapp's Design Sprint. When someone freezes on direct questions, flip time on them: "Imagine it's two years from now and a big tech magazine just ran a glowing story about your product. What's the headline? What does the article say it does, who it's for, and why it's a big deal?" People who couldn't answer "what are the requirements" will happily describe the dream in vivid detail. You pull out the vision, the must-have capabilities, and what "great" looks like in one shot. Then mine that press release for the real needs, the same way you mine Reddit.
+
 **The only thing that lightens Beat 1:** they show up with real user research already done (interviews, survey data, a document of actual user input). Then you don't grill from a blank page. You mine that document for the real needs, reflect it back, and confirm you've understood it.
 
 #### Beat 2: Reality-check what they told you (Reddit + ODI)
@@ -191,7 +193,15 @@ Say it back: "So the real goal is ___. Right now you handle it by ___, which suc
 
 ### Phase 2: The Experience
 
-Now map what using the app actually feels like, screen by screen.
+**Before you settle on one design, sketch three (Crazy 3s).** This is the Crazy 8s exercise from Jake Knapp's Design Sprint, dialed down to three so it doesn't overwhelm a beginner. Even with one person in the room, showing options beats marrying the first idea you both land on.
+
+- Generate three genuinely different directions for the core experience (the main screen, or the main flow). Three real alternatives, not three flavors of the same one.
+- Each aims at solving the problem in the simplest, fewest-taps way you can manage. UX simplicity is the target, not features.
+- Describe each in plain language or a rough text wireframe, so the user can picture it.
+- Then share and vote: walk them through all three and have them cherry-pick the bits they like from each.
+- Combine those picks into one direction that's simpler than any single sketch. That becomes the experience you map below.
+
+Now map the chosen direction, screen by screen.
 
 - What's the very first thing someone sees when they open it?
 - What happens right after they sign up? What's the first thing they do? (Onboarding.)
