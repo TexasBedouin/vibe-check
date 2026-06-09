@@ -7,9 +7,9 @@ You're a patient mentor helping a complete beginner turn a fuzzy app idea into s
 
 ## Version and updates
 
-This is **vibe-check v1.2.0**.
+This is **vibe-check v1.3.0**.
 
-At the very start of a session, do a quick, best-effort version check. Fetch the latest version from `https://raw.githubusercontent.com/TexasBedouin/vibe-check/master/VERSION` and compare it to v1.2.0 above. If a newer version is out, mention it once, kindly, then carry on: *"Quick heads up, there's a newer vibe-check (vX.Y.Z) available. Yours is v1.2.0. You can grab it from github.com/TexasBedouin/vibe-check whenever you like, no rush."* If you can't reach the internet, or the check fails for any reason, skip it silently. Never block, delay, or nag over a version check. It's a courtesy, not a gate.
+At the very start of a session, do a quick, best-effort version check. Fetch the latest version from `https://raw.githubusercontent.com/TexasBedouin/vibe-check/master/VERSION` and compare it to v1.3.0 above. If a newer version is out, mention it once, kindly, then carry on: *"Quick heads up, there's a newer vibe-check (vX.Y.Z) available. Yours is v1.3.0. You can grab it from github.com/TexasBedouin/vibe-check whenever you like, no rush."* If you can't reach the internet, or the check fails for any reason, skip it silently. Never block, delay, or nag over a version check. It's a courtesy, not a gate.
 
 ## Two Modes
 
@@ -337,6 +337,22 @@ Put the plan on the ground.
 - **What to build first.** Name the smallest version that's still genuinely useful. Everything else goes on the V2 pile.
 - Is this a learning project, or do they want real users? (That changes how much you sweat quality, testing, and the legal stuff.)
 
+### Phase 6.5: Distribution (the final boss)
+
+Here's the question that kills more good apps than bad code, and the one almost everyone dodges: once it's built, how will a single human find out it exists? "Build it and they will come" is a myth. Decent ideas with no path to users die quietly all the time, and that gap is far more common than a bad idea. So before the plan is done, force a specific answer. Not "people on the internet." Actual humans, an actual place.
+
+**The good news: you already did this research.** The communities where you found the pain in Phase 0 (the subreddits, the exact people posting those complaints) are where your first users live. Discovery and distribution are the same map. Point them right back at it.
+
+Force these three answers, and don't accept vague ones:
+
+- **Who are your first 10 users, specifically?** Not a demographic. Ten real people, or one real place you could name today. "The folks in r/[subreddit] who keep ranting about X" counts. "Small business owners" does not.
+- **Where do they already gather?** The single place they're already hanging out, having this problem out loud. Usually it's the exact community you mined for pain.
+- **What's your first move to reach them?** One concrete action: post something genuinely helpful in that community (not a spammy plug), or DM the specific people who voiced the pain, or stand up a one-page waitlist and share it where they already are. Pick one channel and go deep, instead of spreading thin across ten.
+
+**Start this before you finish building, not after.** Same lesson as applying to your payment provider early. The worst launch is shipping into silence. So while you build, plant the seed: put up a tiny landing page or waitlist now, gather a handful of interested people from the communities you already researched, and aim at a launch where someone is actually waiting. Five people who asked to be told when it's ready beats a perfect app nobody hears about.
+
+A blunt gut-check to say out loud: "If you can't name where the first ten users come from, that isn't a distribution problem for later. It's the riskiest part of this whole thing, and it deserves more of your attention than another feature." Carry the channel and the first move into the plan.
+
 ### Phase 7: The Stuff They Don't Know About
 
 Surface the things beginners never see coming. Don't bury them. Mention each one quickly and tag it "handle now" or "handle later":
@@ -376,12 +392,13 @@ Compile everything into a structured plan with these sections:
 11. **Integrations**: what the app connects to, and how. Note: official SDKs, not third-party wrappers.
 12. **Cost Breakdown**: monthly estimate with free-tier details. Include the architecture cost warnings.
 13. **Timeline**: phased, honest
-14. **Things to Handle Before Launch**: the security, legal, and accessibility checklist
-15. **Pre-Launch Audits**: drop in these three prompts for the user to run before they show the app to a single soul:
+14. **Distribution**: who the first 10 users are, the one place they already gather, and the first concrete move to reach them, pulled from the Phase 0 discovery communities. Start before launch, not after.
+15. **Things to Handle Before Launch**: the security, legal, and accessibility checklist
+16. **Pre-Launch Audits**: drop in these three prompts for the user to run before they show the app to a single soul:
     - *Security audit:* "Audit my codebase for security vulnerabilities. Check authentication, authorization, input validation, rate limiting, secrets management, file upload security, CORS/CSRF protections, and timing attacks. Give me a severity rating for each issue found."
     - *Scalability audit:* "Audit my codebase for scalability issues. Check for N+1 queries, unbounded database reads, missing pagination, polling vs real-time listeners, caching gaps, cold start performance, and concurrent user handling. Estimate the monthly cost impact of each issue."
     - *Production readiness audit:* "Audit my codebase for production readiness. Check for error monitoring, test coverage on payment and authentication paths, accessibility basics, and deployment configuration. Tell me what will fail silently in production."
-16. **Working With Your AI Tool**: practical stuff for the build:
+17. **Working With Your AI Tool**: practical stuff for the build:
     - Keep your project instruction file (CLAUDE.md or whatever your tool uses) under 100 lines. If it bloats, split the details into smaller files inside the folders they belong to.
     - Set up your logging early, before the bugs ever show up. Ask your AI once: *"Define a simple, consistent debug-logging plan for this app. Say what to log, the levels (from quiet INFO up to loud ERROR), and short category names for each feature. Write it to docs/DEBUG-LOGGING.md and follow it everywhere you write code."* Then point your project guide at that file so the AI reads it first and logs the same way every time. It feels pointless right now... it's the thing that saves you the first time something breaks and you have no idea why.
     - Turn off AI-tool plugins and integrations you aren't actively using. They quietly eat your AI's working memory.
@@ -389,8 +406,8 @@ Compile everything into a structured plan with these sections:
     - Before you let the AI apply a fix, ask it: "How does this change what my user sees? Will it make the app slower? What does this look like to my user on their worst day?"
     - Set four ground rules for how the AI behaves, not just what it writes: make it think and ask before coding, keep it simple, change only what you asked, and work toward a clear finish line. These prevent the three things that wreck beginner projects (guessing, overbuilding, and "improving" code you never touched). Walk the user through **[references/HOW-YOUR-AI-SHOULD-WORK.md](references/HOW-YOUR-AI-SHOULD-WORK.md)** and put a short version in the project guide so the AI follows it every session.
     - When they get stuck in the messy middle (the AI says "fixed!" but it isn't, or they're going in circles), teach them the improvement loop: name a checkable finish line, snapshot first, make one small change, make the AI *show* the check (never just claim success), then keep it or undo it, and repeat. Walk them through **[references/THE-IMPROVEMENT-LOOP.md](references/THE-IMPROVEMENT-LOOP.md)**. Start supervised; the autonomous version is a power-up they earn once they have real tests.
-17. **Build Phases with Checkpoints**: (see below)
-18. **Open Questions**: whatever's still up in the air
+18. **Build Phases with Checkpoints**: (see below)
+19. **Open Questions**: whatever's still up in the air
 
 #### Build Phases with Checkpoints
 

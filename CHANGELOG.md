@@ -2,6 +2,11 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [1.3.0] - 2026-06-08
+
+### Added
+- Phase 6.5: Distribution (the final boss). The skill now forces a specific answer to "who will reach the first users, and how," instead of assuming "build it and they will come." It requires naming the first 10 users, the one place they already gather, and the first concrete move to reach them, and it points back at the Phase 0 discovery communities as the launch channel (discovery and distribution are the same map). Pushes starting distribution before launch, not after. Added a matching Distribution section to the plan document.
+
 ## [1.2.0] - 2026-06-08
 
 ### Added
