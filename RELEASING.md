@@ -41,3 +41,5 @@ gh release create vX.Y.Z --title "vX.Y.Z" --notes "what changed"
 ## Why the version lives in SKILL.md too
 
 A skill can't read its own `VERSION` file at runtime, it only reads the instructions. So the number has to be written into `SKILL.md` for the running skill to know what version it is and compare against the latest on GitHub. That's why the bump touches both.
+
+> Note: the runtime version check in `SKILL.md` fetches the `VERSION` file from a hardcoded `master`-branch URL (`raw.githubusercontent.com/TexasBedouin/vibe-check/master/VERSION`). If the default branch is ever renamed (for example to `main`), that URL must be updated by hand or the check will silently fail.

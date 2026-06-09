@@ -43,7 +43,7 @@ Have the AI commit (and push, if GitHub is set up... see [GITHUB-AND-DEPLOYMENT.
 
 ## Step 1: Look around
 
-Use the **Explore** subagent (`subagent_type=Explore`) to walk the codebase. Don't follow a rigid checklist. Explore the way the architecture skill does, organically, and notice where you feel friction. You're hunting for the beginner-relevant versions of shallow modules and leaky seams:
+If your tool has a codebase-exploration agent or subagent, use it to walk the codebase. If not, read the key files directly, starting from the project guide. Don't follow a rigid checklist. Explore the way the architecture skill does, organically, and notice where you feel friction. You're hunting for the beginner-relevant versions of shallow modules and leaky seams:
 
 - Where is one feature smeared across a pile of files? (Understanding one thing means bouncing all over the place.)
 - Where's a giant file trying to do everything? (Too big for the AI to hold in its head.)

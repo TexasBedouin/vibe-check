@@ -15,7 +15,7 @@ echo "Bumping $old -> $new"
 printf '%s\n' "$new" > VERSION
 
 # 2. The version number wherever it appears in SKILL.md and README.md
-sed -i "s/$old/$new/g" SKILL.md README.md
+perl -pi -e "s/\Q$old\E/$new/g" SKILL.md README.md
 
 # 3. Prepend a CHANGELOG entry above the first existing release heading
 tmp="$(mktemp)"
