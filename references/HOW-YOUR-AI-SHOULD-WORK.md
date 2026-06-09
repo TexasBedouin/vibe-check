@@ -67,3 +67,5 @@ A finish line turns a fuzzy request into something the AI can actually aim for, 
 Drop a short version of these four into the project guide (CLAUDE.md) so the AI reads them every session. Something like: *"Before coding non-trivial work, say what you'll build and ask about anything unclear. Build the simplest thing that works. Change only what the task needs and leave everything else alone. Work toward a clear definition of done and verify it."*
 
 That's it. Four habits. They cost you nothing and they turn an eager-but-reckless assistant into one that actually behaves like a careful engineer working for you.
+
+The standard for what "done" actually means lives in [CODE-QUALITY-BAR.md](CODE-QUALITY-BAR.md): it works without breaking anything, the build and linter are green, any test it wrote fails on the old code and passes on the new, it touched only what the task needed, and it matches the project's style. Working is the floor, not the bar.

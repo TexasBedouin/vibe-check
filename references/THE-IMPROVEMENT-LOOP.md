@@ -36,6 +36,8 @@ This is the heart of it. The AI does not get to *tell* you it works. It has to *
 
 A claim is not evidence. This one habit will save you more grief than anything else in this whole skill.
 
+**And make sure the test is a real test.** A test that passes even on the broken version is testing nothing. A good test fails before the fix and passes after. So if the AI writes one, have it confirm the test fails on the old code first, then passes on the new. More on this in [CODE-QUALITY-BAR.md](CODE-QUALITY-BAR.md).
+
 ### Step 5: Keep it or undo it
 
 If the check passed, keep it: commit, and that's your new safe snapshot. If it didn't, undo it back to the last snapshot and try a different way. Do not pile a second fix on top of a broken first one. That's how the sideways slide starts.

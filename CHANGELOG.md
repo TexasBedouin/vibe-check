@@ -2,6 +2,22 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [1.4.0] - 2026-06-09
+
+### Added
+- **Step 3.5: Map the competition.** A competitor gap matrix that estimates how well current tools serve each need, the beginner stand-in for ODI's customer satisfaction survey. Feeds the Served score and the table-stakes vs differentiator split.
+- **Stronger ODI in Step 4:** ICP segmentation (score for a specific group; a flat middling result means the group is too broad), the "significantly better, or no opportunity" rule, the two ways to win, and a note that Pain/Served are ODI's Importance/Satisfaction.
+- Needs are now pulled per job step for fuller coverage.
+- **references/DISCOVERY-DEEP-DIVE.md:** the fuller ODI method, competitor matrix template, ICP detail, and an honest rigor caveat (real ODI surveys hundreds of customers; this is a directional proxy).
+- **references/CODE-QUALITY-BAR.md:** a build-phase Definition of Done the coding AI clears on every change (works without breaking anything, build/lint/format green, fail-first tests, scope contained, matches conventions). FrontierCode-inspired. Working is the floor, not the bar. The fail-first test rule is also wired into the improvement loop.
+- Crazy 3s can render the three directions as a side-by-side comparison board in the HTML blueprint (idea from gstack's design-shotgun, static HTML only).
+
+### Fixed
+- Bob Moesta credit link (was broken) now points to The Rewired Group.
+
+### Credits
+Tony Ulwick / Strategyn (ODI), Cognition (FrontierCode), Garry Tan / gstack (design-shotgun).
+
 ## [1.3.0] - 2026-06-08
 
 ### Added

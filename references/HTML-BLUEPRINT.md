@@ -88,6 +88,16 @@ The diagrams carry the weight. For a visual thinker, they explain more than any 
 
 ---
 
+## The Crazy 3s comparison board
+
+Reused in Phase 2 to show the three design directions side by side, so the user picks by seeing them rather than reading three paragraphs one after another. The idea is borrowed from gstack's design-shotgun, minus the image generation and the local server. Same self-contained HTML, no extra tools.
+
+- Three cards in a row (they stack on mobile). One card per direction.
+- Each card holds: the direction's name, a rough sketch of the layout (hand-built `<div>` boxes or a short text wireframe, never a generated image), and a one-line "best for" that says what it optimizes for.
+- A short line under the board: *"Tell me which one feels right, or which bits you'd take from each, and I'll combine them into one."* The picking and mixing happen in chat, not in the page.
+
+Keep it dead simple. No buttons, no JavaScript beyond what the blueprint already loads. The board's only job is to make three options easy to compare at a glance.
+
 ## For the checkup report
 
 Same scaffold, different sections. Instead of the planning sections, render the checkup findings (see [CODE-CHECKUP.md](CODE-CHECKUP.md)):

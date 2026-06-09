@@ -8,7 +8,7 @@ A skill for AI coding tools that guides complete beginners from a vague app idea
 
 When someone who's never coded before says "I want to build an app that does X," this skill turns their AI tool into a patient mentor that:
 
-1. **Discovers what they actually need**: not features, but the real problem they're solving
+1. **Discovers what they actually need**: not features, but the real problem they're solving (Reddit pain-mining, a competitor gap analysis, and ODI opportunity scoring)
 2. **Maps the entire user experience**: happy flows, failure flows, and edge cases
 3. **Surfaces decisions they don't know they need to make**: auth, databases, payments, hosting, legal
 4. **Recommends a modern tech stack**: with plain-language explanations of what each piece does and why
@@ -55,7 +55,7 @@ This plan is designed to be handed directly to your AI coding tool to start buil
 
 ## Version
 
-Current version: **1.3.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **1.4.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, `git pull` or re-download this repo. Versioning is semantic (MAJOR.MINOR.PATCH).
 
@@ -72,7 +72,10 @@ Built by Amer Arab. I spent 12-plus years as a product manager, most of it takin
 - [/office-hours](https://github.com/garrytan/gstack) by Garry Tan: the problem reframing and premise challenging
 - [The Design Sprint](https://designsprintkit.withgoogle.com/) by Jake Knapp / Google Ventures: the future press release (vision extraction) and Crazy 8s, adapted here to Crazy 3s with sharing and voting
 - [User Story Mapping](https://www.jpattonassociates.com/user-story-mapping/) by Jeff Patton: walking the chosen journey step by step to surface the features each step requires
-- [Bob Moesta](https://www.bobmoesta.com/) (Jobs to be Done): demand is born in the struggling moment, the demand-side lens behind the worst-moment question
+- [Bob Moesta / The Rewired Group](https://therewiredgroup.com/) (Jobs to be Done): demand is born in the struggling moment, the demand-side lens behind the worst-moment question
+- [Tony Ulwick / Strategyn](https://strategyn.com/) (Outcome-Driven Innovation): the opportunity-scoring engine, and the competitor gap matrix used here as the beginner stand-in for ODI's satisfaction survey
+- [FrontierCode](https://cognition.ai/) by Cognition: quality over mere correctness, the fail-first test idea and the "working is the floor, not the bar" definition of done
+- [design-shotgun](https://github.com/garrytan/gstack) by Garry Tan / gstack: the side-by-side comparison board, adapted here as plain static HTML
 - [The Last Mile Playbook](https://github.com/TexasBedouin) by Amer Arab: the PM vs Engineer mindset, payment processor gotchas, and the hard-won lessons of shipping a real product as a non-developer
 
 ## License
