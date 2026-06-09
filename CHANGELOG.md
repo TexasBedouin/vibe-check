@@ -2,6 +2,18 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [1.5.0] - 2026-06-09
+
+### Added
+- **Evidence tags on the opportunity table** (seen it / hunch / guess), so a guess never passes for a finding. If most needs are hunches, that's a go-validate signal, not a green light.
+- **Needs in the user's language, not the product's:** a feature named as a need is a solution in disguise (opportunity laundering). Dig under it for the real pain.
+- **The framing check (Phase 6):** a blunt honesty pass before building, catching solution-first, outcome mismatch, mostly-guesses, and a solution dressed as a need.
+- **The riskiest-assumption test (Phase 6):** name the one belief that sinks the idea if it's wrong, and the cheapest way to test it before building (waitlist, ten DMs, fake door). If the test takes two weeks, it's a project, not a test.
+- **Outcome sharpening (Phase 1):** keep the goal singular and checkable ("I'd know it worked if ___"), and trace every decision back to it.
+
+### Credits
+Teresa Torres, Continuous Discovery Habits (opportunity solution trees).
+
 ## [1.4.0] - 2026-06-09
 
 ### Added

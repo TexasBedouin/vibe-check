@@ -55,7 +55,7 @@ This plan is designed to be handed directly to your AI coding tool to start buil
 
 ## Version
 
-Current version: **1.4.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **1.5.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, `git pull` or re-download this repo. Versioning is semantic (MAJOR.MINOR.PATCH).
 
@@ -76,6 +76,7 @@ Built by Amer Arab. I spent 12-plus years as a product manager, most of it takin
 - [Tony Ulwick / Strategyn](https://strategyn.com/) (Outcome-Driven Innovation): the opportunity-scoring engine, and the competitor gap matrix used here as the beginner stand-in for ODI's satisfaction survey
 - [FrontierCode](https://cognition.ai/) by Cognition: quality over mere correctness, the fail-first test idea and the "working is the floor, not the bar" definition of done
 - [design-shotgun](https://github.com/garrytan/gstack) by Garry Tan / gstack: the side-by-side comparison board, adapted here as plain static HTML
+- [Continuous Discovery Habits](https://www.producttalk.org/) by Teresa Torres (opportunity solution trees): evidence-tagging opportunities, the framing-issues honesty pass, and the riskiest-assumption test
 - [The Last Mile Playbook](https://github.com/TexasBedouin) by Amer Arab: the PM vs Engineer mindset, payment processor gotchas, and the hard-won lessons of shipping a real product as a non-developer
 
 ## License
