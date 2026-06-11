@@ -27,15 +27,23 @@ When someone who's never coded before says "I want to build an app that does X,"
 
 ### With Claude Code
 
-Copy the `skills/vibe-check/` folder into your project's `.claude/skills/` directory (or wherever your agent reads skills from), then tell Claude:
+Run this in your project root:
+
+```bash
+git clone https://github.com/TexasBedouin/vibe-check .claude/skills/vibe-check
+```
+
+Then tell Claude:
 
 ```
 Use the vibe-check skill to help me plan my app.
 ```
 
+To update to the latest version later, run `git pull` inside `.claude/skills/vibe-check`.
+
 ### With other AI tools
 
-Copy the contents of `skills/vibe-check/SKILL.md` into your AI tool's system prompt or project instructions.
+Copy the contents of `SKILL.md` into your AI tool's system prompt or project instructions.
 
 ## What the skill produces
 
@@ -57,7 +65,7 @@ This plan is designed to be handed directly to your AI coding tool to start buil
 
 Current version: **1.6.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
-When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, `git pull` or re-download this repo. Versioning is semantic (MAJOR.MINOR.PATCH).
+When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, run `git pull` inside `.claude/skills/vibe-check`. Versioning is semantic (MAJOR.MINOR.PATCH).
 
 ## Who made this
 
