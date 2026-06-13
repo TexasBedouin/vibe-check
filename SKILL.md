@@ -251,15 +251,19 @@ Keep the outcome singular and checkable. They should be able to finish the sente
 
 - Generate three genuinely different directions for the core experience (the main screen, or the main flow). Three real alternatives, not three flavors of the same one.
 - Each aims at solving the problem in the simplest, fewest-taps way you can manage. UX simplicity is the target, not features.
-- Describe each in plain language or a rough text wireframe. Even better, render the three side by side as a comparison board (see **[references/HTML-BLUEPRINT.md](references/HTML-BLUEPRINT.md)**), so the user sees them next to each other instead of reading them one after another.
+- Push each one far enough to *feel real*, not just a labeled box. A bare wireframe rarely tells you which direction is actually better; you only feel it once you can see the thing in use. So sketch each as the actual core moment playing out, with real-ish content in it instead of empty placeholders, and render all three side by side as a comparison board (see **[references/HTML-BLUEPRINT.md](references/HTML-BLUEPRINT.md)**), so the user is reacting to three real experiences next to each other instead of three abstractions read one after another.
+- Don't over-build the three, though. Each is a rough sketch pushed just far enough to choose between them, not three half-built apps. The moment one direction clearly wins, stop and pour everything into that one.
 - Then share and vote: walk them through all three and have them cherry-pick the bits they like from each.
 - Combine those picks into one direction that's simpler than any single sketch.
-- Before you lock it in, gut-check that combined direction against four quick lenses (the classic desirable / feasible / viable / usable test from product design):
+- Before you lock it in, gut-check that combined direction against five quick lenses: the classic desirable / feasible / viable / usable test from product design, plus one this skill won't skip, ethical.
   - **Desirable:** do the people from discovery actually want this? You already have the evidence.
   - **Usable:** could the least techy person in your audience figure it out with nobody helping? (The Grandma Test below.)
   - **Feasible:** can your AI tool realistically build it, without exotic infrastructure?
   - **Viable:** does it hold up cost-wise? Phase 6 prices it properly, but flag anything obviously pricey now.
-  If it stumbles on one, tweak the design before you commit. The winning direction becomes the experience you map below.
+  - **Ethical:** does this help the user, or prey on them? Look for dark patterns, the sneaky tricks that get people to act against their own intent: a subscription that's one tap to start and a maze to cancel, fake "only 2 left" urgency, a pre-checked box that signs them up for something. Strip those out. Then the deeper test: does the app make money when the user wins, or when the user loses? Anything that profits by exploiting a human weakness (compulsion, loneliness, insecurity, fear of missing out) is parasitic, and a beginner can build one without ever meaning to. Check it doesn't hand anyone a way to harm others either, like harassment, scams, or spying on people who never opted in. The honest line: persuasion helps people do what they already want; manipulation and harm just serve you at their expense.
+  If it stumbles on one, tweak the design before you commit. If it's the ethical lens it fails, and the problem is the core idea rather than one removable trick, be willing to rethink the concept itself instead of patching the symptom. The winning direction becomes the experience you map below.
+
+**The second look (don't skip this).** Before you lock the winner in, run one deliberate pass on it. The first direction that looks right is usually just the statistically likely one, the safe default the AI reaches for, not the considered one. So interrogate it once, out loud, with the user: what here is generic, the same thing every app of this kind does? What would give it a point of view instead of just "looks fine"? What can you cut or tighten? This is one pass, not a hunt for perfect. You're not stalling a beginner with "is it good enough yet," you're moving the design from "it works" to "it's actually right," because looks-right is the floor, not the finish line. Then lock it and move on.
 
 Now map the chosen direction, screen by screen.
 
