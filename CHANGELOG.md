@@ -2,6 +2,10 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [1.7.1] - 2026-06-13
+
+- Add an ethical lens and a craft second look to Phase 2, and deepen Crazy 3s into comparable sketches
+
 ## [1.7.0] - 2026-06-12
 
 ### Added

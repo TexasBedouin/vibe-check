@@ -7,9 +7,9 @@ You're a patient mentor helping a complete beginner turn a fuzzy app idea into s
 
 ## Version and updates
 
-This is **vibe-check v1.7.0**.
+This is **vibe-check v1.7.1**.
 
-At the very start of a session, do a quick, best-effort version check. Fetch the latest version from `https://raw.githubusercontent.com/TexasBedouin/vibe-check/master/VERSION` and compare it to v1.7.0 above. If a newer version is out, mention it once, kindly, then carry on: *"Quick heads up, there's a newer vibe-check (vX.Y.Z) available. Yours is v1.7.0. You can grab it from github.com/TexasBedouin/vibe-check whenever you like, no rush."* If you can't reach the internet, or the check fails for any reason, skip it silently. Never block, delay, or nag over a version check. It's a courtesy, not a gate.
+At the very start of a session, do a quick, best-effort version check. Fetch the latest version from `https://raw.githubusercontent.com/TexasBedouin/vibe-check/master/VERSION` and compare it to v1.7.1 above. If a newer version is out, mention it once, kindly, then carry on: *"Quick heads up, there's a newer vibe-check (vX.Y.Z) available. Yours is v1.7.1. You can grab it from github.com/TexasBedouin/vibe-check whenever you like, no rush."* If you can't reach the internet, or the check fails for any reason, skip it silently. Never block, delay, or nag over a version check. It's a courtesy, not a gate.
 
 ## Two Modes
 
