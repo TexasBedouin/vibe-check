@@ -28,7 +28,13 @@ When someone who's never coded before says "I want to build an app that does X,"
 
 ### With Claude Code
 
-Run this in your project root:
+The easiest way — installs via the open [skills CLI](https://github.com/vercel-labs/skills), and works across agents:
+
+```bash
+npx skills add TexasBedouin/vibe-check
+```
+
+Or clone it straight into your project:
 
 ```bash
 git clone https://github.com/TexasBedouin/vibe-check .claude/skills/vibe-check
@@ -40,7 +46,7 @@ Then tell Claude:
 Use the vibe-check skill to help me plan my app.
 ```
 
-To update to the latest version later, run `git pull` inside `.claude/skills/vibe-check`.
+To update later: run `npx skills update` if you installed via the CLI, or `git pull` inside `.claude/skills/vibe-check` if you cloned.
 
 ### With other AI tools
 
