@@ -1,5 +1,7 @@
 # vibe-check
 
+[![Try vibe-check on Socialistic](https://socialistic.ai/api/embed/vibe-check-skill-755fc1?lang=en)](https://socialistic.ai/en/skill/vibe-check-skill-755fc1?utm_source=github&utm_medium=readme&utm_campaign=20260612-summer-vibe-coding-learners&utm_content=badge)
+
 A skill for AI coding tools that guides complete beginners from a vague app idea to a buildable blueprint.
 
 **grill-me is for engineers. vibe-check is for everyone else.**
