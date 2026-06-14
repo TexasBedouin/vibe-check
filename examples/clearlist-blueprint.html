@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your App Blueprint: ClearList</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+    </script>
+    <style>
+      .mermaid { background: transparent; }
+    </style>
+  </head>
+  <body class="bg-stone-50 text-slate-800 font-sans">
+    <main class="max-w-4xl mx-auto px-6 py-12 space-y-12">
+
+      <!-- ============ HEADER ============ -->
+      <header class="space-y-4 border-b border-stone-200 pb-10">
+        <p class="text-sm font-medium uppercase tracking-wide text-indigo-600">Your App Blueprint</p>
+        <h1 class="text-4xl font-bold text-slate-900">ClearList</h1>
+        <p class="text-xl text-slate-600 leading-relaxed">
+          Walk through the house taking photos, drop them all in at once, and a minute later you've got a
+          full sale page you can share. The pile becomes money and an empty room, in one session.
+        </p>
+        <div class="mt-4 rounded-xl bg-indigo-50 border border-indigo-100 p-5">
+          <p class="text-indigo-900 leading-relaxed">
+            Here's everything you're about to build. Take your time. Every piece is explained in plain
+            language, and none of it is as scary as it looks from the outside. You've got this.
+          </p>
+        </div>
+      </header>
+
+      <!-- ============ THE GOAL ============ -->
+      <section id="the-goal" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">The Goal</h2>
+        <p class="text-slate-600">The whole plan in three honest lines.</p>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600 mb-2">What they're accomplishing</p>
+            <p class="text-slate-700">Clearing the whole pile before the deadline, and getting paid for it.</p>
+          </div>
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Instead, today</p>
+            <p class="text-slate-700">They list one item at a time until they burn out, then donate the rest.</p>
+          </div>
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Why that sucks</p>
+            <p class="text-slate-700">The per-item effort is so high the money never feels worth it, so the stuff wins.</p>
+          </div>
+        </div>
+        <div class="rounded-xl bg-indigo-50 border border-indigo-100 p-5">
+          <p class="text-indigo-900 leading-relaxed">
+            <span class="font-semibold">The one line that runs this whole plan:</span> you are not competing
+            with eBay. You're competing with the donation bag. Every decision has to beat "just donate it and
+            feel the relief."
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ WHO IT'S FOR ============ -->
+      <section id="who-its-for" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Who It's For</h2>
+        <p class="text-slate-600">A real person with a real deadline, not "everyone."</p>
+        <div class="rounded-xl bg-white border border-stone-200 p-6 shadow-sm space-y-3">
+          <p class="text-slate-700 leading-relaxed">
+            People mid-move or clearing out an estate. Twenty to a hundred items, and a hard deadline
+            (the truck comes in three weeks). The pile has become a "death pile" that's been sitting for
+            months, sometimes years, and the move is finally forcing the issue.
+          </p>
+          <p class="text-slate-700 leading-relaxed">
+            <span class="font-semibold">First 10 users:</span> from one declutter or moving community you can
+            personally show up in, not a broad launch.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ USER FLOWS ============ -->
+      <section id="user-flows" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">User Flows</h2>
+        <p class="text-slate-600">How it feels to use, on a good day and on a rough one.</p>
+
+        <div class="rounded-xl bg-white border border-stone-200 p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-slate-800 mb-1">The batch clear-out (the happy path)</h3>
+          <p class="text-sm text-slate-500 mb-4">The one thing that has to feel like magic.</p>
+          <pre class="mermaid">
+flowchart TD
+    A[Drop in 40 photos at once] --> B[AI groups photos into items]
+    B --> C[AI researches a price for each]
+    C --> D[AI drafts every title + description]
+    D --> E[You skim and fix the few it got wrong]
+    E --> F[Publish one sale page]
+    F --> G[Share the link in your community]
+          </pre>
+        </div>
+
+        <div class="rounded-xl bg-white border border-stone-200 p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-slate-800 mb-1">A buyer reserving an item</h3>
+          <p class="text-sm text-slate-500 mb-4">First come, first served, with a polite line if needed.</p>
+          <pre class="mermaid">
+flowchart TD
+    A[Buyer opens your sale page] --> B[Taps 'Reserve' on an item]
+    B --> C{Anyone ahead of them?}
+    C -->|No| D[They're first in line]
+    C -->|Yes| E[They join the queue, first come first served]
+    D --> F[Pickup details shared once confirmed]
+    E --> F
+    F --> G[They show up, you hand it over, done]
+          </pre>
+        </div>
+
+        <div class="rounded-xl bg-amber-50 border border-amber-200 p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-amber-900 mb-1">When the AI gets one wrong (the rough day)</h3>
+          <p class="text-sm text-amber-700 mb-4">Already planned for, so a wrong guess never derails the whole batch.</p>
+          <pre class="mermaid">
+flowchart TD
+    A[Review screen opens] --> B[Low-confidence items flagged at the top]
+    B --> C{What's wrong?}
+    C -->|Price is off| D[Fix the price]
+    C -->|Two things in one photo| E[Split into two items]
+    C -->|One thing across two photos| F[Merge into one item]
+    D --> G[Regenerate just that one listing]
+    E --> G
+    F --> G
+    G --> H[Rest of the batch stays untouched]
+    style A fill:#fef3c7,stroke:#f59e0b
+    style B fill:#fef3c7,stroke:#f59e0b
+    style C fill:#fde68a,stroke:#f59e0b
+    style D fill:#fef3c7,stroke:#f59e0b
+    style E fill:#fef3c7,stroke:#f59e0b
+    style F fill:#fef3c7,stroke:#f59e0b
+    style G fill:#fef3c7,stroke:#f59e0b
+    style H fill:#fef3c7,stroke:#f59e0b
+          </pre>
+        </div>
+      </section>
+
+      <!-- ============ FEATURES ============ -->
+      <section id="features" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Features</h2>
+        <p class="text-slate-600">What you build now, and what waits until you've proven people want the core.</p>
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="rounded-xl bg-white border border-indigo-200 p-6 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600 mb-3">V1 &mdash; build now (the part that beats the donation bag)</p>
+            <ul class="space-y-2 text-slate-700">
+              <li class="flex gap-2"><span class="text-indigo-500">&bull;</span> Batch photo upload (a whole pile at once, not one at a time)</li>
+              <li class="flex gap-2"><span class="text-indigo-500">&bull;</span> AI groups photos into items, drafts a title + description, researches a price</li>
+              <li class="flex gap-2"><span class="text-indigo-500">&bull;</span> A review screen that surfaces the low-confidence ones first</li>
+              <li class="flex gap-2"><span class="text-indigo-500">&bull;</span> One public sale page with a shareable link</li>
+              <li class="flex gap-2"><span class="text-indigo-500">&bull;</span> Local pickup with a simple "reserve this item" button</li>
+            </ul>
+          </div>
+          <div class="rounded-xl bg-white border border-stone-200 p-6 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">V2+ &mdash; later (roughly what ClearList has grown into)</p>
+            <ul class="space-y-2 text-slate-600">
+              <li class="flex gap-2"><span class="text-slate-400">&bull;</span> A multi-step AI pipeline (grouping &rarr; writing &rarr; pricing &rarr; quality check) for better listings</li>
+              <li class="flex gap-2"><span class="text-slate-400">&bull;</span> A real first-come-first-served buyer queue with reservations and no-show handling</li>
+              <li class="flex gap-2"><span class="text-slate-400">&bull;</span> Pickup scheduling wired to your calendar</li>
+              <li class="flex gap-2"><span class="text-slate-400">&bull;</span> Paid tiers for big moves and estate sales</li>
+              <li class="flex gap-2"><span class="text-slate-400">&bull;</span> An admin "control room" for operations</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ARCHITECTURE ============ -->
+      <section id="architecture" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">System Architecture</h2>
+        <p class="text-slate-600">How the pieces connect, and which way the information actually flows.</p>
+        <div class="rounded-xl bg-white border border-stone-200 p-6 shadow-sm">
+          <pre class="mermaid">
+flowchart LR
+    U[You, on your phone] --> APP[Your App + the public sale pages]
+    APP --> DB[(Database — where sellers, items, sales, and reservations get saved)]
+    APP --> AI[AI Brain — reads photos, writes and prices listings]
+    APP --> MAIL[Email — sends reservation + pickup messages]
+    APP --> PAY[Payments — handles the paid tiers]
+          </pre>
+        </div>
+      </section>
+
+      <!-- ============ TECH STACK ============ -->
+      <section id="tech-stack" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Tech Stack</h2>
+        <p class="text-slate-600">Every tool you'll use, what it does in plain words, and what it costs.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-slate-800">The App (Next.js, installable from the browser)</p>
+              <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Free</span>
+            </div>
+            <p class="text-slate-600 text-sm">The app and the public sale pages. Works like an app on a phone, with no app store needed.</p>
+          </div>
+
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-slate-800">Hosting (Vercel)</p>
+              <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Free to start</span>
+            </div>
+            <p class="text-slate-600 text-sm">Puts the app online and makes a shared sale link look good and load instantly.</p>
+          </div>
+
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-slate-800">Database + Login (Firebase)</p>
+              <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Free tier</span>
+            </div>
+            <p class="text-slate-600 text-sm">Where your app saves things, handles sign-in, and shows listings appearing live. The easiest managed database for a beginner.</p>
+          </div>
+
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-slate-800">AI Brain (Gemini API)</p>
+              <span class="text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded">Pay per use</span>
+            </div>
+            <p class="text-slate-600 text-sm">Reads the photos, groups them into items, and writes and prices each listing. Strong at images, cheap enough to run a 40-photo batch.</p>
+          </div>
+
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-slate-800">Email (Resend)</p>
+              <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Free tier</span>
+            </div>
+            <p class="text-slate-600 text-sm">Sends the reservation and pickup-detail emails. Dead simple to set up.</p>
+          </div>
+
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-slate-800">Payments (Paddle)</p>
+              <span class="text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded">% per sale</span>
+            </div>
+            <p class="text-slate-600 text-sm">Takes payment for the paid tiers, and handles sales tax for you so you never have to learn tax law.</p>
+          </div>
+
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm sm:col-span-2">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-slate-800">Calendar (Google Calendar API) &mdash; V2</p>
+              <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Free</span>
+            </div>
+            <p class="text-slate-600 text-sm">Lets buyers pick a pickup slot instead of endless back-and-forth. Comes later, in V2.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============ COST ============ -->
+      <section id="cost" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Cost Breakdown</h2>
+        <p class="text-slate-600">Near $0/month to start. Here's the free tier on each, and roughly when it starts costing money.</p>
+        <div class="overflow-x-auto rounded-xl border border-stone-200 shadow-sm">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-stone-100 text-slate-600">
+              <tr>
+                <th class="px-4 py-3 font-semibold">Service</th>
+                <th class="px-4 py-3 font-semibold">Free tier</th>
+                <th class="px-4 py-3 font-semibold">When it starts costing</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-100 bg-white">
+              <tr>
+                <td class="px-4 py-3 font-medium text-slate-800">The App + Hosting (Vercel)</td>
+                <td class="px-4 py-3 text-slate-600">Generous free tier for a hobby project</td>
+                <td class="px-4 py-3 text-slate-600">Only at real traffic, well past your first users</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium text-slate-800">Database + Login (Firebase)</td>
+                <td class="px-4 py-3 text-slate-600">Free up to a healthy amount of reads/writes</td>
+                <td class="px-4 py-3 text-slate-600">When many sellers are active at once</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium text-slate-800">AI Brain (Gemini)</td>
+                <td class="px-4 py-3 text-slate-600">Pay per use &mdash; a few cents per 40-photo batch</td>
+                <td class="px-4 py-3 text-slate-600">From the first batch, but tiny; the paid tier covers it</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium text-slate-800">Email (Resend)</td>
+                <td class="px-4 py-3 text-slate-600">Free for a few thousand emails a month</td>
+                <td class="px-4 py-3 text-slate-600">Only at higher volume</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium text-slate-800">Payments (Paddle)</td>
+                <td class="px-4 py-3 text-slate-600">No monthly fee</td>
+                <td class="px-4 py-3 text-slate-600">A percentage only when you actually make a sale</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="rounded-xl bg-amber-50 border border-amber-200 p-5">
+          <p class="text-amber-900 leading-relaxed">
+            <span class="font-semibold">One thing to watch:</span> the AI calls are the only real cost. They're
+            a few cents per batch, so they stay cheap as long as the AI runs once when a seller drops in their
+            photos. Don't have the app re-run the AI on a timer or over and over &mdash; running it more than you
+            need is exactly how a "few cents" quietly turns into a real bill. The paid tier for big moves is what
+            covers this cost.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ TIMELINE ============ -->
+      <section id="timeline" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Timeline</h2>
+        <p class="text-slate-600">A realistic shape for a first build, not a race.</p>
+        <div class="rounded-xl bg-white border border-stone-200 p-6 shadow-sm space-y-3 text-slate-700">
+          <p class="leading-relaxed">
+            The honest sequence: get the boring foundation working first (project, database, login), then spend
+            most of your energy on the one magic moment &mdash; the batch engine that turns a pile of photos into
+            finished listings. Everything after that (the sale page, reserving, payments) builds on top of a
+            core you already trust.
+          </p>
+          <p class="leading-relaxed">
+            Work phase by phase from the list below. Each phase is small enough to finish and feel good about,
+            and you only move on once the current one actually works. There's no deadline here except your own.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ DISTRIBUTION ============ -->
+      <section id="distribution" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Distribution</h2>
+        <p class="text-slate-600">Where your first 10 users already are, and the first move to reach them. Plan this before launch, not after.</p>
+        <div class="rounded-xl bg-white border border-stone-200 p-6 shadow-sm space-y-3 text-slate-700">
+          <p class="leading-relaxed">
+            <span class="font-semibold">Where they gather:</span> r/declutter, the moving subreddits, and local
+            "moving sale" Facebook groups. This is the same place the idea got validated &mdash; the pain is
+            already being talked about out loud there.
+          </p>
+          <p class="leading-relaxed">
+            <span class="font-semibold">The first move:</span> not a launch link. Show up and be genuinely useful
+            in those communities for a couple of weeks, then tell one honest "I built this because I had a pile
+            too" story. The community is the launch.
+          </p>
+          <p class="text-sm text-slate-500 italic">
+            For the real ClearList, a single honest Reddit post is what produced its first traction. The channel
+            is the launch.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ GROWTH LOOP ============ -->
+      <section id="growth-loop" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Growth Loop</h2>
+        <p class="text-slate-600">How using the app quietly creates the next user, with no extra marketing.</p>
+        <div class="rounded-xl bg-white border border-stone-200 p-6 shadow-sm">
+          <p class="text-slate-700 mb-4 leading-relaxed">
+            Every sale page is a public, good-looking, shareable link. Buyers and browsers see it &mdash; and a
+            few of them think "I've got a pile too" and become sellers. The arrow that closes the circle is the
+            whole point.
+          </p>
+          <pre class="mermaid">
+flowchart LR
+    A[Seller publishes a sale page] --> B[Shares the link in their community]
+    B --> C[Buyers + browsers see a clean sale page]
+    C --> D[A few realize they have a pile too]
+    D --> E[They sign up and publish their own]
+    E ==>|the loop closes| A
+    linkStyle 4 stroke:#4f46e5,stroke-width:3px
+          </pre>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-lg bg-stone-50 border border-stone-200 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600 mb-1">Enabling feature</p>
+              <p class="text-sm text-slate-600">The public, good-looking, shareable sale page (it's already on the V1 list).</p>
+            </div>
+            <div class="rounded-lg bg-stone-50 border border-stone-200 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600 mb-1">The one number to watch</p>
+              <p class="text-sm text-slate-600">New sellers per shared sale page. If that's near zero, the loop isn't real yet, and r/declutter is the growth engine instead.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ BUILD PHASES ============ -->
+      <section id="build-phases" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Build Phases</h2>
+        <p class="text-slate-600">The whole journey as a set of achievable steps, in order, instead of one terrifying leap.</p>
+        <ol class="space-y-3">
+          <li class="flex gap-4 rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center">1</span>
+            <p class="text-slate-700 pt-1">Project setup and folders</p>
+          </li>
+          <li class="flex gap-4 rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center">2</span>
+            <p class="text-slate-700 pt-1">Database + the data model (sellers, items, sales)</p>
+          </li>
+          <li class="flex gap-4 rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center">3</span>
+            <p class="text-slate-700 pt-1">Login (sign up, log in, log out)</p>
+          </li>
+          <li class="flex gap-4 rounded-xl bg-indigo-50 border border-indigo-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-600 text-white font-semibold flex items-center justify-center">4</span>
+            <div class="pt-1">
+              <p class="text-slate-800 font-medium">Core: batch photo upload &rarr; AI groups, writes, and prices &rarr; review screen</p>
+              <p class="text-sm text-indigo-700 mt-1">This is the heart of the whole app. It's the part that beats the donation bag.</p>
+            </div>
+          </li>
+          <li class="flex gap-4 rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center">5</span>
+            <p class="text-slate-700 pt-1">The public sale page + shareable link</p>
+          </li>
+          <li class="flex gap-4 rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center">6</span>
+            <p class="text-slate-700 pt-1">Reserve-an-item + local pickup</p>
+          </li>
+          <li class="flex gap-4 rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center">7</span>
+            <p class="text-slate-700 pt-1">Polish, error handling, the low-confidence review flow</p>
+          </li>
+          <li class="flex gap-4 rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center">8</span>
+            <p class="text-slate-700 pt-1">Payments (the paid tier)</p>
+          </li>
+          <li class="flex gap-4 rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center">9</span>
+            <p class="text-slate-700 pt-1">Pre-launch (privacy policy, address rule, security pass, safe-meetup copy)</p>
+          </li>
+          <li class="flex gap-4 rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center">10</span>
+            <p class="text-slate-700 pt-1">Deploy</p>
+          </li>
+        </ol>
+
+        <!-- Sample checkpoint -->
+        <div class="rounded-xl bg-slate-900 text-slate-100 p-6 shadow-sm font-mono text-sm leading-relaxed overflow-x-auto">
+          <p class="text-slate-400">═══════════════════════════════════════════════════════════</p>
+          <p class="text-indigo-300 font-semibold">🔖 CHECKPOINT: The Core Batch Engine</p>
+          <p class="text-slate-400">═══════════════════════════════════════════════════════════</p>
+          <p class="mt-2 text-slate-300">📍 WHERE WE ARE</p>
+          <p class="text-slate-200">"We just built the heart of the whole thing. You can drop in a pile of photos and get back a full set of listings &mdash; grouped, written, and priced &mdash; that you only have to skim and fix."</p>
+          <p class="mt-3 text-slate-300">🔧 WHAT WE JUST BUILT</p>
+          <p class="text-slate-200">- A screen that takes many photos at once instead of one at a time.</p>
+          <p class="text-slate-200">- The AI step that groups photos into items, writes each listing, and researches a price for it.</p>
+          <p class="text-slate-200">- A review screen that shows you the ones it's least sure about first.</p>
+          <p class="mt-3 text-slate-300">💡 WHY WE BUILT IT THIS WAY</p>
+          <p class="text-slate-200">"Remember how we realized the real competition is the donation bag, not eBay? That's why the very first thing we built is the batch, not a prettier single listing. Beating 'just donate it' only works if a whole pile takes one session, so the batch had to come first."</p>
+          <p class="mt-3 text-slate-300">📋 WHAT'S NEXT</p>
+          <p class="text-slate-200">"Next we'll turn that batch into a public sale page with a link you can share &mdash; the thing your buyers actually see."</p>
+          <p class="mt-3 text-slate-300">❓ QUESTIONS?</p>
+          <p class="text-slate-200">"Does this make sense? Want to run a real pile of photos through it before we move on?"</p>
+          <p class="mt-2 text-slate-400">Wait for the user before continuing.</p>
+          <p class="text-slate-400">═══════════════════════════════════════════════════════════</p>
+        </div>
+      </section>
+
+      <!-- ============ CELEBRATORY BANNER ============ -->
+      <div class="rounded-2xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white p-8 text-center shadow-md">
+        <p class="text-2xl font-semibold">That's a real, complete app.</p>
+        <p class="text-lg text-indigo-100 mt-2">People have built companies on less.</p>
+      </div>
+
+      <!-- ============ BEFORE LAUNCH ============ -->
+      <section id="before-launch" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Things to Handle Before Launch</h2>
+        <p class="text-slate-600">The stuff beginners get blindsided by. A couple of these are genuinely serious.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-slate-800">Payments</p>
+              <span class="text-xs font-medium text-slate-600 bg-stone-100 px-2 py-1 rounded">Do this now</span>
+            </div>
+            <p class="text-slate-600 text-sm">Apply to your payment provider early, before you write a single line of payment code. Approval can take time.</p>
+          </div>
+
+          <div class="rounded-xl bg-red-50 border-2 border-red-300 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-red-900">Privacy &mdash; the home-address rule</p>
+              <span class="text-xs font-medium text-red-700 bg-red-100 px-2 py-1 rounded">Must handle</span>
+            </div>
+            <p class="text-red-800 text-sm">Local pickup means strangers meeting. The seller's home address stays hidden until a buyer is actually committed. This has to be enforced in the code, not just promised in a policy. You also need a real privacy policy before launch.</p>
+          </div>
+
+          <div class="rounded-xl bg-red-50 border-2 border-red-300 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-red-900">Security &mdash; keep your keys safe</p>
+              <span class="text-xs font-medium text-red-700 bg-red-100 px-2 py-1 rounded">Must handle</span>
+            </div>
+            <p class="text-red-800 text-sm">Passwords always scrambled, never stored as plain text. API keys live in a protected <code class="bg-red-100 px-1 rounded">.env</code> file, never written directly into the code where they could leak. Do this from day one.</p>
+          </div>
+
+          <div class="rounded-xl bg-white border border-stone-200 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold text-slate-800">Safety &mdash; safe-meetup guidance</p>
+              <span class="text-xs font-medium text-slate-600 bg-stone-100 px-2 py-1 rounded">Before launch</span>
+            </div>
+            <p class="text-slate-600 text-sm">Show simple safe-meetup guidance for local pickups, and never use fake urgency ("3 people watching!") to pressure buyers. The app should win when stuff sells, not when people panic.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============ OPEN QUESTIONS ============ -->
+      <section id="open-questions" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Open Questions</h2>
+        <p class="text-slate-600">Two real decisions still worth talking through &mdash; not blockers, just choices.</p>
+        <div class="rounded-xl bg-white border border-stone-200 p-6 shadow-sm space-y-3">
+          <p class="flex gap-2 text-slate-700"><span class="text-indigo-500 font-semibold">?</span> Group photos into items fully automatically, or let the seller confirm the grouping before pricing?</p>
+          <p class="flex gap-2 text-slate-700"><span class="text-indigo-500 font-semibold">?</span> One flat price suggestion, or a range with the comparable sales shown so the seller picks?</p>
+        </div>
+      </section>
+
+      <!-- ============ FOOTER ============ -->
+      <footer class="border-t border-stone-200 pt-8 text-center space-y-2">
+        <p class="text-sm text-slate-500">
+          Generated by <span class="font-medium text-slate-700">vibe-check</span> &mdash; it turns a one-line idea
+          into a plan your AI coding tool can build, and refuses to skip the part where you figure out if you're
+          building the right thing.
+        </p>
+        <p class="text-sm text-slate-400">The product this is modeled on is real and live at clearlist.me.</p>
+      </footer>
+
+    </main>
+  </body>
+</html>

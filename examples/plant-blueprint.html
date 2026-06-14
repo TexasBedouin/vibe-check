@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your App Blueprint: PlantPal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+    </script>
+    <style>
+      .mermaid { background: transparent; }
+    </style>
+  </head>
+  <body class="bg-stone-50 text-slate-800 font-sans">
+    <main class="max-w-4xl mx-auto px-6 py-12 space-y-12">
+
+      <!-- ============ HEADER ============ -->
+      <header class="text-center space-y-4 pb-4">
+        <div class="inline-flex items-center gap-2 text-emerald-600 text-sm font-medium tracking-wide uppercase">
+          <span>🌱</span><span>Your App Blueprint</span>
+        </div>
+        <h1 class="text-4xl font-bold text-slate-900">PlantPal</h1>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          The app that tells you what <em>this</em> plant needs, so you finally stop killing them.
+        </p>
+        <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 max-w-2xl mx-auto">
+          <p class="text-emerald-800 leading-relaxed">
+            Here's everything you're about to build. Take your time. Every piece is explained,
+            and nothing here is as scary as it looks. You've got this. 🌿
+          </p>
+        </div>
+      </header>
+
+      <!-- ============ THE GOAL ============ -->
+      <section id="the-goal" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">The Goal</h2>
+        <p class="text-slate-600">The whole app in three honest lines.</p>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-emerald-600 mb-2">What you're accomplishing</p>
+            <p class="text-slate-700">Keeping your plants alive, and actually knowing <em>why</em> they're thriving.</p>
+          </div>
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-emerald-600 mb-2">What you do today instead</p>
+            <p class="text-slate-700">Water on a vague guess, panic-google when leaves yellow, lose plants.</p>
+          </div>
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-emerald-600 mb-2">Why that sucks</p>
+            <p class="text-slate-700">The guessing is what kills the plant, and you only find out when it's too late.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ WHO IT'S FOR ============ -->
+      <section id="who-its-for" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Who It's For</h2>
+        <p class="text-slate-600">One specific person, not "everyone." That's how you win.</p>
+        <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm">
+          <p class="text-slate-700 leading-relaxed">
+            Houseplant owners with roughly <strong>5–20 plants</strong> who genuinely care but feel
+            like they have a "black thumb." They're not collectors with one tough cactus, they're
+            people who keep trying and keep feeling bad when a plant dies.
+          </p>
+          <p class="mt-4 text-slate-700 leading-relaxed">
+            Realistically, your <strong>first 10 users</strong> are people in one plant community you
+            already belong to.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ USER FLOWS ============ -->
+      <section id="user-flows" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">User Flows</h2>
+        <p class="text-slate-600">
+          How a real person moves through the app, on a good day and a rough one. The amber paths are
+          the "when things go wrong" branches, and you can see we've already planned for them.
+        </p>
+
+        <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-2">
+          <h3 class="text-lg font-semibold text-slate-800">Adding a plant <span class="text-emerald-600 text-sm font-normal">(happy path)</span></h3>
+          <pre class="mermaid">
+flowchart TD
+    A[Tap 'Add a plant'] --> B[Type its name or pick from a list]
+    B --> C[App loads that species' care profile]
+    C --> D[Pick where it lives: bright / medium / low light]
+    D --> E[Plant card appears with a 'next check-in' date]
+    E --> F[Done. It now lives on your shelf]
+          </pre>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-2">
+          <h3 class="text-lg font-semibold text-slate-800">The daily check-in <span class="text-emerald-600 text-sm font-normal">(the core loop)</span></h3>
+          <pre class="mermaid">
+flowchart TD
+    A[Notification: 'Time to check on your Monstera'] --> B[Open the plant]
+    B --> C{Is the soil still damp?}
+    C -->|Yes| D[App says: skip watering, check again in 2 days]
+    C -->|No| E[App says: water it now]
+    E --> F[Tap 'I watered it']
+    F --> G[Next check-in date updates]
+    D --> G
+    style D fill:#fef3c7,stroke:#f59e0b,color:#78350f
+          </pre>
+          <p class="text-sm text-slate-500">
+            The amber box is the moment that makes this app different: when the soil is still damp,
+            it tells you to <em>not</em> water, instead of nagging you on a timer.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-2">
+          <h3 class="text-lg font-semibold text-slate-800">When something's wrong <span class="text-amber-600 text-sm font-normal">(the rough day)</span></h3>
+          <pre class="mermaid">
+flowchart TD
+    A[Tap 'Something's off'] --> B[Pick a symptom: yellow leaves / droopy / brown tips]
+    B --> C{Does the app know this species' likely causes?}
+    C -->|Yes| D[Show 2-3 likely causes for THIS species + what to do]
+    C -->|No| E[Honestly say 'I'm not sure' and point to the community]
+    style A fill:#fef3c7,stroke:#f59e0b,color:#78350f
+    style C fill:#fef3c7,stroke:#f59e0b,color:#78350f
+    style E fill:#fef3c7,stroke:#f59e0b,color:#78350f
+          </pre>
+          <p class="text-sm text-slate-500">
+            Notice the app would rather admit it doesn't know than guess and make the problem worse.
+            That honesty is a feature.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ FEATURES ============ -->
+      <section id="features" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Features</h2>
+        <p class="text-slate-600">What you build first, and what waits until people love the first version.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="bg-white border border-emerald-200 rounded-xl p-6 shadow-sm">
+            <div class="inline-flex items-center gap-2 text-emerald-700 font-semibold mb-3">
+              <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full">V1 · Build now</span>
+            </div>
+            <ul class="space-y-2 text-slate-700">
+              <li class="flex gap-2"><span class="text-emerald-500">✓</span> Add a plant, with a species care profile</li>
+              <li class="flex gap-2"><span class="text-emerald-500">✓</span> A plant card showing status and next check-in</li>
+              <li class="flex gap-2"><span class="text-emerald-500">✓</span> The "check the soil first" watering gate</li>
+              <li class="flex gap-2"><span class="text-emerald-500">✓</span> Calm reminders to check in</li>
+              <li class="flex gap-2"><span class="text-emerald-500">✓</span> Symptom helper for the common problems</li>
+              <li class="flex gap-2"><span class="text-emerald-500">✓</span> A shareable "my plant shelf" page <span class="text-slate-400 text-sm">(your growth loop)</span></li>
+            </ul>
+          </div>
+          <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm">
+            <div class="inline-flex items-center gap-2 text-slate-600 font-semibold mb-3">
+              <span class="bg-stone-100 text-slate-600 text-xs px-2 py-1 rounded-full">V2+ · Later</span>
+            </div>
+            <ul class="space-y-2 text-slate-600">
+              <li class="flex gap-2"><span class="text-slate-300">○</span> Identify a plant from a photo</li>
+              <li class="flex gap-2"><span class="text-slate-300">○</span> Light meter using the phone sensor</li>
+              <li class="flex gap-2"><span class="text-slate-300">○</span> Community Q&amp;A in-app</li>
+              <li class="flex gap-2"><span class="text-slate-300">○</span> A shop <span class="text-slate-400 text-sm">(only if it avoids panic-selling)</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SYSTEM ARCHITECTURE ============ -->
+      <section id="architecture" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">How The Pieces Fit Together</h2>
+        <p class="text-slate-600">
+          The whole app is just a few parts talking to each other. The arrows show which way your
+          information travels.
+        </p>
+        <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm">
+          <pre class="mermaid">
+flowchart LR
+    U[You, on your phone] --> APP[Your App<br/>the screens you tap]
+    APP --> DB[(Database<br/>where your plants get saved)]
+    APP --> PUSH[Notifications<br/>the calm check-in nudges]
+    APP --> CARE[Care Data<br/>what each species needs]
+          </pre>
+        </div>
+      </section>
+
+      <!-- ============ TECH STACK ============ -->
+      <section id="tech-stack" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">The Tools You'll Use</h2>
+        <p class="text-slate-600">Each one is free to start, picked because it's the gentlest path for a first app.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-semibold text-slate-800">App Builder <span class="text-slate-400 font-normal text-sm">(Expo)</span></h3>
+            <p class="text-slate-600 text-sm mt-1">Builds one app that works on both iPhone and Android, so you don't learn two languages.</p>
+            <p class="text-emerald-600 text-sm font-medium mt-2">Free</p>
+          </div>
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-semibold text-slate-800">Database + Login <span class="text-slate-400 font-normal text-sm">(Supabase)</span></h3>
+            <p class="text-slate-600 text-sm mt-1">Where your plants get saved, plus accounts. It even does backups for you automatically.</p>
+            <p class="text-emerald-600 text-sm font-medium mt-2">Free to start</p>
+          </div>
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-semibold text-slate-800">Reminders <span class="text-slate-400 font-normal text-sm">(Expo Notifications)</span></h3>
+            <p class="text-slate-600 text-sm mt-1">Sends the calm "time to check on your plant" nudges. Built right into the app builder.</p>
+            <p class="text-emerald-600 text-sm font-medium mt-2">Free</p>
+          </div>
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-semibold text-slate-800">Care Data <span class="text-slate-400 font-normal text-sm">(built-in list)</span></h3>
+            <p class="text-slate-600 text-sm mt-1">Watering and light guidance for ~50 common houseplants, kept in a simple file. No paid service.</p>
+            <p class="text-emerald-600 text-sm font-medium mt-2">Free</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ COST ============ -->
+      <section id="cost" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">What It Costs</h2>
+        <p class="text-slate-600">Short version: about <strong>$0/month</strong> until you publish to the App Store.</p>
+        <div class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm">
+          <table class="w-full text-left">
+            <thead class="bg-stone-100 text-slate-600 text-sm">
+              <tr>
+                <th class="px-4 py-3 font-semibold">Service</th>
+                <th class="px-4 py-3 font-semibold">Free tier</th>
+                <th class="px-4 py-3 font-semibold">When it starts costing</th>
+              </tr>
+            </thead>
+            <tbody class="text-slate-700 text-sm divide-y divide-stone-100">
+              <tr>
+                <td class="px-4 py-3">App Builder (Expo)</td>
+                <td class="px-4 py-3">Free forever for building</td>
+                <td class="px-4 py-3">Optional paid builds only at real scale</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3">Database + Login (Supabase)</td>
+                <td class="px-4 py-3">Covers your first hundreds of users</td>
+                <td class="px-4 py-3">Only once you're well past your first crowd</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3">Reminders (Expo Notifications)</td>
+                <td class="px-4 py-3">Free</td>
+                <td class="px-4 py-3">Doesn't, at your scale</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3">Apple Developer account</td>
+                <td class="px-4 py-3">—</td>
+                <td class="px-4 py-3 text-slate-800 font-medium">$99/year, only when you publish to the App Store</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+          <p class="text-amber-800 text-sm leading-relaxed">
+            <strong>One thing to watch:</strong> don't make the app wake up and check every plant every
+            few seconds. That's the kind of thing that quietly runs up a bill. Lean on the scheduled
+            check-in reminders instead, they're cheap and they're the whole point. A nudge once a day
+            beats a sensor humming all day.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ TIMELINE ============ -->
+      <section id="timeline" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Roughly How Long</h2>
+        <p class="text-slate-600">A friendly estimate, not a deadline. You're building this at your own pace.</p>
+        <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-3 text-slate-700">
+          <div class="flex gap-3"><span class="text-emerald-500 font-semibold w-28 shrink-0">Week 1</span><span>Setup, the database, and login working end to end.</span></div>
+          <div class="flex gap-3"><span class="text-emerald-500 font-semibold w-28 shrink-0">Week 2</span><span>The heart of it: add a plant, see its care, the "check soil first" gate.</span></div>
+          <div class="flex gap-3"><span class="text-emerald-500 font-semibold w-28 shrink-0">Week 3</span><span>Reminders, the shareable shelf, and the symptom helper.</span></div>
+          <div class="flex gap-3"><span class="text-emerald-500 font-semibold w-28 shrink-0">Week 4</span><span>Polish, accessibility, a privacy policy, and ship it.</span></div>
+        </div>
+      </section>
+
+      <!-- ============ DISTRIBUTION ============ -->
+      <section id="distribution" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Getting Your First 10 Users</h2>
+        <p class="text-slate-600">This part starts <em>before</em> launch, not after. It matters as much as the code.</p>
+        <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-emerald-600 mb-1">Where they already gather</p>
+            <p class="text-slate-700">One plant community you already belong to: a local plant-swap group, r/houseplants, or a plant Discord.</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-emerald-600 mb-1">The first move</p>
+            <p class="text-slate-700">
+              Don't drop a launch link. For two weeks, show up and genuinely help with the
+              "why is my plant dying?" posts. Then mention you're building a thing for exactly this.
+              That community <strong>is</strong> your launch.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ GROWTH LOOP ============ -->
+      <section id="growth-loop" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">How One User Brings The Next</h2>
+        <p class="text-slate-600">
+          A modest loop. Plant people love showing off their plants, so the shelf page does the
+          inviting for you. Watch the arrow that closes the circle, that's the engine.
+        </p>
+        <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm">
+          <pre class="mermaid">
+flowchart LR
+    A[User adds plants] --> B[Their plant shelf looks good]
+    B --> C[They share the shelf link]
+    C --> D[Friends see thriving plants]
+    D --> E[Some sign up to track theirs]
+    E ==>|the loop closes| A
+    style E fill:#d1fae5,stroke:#059669,color:#064e3b
+          </pre>
+        </div>
+        <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-5 text-sm text-emerald-800">
+          <p><strong>The one number to watch:</strong> shares per active user per month. If almost
+          nobody shares, the loop isn't real, and that's completely fine, your presence in
+          r/houseplants becomes the growth engine instead.</p>
+        </div>
+      </section>
+
+      <!-- ============ BUILD PHASES ============ -->
+      <section id="build-phases" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">The Build, One Step At A Time</h2>
+        <p class="text-slate-600">
+          Not one terrifying leap, just a stack of achievable steps. Each one ends with a checkpoint
+          where your AI stops, explains in plain words what it built, and waits for you.
+        </p>
+        <div class="space-y-3">
+          <div class="flex gap-4 bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-700 font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">1</span>
+            <p class="text-slate-700 self-center">Project setup and folders</p>
+          </div>
+          <div class="flex gap-4 bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-700 font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">2</span>
+            <p class="text-slate-700 self-center">Database + the data model (plants, species profiles)</p>
+          </div>
+          <div class="flex gap-4 bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-700 font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">3</span>
+            <p class="text-slate-700 self-center">Login (sign up, log in, log out)</p>
+          </div>
+          <div class="flex gap-4 bg-emerald-50 border border-emerald-300 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-600 text-white font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">4</span>
+            <div class="self-center">
+              <p class="text-slate-800 font-medium">Core: add a plant, see its care profile, the "check soil first" watering gate</p>
+              <p class="text-emerald-700 text-sm">The heart of the app. The checkpoint below is from right after this step.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-700 font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">5</span>
+            <p class="text-slate-700 self-center">Reminders (push notifications)</p>
+          </div>
+          <div class="flex gap-4 bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-700 font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">6</span>
+            <p class="text-slate-700 self-center">The shareable plant shelf</p>
+          </div>
+          <div class="flex gap-4 bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-700 font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">7</span>
+            <p class="text-slate-700 self-center">Symptom helper</p>
+          </div>
+          <div class="flex gap-4 bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-700 font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">8</span>
+            <p class="text-slate-700 self-center">Polish + error handling + accessibility</p>
+          </div>
+          <div class="flex gap-4 bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-700 font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">9</span>
+            <p class="text-slate-700 self-center">Pre-launch (privacy policy, security pass)</p>
+          </div>
+          <div class="flex gap-4 bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-700 font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">10</span>
+            <p class="text-slate-700 self-center">Deploy to the stores</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 text-slate-100 rounded-xl p-5 shadow-sm font-mono text-sm leading-relaxed overflow-x-auto">
+<div class="text-emerald-400">═══════════════════════════════════════════════════════════</div>
+<div>🔖 CHECKPOINT: The Core Feature</div>
+<div class="text-emerald-400">═══════════════════════════════════════════════════════════</div>
+<div class="mt-2">📍 WHERE WE ARE</div>
+<div class="text-slate-300">"We just finished the heart of your app. You can now add a plant, see what it needs, and the app checks whether the soil is dry before it ever tells you to water."</div>
+<div class="mt-2">🔧 WHAT WE JUST BUILT</div>
+<div class="text-slate-300">- A screen to add a plant and load its care profile.</div>
+<div class="text-slate-300">- The 'check the soil first' gate, so the app never blindly tells you to water on a timer.</div>
+<div class="mt-2">💡 WHY WE BUILT IT THIS WAY</div>
+<div class="text-slate-300">"Remember how we realized overwatering is what actually kills most plants? That's why the app asks 'is the soil still damp?' before it ever says 'water now.' The whole reason your app exists is to stop the guessing that kills plants, so that check had to come first."</div>
+<div class="mt-2">📋 WHAT'S NEXT</div>
+<div class="text-slate-300">"Next we'll add the calm reminders, the nudges to check on a plant without guilt-tripping you."</div>
+<div class="mt-2">❓ QUESTIONS?</div>
+<div class="text-slate-300">"Does this make sense? Want to see it working on your phone before we move on?"</div>
+<div class="mt-2 text-slate-400">Wait for the user before continuing.</div>
+<div class="text-emerald-400">═══════════════════════════════════════════════════════════</div>
+        </div>
+      </section>
+
+      <!-- ============ CELEBRATION BANNER ============ -->
+      <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-2xl p-6 text-center shadow-md">
+        <p class="text-lg font-semibold">That's a real, complete app. 🌟</p>
+        <p class="text-emerald-50 mt-1">People have built companies on less.</p>
+      </div>
+
+      <!-- ============ BEFORE LAUNCH ============ -->
+      <section id="before-launch" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">Things To Handle Before Launch</h2>
+        <p class="text-slate-600">The grown-up stuff. None of it is hard, but skipping it bites later.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="bg-white border border-red-200 rounded-xl p-5 shadow-sm">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-red-600 text-lg">🔒</span>
+              <h3 class="font-semibold text-slate-800">Security</h3>
+              <span class="ml-auto bg-red-100 text-red-700 text-xs px-2 py-0.5 rounded-full font-medium">Handle now</span>
+            </div>
+            <p class="text-slate-600 text-sm">Passwords scrambled, and no secret keys sitting in the code. They go in a protected <code class="bg-stone-100 px-1 rounded">.env</code> file that never gets shared.</p>
+          </div>
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-lg">📄</span>
+              <h3 class="font-semibold text-slate-800">Privacy &amp; legal</h3>
+              <span class="ml-auto bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full font-medium">Before launch</span>
+            </div>
+            <p class="text-slate-600 text-sm">Accounts mean you need a basic privacy policy. A simple, honest one is plenty to start.</p>
+          </div>
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-lg">👁️</span>
+              <h3 class="font-semibold text-slate-800">Accessibility</h3>
+              <span class="ml-auto bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full font-medium">Handle now</span>
+            </div>
+            <p class="text-slate-600 text-sm">Readable text sizes, and the app works without relying only on color. A yellow-leaf warning needs words too, not just a colored dot.</p>
+          </div>
+          <div class="bg-white border border-stone-200 rounded-xl p-5 shadow-sm">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-emerald-600 text-lg">💾</span>
+              <h3 class="font-semibold text-slate-800">Backups</h3>
+              <span class="ml-auto bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded-full font-medium">Already covered</span>
+            </div>
+            <p class="text-slate-600 text-sm">Your database (Supabase) handles these automatically. Nothing for you to do here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPEN QUESTIONS ============ -->
+      <section id="open-questions" class="space-y-4">
+        <h2 class="text-2xl font-semibold text-slate-900">A Couple Of Open Questions</h2>
+        <p class="text-slate-600">Small forks worth deciding before you build. There's no wrong answer, just a choice.</p>
+        <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-3 text-slate-700">
+          <p class="flex gap-2"><span class="text-emerald-500">?</span> Start with a built-in list of ~50 plants, or let users add custom species from day one?</p>
+          <p class="flex gap-2"><span class="text-emerald-500">?</span> Do reminders feel better as a fixed gentle schedule, or fully driven by the soil check-in?</p>
+        </div>
+      </section>
+
+      <!-- ============ FOOTER ============ -->
+      <footer class="text-center text-sm text-slate-400 pt-6 border-t border-stone-200">
+        Generated by vibe-check. It turns a beginner's one-line idea into a plan their AI coding tool
+        can actually build. 🌱
+      </footer>
+
+    </main>
+  </body>
+</html>
