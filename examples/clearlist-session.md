@@ -733,7 +733,7 @@ A running glossary that grew through the session:
 
 ---
 
-*vibe-check also produced a **visual HTML blueprint** alongside this plan: [./clearlist-blueprint.html](./clearlist-blueprint.html) — a warm, friendly web page you open in your browser to actually see your app and believe in it. The flow diagrams, the architecture, the cost table, and the build phases laid out as a journey you can picture finishing. The markdown above is the plan you hand to your AI tool; the HTML is what makes you believe you can build it.*
+*vibe-check also produced a **visual HTML blueprint** alongside this plan: [clearlist-blueprint.html](https://texasbedouin.github.io/vibe-check/examples/clearlist-blueprint.html) — a warm, friendly web page you open in your browser to actually see your app and believe in it. The flow diagrams, the architecture, the cost table, and the build phases laid out as a journey you can picture finishing. The markdown above is the plan you hand to your AI tool; the HTML is what makes you believe you can build it.*
 
 ---
 

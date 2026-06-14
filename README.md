@@ -73,8 +73,8 @@ This plan is designed to be handed directly to your AI coding tool to start buil
 
 Wondering what a session actually looks like? Two complete examples in [examples/](examples/) — each walks the *entire* skill (discovery, ODI opportunity scoring, the five-lens gut-check, growth loops, the lot) and produces both deliverables: the markdown plan **and** a visual HTML blueprint.
 
-- **[A full ClearList session](examples/clearlist-session.md)** (+ [visual blueprint](examples/clearlist-blueprint.html)) — the complete back-and-forth from a one-line idea to the finished plan, including the Reddit reality-check. This is what running the skill *feels* like — and **ClearList is a real, live product that was built with vibe-check** ([clearlist.me](https://clearlist.me)).
-- **[Idea → plan: a plant-care app](examples/plant-watering.md)** (+ [visual blueprint](examples/plant-blueprint.html)) — one sentence in ("an app that reminds me to water my plants"), a full buildable plan out.
+- **[A full ClearList session](examples/clearlist-session.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/clearlist-blueprint.html)) — the complete back-and-forth from a one-line idea to the finished plan, including the Reddit reality-check. This is what running the skill *feels* like — and **ClearList is a real, live product that was built with vibe-check** ([clearlist.me](https://clearlist.me)).
+- **[Idea → plan: a plant-care app](examples/plant-watering.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)) — one sentence in ("an app that reminds me to water my plants"), a full buildable plan out.
 
 ## Version
 

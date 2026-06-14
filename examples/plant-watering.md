@@ -556,7 +556,7 @@ Wait for the user before continuing.
 
 ## The two deliverables
 
-This plan is one of two things vibe-check produces. The markdown above is the precise instruction manual you hand to your AI coding tool. Alongside it, the skill also generates a **visual HTML blueprint** — a warm, friendly web page you open in your browser to actually *see* your app and believe you can build it: the flow diagrams, the architecture, the cost table, and the build phases laid out as a journey you can picture finishing. → **[plant-blueprint.html](./plant-blueprint.html)**
+This plan is one of two things vibe-check produces. The markdown above is the precise instruction manual you hand to your AI coding tool. Alongside it, the skill also generates a **visual HTML blueprint** — a warm, friendly web page you open in your browser to actually *see* your app and believe you can build it: the flow diagrams, the architecture, the cost table, and the build phases laid out as a journey you can picture finishing. → **[plant-blueprint.html](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)**
 
 The markdown is the plan you hand off; the HTML is what makes you believe you can; the checkpoints are what keep you from getting lost along the way.
 

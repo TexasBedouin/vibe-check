@@ -8,13 +8,13 @@ Each one produces **both** of vibe-check's deliverables: the **markdown plan** (
 
 ### 1. A full ClearList session
 - **[clearlist-session.md](clearlist-session.md)** — the complete back-and-forth, start to finish, every beat. The reality-check pulls from real seller complaints on r/declutter. This is what running the skill *feels* like. And **ClearList is a real, live product that was built with vibe-check** — see the grown-up result at [clearlist.me](https://clearlist.me).
-- **[clearlist-blueprint.html](clearlist-blueprint.html)** — the visual blueprint for that plan.
+- **[View the ClearList blueprint](https://texasbedouin.github.io/vibe-check/examples/clearlist-blueprint.html)** — the visual blueprint for that plan, rendered live.
 
 ### 2. Idea → plan: a plant-care app
 - **[plant-watering.md](plant-watering.md)** — one sentence in ("an app that reminds me to water my plants"), a full buildable plan out. The ODI opportunity table numerically proves why the *original* idea was the weak one.
-- **[plant-blueprint.html](plant-blueprint.html)** — the visual blueprint for that plan.
+- **[View the plant blueprint](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)** — the visual blueprint for that plan, rendered live.
 
-> **Viewing the `.html` blueprints:** they render in any browser — download and open them locally, or view online through [htmlpreview.github.io](https://htmlpreview.github.io/). (GitHub shows `.html` files as source code, not rendered.)
+> **The blueprints render live on GitHub Pages** — the links above open the real, styled pages in any browser. (GitHub shows raw `.html` files as source code in the repo view, which is why the links point to the rendered Pages versions. They also work if you download the files and open them locally.)
 
 Both reflect vibe-check **v1.7.2**. When the skill's flow changes, refresh these to match.
 
