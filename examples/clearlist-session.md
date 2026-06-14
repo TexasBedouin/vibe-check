@@ -148,6 +148,26 @@ A couple of gut-checks the skill insists on:
 
 The full ranked findings, the exact words people used ("death pile," "just donate it"), and the gaps all carry forward into design. You're walking into planning with evidence, not guesses.
 
+### The other side: this is a marketplace, so discover the buyer too
+
+**Claude:** Before we leave discovery, one catch that reshapes everything: this only works if *two* different people show up, a seller with a pile and a buyer who wants the stuff. That makes ClearList a marketplace, and so far we've discovered exactly one side. Let me grill the buyer the same way, because the buyer's needs aren't a nice-to-have we add later, they're what makes a seller's listing actually sell.
+
+Who's the buyer, as a real person, and what's *their* worst moment?
+
+**Me:** Someone furnishing a place on a budget, scrolling Facebook Marketplace on their phone. Their worst moment: they find something they like, but it's one blurry photo and "DM for details." So they message, "is this available? what are the dimensions? will it fit in my car? would you take $40?" Then they wait. Half the time the seller ghosts, or it sold an hour ago, or after ten messages it turns out it's too big. They give up on stuff they actually wanted.
+
+**Claude:** So the buyer's whole job is one question: *do I have enough information to decide?* And then: *if I do, can I just get it, or do I have to chase the seller?* Their needs fall straight out of that:
+
+- **Increase** the confidence that they have enough to decide, without messaging anyone. (Validated dimensions, weight, condition, a real description, all right there on the listing.)
+- **Reduce** the back-and-forth to buy. (Status visible: available or reserved, price negotiable or not, so there's nothing left to ask.)
+- **Reduce** wasted effort. (See it's already reserved before they fall for it; reserve it themselves; reschedule their own pickup when they get busy, no DMs.)
+
+**Me:** Yes, exactly. The point is they never have to contact the seller just to make a decision, or to act on it.
+
+**Claude:** And here's the part that matters most: **those buyer needs ARE the seller's table stakes.** A listing that doesn't give a buyer enough to decide is a listing that doesn't sell, which marches the seller right back to the donation bag, the exact thing we're trying to beat. So validating dimensions and weight and condition, and showing status plainly, isn't a buyer feature for later. It's load-bearing for the *seller's* entire reason to use this. The two sides hold each other up.
+
+That sharpens the Step 5 table stakes without adding scope: the "clean public listing" has to be **decision-complete** (the validated facts a buyer needs) and **status-clear** (available/reserved, negotiable or not), and "reserve this item" has to be genuinely self-serve for the buyer. Same V1, sharper bar.
+
 ---
 
 ## Phase 1: The Dream
@@ -369,6 +389,8 @@ None of the red flags apply. Worth saying plainly.
 
 **The riskiest-assumption test.** The single belief that, if wrong, sinks this: *people will trust an AI-generated price and listing enough to publish it without redoing it themselves.* If they don't trust the output, they're back to the per-item grind and we've solved nothing. The cheapest way to check it *before* building the whole app: run 40 real photos through the raw Gemini prompt by hand, show the output to five people from r/declutter, and ask "would you publish this as-is?" That's a one-afternoon test, not a project. If the riskiest bet survives that cheap check, we build for real.
 
+**And the marketplace bet.** Because this is two-sided, there's a second riskiest assumption: *both sides actually show up.* A seller's pile is worthless with no buyers, and buyers won't come to an empty city. So the launch has to prove both, not just the seller. The hard side here is **sellers**, someone has to list before any buyer has a reason to look, so the early push is seller-side. (How you get the first ones without an empty marketplace is the cold-start problem, Phase 6.6.)
+
 ---
 
 ## Phase 6.5: Distribution (the final boss)
@@ -411,6 +433,14 @@ The loop has to be *in the core flow*, not a bolted-on "share" button — and it
 
 **Me:** Love that. The sale page selling the app itself.
 
+**Claude:** One more thing before we move on, and it's the one most marketplaces die on. That loop is an engine, but an engine has to turn over the *first* time. Does ClearList give the very first user something on their own, or is it only useful once lots of people are on it?
+
+**Me:** A single seller gets value alone, they clear their pile and share one link. But the *directory*, the browse-all-the-sales-in-your-city page, only works once a city has enough sales. If someone opens it and sees two listings in a city they don't even live in, they're gone for good.
+
+**Claude:** Textbook cold-start problem, and you've already got the fix. The single-seller flow is your **single-player mode**: useful to one person on day one, no crowd required, so you launch on that and nobody ever hits an empty room. The city directory stays **behind a threshold**: don't open it for a city until it's dense enough to feel alive. Your minimum liquidity, the number that says "safe to open the doors here," is **~50 live sale pages per city**. Below the line you're still fully useful one seller at a time; above it, you flip the directory on. And since sellers are the hard side, the early push is seller-side, one city at a time, doing things that don't scale until a city crosses the line.
+
+**Me:** Exactly, that's why I haven't turned the directory on yet. I'm waiting to cross that threshold per city.
+
 ---
 
 ## Phase 7: The Stuff They Don't Know About
@@ -451,7 +481,9 @@ Walk through the house taking photos. Drop them all in at once. A minute later y
 
 ## 4. Who It's For
 
-People mid-move or clearing an estate — 20–100 items, a hard deadline. First 10 users from one declutter or moving community you can show up in.
+This is a two-sided marketplace, so it has two users:
+- **Sellers (the side you build first):** people mid-move or clearing an estate, 20–100 items, a hard deadline. First 10 from one declutter or moving community you can show up in.
+- **Buyers:** budget furnishers and bargain-hunters who want enough information to decide (validated dimensions, weight, condition, visible status) without a string of DMs, and who can reserve and reschedule themselves.
 
 ## 5. User Flows
 
@@ -631,6 +663,12 @@ flowchart LR
 
 - **Enabling feature (on the V1 list):** the public, good-looking, shareable sale page.
 - **The one number to watch:** new sellers per shared sale page. If sale pages aren't pulling in new sellers, the loop isn't real yet, and r/declutter is the growth engine instead.
+
+**Cold start (this is a marketplace, so the loop needs critical mass to spin):**
+
+- **Single-player mode first:** a lone seller is useful on day one (clear the pile, share one link), so you launch on that, no crowd required, and nobody ever lands on an empty room.
+- **Hold the directory behind a threshold:** the browse-by-city directory only goes live for a city once it crosses **~50 live sale pages** (the minimum liquidity). Below it, the single-seller flow still works fine.
+- **Hard side = sellers:** someone has to list before a buyer has a reason to look, so the early push is seller-side, one city at a time.
 
 ## 16. Things to Handle Before Launch
 
