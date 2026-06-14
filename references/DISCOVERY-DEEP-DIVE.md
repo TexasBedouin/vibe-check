@@ -55,6 +55,7 @@ The same need is underserved for one group and perfectly handled for another. So
 - Score the needs as if you were one specific kind of person (the cook, the busy parent, the solo estate-sale operator), not an average of everyone.
 - If you have an existing product, two lenses help: your current users (their gaps are churn risks) and people you don't serve yet (their gaps are growth).
 - A tell that you picked too broad a group: every need lands middling, nothing stands out as clearly underserved. That flat result means "go narrower," not "there's no opportunity." Pick a sharper group and the gaps appear.
+- **For a marketplace, segment per side.** A two-sided product has one ICP per side (the seller and the buyer), and you run this whole exercise once for each. Their top needs usually look nothing alike, and the second side's basics become the first side's table stakes. The fuller method is in [references/MULTI-SIDED.md](references/MULTI-SIDED.md).
 
 This ties straight to Phase 6.5: the specific group you score for is the same group you'll name as your first 10 users and reach through their community.
 

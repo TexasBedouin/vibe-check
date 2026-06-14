@@ -2,6 +2,13 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [1.8.0] - 2026-06-14
+
+### Added
+- **Multi-sided / marketplace discovery awareness (conditional).** A new Phase 0 "how many sides?" gate detects two-sided products, and the skill then discovers *each* side, not just the one the founder happens to be. Per-side ICP scoring (the second side's basics are the first side's table stakes), the other side's struggling moment in Phase 1, both-sides flows in Phase 2, and a compound riskiest-assumption in Phase 6 ("both sides actually show up," and which side is harder to get). Single-sided apps skip all of it.
+- **Cold-start brainstorming in Phase 6.6 (conditional).** After finding the growth loop, the skill asks whether the loop can even start. For marketplaces, networks, and social apps that need critical mass, it brainstorms a bootstrap strategy with the user (single-player mode first, start narrow, hold the network behind a liquidity threshold, seed the hard side by hand, seed supply not demand) and names a minimum-liquidity threshold to cross before opening the doors.
+- **references/MULTI-SIDED.md** and **references/COLD-START.md**: the fuller playbooks behind both, loaded only when the product is multi-sided or has a cold-start problem.
+
 ## [1.7.2] - 2026-06-13
 
 - Fix frontmatter YAML (block-scalar description) so the skill is installable via the skills CLI and indexable on skills.sh

@@ -16,7 +16,8 @@ When someone who's never coded before says "I want to build an app that does X,"
 6. **Includes build checkpoints**: so the beginner is never lost during construction. The AI stops after each phase to explain what was just built, why, and what's next.
 7. **Teaches the build-time basics** in language for someone who has never touched code: local vs. GitHub vs. live, how to save and back up code (commit/push/deploy), and keeping secret keys safe.
 8. **Finds a growth loop**: how the app recruits its next user on its own, preferably viral and organic, built into the core flow rather than bolted on, so growth compounds instead of needing a constant push.
-9. **Keeps the app healthy as it grows**: a **Checkup Mode** that gently looks over a messy, grown codebase and tidies it safely, so the AI keeps building cleanly instead of breaking things.
+9. **Handles marketplaces honestly**: when the idea is two-sided, it discovers *both* sides (not just the one the founder happens to be), and helps brainstorm a cold-start plan so the product doesn't launch into an empty room.
+10. **Keeps the app healthy as it grows**: a **Checkup Mode** that gently looks over a messy, grown codebase and tidies it safely, so the AI keeps building cleanly instead of breaking things.
 
 ## Who it's for
 
@@ -78,7 +79,7 @@ Wondering what a session actually looks like? Two complete examples in [examples
 
 ## Version
 
-Current version: **1.7.2** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **1.8.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, run `git pull` inside `.claude/skills/vibe-check`. Versioning is semantic (MAJOR.MINOR.PATCH).
 
