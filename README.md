@@ -69,6 +69,13 @@ By the end of a vibe-check session, you'll have a plan document that includes:
 
 This plan is designed to be handed directly to your AI coding tool to start building.
 
+## Example output
+
+Wondering what a session actually looks like? Two full examples in [examples/](examples/):
+
+- **[A full ClearList session](examples/clearlist-session.md)** — the complete back-and-forth from a one-line idea to the finished plan, including the Reddit reality-check. This is what running the skill *feels* like.
+- **[Idea → plan: a plant-care app](examples/plant-watering.md)** — a condensed walkthrough from a single sentence ("an app that reminds me to water my plants") to the plan it hands your AI coding tool.
+
 ## Version
 
 Current version: **1.7.2** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
