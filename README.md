@@ -2,7 +2,15 @@
 
 A skill for AI coding tools that guides complete beginners from a vague app idea to a buildable blueprint.
 
-**grill-me is for engineers. vibe-check is for everyone else.**
+Every coding skill out there is great... if you already know what you're building. That's the catch. Most of them start the moment you've decided what to make. The hard part, the part that sinks most projects, happens before that.
+
+That's the part I spent 12-plus years doing as a product manager, taking things from zero to one. vibe-check is that work, turned into a skill.
+
+You come in with a vague idea. It helps you dig out the real problem hiding underneath it, then pressure-tests whether that problem is even worth solving, against what real people actually struggle with and not just your gut. From there it maps the whole experience, the real screens and flows, and turns the lot into a plan and a buildable blueprint your AI can follow. And before you write a line of code, it works out your growth loop, so the thing has a shot at pulling in its own next users instead of you dragging in every one by hand.
+
+---
+
+**Every other skill helps you build it right. This one makes sure you're building the right thing.**
 
 ## What it does
 
