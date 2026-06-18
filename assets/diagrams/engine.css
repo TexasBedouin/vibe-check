@@ -1,0 +1,122 @@
+/* ─────────────────────────────────────────────────────────
+   vibe-check diagram engine, shared design layer
+   Built on the ClearList design system tokens.
+   FigJam structure (sticky notes, tape, dots, dotted canvas)
+   + Minimalist Editorial typography (DM Sans / DM Serif Display).
+   One file, many diagram templates.
+   ───────────────────────────────────────────────────────── */
+
+:root{
+  /* canvas */
+  --canvas:#F9F6F0;          /* warm FigJam canvas */
+  --canvas-app:#F9F9F8;      /* editorial / blueprint canvas */
+  --dot:#ddd6c6;
+  --grid-line:rgba(44,100,227,.10);
+
+  /* ink */
+  --charcoal:#1A1A1B;
+  --ink-2:#4b5563;
+  --ink-muted:#6B7280;
+  --border:#E5E5E5;
+
+  /* brand */
+  --blue:#2C64E3;
+  --blue-hover:#2354C2;
+  --purple:#8B5CF6;
+  --purple-light:#F5F3FF;
+  --pink:#ec4899;
+
+  /* moving-sale / figjam */
+  --kraft:#C4A882;
+  --kraft-dark:#A98C63;
+  --tape-blue:#4A90D9;
+  --y:#FFF6A8;   /* softened post-it yellow for sans legibility */
+  --g:#A6E4A0;
+  --b:#A8DBEE;
+  --o:#FFCB7D;
+  --p:#FFA8CC;
+  --lav:#CDBEEA; /* AI = purple family */
+
+  /* status dots */
+  --dot-red:#E03C31;
+  --dot-green:#2E8B57;
+  --dot-amber:#F6C90E;
+
+  /* fonts */
+  --sans:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --serif:"DM Serif Display",Georgia,serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1920px;height:1080px;overflow:hidden;}
+body{font-family:var(--sans);color:var(--charcoal);-webkit-font-smoothing:antialiased;}
+
+/* canvases */
+.canvas-dots{
+  background-color:var(--canvas);
+  background-image:radial-gradient(var(--dot) 2px,transparent 2px);
+  background-size:30px 30px;background-position:-6px -6px;
+}
+.canvas-blueprint{
+  background-color:var(--canvas-app);
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+.stage{width:1920px;height:1080px;padding:40px 52px 34px;position:relative;display:flex;flex-direction:column;}
+
+/* ── header ───────────────────────────────── */
+.head{display:flex;align-items:flex-start;justify-content:space-between;flex:0 0 auto;}
+.head .crumb{font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.head .title{font-family:var(--serif);font-size:46px;line-height:1.02;color:var(--charcoal);}
+.head .sub{font-size:19px;color:var(--ink-muted);margin-top:10px;max-width:760px;}
+.madeby{text-align:right;font-size:15px;color:var(--ink-muted);line-height:1.3;text-decoration:none;}
+.madeby:hover b{text-decoration:underline;}
+.madeby b{font-weight:700;color:var(--blue);letter-spacing:.02em;}
+.madeby .url{color:var(--blue);font-weight:600;}
+
+/* ── sticky note ──────────────────────────── */
+.note{
+  background:var(--y);
+  padding:13px 15px 14px;
+  box-shadow:3px 4px 12px rgba(0,0,0,.13);
+  position:relative;line-height:1.24;font-size:19px;font-weight:500;
+  border-radius:1px;
+}
+.note .k{display:block;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.40);margin-bottom:5px;}
+.note.sm{font-size:17px;padding:10px 13px;box-shadow:2px 3px 9px rgba(0,0,0,.11);}
+.note.lg{font-size:21px;}
+.note.y{background:var(--y);} .note.g{background:var(--g);} .note.b{background:var(--b);}
+.note.o{background:var(--o);} .note.p{background:var(--p);} .note.ai{background:var(--lav);}
+/* gentle hand-placed tilt + a tape nub */
+.tilt-l{transform:rotate(-1.3deg);} .tilt-r{transform:rotate(1.1deg);} .tilt-0{transform:rotate(-.4deg);}
+.note.pin:before{content:"";position:absolute;top:-7px;left:50%;width:34px;height:12px;
+  background:rgba(74,144,217,.78);transform:translateX(-50%) rotate(-4deg);box-shadow:1px 1px 3px rgba(0,0,0,.18);}
+
+/* ── tape strip / lane label ──────────────── */
+.tape{display:inline-block;background:var(--tape-blue);color:#fff;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;padding:9px 16px;box-shadow:2px 3px 9px rgba(0,0,0,.16);position:relative;}
+.tape:before,.tape:after{content:"";position:absolute;top:0;bottom:0;width:14px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 4px,transparent 4px 8px);}
+.tape:before{left:-7px;transform:skewX(-12deg);} .tape:after{right:-7px;transform:skewX(-12deg);}
+.tape.green{background:var(--dot-green);} .tape.kraftt{background:#b9b09c;} .tape.charcoal{background:var(--charcoal);}
+
+/* ── editorial / blueprint box ────────────── */
+.ebox{background:#fff;border:2px solid var(--charcoal);padding:14px 16px;min-width:160px;position:relative;}
+.ebox .t{font-weight:700;font-size:19px;line-height:1.15;}
+.ebox .s{font-size:15px;color:var(--ink-muted);margin-top:4px;line-height:1.25;}
+.ebox.ai{background:var(--purple-light);border-color:var(--purple);}
+.ebox.ai .tag{position:absolute;top:-11px;left:14px;background:var(--purple);color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;}
+.ebox.accent{border-color:var(--blue);}
+
+/* ── garage-sale dot sticker ──────────────── */
+.dot{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;
+  font-weight:700;text-align:center;line-height:1;box-shadow:2px 2px 6px rgba(0,0,0,.22);}
+.dot.red{background:var(--dot-red);} .dot.green{background:var(--dot-green);}
+.dot.amber{background:var(--dot-amber);color:#3a2e00;} .dot.blue{background:var(--tape-blue);}
+
+/* small legend chip */
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-2);font-weight:500;}
+.chip .sw{width:16px;height:16px;border-radius:50%;}

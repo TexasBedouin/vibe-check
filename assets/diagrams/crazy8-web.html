@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ClearList: Crazy 8 (Web)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="engine.css">
+<style>
+  :root{ --win-bar:#ECECEA; --ph:#dededa; --ph-tx:#9a9a93; --win-border:#1A1A1B; }
+  .stage{padding:32px 48px 22px;}
+  .head .crumb{color:var(--blue);}
+  .madeby2{position:absolute;right:48px;top:38px;font-size:14px;color:var(--ink-muted);text-decoration:none;}
+  .madeby2:hover b{text-decoration:underline;} .madeby2 b{color:var(--blue);font-weight:700;}
+
+  .board{flex:1;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:22px 28px;margin-top:14px;min-height:0;}
+  .card{display:flex;flex-direction:column;gap:9px;min-height:0;}
+  .dir{align-self:flex-start;background:var(--charcoal);color:#fff;font-weight:700;font-size:14px;letter-spacing:.03em;
+    padding:6px 13px;transform:rotate(-.6deg);box-shadow:2px 2px 6px rgba(0,0,0,.16);}
+  .bestfor{font-size:14px;color:var(--ink-2);font-weight:500;}
+  .bestfor b{color:var(--charcoal);}
+
+  /* desktop browser window */
+  .win{flex:1;background:#fff;border:2px solid var(--win-border);display:flex;flex-direction:column;overflow:hidden;min-height:0;}
+  .winbar{height:32px;flex:0 0 auto;background:var(--win-bar);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding:0 12px;}
+  .dots{display:flex;gap:6px;} .dots i{width:10px;height:10px;border-radius:50%;background:#c9c9c5;}
+  .url{flex:1;height:18px;background:#fff;border:1px solid var(--border);font-size:11px;color:var(--ink-muted);
+    display:flex;align-items:center;padding:0 9px;}
+  .wc{flex:1;min-height:0;overflow:hidden;position:relative;}
+  .ctop{padding:8px 12px;font-size:12px;font-weight:700;color:var(--charcoal);border-bottom:1px solid var(--border);}
+
+  /* 1 gallery grid */
+  .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px;}
+  .tile{display:flex;flex-direction:column;}
+  .t-ph{height:62px;background:var(--ph);display:flex;align-items:center;justify-content:center;color:var(--ph-tx);font-size:10px;}
+  .t-p{font-size:12px;font-weight:700;color:var(--blue);margin-top:3px;}
+
+  /* 2 map */
+  .split{display:flex;height:100%;}
+  .side{width:38%;border-right:1px solid var(--border);display:flex;flex-direction:column;}
+  .li{display:flex;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px;color:var(--charcoal);}
+  .li-ph{width:30px;height:30px;background:var(--ph);flex:0 0 auto;}
+  .li b{color:var(--blue);}
+  .map{flex:1;background:#d7e3d2;position:relative;}
+  .pin{position:absolute;width:14px;height:14px;border-radius:50% 50% 50% 0;background:var(--blue);transform:rotate(-45deg);box-shadow:0 1px 3px rgba(0,0,0,.3);}
+
+  /* 3 long scroll */
+  .hero{height:96px;background:var(--ph);display:flex;align-items:center;justify-content:center;color:var(--ph-tx);font-size:11px;}
+  .big-row{display:flex;gap:12px;padding:12px;border-bottom:1px solid var(--border);align-items:center;}
+  .br-ph{width:120px;height:74px;background:var(--ph);flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:var(--ph-tx);font-size:10px;}
+  .br-tx{font-size:13px;color:var(--charcoal);}
+  .br-tx .p{color:var(--blue);font-weight:700;font-size:15px;margin:3px 0 7px;}
+
+  /* 4 split list + detail */
+  .side.narrow{width:32%;}
+  .li.row{justify-content:space-between;}
+  .detail{flex:1;padding:14px;display:flex;flex-direction:column;}
+  .d-ph{height:120px;background:var(--ph);display:flex;align-items:center;justify-content:center;color:var(--ph-tx);font-size:11px;}
+  .d-t{font-weight:700;font-size:15px;margin-top:10px;color:var(--charcoal);}
+  .d-p{font-size:13px;color:var(--ink-2);margin-top:3px;}
+
+  .rbtn{background:var(--blue);color:#fff;font-size:12px;font-weight:700;padding:6px 14px;display:inline-block;}
+  .rbtn.big{margin-top:14px;align-self:flex-start;padding:9px 20px;font-size:14px;}
+
+  .pickline{text-align:center;font-size:16px;color:var(--ink-2);margin-top:12px;font-weight:500;}
+  .pickline b{color:var(--charcoal);}
+</style>
+</head>
+<body class="canvas-dots">
+<div class="stage">
+  <div class="head">
+    <div>
+      <div class="crumb">Phase 2 · Crazy 8 · Web app</div>
+      <div class="title">Four ways the ClearList sale page could feel</div>
+      <div class="sub">Same exercise, desktop frames... because the buyer browses on a computer. The board always wears the device you are building for. (Mobile? Phone frames. Web? This.)</div>
+    </div>
+  </div>
+  <a class="madeby2" href="https://github.com/TexasBedouin/vibe-check" target="_blank" rel="noopener noreferrer">Created using <b>Vibe-Check</b> skill</a>
+
+  <div class="board">
+    <!-- 1 gallery grid -->
+    <div class="card">
+      <div class="dir">1 · Gallery grid</div>
+      <div class="win">
+        <div class="winbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">clearlist.me/sarahs-move</span></div>
+        <div class="wc">
+          <div class="ctop">Sarah's Moving Sale · 18 items</div>
+          <div class="grid6">
+            <div class="tile"><div class="t-ph">photo</div><div class="t-p">$250</div></div>
+            <div class="tile"><div class="t-ph">photo</div><div class="t-p">$45</div></div>
+            <div class="tile"><div class="t-ph">photo</div><div class="t-p">$80</div></div>
+            <div class="tile"><div class="t-ph">photo</div><div class="t-p">$30</div></div>
+            <div class="tile"><div class="t-ph">photo</div><div class="t-p">$120</div></div>
+            <div class="tile"><div class="t-ph">photo</div><div class="t-p">$60</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="bestfor"><b>Best for:</b> scanning lots of items fast.</div>
+    </div>
+
+    <!-- 2 map-first -->
+    <div class="card">
+      <div class="dir">2 · Map-first</div>
+      <div class="win">
+        <div class="winbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">clearlist.me/near-me</span></div>
+        <div class="wc">
+          <div class="split">
+            <div class="side">
+              <div class="ctop">Sales near you</div>
+              <div class="li"><span class="li-ph"></span>Sofa · <b>$250</b></div>
+              <div class="li"><span class="li-ph"></span>Desk · <b>$80</b></div>
+              <div class="li"><span class="li-ph"></span>Blender · <b>$40</b></div>
+            </div>
+            <div class="map">
+              <span class="pin" style="top:30%;left:30%"></span>
+              <span class="pin" style="top:55%;left:58%"></span>
+              <span class="pin" style="top:42%;left:74%"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bestfor"><b>Best for:</b> planning a pickup route nearby.</div>
+    </div>
+
+    <!-- 3 long scroll -->
+    <div class="card">
+      <div class="dir">3 · Scrolling storefront</div>
+      <div class="win">
+        <div class="winbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">clearlist.me/sarahs-move</span></div>
+        <div class="wc">
+          <div class="hero">cover photo</div>
+          <div class="big-row"><div class="br-ph">photo</div><div class="br-tx">IKEA Ektorp Sofa<div class="p">$250</div><span class="rbtn">Reserve</span></div></div>
+          <div class="big-row"><div class="br-ph">photo</div><div class="br-tx">Oak Writing Desk<div class="p">$80</div><span class="rbtn">Reserve</span></div></div>
+        </div>
+      </div>
+      <div class="bestfor"><b>Best for:</b> a beautiful, story-like browse.</div>
+    </div>
+
+    <!-- 4 split list + detail -->
+    <div class="card">
+      <div class="dir">4 · List + detail</div>
+      <div class="win">
+        <div class="winbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">clearlist.me/sarahs-move</span></div>
+        <div class="wc">
+          <div class="split">
+            <div class="side narrow">
+              <div class="li row">Sofa<b>$250</b></div>
+              <div class="li row">Desk<b>$80</b></div>
+              <div class="li row">Blender<b>$40</b></div>
+              <div class="li row">Lamp<b>$25</b></div>
+            </div>
+            <div class="detail">
+              <div class="d-ph">photo</div>
+              <div class="d-t">IKEA Ektorp Sofa</div>
+              <div class="d-p">$250 · Good · Furniture</div>
+              <span class="rbtn big">Reserve</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bestfor"><b>Best for:</b> power browsers who reserve quickly.</div>
+    </div>
+  </div>
+
+  <div class="pickline">Same move as the mobile board: grab the bits you like from any layout, and we fuse them into one.</div>
+</div>
+</body>
+</html>

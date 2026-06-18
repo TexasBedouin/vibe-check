@@ -2,7 +2,7 @@
 
 ---
 
-# vibe-check — Example Output
+# vibe-check: Example Output
 
 ## The starting idea
 
@@ -14,7 +14,7 @@ That's the whole input. Here's what the skill does with it.
 
 ## 0. Before anything else (the setup beats)
 
-**Version check.** The skill announces itself as **vibe-check v1.7.2** and quietly does a best-effort fetch of the latest VERSION from GitHub. In this run the fetch came back the same version, so nothing is said. (If a newer one were out, it'd mention it once, kindly, then move on. If the fetch fails, it stays silent. It never blocks.)
+**Version check.** The skill announces itself as **vibe-check v1.8.0** and quietly does a best-effort fetch of the latest VERSION from GitHub. In this run the fetch came back the same version, so nothing is said. (If a newer one were out, it'd mention it once, kindly, then move on. If the fetch fails, it stays silent. It never blocks.)
 
 **Pick the mode.** Two modes exist: Planning (default, has an idea, nothing built) and Checkup (built a while, gone messy). This person has an idea and no code, so → **Planning Mode**. (Checkup Mode would skip all of this and go straight to `references/CODE-CHECKUP.md`.)
 
@@ -28,13 +28,13 @@ That's the whole input. Here's what the skill does with it.
 
 ---
 
-## 1. Phase 0 — Discovery (pressure-test the problem)
+## 1. Phase 0: Discovery (pressure-test the problem)
 
 The skill doesn't start sketching screens. Discovery always runs, in two beats.
 
 **The routing question first:** *"Before we design a single thing: have you already done real research on this, actually talked to plant owners or gathered data, or is it still mostly your own hunch?"* Answer: a hunch. Combined with "first-timer" on the dial → **full discovery, Steps 1–5.**
 
-### Beat 1 — Grill it out of them (mandatory)
+### Beat 1: Grill it out of them (mandatory)
 
 grill-me energy, aimed at the *problem and the person*, not features:
 
@@ -45,13 +45,13 @@ grill-me energy, aimed at the *problem and the person*, not features:
 - **Why now?** → they bought more plants in the last year and the death rate went up.
 - **Who else, beyond you?** → friends who also call themselves "black thumbs."
 
-**The future press-release power move** (used here because the grill stalled on "why now"): *"It's two years out and a big magazine ran a glowing story about your app. What's the headline?"* The freeze broke instantly: *"The app that finally let me keep a plant alive — it tells you what each plant actually needs instead of just nagging you to water."* That headline is mined like a Reddit thread: the real need isn't reminders, it's **knowing what to do.**
+**The future press-release power move** (used here because the grill stalled on "why now"): *"It's two years out and a big magazine ran a glowing story about your app. What's the headline?"* The freeze broke instantly: *"The app that finally let me keep a plant alive, it tells you what each plant actually needs instead of just nagging you to water."* That headline is mined like a Reddit thread: the real need isn't reminders, it's **knowing what to do.**
 
-### Beat 2 — Reality-check by the confidence dial
+### Beat 2: Reality-check by the confidence dial
 
-Hunch + first-timer → **full discovery.** Honest framing given up front: *"Reddit gets us maybe 80% of the signal in an afternoon. It's directional, not statistical, so hold it loosely. A loud thread is a strong hypothesis, not proof."*
+Hunch + first-timer → **full discovery.** Honest framing up front: *"Reddit gets us maybe 80% of the signal in an afternoon, and we widen it with the reviews of the plant apps people already use (G2, Capterra, Trustpilot, Google Play, the Apple App Store). It's directional, not statistical, so hold it loosely. A loud thread is a strong hypothesis, not proof."*
 
-#### Step 1 — Map the job
+#### Step 1: Map the job
 
 *"In plain terms, what's the user really trying to get done in their life?"* → **keep their plants alive and thriving.** Broken into the steps someone takes TODAY, with no app:
 
@@ -62,22 +62,22 @@ Hunch + first-timer → **full discovery.** Honest framing given up front: *"Red
 5. Decide what to do about it
 6. Remember to keep checking over time
 
-User confirmed the list. Each step is a place friction hides — and notice that "remind me" is only one slice of step 6.
+User confirmed the list. Each step is a place friction hides, and notice that "remind me" is only one slice of step 6.
 
-#### Step 2 — Pull the pain from Reddit (the fetch ladder)
+#### Step 2: Cast the wide net (the fetch ladder)
 
-Reddit is the source. Direct page fetch is blocked, so the ladder ran in order: **(1) web search with `site:reddit.com`** on the struggle phrases — this is the rung that worked. (Rungs 2 and 3 — the `.json` / `old.reddit.com` read endpoints, then handing the user exact subreddits and phrases to paste back — were the fallbacks, not needed here.)
+One sweep across two kinds of source: Reddit for raw venting, plus the reviews of the plant apps people already pay for (G2, Capterra, Trustpilot, Google Play, the Apple App Store). Direct page fetch is blocked on both, so the same ladder ran in order: **(1) web search with `site:reddit.com`, `site:trustpilot.com`, `site:capterra.com`, and the store listings** on the struggle phrases, the rung that worked. (Rungs 2 and 3, the `.json` / `old.reddit.com` read endpoints then handing the user exact searches to paste back, were the fallbacks, not needed here.)
 
 Struggle phrases searched: *"why is my plant dying," "tired of," "I gave up and just," "does anyone else"* across **r/houseplants** and **r/plantclinic**.
 
-What came back, weighted by signal (upvotes, repeats):
-- The loudest, most-repeated cry for help is a photo captioned **"why is my plant dying, I water it every day?"** — overwatering by well-meaning people, surfacing month after month.
+What came back in the pooled catch, weighted by signal (upvotes, repeats, and how often a review complaint recurred):
+- The loudest, most-repeated cry for help is a photo captioned **"why is my plant dying, I water it every day?"**, overwatering by well-meaning people, surfacing month after month.
 - "I gave up and just buy fake ones now."
 - "Reminder apps are useless, they just tell me to water on a schedule and that's how I drowned my last one."
 
 The pain is real, badly unsolved, and it's a **knowing-what-to-do** problem, not a **remembering** problem.
 
-#### Step 3 — Extract needs as Reduce/Increase statements
+#### Step 3: Sort the catch into needs and a matrix
 
 Walking every job step, kept in the user's language (a statement that names a feature isn't a need yet):
 
@@ -87,9 +87,9 @@ Walking every job step, kept in the user's language (a statement that names a fe
 - **Reduce** the effort of remembering to check on plants over time *(step 6)*
 - **Increase** the ease of telling whether it's actually time to water *(step 2)*
 
-#### Step 3.5 — Competitor gap matrix (the satisfaction-survey stand-in)
+#### Then the competitor matrix (same sort, Served side)
 
-The real tools people use today, including the ugly ones. Cells are "does it well" / "does it poorly" / "doesn't do it," sourced through the same Step 2 ladder (never an invented competitor):
+The real tools people use today, including the ugly ones. Cells are "does it well" / "does it poorly" / "doesn't do it," read off the review side of the same wide net (never an invented competitor):
 
 | Need | Generic reminder apps | Plant-ID apps | Googling it | A notebook |
 |---|---|---|---|---|
@@ -100,39 +100,39 @@ The real tools people use today, including the ugly ones. Cells are "does it wel
 
 Read two ways: the **"get reminded" row is strong everywhere → table stakes** (you must match it, it wins you nothing). The **"know what it needs," "don't overwater," and "diagnose"** rows are weak everywhere → **gaps where you can win.** This is the matrix proof behind the reframe.
 
-#### Step 4 — Score the opportunity gaps (ODI)
+#### Step 4: Score the opportunity gaps (ODI)
 
-This is the skill's illustrative scoring of the evidence above — Pain read from Reddit (ODI Importance), Served read from the competitor matrix + app-store reviews (ODI Satisfaction). **Opportunity = Pain + (Pain − Served)**, never below zero, ranked, evidence-tagged. Scored for the *specific* user (8–15 plants, black thumb), not everyone:
+This is the skill's illustrative scoring of the evidence above. Pain and Served both read off the same pooled catch, Pain from the venting quotes (ODI Importance), Served from the matrix and the app reviews (ODI Satisfaction). **Opportunity = Pain + max(0, Pain − Served)** (the gap never drops below zero), ranked, evidence-tagged. Scored for the *specific* user (8 to 15 plants, black thumb), not everyone:
 
 | Need | Pain | Served | Opportunity | Evidence |
 |---|---|---|---|---|
 | Know what THIS plant needs | 9 | 2 | **16** | seen it |
 | Diagnose why it's dying | 9 | 2 | **16** | seen it |
 | Don't overwater (check soil first) | 8 | 2 | **14** | seen it |
-| Remind me to water | 7 | **8** | **6** | seen it |
+| Remind me to water | 7 | **8** | **7** | seen it |
 
-**This table is the whole reframe, in numbers.** *"Remind me to water"* scores **lowest (6)** — not because nobody wants it, but because every reminder app already nails it (Served 8). The original idea was aimed at the one need the market already serves. *"Know what THIS plant needs"* and *"Diagnose why it's dying"* score **highest (16)** — high Pain, almost nothing serves them. That's where you win.
+**This table is the whole reframe, in numbers.** *"Remind me to water"* scores **lowest (7)**, not because nobody wants it, but because every reminder app already nails it (Served 8). The original idea was aimed at the one need the market already serves. *"Know what THIS plant needs"* and *"Diagnose why it's dying"* score **highest (16)**, high Pain, almost nothing serves them. That's where you win.
 
 **Is there money here?** Paid plant-care apps and subscriptions already exist, and plant shops spend on care content → money is moving near this pain. Green flag, not a yellow one.
 
 **The bar is "significantly better," not "as good as."** Matching reminder apps wins nothing (the Google-clone trap). The win is the underserved gap.
 
-#### Step 5 — Define V1 = differentiator + table stakes
+#### Step 5: Define V1 = differentiator + table stakes
 
-- **Differentiator (build to win):** the top of the table — **species-specific care + a soil-check gate that stops you overwatering, plus symptom diagnosis.** This is the reason to exist.
-- **Table stakes (build to not lose):** **calm check-in reminders** — high Pain, already well served, so people expect it. The *minimum* version that lets someone switch, not a polished clone.
+- **Differentiator (build to win):** the top of the table, **species-specific care + a soil-check gate that stops you overwatering, plus symptom diagnosis.** This is the reason to exist.
+- **Table stakes (build to not lose):** **calm check-in reminders**, high Pain, already well served, so people expect it. The *minimum* version that lets someone switch, not a polished clone.
 
-**It reframes the idea, out loud.** *"You said watering reminder. But a reminder assumes the only problem is forgetting. Overwatering kills more houseplants than underwatering — so the real pain isn't 'remind me to water,' it's 'tell me what THIS plant needs so I stop killing it.' A reminder app that nags on a fixed schedule could actively make the problem worse."* The signature move: the first idea was a solution wearing a problem's clothes — and now the ODI table proves it.
+**It reframes the idea, out loud.** *"You said watering reminder. But a reminder assumes the only problem is forgetting. Overwatering kills more houseplants than underwatering, so the real pain isn't 'remind me to water,' it's 'tell me what THIS plant needs so I stop killing it.' A reminder app that nags on a fixed schedule could actively make the problem worse."* The signature move: the first idea was a solution wearing a problem's clothes, and now the ODI table proves it.
 
 **The sharpened problem:** people who want their plants to thrive but don't know what each plant needs, and accidentally kill them with guesswork (usually by overwatering).
 
 ---
 
-## 2. Phase 1 — The Dream
+## 2. Phase 1: The Dream
 
 - **The idea, in their words; reframed back sharper and confirmed:** "a thriving-plants coach, not a watering alarm." Got a yes.
 - **What's frustrating today (no app):** watering by guess, panic-googling, losing plants and not knowing why.
-- **The worst-moment scene** (made concrete, not abstract): *"It's the moment I notice a leaf going yellow on the plant I've been most careful with. I'm standing in my living room, I just watered it two days ago, and I have no idea if it needs more water or less. I feel like I'm failing it, and I end up watering it again — which is probably exactly the wrong thing."* That scene is where demand lives (Bob Moesta's demand-side lens): the struggling moment creates the demand, and the messy "just water it again" workaround feels completely rational in that moment.
+- **The worst-moment scene** (made concrete, not abstract): *"It's the moment I notice a leaf going yellow on the plant I've been most careful with. I'm standing in my living room, I just watered it two days ago, and I have no idea if it needs more water or less. I feel like I'm failing it, and I end up watering it again, which is probably exactly the wrong thing."* That scene is where demand lives (Bob Moesta's demand-side lens): the struggling moment creates the demand, and the messy "just water it again" workaround feels completely rational in that moment.
 - **The ONE thing it should do perfectly:** tell me whether this specific plant needs water *right now*, and why.
 - **What worry disappears when it hums:** the low-grade guilt of slowly killing things you care about.
 - **Who else wants it:** the friends who also call themselves black thumbs.
@@ -147,15 +147,15 @@ Said back: *"The real goal is keeping your plants alive and knowing why. Right n
 
 ---
 
-## 3. Phase 2 — The Experience
+## 3. Phase 2: The Experience
 
 ### Crazy 3s (three real directions, each pushed to feel real)
 
-Three genuinely different directions for the core experience — not three flavors of one — each pushed far enough, with real-ish content, to *feel* real side by side on a comparison board (`HTML-BLUEPRINT.md`), not bare boxes:
+Three genuinely different directions for the core experience, not three flavors of one, each pushed far enough, with real-ish content, to *feel* real side by side on a comparison board (`HTML-BLUEPRINT.md`), not bare boxes:
 
-- **A — The Calendar.** A watering schedule with reminders. (The original idea. On its own it risks telling people to overwater.) Pushed far enough to show a real week of "water Monstera today" rows — and seeing it made the overwatering risk obvious.
-- **B — The Plant Profile.** Each plant gets a page: what it is, what it needs, how it's doing. Care advice, not just alarms. Rendered with a real Monstera card reading "likes to dry out between waterings."
-- **C — The Check-In.** The app asks *you* questions ("droopy? yellow leaves? soil still damp?") and tells you what to do, instead of assuming. Rendered as a real two-question flow ending in "skip watering, check again in 2 days."
+- **A, The Calendar.** A watering schedule with reminders. (The original idea. On its own it risks telling people to overwater.) Pushed far enough to show a real week of "water Monstera today" rows, and seeing it made the overwatering risk obvious.
+- **B, The Plant Profile.** Each plant gets a page: what it is, what it needs, how it's doing. Care advice, not just alarms. Rendered with a real Monstera card reading "likes to dry out between waterings."
+- **C, The Check-In.** The app asks *you* questions ("droopy? yellow leaves? soil still damp?") and tells you what to do, instead of assuming. Rendered as a real two-question flow ending in "skip watering, check again in 2 days."
 
 **Share and vote.** Walked through all three; user cherry-picked the bits that landed. The moment B + a slice of C clearly won, the skill stopped building the others and poured into the winner.
 
@@ -163,17 +163,17 @@ Three genuinely different directions for the core experience — not three flavo
 
 ### The five-lens gut-check (incl. Ethical)
 
-- **Desirable:** Yes — plant owners actively ask for this in their own communities (discovery evidence).
-- **Usable:** Yes — the least techy plant lover can add a plant by name and read "your snake plant likes to dry out, you're probably watering too often." (The Grandma Test, below.)
-- **Feasible:** Yes — an AI tool can build this. Species care data starts as a small built-in list and grows.
-- **Viable:** Cheap — fits comfortably on free tiers to start. (Phase 6 prices it.)
-- **Ethical:** ⚠️ One thing to design out. The tempting move is anxiety-driven notifications (*"Your plant is DYING 😢 you haven't watered in 5 days!!"*) because guilt drives app opens. That's a dark pattern — it makes money (engagement) when the user feels bad, not when the plant thrives. **Decision:** notifications stay calm and helpful (*"Time to check on your Monstera"*), no fake urgency, no guilt. The deeper test passes too: the app earns its keep when the plant *lives*, so it profits when the user wins. If a plant shop ever gets added, no manufactured "buy now or it dies" pressure.
+- **Desirable:** Yes, plant owners actively ask for this in their own communities (discovery evidence).
+- **Usable:** Yes, the least techy plant lover can add a plant by name and read "your snake plant likes to dry out, you're probably watering too often." (The Grandma Test, below.)
+- **Feasible:** Yes, an AI tool can build this. Species care data starts as a small built-in list and grows.
+- **Viable:** Cheap, fits comfortably on free tiers to start. (Phase 6 prices it.)
+- **Ethical:** ⚠️ One thing to design out. The tempting move is anxiety-driven notifications (*"Your plant is DYING 😢 you haven't watered in 5 days!!"*) because guilt drives app opens. That's a dark pattern, it makes money (engagement) when the user feels bad, not when the plant thrives. **Decision:** notifications stay calm and helpful (*"Time to check on your Monstera"*), no fake urgency, no guilt. The deeper test passes too: the app earns its keep when the plant *lives*, so it profits when the user wins. If a plant shop ever gets added, no manufactured "buy now or it dies" pressure.
 
 Passes. The ethical catch became an actual design rule, not a lecture. (Had it failed at the *core* idea, the skill would rethink the concept, not patch the symptom.)
 
 ### The second look (the craft pass)
 
-One deliberate pass before locking the winner, out loud with the user: *what here is generic, the same thing every plant app does? What gives it a point of view? What to cut?* The generic part: a plant grid with status dots looks like every plant app. The point of view: lead with the **soil-check gate and "you're probably overwatering"** honesty — most apps flatter you, this one gently corrects you. Cut: the species-encyclopedia browsing (V2). One pass, not a perfection hunt. Then locked.
+One deliberate pass before locking the winner, out loud with the user: *what here is generic, the same thing every plant app does? What gives it a point of view? What to cut?* The generic part: a plant grid with status dots looks like every plant app. The point of view: lead with the **soil-check gate and "you're probably overwatering"** honesty, most apps flatter you, this one gently corrects you. Cut: the species-encyclopedia browsing (V2). One pass, not a perfection hunt. Then locked.
 
 ### Map the chosen direction, screen by screen
 
@@ -186,21 +186,21 @@ One deliberate pass before locking the winner, out loud with the user: *what her
 
 ### The aha moment, designed backward (first 30 seconds)
 
-- **The single moment they first feel the value:** the instant they add a plant by name and the app says, in plain words, *"your snake plant likes to dry out — you're probably watering too often."* The "oh, this is for me."
+- **The single moment they first feel the value:** the instant they add a plant by name and the app says, in plain words, *"your snake plant likes to dry out, you're probably watering too often."* The "oh, this is for me."
 - **How fast after signup:** aim for the first 30 seconds.
-- **Designed backward from it:** no long signup form (ask for an account later), **no intro carousel**, drop them straight into "add a plant." Progressive disclosure + a small satisfying success hit the moment the care profile appears. Two aha moments stacked: (1) it *knows* my plant, (2) it tells me I've been overwatering — proof it's special. The first 30 seconds feel magical, not like homework.
+- **Designed backward from it:** no long signup form (ask for an account later), **no intro carousel**, drop them straight into "add a plant." Progressive disclosure + a small satisfying success hit the moment the care profile appears. Two aha moments stacked: (1) it *knows* my plant, (2) it tells me I've been overwatering, proof it's special. The first 30 seconds feel magical, not like homework.
 
 ### The Grandma Test
 
-*"Who's the least techy person who'd ever use this? Could THEY add a plant and read the advice with nobody helping?"* Yes — typing a plant name and reading one plain sentence clears the bar. Nothing to simplify before adding features.
+*"Who's the least techy person who'd ever use this? Could THEY add a plant and read the advice with nobody helping?"* Yes, typing a plant name and reading one plain sentence clears the bar. Nothing to simplify before adding features.
 
 ### The stress test
 
-*"Picture the user at their most stressed — low battery, bad signal, just got home late, plant looks awful."* Walking it surfaced the failure modes: care data must work **offline** (bad signal in a back room), the soil-check must be answerable in **two taps**, and the diagnosis must **gracefully admit when it doesn't know** instead of guessing and making it worse. These feed the Rough Day flow.
+*"Picture the user at their most stressed, low battery, bad signal, just got home late, plant looks awful."* Walking it surfaced the failure modes: care data must work **offline** (bad signal in a back room), the soil-check must be answerable in **two taps**, and the diagnosis must **gracefully admit when it doesn't know** instead of guessing and making it worse. These feed the Rough Day flow.
 
 ### Three user-flow diagrams
 
-**1. Happy Flow — adding a plant:**
+**1. Happy Flow, adding a plant:**
 
 ```mermaid
 flowchart TD
@@ -211,7 +211,7 @@ flowchart TD
     E --> F[Done. It now lives on your shelf]
 ```
 
-**Happy Flow — the daily check-in (the core loop):**
+**Happy Flow, the daily check-in (the core loop):**
 
 ```mermaid
 flowchart TD
@@ -224,7 +224,7 @@ flowchart TD
     D --> G
 ```
 
-**2. Rough Day Flow — things go wrong (built from the stress test):**
+**2. Rough Day Flow, things go wrong (built from the stress test):**
 
 ```mermaid
 flowchart TD
@@ -240,7 +240,7 @@ flowchart TD
     G --> I
 ```
 
-**3. Edge Cases — weird but real:**
+**3. Edge Cases, weird but real:**
 
 ```mermaid
 flowchart TD
@@ -252,7 +252,7 @@ flowchart TD
 
 ### User story mapping (journey → features)
 
-Walking the happy flow one step at a time, asking *"what has to be true for the user to get through this step?"* — each answer is a feature that falls out of the journey (Jeff Patton):
+Walking the happy flow one step at a time, asking *"what has to be true for the user to get through this step?"*, each answer is a feature that falls out of the journey (Jeff Patton):
 
 - *Add a plant by name* → needs a **species lookup + a built-in care dataset.**
 - *See what it needs* → needs a **species care profile** (water guideline, light, common deaths).
@@ -265,19 +265,19 @@ That feature list is carried straight into Phase 8 as the spine of V1.
 
 ---
 
-## 4. Phases 3–7 — Connections, decisions, blueprint, reality, unknowns
+## 4. Phases 3–7: Connections, decisions, blueprint, reality, unknowns
 
-### Phase 3 — The Connections
+### Phase 3: The Connections
 
 - **Where the data lives:** mostly in-app; the species care data is a **built-in dataset** (no external source needed for V1).
 - **Pull automatically vs. type in:** user types the plant name; the app fills the care profile.
-- **Send messages?** Yes — **push notifications** for calm check-ins. (Push notification: the little nudge that pops up on your phone.)
+- **Send messages?** Yes, **push notifications** for calm check-ins. (Push notification: the little nudge that pops up on your phone.)
 - **Smart/AI features?** A light touch later for symptom diagnosis; V1 uses simple species rules.
 - **Handle money?** Not in V1.
 
 **Integration rule:** any service uses the company's **official SDK**, never a third-party wrapper (so when something breaks, you're talking to the real thing, not a middleman). Noted in the plan.
 
-### Phase 4 — The Decisions (framed as product choices)
+### Phase 4: The Decisions (framed as product choices)
 
 Each gives a recommended pick, the why in a sentence, one alternative, and the cost:
 
@@ -288,56 +288,56 @@ Each gives a recommended pick, the why in a sentence, one alternative, and the c
 - **Works without internet? → offline.** Pick: cache the care data on-device. Why: the stress test showed back-room bad signal. Alt: online-only. Cost: free.
 - **How does it get online? → hosting/deployment.** Pick: Expo's build + the app stores. Why: the standard beginner path. Alt: TestFlight-only for friends. Cost: Apple Developer $99/yr at publish.
 
-**Payments risk raised now** (even though V1 has none): *if you ever add payments, apply to the provider EARLY before writing payment code (they reject without telling you why, usually after you've built the flow); keep a backup like a Shopify buy button; and you'll need a Privacy Policy, Terms of Service, and Refund Policy live first — EU users get a 14-day cooling-off period. AI can draft them, you must read them.*
+**Payments risk raised now** (even though V1 has none): *if you ever add payments, apply to the provider EARLY before writing payment code (they reject without telling you why, usually after you've built the flow); keep a backup like a Shopify buy button; and you'll need a Privacy Policy, Terms of Service, and Refund Policy live first, EU users get a 14-day cooling-off period. AI can draft them, you must read them.*
 
-### Phase 5 — The Blueprint
+### Phase 5: The Blueprint
 
 System diagram with beginner labels (data moving in the direction it travels):
 
 ```mermaid
 flowchart LR
     U[You, on your phone] --> APP[Your App]
-    APP --> DB[(Database — where your plants get saved)]
-    APP --> PUSH[Notifications — the calm check-in nudges]
-    APP --> CARE[Care Data — what each species needs]
+    APP --> DB[(Database, where your plants get saved)]
+    APP --> PUSH[Notifications, the calm check-in nudges]
+    APP --> CARE[Care Data, what each species needs]
 ```
 
 **Build it so it stays navigable** (per `KEEPING-CODE-NAVIGABLE.md`, in plain words): *"We'll build the care engine, the reminders, and the shelf as separate self-contained pieces, each in its own folder, so your AI can work on one without poking the others."* A well-organized app is one the AI keeps building cleanly; a messy one is where it starts breaking things.
 
 **Code-ownership principle:** *"Your code lives on GitHub. You own it. Outgrow Expo or want to switch tools? You take your code and walk. Never build somewhere you can't export your code from."* (Walk through `GITHUB-AND-DEPLOYMENT.md` when it's time to set up GitHub.)
 
-### Phase 6 — The Reality Check
+### Phase 6: The Reality Check
 
-- **Complexity score:** **about a 4 out of 10.** A to-do list is a 2, Instagram's a 9. There's a database, push notifications, and a care dataset, but no payments and no real-time multiplayer — very doable for a first build with AI help.
+- **Complexity score:** **about a 4 out of 10.** A to-do list is a 2, Instagram's a 9. There's a database, push notifications, and a care dataset, but no payments and no real-time multiplayer, very doable for a first build with AI help.
 - **Cost estimate:** see the table in the plan below.
 - **Architecture cost warning:** *those are the sticker prices. HOW the app uses them matters just as much. Checking the database every 30 seconds for due reminders could run hundreds a month at scale; scheduling the notification once and letting the phone fire it is basically free. The plan steers around traps like that.*
 - **Timeline:** **V1 core ~2–3 weeks with AI help; V2 (photo ID, light meter, community) another 2–3.**
-- **What to build first:** the smallest genuinely-useful version — add a plant, see its care profile, the soil-check gate. Everything else is the V2 pile.
+- **What to build first:** the smallest genuinely-useful version, add a plant, see its care profile, the soil-check gate. Everything else is the V2 pile.
 - **Learning project or real users?** → real users (the black-thumb friends), so quality, accessibility, and the privacy policy get real attention.
 
 **The framing check (Teresa Torres):**
-- *Solution-first?* It started solution-first ("a reminder app") — and discovery already walked it back to the real problem (overwatering from not knowing). Named and corrected.
+- *Solution-first?* It started solution-first ("a reminder app"), and discovery already walked it back to the real problem (overwatering from not knowing). Named and corrected.
 - *Outcome mismatch?* The soil-check gate directly moves the Phase 1 goal (fewer plants lost to overwatering). No mismatch.
-- *Mostly guesses?* No — the top needs are tagged **seen it**, not hunch/guess.
+- *Mostly guesses?* No, the top needs are tagged **seen it**, not hunch/guess.
 - *A solution dressed as a need?* "Remind me to water" was exactly that; dug under it to the overwatering pain. Handled.
 
-**The riskiest-assumption test:** the single belief that, if wrong, sinks it → *"people will trust an app's soil-check over their own watering habit enough to change behavior."* Cheapest check BEFORE building: post the core idea in r/houseplants and DM ten people who wrote "why is my plant dying" — ask if they'd use a tool that tells them *not* to water yet. If the test takes two weeks to set up it's a project, not a test. Build the real thing only after that bet survives a cheap check.
+**The riskiest-assumption test:** the single belief that, if wrong, sinks it → *"people will trust an app's soil-check over their own watering habit enough to change behavior."* Cheapest check BEFORE building: post the core idea in r/houseplants and DM ten people who wrote "why is my plant dying", ask if they'd use a tool that tells them *not* to water yet. If the test takes two weeks to set up it's a project, not a test. Build the real thing only after that bet survives a cheap check.
 
-### Phase 7 — The Stuff They Don't Know About
+### Phase 7: The Stuff They Don't Know About
 
 Each tagged handle-now / before-launch / later:
-- **Security:** passwords scrambled, no secret keys in the code — they live in a protected `.env` file (environment variables). *(Now.)*
+- **Security:** passwords scrambled, no secret keys in the code, they live in a protected `.env` file (environment variables). *(Now.)*
 - **Privacy & legal:** accounts mean a basic privacy policy. *(Before launch.)*
 - **Accessibility:** readable text sizes; never rely on color alone (a yellow-leaf warning needs words too). *(Now.)*
 - **When it breaks at 3am:** error tracking/monitoring so you find out before users do. *(At launch.)*
-- **Backups:** Supabase does these automatically. *(Now — already covered.)*
+- **Backups:** Supabase does these automatically. *(Now, already covered.)*
 - **Updates & maintenance:** an app is never "done." *(Later, but coming.)*
 
 ---
 
 # The Plan
 
-*(This is the document you hand to your AI coding tool. The more specific it is, the better the AI builds it the first time. Framing for the human: this plan isn't for you, it's the instruction manual for your AI — specificity in, specificity out. Not "a watering screen," but "the user needs to feel sure whether THIS plant needs water right now, and a dead-easy way to log that they watered it." And the plan has checkpoints baked in, so the AI stops at each phase to explain what it built, why, and what's next — so you never get lost.)*
+*(This is the document you hand to your AI coding tool. The more specific it is, the better the AI builds it the first time. Framing for the human: this plan isn't for you, it's the instruction manual for your AI, specificity in, specificity out. Not "a watering screen," but "the user needs to feel sure whether THIS plant needs water right now, and a dead-easy way to log that they watered it." And the plan has checkpoints baked in, so the AI stops at each phase to explain what it built, why, and what's next, so you never get lost.)*
 
 ## 1. The Problem
 
@@ -359,7 +359,7 @@ Houseplant owners with roughly 5–20 plants who care but feel like they have a 
 
 ## 5. User Flows
 
-The three mermaid diagrams above: the **Happy Flow** (add a plant; the daily soil-check loop), the **Rough Day Flow** (bad signal, unknown symptom — degrade gracefully, never block), and the **Edge Cases** (80 plants, a 3-month return, two devices disagreeing, account deletion).
+The three mermaid diagrams above: the **Happy Flow** (add a plant; the daily soil-check loop), the **Rough Day Flow** (bad signal, unknown symptom, degrade gracefully, never block), and the **Edge Cases** (80 plants, a 3-month return, two devices disagreeing, account deletion).
 
 ## 6. Features
 
@@ -384,9 +384,9 @@ The three mermaid diagrams above: the **Happy Flow** (add a plant; the daily soi
 ```mermaid
 flowchart LR
     U[You, on your phone] --> APP[Your App]
-    APP --> DB[(Database — where your plants get saved)]
-    APP --> PUSH[Notifications — the calm check-in nudges]
-    APP --> CARE[Care Data — what each species needs]
+    APP --> DB[(Database, where your plants get saved)]
+    APP --> PUSH[Notifications, the calm check-in nudges]
+    APP --> CARE[Care Data, what each species needs]
 ```
 
 ## 8. Tech Stack
@@ -440,8 +440,8 @@ Working is the floor, not the bar.
 
 ## 11. Integrations
 
-- **Expo Notifications** for push reminders — Expo's official module, not a third-party wrapper.
-- **Supabase** for database + auth — the official Supabase SDK, not a framework's "convenient" abstraction.
+- **Expo Notifications** for push reminders, Expo's official module, not a third-party wrapper.
+- **Supabase** for database + auth, the official Supabase SDK, not a framework's "convenient" abstraction.
 
 The rule: always talk to the real thing, never a middleman. Noted so that when something breaks, the first question is "am I talking to the real SDK?"
 
@@ -449,7 +449,7 @@ The rule: always talk to the real thing, never a middleman. Noted so that when s
 
 Roughly **$0/month** to start. Everything above has a free tier that comfortably covers your first hundreds of users. The first real cost is the Apple Developer account ($99/year) only when you publish to the App Store.
 
-**Architecture cost warning:** don't poll the database on a timer for "due" reminders — schedule each notification once and let the phone fire it. Polling every 30 seconds can quietly cost hundreds a month at scale; the event-driven way is basically free.
+**Architecture cost warning:** don't poll the database on a timer for "due" reminders, schedule each notification once and let the phone fire it. Polling every 30 seconds can quietly cost hundreds a month at scale; the event-driven way is basically free.
 
 ## 13. Timeline
 
@@ -460,11 +460,11 @@ Honest and phased. Build the smallest useful version first; the rest waits.
 
 ## 14. Distribution (start before launch, not after)
 
-Your first 10 users are in **one plant community you already belong to** (a local plant-swap group, r/houseplants, a Discord) — the same place you mined for pain in discovery. The first concrete move: don't drop a launch link. Show up for two weeks answering "why is my plant dying" posts with genuinely good help, then mention you're building a thing for exactly this. That community IS your launch. (If you can't name where the first ten come from, that's the riskiest part of the whole thing, not a feature.)
+Your first 10 users are in **one plant community you already belong to** (a local plant-swap group, r/houseplants, a Discord), the same place you mined for pain in discovery. The first concrete move: don't drop a launch link. Show up for two weeks answering "why is my plant dying" posts with genuinely good help, then mention you're building a thing for exactly this. That community IS your launch. (If you can't name where the first ten come from, that's the riskiest part of the whole thing, not a feature.)
 
 ## 15. Growth Loop
 
-A modest **content loop**: every user gets a public, link-shareable "my plant shelf" page. Plant people love showing off their plants, so some will share it, and a few who see it sign up to track their own. The loop is tied to the aha moment — the shelf looks good *because* the app keeps the plants alive.
+A modest **content loop**: every user gets a public, link-shareable "my plant shelf" page. Plant people love showing off their plants, so some will share it, and a few who see it sign up to track their own. The loop is tied to the aha moment, the shelf looks good *because* the app keeps the plants alive.
 
 ```mermaid
 flowchart LR
@@ -476,7 +476,7 @@ flowchart LR
 ```
 
 - **Enabling feature (on the V1 list):** the shareable shelf page.
-- **The one number to watch:** shares per active user per month (cheap to collect via a `?ref=` link on each shelf). If almost nobody shares, the loop isn't real, and that's fine — your r/houseplants presence is the growth engine instead.
+- **The one number to watch:** shares per active user per month (cheap to collect via a `?ref=` link on each shelf). If almost nobody shares, the loop isn't real, and that's fine, your r/houseplants presence is the growth engine instead.
 
 ## 16. Things to Handle Before Launch
 
@@ -497,7 +497,7 @@ Run these three prompts before you show the app to a single soul:
 ## 18. Working With Your AI Tool
 
 - Keep your project guide (CLAUDE.md) **under 100 lines**; split details into smaller files in the folders they belong to.
-- Set up **debug logging early**, before bugs show up. Ask your AI once: *"Define a simple, consistent debug-logging plan for this app — what to log, the levels (INFO up to ERROR), short category names per feature. Write it to `docs/DEBUG-LOGGING.md` and follow it everywhere."* Then point CLAUDE.md at that file.
+- Set up **debug logging early**, before bugs show up. Ask your AI once: *"Define a simple, consistent debug-logging plan for this app, what to log, the levels (INFO up to ERROR), short category names per feature. Write it to `docs/DEBUG-LOGGING.md` and follow it everywhere."* Then point CLAUDE.md at that file.
 - **Turn off AI-tool plugins** you aren't using; they eat the AI's working memory.
 - Treat **every prompt like a tiny spec.** Not "add reminders." Instead: "Add a daily check-in notification per plant. It says 'Time to check on your [plant].' Tapping it opens that plant's soil-check. No notification if the plant was checked today."
 - Before applying a fix, ask: *"How does this change what my user sees? Will it make the app slower? What does this look like on their worst day?"*
@@ -516,7 +516,7 @@ Run these three prompts before you show the app to a single soul:
 9. Pre-launch (privacy policy, security pass, monitoring)
 10. Deploy to the stores
 
-GitHub and going-live are taught at the right moments, not all at once: *local* when files first appear (Phase 1), *Git/commit/push/GitHub + make an account* after Phase 4 works ("let's make sure you can never lose this"), the *secret keys / `.env`* rule the moment an API key appears, and *production/deploying* at Phase 10 — always tied to the two fears: never lose your work, always get back to a working version.
+GitHub and going-live are taught at the right moments, not all at once: *local* when files first appear (Phase 1), *Git/commit/push/GitHub + make an account* after Phase 4 works ("let's make sure you can never lose this"), the *secret keys / `.env`* rule the moment an API key appears, and *production/deploying* at Phase 10, always tied to the two fears: never lose your work, always get back to a working version.
 
 Each phase ends with a checkpoint where your AI stops, explains what it built in plain words, and waits for you. Here's the one after Phase 4, as a sample of the exact format:
 
@@ -556,7 +556,7 @@ Wait for the user before continuing.
 
 ## The two deliverables
 
-This plan is one of two things vibe-check produces. The markdown above is the precise instruction manual you hand to your AI coding tool. Alongside it, the skill also generates a **visual HTML blueprint** — a warm, friendly web page you open in your browser to actually *see* your app and believe you can build it: the flow diagrams, the architecture, the cost table, and the build phases laid out as a journey you can picture finishing. → **[plant-blueprint.html](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)**
+This plan is one of two things vibe-check produces. The markdown above is the precise instruction manual you hand to your AI coding tool. Alongside it, the skill also generates a **visual HTML blueprint**, a warm, friendly web page you open in your browser to actually *see* your app and believe you can build it: the flow diagrams, the architecture, the cost table, and the build phases laid out as a journey you can picture finishing. → **[plant-blueprint.html](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)**
 
 The markdown is the plan you hand off; the HTML is what makes you believe you can; the checkpoints are what keep you from getting lost along the way.
 
@@ -564,4 +564,4 @@ The markdown is the plan you hand off; the HTML is what makes you believe you ca
 
 *Generated by [vibe-check](https://github.com/TexasBedouin/vibe-check). It turns a beginner's one-line idea into a plan their AI coding tool can actually build, and refuses to skip the part where you figure out if you're building the right thing.*
 
-*Reflects vibe-check v1.7.2.*
+*Reflects vibe-check v1.8.0.*

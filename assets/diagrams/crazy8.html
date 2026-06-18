@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ClearList: Crazy Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="engine.css">
+<style>
+  :root{ --scr-dark:#2b2b2e; --scr-gray:#EEEEEC; --ph-border:#1A1A1B; --ph2:#9CA3AF; }
+  .stage{padding:32px 48px 22px;}
+  .head .crumb{color:var(--blue);}
+  .madeby2{position:absolute;right:48px;top:38px;font-size:14px;color:var(--ink-muted);text-decoration:none;}
+  .madeby2:hover b{text-decoration:underline;} .madeby2 b{color:var(--blue);font-weight:700;}
+
+  .board{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);
+    gap:22px 26px;margin-top:14px;min-height:0;}
+  .card{display:flex;flex-direction:column;gap:9px;min-height:0;}
+  .dir{align-self:flex-start;background:var(--charcoal);color:#fff;font-weight:700;font-size:14px;letter-spacing:.03em;
+    padding:6px 13px;transform:rotate(-.8deg);box-shadow:2px 2px 6px rgba(0,0,0,.16);}
+  .sketch{flex:1;background:#fff;border:2px solid var(--ph-border);position:relative;overflow:hidden;min-height:0;}
+  .bestfor{font-size:14px;color:var(--ink-2);font-weight:500;}
+  .bestfor b{color:var(--charcoal);}
+  .tag{position:absolute;left:10px;bottom:10px;font-size:11px;font-weight:700;padding:4px 8px;letter-spacing:.02em;}
+  .tag.ai{background:#2a2540;color:#c9b8ff;}
+
+  /* 1 camera */
+  .cam{background:var(--scr-dark);display:flex;align-items:center;justify-content:center;}
+  .cam .hint{color:rgba(255,255,255,.8);font-size:14px;font-weight:600;}
+  .br{position:absolute;width:22px;height:22px;border:3px solid rgba(255,255,255,.85);}
+  .br.tl{top:14px;left:14px;border-right:0;border-bottom:0;} .br.tr{top:14px;right:14px;border-left:0;border-bottom:0;}
+  .br.bl{bottom:14px;left:14px;border-right:0;border-top:0;} .br.brr{bottom:14px;right:14px;border-left:0;border-top:0;}
+  .shutter{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;
+    background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 2px var(--blue);}
+
+  /* 2 chat */
+  .chat{background:var(--scr-gray);padding:16px;display:flex;flex-direction:column;gap:9px;}
+  .bub{max-width:80%;padding:8px 11px;font-size:13px;line-height:1.25;border-radius:4px;}
+  .bub.ai{align-self:flex-start;background:var(--purple-light);border-left:3px solid var(--purple);color:var(--charcoal);}
+  .bub.me{align-self:flex-end;background:var(--blue);color:#fff;}
+
+  /* 3 swipe */
+  .swipe{background:var(--scr-gray);display:flex;align-items:center;justify-content:center;}
+  .mini-card{width:60%;background:#fff;border:2px solid var(--ph-border);padding:10px;}
+  .mini-card .ph{height:88px;background:#dededa;display:flex;align-items:center;justify-content:center;color:#9a9a93;font-size:12px;font-weight:600;}
+  .mini-card .t{font-size:13px;font-weight:700;margin-top:8px;color:var(--charcoal);}
+  .mini-card .p{font-size:14px;font-weight:700;color:var(--blue);margin-top:2px;}
+  .chip{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;color:#fff;
+    font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.2);}
+  .chip.l{left:18px;background:#DC2626;} .chip.r{right:18px;background:#059669;}
+
+  /* 4 voice */
+  .voice{background:var(--scr-gray);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px;}
+  .mic{width:60px;height:60px;border-radius:50%;background:var(--blue);position:relative;}
+  .mic:after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 8px rgba(44,100,227,.18);}
+  .wave{display:flex;gap:4px;align-items:flex-end;height:34px;}
+  .wave i{width:5px;background:var(--charcoal);}
+  .transcript{font-size:13px;color:var(--charcoal);font-style:italic;text-align:center;background:#fff;border:1px solid var(--border);padding:7px 10px;}
+
+  /* 5 list */
+  .list{background:#fff;display:flex;flex-direction:column;}
+  .lrow{display:flex;justify-content:space-between;padding:10px 14px;font-size:13px;border-bottom:1px solid var(--border);color:var(--charcoal);}
+  .lrow.head{background:#f4f4f2;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);}
+  .lrow .pr{font-weight:700;color:var(--blue);}
+  .lrow.add{color:var(--blue);font-weight:700;border-bottom:0;}
+
+  /* 6 room scan */
+  .scan{background:#cfcfca;display:flex;align-items:center;justify-content:center;color:#7a7a72;font-size:13px;font-weight:600;}
+  .det{position:absolute;border:2px dashed var(--blue);background:rgba(44,100,227,.08);}
+  .det span{position:absolute;top:-9px;left:4px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;}
+  .d1{top:30%;left:12%;width:34%;height:30%;} .d2{top:22%;left:56%;width:26%;height:24%;} .d3{top:60%;left:40%;width:38%;height:26%;}
+
+  .pickline{text-align:center;font-size:16px;color:var(--ink-2);margin-top:12px;font-weight:500;}
+  .pickline b{color:var(--charcoal);}
+</style>
+</head>
+<body class="canvas-dots">
+<div class="stage">
+  <div class="head">
+    <div>
+      <div class="crumb">Phase 2 · Crazy 8s (we usually show 5 to 6)</div>
+      <div class="title">Six ways ClearList could feel</div>
+      <div class="sub">More rough ideas means more to remix. Don't pick one... grab the bits you like from any card and we fuse them into a single design.</div>
+    </div>
+  </div>
+  <a class="madeby2" href="https://github.com/TexasBedouin/vibe-check" target="_blank" rel="noopener noreferrer">Created using <b>Vibe-Check</b> skill</a>
+
+  <div class="board">
+    <!-- 1 -->
+    <div class="card">
+      <div class="dir">1 · Camera-first</div>
+      <div class="sketch cam">
+        <span class="br tl"></span><span class="br tr"></span><span class="br bl"></span><span class="br brr"></span>
+        <div class="hint">point &amp; snap</div>
+        <div class="tag ai">AI lists them</div>
+        <div class="shutter"></div>
+      </div>
+      <div class="bestfor"><b>Best for:</b> clearing a whole house, fast.</div>
+    </div>
+    <!-- 2 -->
+    <div class="card">
+      <div class="dir">2 · Talk it out</div>
+      <div class="sketch chat">
+        <div class="bub ai">What are you selling?</div>
+        <div class="bub me">A couch, a desk...</div>
+        <div class="bub ai">Here's your couch listing, $250. Look right?</div>
+      </div>
+      <div class="bestfor"><b>Best for:</b> first-timers who want a guide.</div>
+    </div>
+    <!-- 3 -->
+    <div class="card">
+      <div class="dir">3 · Swipe to sort</div>
+      <div class="sketch swipe">
+        <div class="mini-card"><div class="ph">photo</div><div class="t">IKEA Ektorp Sofa</div><div class="p">$250</div></div>
+        <span class="chip l">✕</span><span class="chip r">✓</span>
+      </div>
+      <div class="bestfor"><b>Best for:</b> quick calls on lots of items.</div>
+    </div>
+    <!-- 4 -->
+    <div class="card">
+      <div class="dir">4 · Voice-first</div>
+      <div class="sketch voice">
+        <div class="mic"></div>
+        <div class="wave"><i style="height:10px"></i><i style="height:22px"></i><i style="height:32px"></i><i style="height:18px"></i><i style="height:26px"></i><i style="height:12px"></i><i style="height:20px"></i></div>
+        <div class="transcript">"couch, 250 bucks, good condition"</div>
+      </div>
+      <div class="bestfor"><b>Best for:</b> hands full on moving day.</div>
+    </div>
+    <!-- 5 -->
+    <div class="card">
+      <div class="dir">5 · One big list</div>
+      <div class="sketch list">
+        <div class="lrow head"><span>Item</span><span>Price</span></div>
+        <div class="lrow"><span>IKEA Ektorp Sofa</span><span class="pr">$250</span></div>
+        <div class="lrow"><span>Oak Desk</span><span class="pr">$80</span></div>
+        <div class="lrow"><span>Vitamix Blender</span><span class="pr">$40</span></div>
+        <div class="lrow add">+ add an item</div>
+      </div>
+      <div class="bestfor"><b>Best for:</b> people who want full control, fast.</div>
+    </div>
+    <!-- 6 -->
+    <div class="card">
+      <div class="dir">6 · Room scan</div>
+      <div class="sketch scan">
+        room photo
+        <span class="det d1"><span>sofa</span></span>
+        <span class="det d2"><span>lamp</span></span>
+        <span class="det d3"><span>rug</span></span>
+        <div class="tag ai">AI found 3 items</div>
+      </div>
+      <div class="bestfor"><b>Best for:</b> one photo, many items at once.</div>
+    </div>
+  </div>
+
+  <div class="pickline">Point at the bits you like... any card, any element... and I'll combine them into one simpler design.</div>
+</div>
+</body>
+</html>

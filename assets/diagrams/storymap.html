@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Story Map Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="engine.css">
+<style>
+  .map{flex:1;margin-top:16px;display:grid;column-gap:13px;row-gap:14px;min-height:0;}
+  .corner{display:flex;align-items:flex-end;padding-bottom:8px;}
+  .corner span{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);}
+  .activity{background:linear-gradient(180deg,#cdb287,var(--kraft));border:2px solid var(--kraft-dark);
+    box-shadow:2px 3px 0 var(--kraft-dark);padding:11px 13px;display:flex;flex-direction:column;gap:2px;justify-content:center;min-height:78px;}
+  .activity .step{font-size:12px;font-weight:700;letter-spacing:.1em;color:#6f5a37;}
+  .activity .name{font-size:20px;font-weight:700;line-height:1.08;color:#2b2417;}
+  .lane{display:flex;flex-direction:column;gap:9px;padding-top:4px;}
+  .lane .sub{font-size:15px;color:var(--ink-2);font-weight:500;padding-left:2px;line-height:1.25;}
+  .lane .skel{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--dot-green);}
+  .lane .skel .gd{width:14px;height:14px;border-radius:50%;background:var(--dot-green);flex:0 0 auto;}
+  .cell{display:flex;flex-direction:column;gap:10px;}
+  /* walking-skeleton band: tint the whole V1 lane, no floating text */
+  .v1band{background:rgba(46,139,87,.10);border-top:2px dashed var(--dot-green);border-bottom:2px dashed var(--dot-green);}
+  .aha{display:inline-block;margin-top:8px;background:var(--dot-red);color:#fff;font-size:12px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;}
+  .err{padding:60px;font-size:20px;color:#DC2626;}
+</style>
+</head>
+<body class="canvas-dots">
+<div class="stage">
+  <div class="head">
+    <div>
+      <div class="crumb" id="crumb"></div>
+      <div class="title" id="title"></div>
+      <div class="sub" id="sub"></div>
+    </div>
+    <a class="madeby" href="https://github.com/TexasBedouin/vibe-check" target="_blank" rel="noopener noreferrer">Created using <b>Vibe-Check</b> skill</a>
+  </div>
+
+  <div class="map" id="map"></div>
+</div>
+
+<script>
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+// renderer-computed decoration, never stored in data
+const TILTS = ['tilt-l','tilt-r','tilt-0'];
+const NOTE_COLORS = {y:'y',g:'g',b:'b',o:'o',p:'p',ai:'ai'};
+
+// tape ∈ green | blue | kraft  → class on the .tape element
+function tapeClass(tape){
+  if(tape === 'green') return 'tape green';
+  if(tape === 'kraft') return 'tape kraftt';
+  return 'tape'; // blue is the default tape-blue look
+}
+
+function noteHtml(note, idx){
+  const color = NOTE_COLORS[note.color] || 'y';
+  const cls = ['note', color];
+  if(note.size === 'sm') cls.push('sm');
+  if(note.pin) cls.push('pin');
+  cls.push(TILTS[idx % TILTS.length]); // auto-cycle tilt by index
+  const kicker = note.kicker ? '<span class="k">'+esc(note.kicker)+'</span>' : '';
+  const aha = note.aha ? '<span class="aha">★ the aha moment</span>' : '';
+  return '<div class="'+cls.join(' ')+'">'+kicker+esc(note.text||'')+aha+'</div>';
+}
+
+function render(sm){
+  const activities = sm.activities || [];
+  const releases = sm.releases || [];
+  const cells = sm.cells || {};
+
+  document.getElementById('crumb').textContent = (sm.header && sm.header.crumb) || '';
+  document.getElementById('title').textContent = (sm.header && sm.header.title) || '';
+  document.getElementById('sub').textContent = (sm.header && sm.header.sub) || '';
+
+  const map = document.getElementById('map');
+  // columns: a fixed lane-label column, then one flexible column per activity
+  map.style.gridTemplateColumns = '172px repeat('+activities.length+',1fr)';
+
+  let html = '';
+
+  // ── backbone row: corner + one activity per column ──
+  html += '<div class="corner"><span>the journey ↓</span></div>';
+  activities.forEach(a => {
+    html += '<div class="activity"><span class="step">STEP '+esc(a.step)+'</span>'+
+            '<span class="name">'+esc(a.name)+'</span></div>';
+  });
+
+  // ── one row per release lane ──
+  releases.forEach(rel => {
+    const band = rel.band ? ' v1band' : '';
+
+    // lane label cell
+    html += '<div class="lane">';
+    html += '<span class="'+tapeClass(rel.tape)+'">'+esc(rel.label)+'</span>';
+    if(rel.subnote) html += '<span class="sub">'+esc(rel.subnote)+'</span>';
+    if(rel.skeleton) html += '<span class="skel"><span class="gd"></span>'+esc(rel.skeleton)+'</span>';
+    html += '</div>';
+
+    // one cell per activity column
+    const laneCells = cells[rel.id] || {};
+    activities.forEach(a => {
+      let notes = laneCells[a.step];
+      if(notes == null) notes = laneCells[String(a.step)];
+      let inner = '';
+      if(notes){
+        (Array.isArray(notes) ? notes : [notes]).forEach((note, i) => {
+          inner += noteHtml(note, i);
+        });
+      }
+      html += '<div class="cell'+band+'">'+inner+'</div>';
+    });
+  });
+
+  map.innerHTML = html;
+  document.body.setAttribute('data-rendered','1');
+}
+
+async function main(){
+  const param = new URLSearchParams(location.search).get('data') || 'storymap-example';
+  try{
+    const sm = await fetch('./data-'+param+'.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+    render(sm);
+  }catch(err){
+    document.getElementById('map').innerHTML = '<div class="err">Could not load data-'+esc(param)+'.json: '+esc(err.message)+'</div>';
+    document.body.setAttribute('data-rendered','1');
+  }
+}
+main();
+</script>
+</body>
+</html>

@@ -2,6 +2,20 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.0.0] - 2026-06-18
+
+### Added
+- **The vibe-check diagram engine (the hero boards).** A shared design layer (`engine.css`) plus input-driven renderers that turn a small JSON description into a polished, FigJam-grade board: the Experience Blueprint, the Opportunity Map, the Competitor Matrix, and the Story Map. Same renderer, any idea. Each board is written to the temp dir and opened in the browser (the same delivery as the visual blueprint), and carries a "Created using Vibe-Check skill" footer linked to the repo. See references/DIAGRAM-SYSTEM.md.
+- **The Experience Blueprint as the spine.** A full future-state experience blueprint (scenario, phases, visible and hidden steps, and the layers Touchpoint, Roles, Process, Technology, Policy, Potential Pitfalls, Rationale, Questions, Notes) is now the artifact the whole session fills in. It sketches its skeleton in Phase 2 and fills across the phases like an onboarding progress tracker, then reveals complete in Phase 5. See references/EXPERIENCE-BLUEPRINT.md.
+- **Crazy 3s became Crazy 8.** Phase 2 now diverges into device-framed sketches (a phone frame for a mobile app, a browser frame for a web app) of the one main interaction, with the count scaled by the confidence dial, then converges the user's picks into a single combined direction with visible provenance.
+- **The confidence dial as a soft knobs model.** The early read of who you are talking to now formally calibrates pace, jargon, hand-holding, decision-making, blueprint-fill cadence, and the Crazy 8 count and fidelity. A dial you keep nudging, not a label.
+- **The wide-net discovery reframe.** Step 2 is now "Cast the wide net": one research sweep across Reddit and the reviews of tools people pay for at once (G2, Capterra, Trustpilot, Google Play, the Apple App Store, plus category-specific sources like Amazon, the Chrome Web Store, and Product Hunt), pooling every quote. The core principle: the source does not own the axis, the quote does. Step 3 "Sort the catch" runs five lenses to bucket each quote into Pain or Served, with a source-bias guardrail, and Step 4 scores both axes off the same pooled, tagged corpus. Replaces the split where Reddit owned Pain and review sites owned Served.
+
+### Changed
+- references/HTML-BLUEPRINT.md now treats the Experience Blueprint as the centerpiece of the visual blueprint, with the hero boards drawn by the engine instead of plain mermaid.
+- Rule 8 ("Draw everything") now draws the hero boards with the engine; inline mermaid is a quick-sketch fallback only.
+- The two example sessions and references/MULTI-SIDED.md updated to the wide-net discovery flow.
+
 ## [1.8.0] - 2026-06-14
 
 ### Added

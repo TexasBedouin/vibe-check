@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>The Opportunity Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="engine.css">
+<style>
+  /* Layout: header on top, then a body with the plot on the left and the side panels on the right.
+     The plot is a 2x2 CSS grid of quadrants. Each quadrant holds a tidy flex-wrap of notes.
+     Because every note lives INSIDE its quadrant box and the notes flow with flex-wrap,
+     they can never overlap. Position is the bucket, never raw coordinates. */
+  .body-wrap{flex:1;display:flex;gap:26px;margin-top:18px;min-height:0;}
+  .plot-area{flex:1;display:flex;flex-direction:column;min-width:0;}
+  .plot-row{flex:1;display:flex;min-height:0;}
+
+  .y-axis{writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-weight:700;
+    letter-spacing:.04em;color:var(--charcoal);font-size:17px;padding:0 10px 30px 0;
+    display:flex;align-items:center;justify-content:center;}
+  .y-ends{display:flex;flex-direction:column;justify-content:space-between;font-size:13px;color:var(--ink-muted);
+    font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:4px 8px 30px 0;}
+
+  /* the plot is the 2x2 grid; thick axis lines drawn as the grid's left + bottom borders */
+  .plot{flex:1;display:grid;grid-template-columns:56% 44%;grid-template-rows:52% 48%;
+    border-left:3px solid var(--charcoal);border-bottom:3px solid var(--charcoal);min-height:0;}
+
+  /* one quadrant cell: tinted by tone, holds a wrapping row of notes */
+  .quad{position:relative;padding:34px 16px 16px;min-height:0;overflow:auto;
+    display:flex;flex-wrap:wrap;align-content:flex-start;gap:18px 16px;}
+  .quad.win{background:rgba(46,139,87,.12);}
+  .quad.stakes{background:rgba(246,201,14,.14);}
+  .quad.low{background:rgba(0,0,0,.035);}
+  /* faint dividing lines between quadrants so the four boxes read as a grid */
+  .quad.gap{border-right:1.5px dashed rgba(26,26,27,.18);border-bottom:1.5px dashed rgba(26,26,27,.18);}
+  .quad.stakesq{border-bottom:1.5px dashed rgba(26,26,27,.18);}
+  .quad.niche{border-right:1.5px dashed rgba(26,26,27,.18);}
+
+  .q-lbl{position:absolute;top:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:14px;}
+  .q-lbl.win{left:16px;color:var(--dot-green);}
+  .q-lbl.stakes{right:16px;left:16px;text-align:right;color:#a8830a;}
+  .q-lbl.low{left:16px;color:var(--ink-muted);}
+
+  /* a need note. width is fixed so wrapping is tidy; the score badge sits on the corner. */
+  .onote{position:relative;width:228px;flex:0 0 auto;}
+  .seen{border:2px solid var(--charcoal);}
+  .hunch{border:2px dashed #8a8170;}
+  .score{position:absolute;top:-13px;right:-13px;width:42px;height:42px;border-radius:50%;
+    background:var(--charcoal);color:#fff;font-weight:700;font-size:15px;
+    display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 6px rgba(0,0,0,.25);}
+  .score.top{background:var(--dot-red);width:50px;height:50px;}
+
+  .quad-empty{font-size:14px;color:var(--ink-muted);font-style:italic;opacity:.8;align-self:flex-start;}
+
+  .x-axis{text-align:center;font-weight:700;letter-spacing:.04em;font-size:17px;margin-top:8px;padding-left:60px;}
+  .x-ends{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-muted);font-weight:600;
+    text-transform:uppercase;letter-spacing:.08em;margin-top:4px;padding-left:60px;}
+
+  .side{width:330px;flex:0 0 auto;display:flex;flex-direction:column;gap:16px;}
+  .panel{background:#fff;border:2px solid var(--charcoal);padding:18px 20px;}
+  .panel h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:12px;}
+  .winner{background:var(--dot-green);color:#fff;border:none;}
+  .winner h4{color:rgba(255,255,255,.8);}
+  .winner .big{font-family:var(--serif);font-size:26px;line-height:1.1;margin:6px 0 8px;}
+  .winner .meta{font-size:15px;opacity:.92;}
+  .formula{font-size:15px;color:var(--ink-2);line-height:1.5;}
+  .formula code{background:#f1efe9;padding:2px 6px;font-weight:600;color:var(--charcoal);}
+  .ev-row{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink-2);margin-bottom:9px;}
+  .ev-chip{width:46px;height:24px;flex:0 0 auto;}
+  .ev-chip.seen{border:2px solid var(--charcoal);background:#fff;}
+  .ev-chip.hunch{border:2px dashed #8a8170;background:#fff;}
+
+  .madeby2{position:absolute;right:52px;bottom:14px;font-size:13px;color:var(--ink-muted);text-decoration:none;}
+  .madeby2:hover b{text-decoration:underline;}
+  .madeby2 b{color:var(--blue);font-weight:700;}
+  .err{padding:60px;font-size:20px;color:#DC2626;}
+</style>
+</head>
+<body class="canvas-dots">
+<div class="stage">
+  <div class="head">
+    <div>
+      <div class="crumb" id="crumb"></div>
+      <div class="title" id="title"></div>
+      <div class="sub" id="sub"></div>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+    <div class="plot-area">
+      <div class="plot-row">
+        <div class="y-axis" id="yLabel"></div>
+        <div class="y-ends"><span id="yHigh"></span><span id="yLow"></span></div>
+        <div class="plot" id="plot"></div>
+      </div>
+      <div class="x-axis" id="xLabel"></div>
+      <div class="x-ends"><span id="xLow"></span><span id="xHigh"></span></div>
+    </div>
+
+    <div class="side" id="side"></div>
+  </div>
+
+  <a class="madeby2" href="https://github.com/TexasBedouin/vibe-check" target="_blank" rel="noopener noreferrer">Created using <b>Vibe-Check</b> skill</a>
+</div>
+
+<script>
+// ─── Opportunity Map engine ───
+// Each need is bucketed into one of four quadrants by deterministic thresholds, then laid out
+// in a tidy flex-wrap inside that quadrant. Position is categorical, so overlap is impossible.
+// Tilt, the "top" badge, evidence border style, and tints are all renderer-computed from enums.
+
+const TILTS = ['tilt-l','tilt-r','tilt-0'];
+const PAIN_HIGH = 6;     // pain >= 6 counts as "hurts a lot"
+const SERVED_WELL = 6;   // served >= 6 counts as "handled well today"
+
+// quadrant key -> note color family (from engine.css .note.<x>) used as the sticky tint
+const QUAD_TINT = { gap:'g', stakes:'y', niche:'b', low:'o' };
+// quadrant key -> the grid-cell class that paints the background tone (win/stakes/low)
+const TONE_CLASS = { win:'win', stakes:'stakes', low:'low' };
+
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+// deterministic bucketing, never uses raw x/y coordinates
+function bucketOf(need){
+  const painHigh = Number(need.pain) >= PAIN_HIGH;
+  const servedWell = Number(need.served) >= SERVED_WELL;
+  if(painHigh && !servedWell) return 'gap';
+  if(painHigh && servedWell) return 'stakes';
+  if(!painHigh && !servedWell) return 'niche';
+  return 'low';
+}
+
+function noteHtml(need, isTop, tilt){
+  const tint = QUAD_TINT[need.__quad] || 'y';
+  const ev = need.evidence === 'seen' ? 'seen' : 'hunch';
+  const kicker = need.kicker
+    ? (ev==='seen'?'Seen it':'Hunch') + ' · ' + esc(need.kicker)
+    : (ev==='seen'?'Seen it':'Hunch');
+  return '<div class="onote note sm '+tint+' '+ev+' '+tilt+'">'+
+    '<span class="k">'+kicker+'</span>'+esc(need.label)+
+    '<div class="score'+(isTop?' top':'')+'">'+esc(need.score)+'</div>'+
+    '</div>';
+}
+
+function quadHtml(qKey, qMeta, needs){
+  // needs already filtered to this quadrant; sort by score desc, top gets .score.top
+  const sorted = needs.slice().sort((a,b)=> Number(b.score)-Number(a.score));
+  const toneCls = TONE_CLASS[qMeta && qMeta.tone] || 'low';
+  // a structural class per quadrant cell so we can draw the inner divider lines
+  const cellClass = qKey==='gap' ? 'gap' : qKey==='stakes' ? 'stakesq' : qKey==='niche' ? 'niche' : 'lowq';
+  let inner = '';
+  if(sorted.length === 0){
+    inner = '<div class="quad-empty">No needs landed here.</div>';
+  } else {
+    sorted.forEach((need, i) => {
+      need.__quad = qKey;
+      inner += noteHtml(need, i===0 && (qMeta && qMeta.tone)==='win', TILTS[i % TILTS.length]);
+    });
+  }
+  const lblCls = toneCls; // win | stakes | low for label color
+  const title = (qMeta && qMeta.title) || '';
+  return '<div class="quad '+toneCls+' '+cellClass+'">'+
+    '<div class="q-lbl '+lblCls+'">'+esc(title)+'</div>'+
+    inner+
+    '</div>';
+}
+
+function render(d){
+  const h = d.header || {};
+  document.getElementById('crumb').textContent = h.crumb || '';
+  document.getElementById('title').textContent = h.title || '';
+  document.getElementById('sub').textContent = h.sub || '';
+
+  const ax = d.axes || {};
+  const ay = ax.y || {}, axx = ax.x || {};
+  document.getElementById('yLabel').textContent = ay.label || '';
+  document.getElementById('yHigh').innerHTML = (ay.high || '').replace(/ /g,'&nbsp;');
+  document.getElementById('yLow').innerHTML = (ay.low || '').replace(/ /g,'&nbsp;');
+  document.getElementById('xLabel').textContent = (axx.label || '') + ' →';
+  document.getElementById('xLow').textContent = axx.low || '';
+  document.getElementById('xHigh').textContent = axx.high || '';
+
+  // bucket every need
+  const needs = (d.needs || []).map(n => Object.assign({}, n));
+  const buckets = { gap:[], stakes:[], niche:[], low:[] };
+  needs.forEach(n => { buckets[bucketOf(n)].push(n); });
+
+  // grid order: top-left = gap, top-right = stakes, bottom-left = niche, bottom-right = low
+  const q = d.quadrants || {};
+  const plot = document.getElementById('plot');
+  plot.innerHTML =
+    quadHtml('gap',    q.gap,    buckets.gap) +
+    quadHtml('stakes', q.stakes, buckets.stakes) +
+    quadHtml('niche',  q.niche,  buckets.niche) +
+    quadHtml('low',    q.low,    buckets.low);
+
+  // side panels
+  let side = '';
+  if(d.winner){
+    side += '<div class="panel winner"><h4>★ #1 to build</h4>'+
+      '<div class="big">'+esc(d.winner.label||'')+'</div>'+
+      '<div class="meta">'+esc(d.winner.meta||'')+'</div></div>';
+  }
+  if(d.formula){
+    side += '<div class="panel"><h4>The score</h4>'+
+      '<div class="formula"><code>'+esc(d.formula)+'</code><br><br>'+
+      'High pain + badly served = high score. Already handled well = low, no matter the pain.</div></div>';
+  }
+  if(Array.isArray(d.evidenceLegend) && d.evidenceLegend.length){
+    side += '<div class="panel"><h4>Evidence</h4>'+
+      d.evidenceLegend.map(e => {
+        const t = e.type === 'seen' ? 'seen' : 'hunch';
+        return '<div class="ev-row"><span class="ev-chip '+t+'"></span> '+esc(e.label||'')+'</div>';
+      }).join('') + '</div>';
+  }
+  document.getElementById('side').innerHTML = side;
+
+  document.body.setAttribute('data-rendered','1');
+}
+
+async function main(){
+  const param = new URLSearchParams(location.search).get('data') || 'opportunity-example';
+  try{
+    const d = await fetch('./data-'+param+'.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+    render(d);
+  }catch(err){
+    document.querySelector('.body-wrap').innerHTML =
+      '<div class="err">Could not load data-'+esc(param)+'.json: '+esc(err.message)+'</div>';
+    document.body.setAttribute('data-rendered','1');
+  }
+}
+main();
+</script>
+</body>
+</html>

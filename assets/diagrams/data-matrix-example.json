@@ -1,0 +1,58 @@
+{
+  "header": {
+    "crumb": "Discovery · Step 3.5 · Competitor Matrix",
+    "title": "Where Everyone's Weak",
+    "sub": "A row everyone handles badly is your gap. A row everyone nails is table stakes, you must match it, but it wins you nothing."
+  },
+  "cornerLabel": "The need ↓ / How they do →",
+  "competitors": [
+    { "name": "Facebook Marketplace" },
+    { "name": "Craigslist" },
+    { "name": "OfferUp" },
+    { "name": "A spreadsheet", "sub": "+ texts" },
+    { "name": "Just give it away" }
+  ],
+  "needs": [
+    {
+      "label": "Create an accurate listing fast",
+      "type": "gap",
+      "tag": "◆ your gap",
+      "marks": ["poor", "none", "poor", "none", "none"]
+    },
+    {
+      "label": "Stop buyers from no-showing",
+      "type": "gap",
+      "tag": "◆ your gap",
+      "marks": ["none", "none", "poor", "none", "none"]
+    },
+    {
+      "label": "Skip haggling with strangers",
+      "type": "gap",
+      "tag": "◆ your gap",
+      "marks": ["none", "none", "poor", "na", "well"]
+    },
+    {
+      "label": "Coordinate pickup without endless texts",
+      "type": "gap",
+      "tag": "◆ your gap",
+      "marks": ["poor", "poor", "poor", "none", "none"]
+    },
+    {
+      "label": "Sell a whole house at once",
+      "type": "plain",
+      "marks": ["none", "poor", "none", "well", "well"]
+    },
+    {
+      "label": "Browse listings easily",
+      "type": "stakes",
+      "tag": "table stakes",
+      "marks": ["well", "well", "well", "none", "none"]
+    }
+  ],
+  "legend": [
+    { "mark": "well", "label": "Does it well" },
+    { "mark": "poor", "label": "Does it poorly" },
+    { "mark": "none", "label": "Doesn't do it" }
+  ],
+  "callout": "4 of 6 needs are wide open, that's the moving-sale gap."
+}

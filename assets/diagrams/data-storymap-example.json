@@ -1,0 +1,112 @@
+{
+  "header": {
+    "crumb": "Phase 2 · User Story Map",
+    "title": "ClearList Seller, Story Map",
+    "sub": "Read the journey left to right. Ship top to bottom. The green band alone is a real, working app."
+  },
+  "activities": [
+    { "step": 1, "name": "Snap the items" },
+    { "step": 2, "name": "AI writes the listing" },
+    { "step": 3, "name": "Review & tweak" },
+    { "step": 4, "name": "Publish the page" },
+    { "step": 5, "name": "Share the link" },
+    { "step": 6, "name": "Field the buyers" },
+    { "step": 7, "name": "Coordinate pickup" }
+  ],
+  "releases": [
+    {
+      "id": "v1",
+      "label": "V1 · first sale",
+      "tape": "green",
+      "subnote": "start to finish",
+      "skeleton": "ship just this row",
+      "band": true
+    },
+    {
+      "id": "v2",
+      "label": "V2 · make it shine",
+      "tape": "blue",
+      "subnote": "once V1 works"
+    },
+    {
+      "id": "later",
+      "label": "Later · someday",
+      "tape": "kraft"
+    }
+  ],
+  "cells": {
+    "v1": {
+      "1": [
+        { "kicker": "Do", "text": "Take or upload photos (up to 5)", "color": "g", "pin": true },
+        { "kicker": "Do", "text": "Try it before signing up", "color": "g" }
+      ],
+      "2": [
+        { "kicker": "AI", "text": "Fills title, price, size & condition", "color": "ai", "pin": true },
+        { "kicker": "AI", "text": "Your listing, in ~15 seconds", "color": "ai", "aha": true }
+      ],
+      "3": [
+        { "kicker": "Do", "text": "Edit any field by hand", "color": "g", "pin": true },
+        { "kicker": "Do", "text": "Mark an item FREE", "color": "g" },
+        { "kicker": "Do", "text": "Save as a draft", "color": "g" }
+      ],
+      "4": [
+        { "kicker": "Do", "text": "Add your city", "color": "g", "pin": true },
+        { "kicker": "Do", "text": "Write payment instructions", "color": "g" },
+        { "kicker": "Do", "text": "Get a shareable link", "color": "g" }
+      ],
+      "5": [
+        { "kicker": "Do", "text": "Copy the link", "color": "g", "pin": true },
+        { "kicker": "See", "text": "Public sale page goes live", "color": "g" }
+      ],
+      "6": [
+        { "kicker": "Buyer", "text": "Reserves with an email code", "color": "g", "pin": true },
+        { "kicker": "See", "text": "Messages land in your inbox", "color": "g" }
+      ],
+      "7": [
+        { "kicker": "Do", "text": "Share address, you confirm first", "color": "g", "pin": true },
+        { "kicker": "Do", "text": "Sort out pickup in chat", "color": "g" }
+      ]
+    },
+    "v2": {
+      "1": [
+        { "kicker": "Do", "text": "Add a voice note", "color": "b", "size": "sm", "pin": true },
+        { "kicker": "Auto", "text": "Compress photos", "color": "b", "size": "sm" }
+      ],
+      "2": [
+        { "kicker": "AI", "text": "Confidence badges (green / amber / red)", "color": "ai", "size": "sm", "pin": true },
+        { "kicker": "AI", "text": "Why this price", "color": "ai", "size": "sm" }
+      ],
+      "3": [
+        { "kicker": "Do", "text": "Available to Sold", "color": "b", "size": "sm", "pin": true },
+        { "kicker": "Do", "text": "Delete with a safety check", "color": "b", "size": "sm" }
+      ],
+      "4": [
+        { "kicker": "Paid", "text": "Custom URL", "color": "o", "size": "sm", "pin": true },
+        { "kicker": "Auto", "text": "Pretty link previews", "color": "o", "size": "sm" }
+      ],
+      "5": [
+        { "kicker": "Auto", "text": "Auto social card", "color": "o", "size": "sm", "pin": true },
+        { "kicker": "Do", "text": "One-tap share buttons", "color": "o", "size": "sm" }
+      ],
+      "6": [
+        { "kicker": "Rule", "text": "Queue, max 3 waiting", "color": "p", "size": "sm", "pin": true },
+        { "kicker": "Rule", "text": "48-hour hold timer", "color": "p", "size": "sm" },
+        { "kicker": "Push", "text": "New-buyer alerts", "color": "p", "size": "sm" }
+      ],
+      "7": [
+        { "kicker": "Buyer", "text": "Pick a pickup time slot", "color": "b", "size": "sm", "pin": true },
+        { "kicker": "Rule", "text": "72h hold once scheduled", "color": "b", "size": "sm" },
+        { "kicker": "Buyer", "text": "Reschedule", "color": "b", "size": "sm" }
+      ]
+    },
+    "later": {
+      "1": [ { "kicker": "Idea", "text": "Bulk multi-item upload", "color": "y", "size": "sm" } ],
+      "2": [ { "kicker": "Idea", "text": "Re-generate / steer the AI", "color": "ai", "size": "sm" } ],
+      "3": [ { "kicker": "Idea", "text": "Dashboard stats", "color": "y", "size": "sm" } ],
+      "4": [ { "kicker": "Idea", "text": "Re-publish expired page", "color": "y", "size": "sm" } ],
+      "5": [ { "kicker": "Idea", "text": "Social carousel designer", "color": "y", "size": "sm" } ],
+      "6": [ { "kicker": "Idea", "text": "Saved quick replies", "color": "y", "size": "sm" } ],
+      "7": [ { "kicker": "Idea", "text": "Sync Google Calendar", "color": "y", "size": "sm" } ]
+    }
+  }
+}

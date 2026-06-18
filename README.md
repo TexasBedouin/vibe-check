@@ -37,7 +37,7 @@ When someone who's never coded before says "I want to build an app that does X,"
 
 ### With Claude Code
 
-The easiest way — installs via the open [skills CLI](https://github.com/vercel-labs/skills), and works across agents:
+The easiest way, installs via the open [skills CLI](https://github.com/vercel-labs/skills), and works across agents:
 
 ```bash
 npx skills add TexasBedouin/vibe-check
@@ -80,14 +80,14 @@ This plan is designed to be handed directly to your AI coding tool to start buil
 
 ## Example output
 
-Wondering what a session actually looks like? Two complete examples in [examples/](examples/) — each walks the *entire* skill (discovery, ODI opportunity scoring, the five-lens gut-check, growth loops, the lot) and produces both deliverables: the markdown plan **and** a visual HTML blueprint.
+Wondering what a session actually looks like? Two complete examples in [examples/](examples/), each walks the *entire* skill (discovery, ODI opportunity scoring, the five-lens gut-check, growth loops, the lot) and produces both deliverables: the markdown plan **and** a visual HTML blueprint.
 
-- **[A full ClearList session](examples/clearlist-session.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/clearlist-blueprint.html)) — the complete back-and-forth from a one-line idea to the finished plan, including the Reddit reality-check. This is what running the skill *feels* like — and **ClearList is a real, live product that was built with vibe-check** ([clearlist.me](https://clearlist.me)).
-- **[Idea → plan: a plant-care app](examples/plant-watering.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)) — one sentence in ("an app that reminds me to water my plants"), a full buildable plan out.
+- **[A full ClearList session](examples/clearlist-session.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/clearlist-blueprint.html)): the complete back-and-forth from a one-line idea to the finished plan, including the Reddit reality-check. This is what running the skill *feels* like, and **ClearList is a real, live product that was built with vibe-check** ([clearlist.me](https://clearlist.me)).
+- **[Idea → plan: a plant-care app](examples/plant-watering.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)): one sentence in ("an app that reminds me to water my plants"), a full buildable plan out.
 
 ## Version
 
-Current version: **1.8.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **2.0.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, run `git pull` inside `.claude/skills/vibe-check`. Versioning is semantic (MAJOR.MINOR.PATCH).
 

@@ -1,0 +1,34 @@
+{
+  "state": "future",
+  "offering": "Vinti",
+  "scenario": "A user styles an outfit in the virtual dressing room",
+  "explainer": {
+    "title": "Same engine, a completely different idea.",
+    "body": "Nothing here is hard-coded for ClearList. We dropped in a new scenario and the board redrew itself, same renderer, different words. This one is Vinti: a virtual dressing room where you build a closet, try looks on your own avatar, and let an AI stylist suggest outfits... long before any swapping or marketplace exists.",
+    "read": "Read left → right for the journey. Read top → bottom to see everything standing behind each step."
+  },
+  "phases": [
+    { "name": "Build your closet", "from": 1, "to": 2 },
+    { "name": "Style it", "from": 3, "to": 5 },
+    { "name": "Keep it", "from": 6, "to": 6 }
+  ],
+  "steps": [
+    { "n": 1, "name": "Add a clothing item", "def": "Snaps or imports a piece they own" },
+    { "n": 2, "name": "Build your closet", "def": "Watches the closet fill up" },
+    { "n": 3, "name": "Create an outfit", "def": "Combines pieces into a look" },
+    { "n": 4, "name": "AI styles the look", "def": "Stylist suggests combinations", "hidden": true },
+    { "n": 5, "name": "Try it on", "def": "Sees the look on their avatar" },
+    { "n": 6, "name": "Save & share", "def": "Keeps the look, shows a friend" }
+  ],
+  "layers": {
+    "touchpoint": { "1": "Camera / photo upload", "2": "Closet grid", "3": "Outfit builder canvas", "5": "Avatar try-on + suggestion cards", "6": "Saved looks · share sheet" },
+    "roles": { "1": "User, solo", "6": "User → a friend" },
+    "process": { "2": "Tag & categorize items", "4": "Generate styling options", "6": "Save to profile" },
+    "technology": { "1": "Image upload · background removal", "2": "Item database", "3": "Outfit composer", "4": "AI stylist model", "5": "Avatar renderer", "6": "Cloud storage" },
+    "policy": { "1": "Your photos stay private", "4": "AI suggests, never auto-buys", "6": "You own your closet data" },
+    "pitfall": { "1": "Cut-out looks bad → low trust", "2": "Empty closet feels pointless", "3": "Too many options = paralysis", "4": "Suggestions feel generic", "5": "Avatar doesn't look like them", "6": "Nothing to do after one look" },
+    "rationale": { "1": "Low-effort add = a full closet fast", "2": "Solo value first, swapping later", "4": "The AI stylist is the aha moment", "5": "Seeing it on you beats a flat photo", "6": "Saved looks bring them back" },
+    "question": { "2": "How many items before it feels useful?", "4": "Will suggestions feel personal enough?", "6": "What pulls them back next week?" },
+    "note": { "1": "Users start with favorite pieces", "4": "Single-player until enough closets exist" }
+  }
+}

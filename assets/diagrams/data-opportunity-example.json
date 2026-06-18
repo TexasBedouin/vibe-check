@@ -1,0 +1,38 @@
+{
+  "header": {
+    "crumb": "Discovery · Step 4 · Opportunity Scoring",
+    "title": "The Opportunity Map",
+    "sub": "Every need a mover voiced, placed by how much it hurts and how well today's tools handle it. The green corner is where you win."
+  },
+  "axes": {
+    "y": { "label": "How much it hurts", "high": "a lot", "low": "a little" },
+    "x": { "label": "How well today's tools already handle it", "low": "badly", "high": "well" }
+  },
+  "quadrants": {
+    "gap":    { "title": "◆ The gap, build here", "tone": "win" },
+    "stakes": { "title": "Table stakes, just match it", "tone": "stakes" },
+    "niche":  { "title": "Niche, maybe later", "tone": "low" },
+    "low":    { "title": "Low priority, leave it", "tone": "low" }
+  },
+  "needs": [
+    { "id": "listing", "label": "Create an accurate listing in seconds", "kicker": "the differentiator", "pain": 9, "served": 3, "score": 15, "evidence": "seen" },
+    { "id": "noshow", "label": "Stop buyers from no-showing", "pain": 8, "served": 2, "score": 14, "evidence": "seen" },
+    { "id": "haggle", "label": "Skip haggling with strangers", "pain": 7, "served": 3, "score": 11, "evidence": "seen" },
+    { "id": "pickup", "label": "Coordinate pickup without endless texts", "pain": 7, "served": 4, "score": 10, "evidence": "seen" },
+    { "id": "price", "label": "Feel sure the price is fair", "kicker": "still guessing", "pain": 5, "served": 3, "score": 7, "evidence": "hunch" },
+    { "id": "truck", "label": "Know if it needs a truck to haul", "pain": 4, "served": 2, "score": 6, "evidence": "hunch" },
+    { "id": "share", "label": "Share the whole sale in one link", "pain": 8, "served": 7, "score": 9, "evidence": "seen" },
+    { "id": "safety", "label": "Avoid sketchy strangers at the door", "pain": 7, "served": 6, "score": 8, "evidence": "hunch" },
+    { "id": "browse", "label": "Browse listings easily", "kicker": "everyone does this fine", "pain": 4, "served": 8, "score": 4, "evidence": "hunch" },
+    { "id": "photos", "label": "Upload photos from a phone", "pain": 3, "served": 7, "score": 3, "evidence": "seen" }
+  ],
+  "winner": {
+    "label": "Create an accurate listing in seconds",
+    "meta": "Opportunity 15 · hurts a lot (9), handled badly (3). Nail this and you beat the market on the thing that matters most."
+  },
+  "formula": "Opportunity = Pain + max(0, Pain - Served)",
+  "evidenceLegend": [
+    { "type": "seen", "label": "Seen it, real quotes back it up" },
+    { "type": "hunch", "label": "Hunch, plausible but not yet confirmed" }
+  ]
+}

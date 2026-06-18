@@ -1,0 +1,35 @@
+{
+  "state": "future",
+  "offering": "Skill Concierge (working name)",
+  "scenario": "The right skill, the moment you need it",
+  "explainer": {
+    "title": "Here's your whole idea on one page.",
+    "body": "We mapped one moment: the concierge handing you the right skill while you're brainstorming ads. Across the top is the journey, start to finish. Down the side is everything that has to exist for it to work, what you tap, what runs behind the scenes, the rules you set, where it could break, and why. The grey steps are the behind-the-scenes parts you never actually see.",
+    "read": "Read left → right for the journey. Read top → bottom to see everything standing behind each step."
+  },
+  "phases": [
+    { "name": "Get set up", "from": 1, "to": 2 },
+    { "name": "The right nudge", "from": 3, "to": 5 },
+    { "name": "Get better", "from": 6, "to": 7 }
+  ],
+  "steps": [
+    { "n": 1, "name": "Connect your skills", "def": "Imports the skills you already installed" },
+    { "n": 2, "name": "Learn your work", "def": "Quietly notices what you tend to do", "hidden": true },
+    { "n": 3, "name": "You hit a moment", "def": "You start a task, like brainstorming ads" },
+    { "n": 4, "name": "Find the right skill", "def": "Matches the moment to a skill that helps", "hidden": true },
+    { "n": 5, "name": "The tap on the shoulder", "def": "Surfaces one skill, right in the chat" },
+    { "n": 6, "name": "You use it", "def": "One tap and the skill is on" },
+    { "n": 7, "name": "It gets smarter", "def": "Learns from your yes or no", "hidden": true }
+  ],
+  "layers": {
+    "touchpoint": { "1": "Your skills, all in one list", "3": "Whatever you're working in (a Claude chat)", "5": "A quiet suggestion card in the chat", "6": "One-tap turn it on" },
+    "roles": { "1": "You, solo", "5": "You, gently interrupted" },
+    "process": { "1": "Scan & catalog installed skills", "2": "Watch patterns in what you do", "4": "Rank by fit + popularity + your past yes/no", "7": "Update your profile from feedback" },
+    "technology": { "1": "Reads your installed-skills list", "2": "On-device activity tracker", "4": "Matching + ranking engine · skill directory", "5": "In-chat suggestion card", "7": "Your taste profile (learns over time)" },
+    "policy": { "2": "Your activity stays private, on your machine", "4": "Skip dead or unmaintained skills", "5": "One skill at a time · never twice in a row", "6": "Always one tap to dismiss or mute" },
+    "pitfall": { "2": "Feels creepy if it watches too closely", "4": "Suggests the wrong skill → you lose trust", "5": "Nudges too often → the annoying paperclip", "7": "Learns the wrong lesson from one bad day" },
+    "rationale": { "1": "Start from what you already have, not a blank slate", "4": "Simple ranking first; your feedback makes it smart", "5": "One quiet card respects your focus", "7": "Your yes/no is the best signal there is" },
+    "question": { "2": "How much watching is helpful vs. creepy?", "4": "How do we rank tens or hundreds of skills fairly?", "5": "When is the right moment to speak up?", "7": "How fast should it adapt to your feedback?" },
+    "note": { "1": "Most people forget half of what they installed", "3": "Ad brainstorming is a perfect trigger moment", "4": "Lean on install counts, ratings, freshness" }
+  }
+}

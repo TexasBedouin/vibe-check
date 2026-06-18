@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Experience Blueprint Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="engine.css">
+<style>
+  :root{
+    --t-phase:#F2EA52; --t-step:#FFFFFF; --t-hidden:#16161a; --t-touch:#1CA3DE;
+    --t-roles:#5BB12F; --t-process:#C2C2C2; --t-tech:#8A8A8A; --t-policy:#FBB13C;
+    --t-critical:#F4145B; --t-opp:#F2EA52; --t-metric:#C9A6F2;
+    --t-pitfall:#F4145B; --t-rationale:#C9A6F2; --t-question:#A833C2; --t-notes:#A6E7FB;
+  }
+  html,body{height:auto!important;min-height:1320px!important;overflow:visible!important;background:#fff;}
+  .stage{height:auto;min-height:1320px;padding:38px 44px;flex-direction:row;gap:26px;}
+  .legend{width:312px;flex:0 0 auto;background:#F4F4F2;border:1px solid var(--border);padding:20px 18px;align-self:flex-start;}
+  .legend h3{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--charcoal);font-weight:700;margin-bottom:6px;}
+  .legend .lh-sub{font-size:12.5px;color:var(--ink-muted);margin-bottom:14px;line-height:1.3;}
+  .lrow{display:flex;align-items:flex-start;gap:11px;margin-bottom:10px;}
+  .sw{width:34px;height:22px;flex:0 0 auto;border-radius:2px;margin-top:1px;}
+  .sw.bord{border:1.5px solid var(--charcoal);}
+  .lrow .lab{font-size:13.5px;color:var(--charcoal);font-weight:700;line-height:1.15;}
+  .lrow .des{font-size:12px;color:var(--ink-muted);line-height:1.2;display:block;margin-top:1px;font-weight:500;}
+  .legend .pti{margin-top:13px;padding-top:12px;border-top:1px solid var(--border);}
+  .legend .pti .t{font-size:12px;font-weight:700;color:var(--charcoal);margin-bottom:6px;}
+  .pti-bar{background:var(--t-phase);color:#4a4400;font-size:11px;font-weight:600;padding:6px 9px;border-radius:2px;line-height:1.2;}
+  .main{flex:1;min-width:0;display:flex;flex-direction:column;}
+  .crumb2{font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;}
+  .offering{font-size:14px;color:var(--ink-muted);font-weight:600;margin-bottom:4px;}
+  .offering b{color:var(--charcoal);}
+  .scn-title{font-family:var(--serif);font-size:38px;line-height:1.05;color:var(--charcoal);}
+  .explainer{margin-top:14px;background:#EEF4FF;border-left:4px solid var(--blue);padding:14px 18px;}
+  .explainer .eh{font-weight:700;font-size:14px;color:var(--charcoal);margin-bottom:5px;}
+  .explainer p{font-size:14px;color:var(--ink-2);line-height:1.45;max-width:1180px;}
+  .explainer .read{margin-top:8px;font-size:13px;color:var(--blue);font-weight:600;}
+  .bp{display:grid;column-gap:7px;margin-top:18px;}
+  .ph-l{display:flex;align-items:center;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-muted);}
+  .phase{background:var(--t-phase);color:#4a4400;font-weight:700;font-size:13px;padding:7px 12px;border-radius:2px;display:flex;align-items:center;margin-bottom:8px;}
+  .phase .ph-sub{font-weight:500;opacity:.7;margin-left:7px;font-size:11.5px;}
+  .lane-l{display:flex;flex-direction:column;justify-content:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-2);padding:7px 7px 7px 0;}
+  .lane-l .lhint{display:block;font-size:10.5px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink-muted);margin-top:2px;line-height:1.15;}
+  .cell{padding:6px 4px;display:flex;flex-direction:column;gap:5px;min-height:72px;border-top:1px solid #efece6;}
+  .lane-l.bnd,.cell.bnd{background:rgba(26,26,27,.04);}
+  .stepcell{min-height:94px;border-top:none;}
+  .c{padding:7px 9px;border-radius:2px;font-size:12.5px;line-height:1.2;font-weight:500;box-shadow:1px 2px 4px rgba(0,0,0,.10);}
+  .c.step{background:var(--t-step);border:1.5px solid var(--charcoal);box-shadow:none;}
+  .c.step .snum{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--charcoal);color:#fff;font-size:11px;font-weight:700;margin-right:5px;}
+  .c.step .sname{font-weight:700;font-size:13.5px;}
+  .c.step .sdef{display:block;margin-top:4px;color:var(--ink-2);font-size:11.5px;line-height:1.18;}
+  .c.step.hidden{background:var(--t-hidden);border-color:var(--t-hidden);}
+  .c.step.hidden .sname{color:#fff;} .c.step.hidden .sdef{color:#c7c7c7;}
+  .c.step.hidden .snum{background:#fff;color:#16161a;}
+  .c.step.hidden .htag{display:block;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;margin-bottom:3px;}
+  .c.touch{background:var(--t-touch);color:#fff;} .c.roles{background:var(--t-roles);color:#fff;}
+  .c.process{background:var(--t-process);color:#2a2a2a;} .c.tech{background:var(--t-tech);color:#fff;}
+  .c.policy{background:var(--t-policy);color:#3a2a05;} .c.critical{background:var(--t-critical);color:#fff;}
+  .c.opp{background:var(--t-opp);color:#4a4400;} .c.metric{background:var(--t-metric);color:#3a2057;}
+  .c.pitfall{background:var(--t-pitfall);color:#fff;} .c.rationale{background:var(--t-rationale);color:#3a2057;}
+  .c.question{background:var(--t-question);color:#fff;} .c.notes{background:var(--t-notes);color:#0c3a4a;}
+  .madeby2{position:absolute;right:44px;bottom:14px;font-size:13px;color:var(--ink-muted);text-decoration:none;}
+  .madeby2:hover b{text-decoration:underline;}
+  .madeby2 b{color:var(--blue);font-weight:700;}
+  .err{padding:60px;font-size:20px;color:#DC2626;}
+</style>
+</head>
+<body>
+<div class="stage">
+  <aside class="legend" id="legend"></aside>
+  <div class="main">
+    <div class="crumb2" id="crumb"></div>
+    <div class="offering" id="offering"></div>
+    <div class="scn-title" id="scn"></div>
+    <div id="explainer"></div>
+    <div class="bp" id="bp"></div>
+  </div>
+  <a class="madeby2" href="https://github.com/TexasBedouin/vibe-check" target="_blank" rel="noopener noreferrer">Created using <b>Vibe-Check</b> skill</a>
+</div>
+
+<script>
+// ─── Engine config: the layer taxonomy (per the Practical Experience Blueprinting guide) ───
+const COMMON = [
+  {id:'touchpoint',label:'Touchpoint',hint:'what they touch',desc:'what they actually tap, read, or use',cls:'touch'},
+  {id:'roles',label:'Roles',hint:"who's involved",desc:"who's involved at this step",cls:'roles'},
+  {id:'process',label:'Process',hint:'work behind the step',desc:'behind-the-scenes work that makes it happen',cls:'process'},
+  {id:'technology',label:'Technology',hint:'tools doing the work',desc:'the tools and systems doing the work',cls:'tech'},
+  {id:'policy',label:'Policy',hint:'rules you set',desc:"a rule you're choosing to set",cls:'policy'},
+];
+const CURRENT = [
+  {id:'critical',label:'Critical Moments',hint:'what can go wrong',desc:'where the experience breaks today',cls:'critical'},
+  {id:'opportunity',label:'Opportunities',hint:'ideas to improve',desc:'ideas or ah-ha fixes for this step',cls:'opp'},
+  {id:'metric',label:'Metrics',hint:'data for this step',desc:'data or analytics about this step',cls:'metric'},
+];
+const FUTURE = [
+  {id:'pitfall',label:'Potential Pitfalls',hint:'what could break',desc:'what could go wrong here',cls:'pitfall'},
+  {id:'rationale',label:'Rationale',hint:'why this way',desc:'why you designed it this way',cls:'rationale'},
+];
+const TAIL = [
+  {id:'question',label:'Questions',hint:'still to figure out',desc:'what you still need to figure out',cls:'question'},
+  {id:'note',label:'Notes',hint:'worth remembering',desc:'anything else worth remembering',cls:'notes'},
+];
+const SWATCH = {phase:'var(--t-phase)',step:'var(--t-step)',hidden:'var(--t-hidden)',touch:'var(--t-touch)',
+  roles:'var(--t-roles)',process:'var(--t-process)',tech:'var(--t-tech)',policy:'var(--t-policy)',
+  critical:'var(--t-critical)',opp:'var(--t-opp)',metric:'var(--t-metric)',pitfall:'var(--t-pitfall)',
+  rationale:'var(--t-rationale)',question:'var(--t-question)',notes:'var(--t-notes)'};
+
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function layersFor(state){ return [...COMMON, ...(state==='current'?CURRENT:FUTURE), ...TAIL]; }
+
+function render(bp){
+  const state = bp.state==='current' ? 'current' : 'future';
+  const layers = layersFor(state);
+  const steps = bp.steps || [];
+  const n = steps.length;
+
+  document.getElementById('crumb').textContent = 'Experience Blueprint · ' + (state==='current'?'Current State':'Future State');
+  document.getElementById('offering').innerHTML = 'Offering: <b>'+esc(bp.offering||'')+'</b>';
+  document.getElementById('scn').textContent = 'Scenario: ' + (bp.scenario||'');
+
+  // explainer
+  if(bp.explainer){
+    const e = bp.explainer;
+    document.getElementById('explainer').innerHTML =
+      '<div class="explainer"><div class="eh">'+esc(e.title||'')+'</div><p>'+esc(e.body||'')+'</p>'+
+      (e.read?'<div class="read">'+esc(e.read)+'</div>':'')+'</div>';
+  }
+
+  // legend
+  const head = [
+    {cls:'phase',label:'Phase',desc:'a chapter of the journey'},
+    {cls:'step',label:'Step · visible',desc:'something the user sees or does',bord:true},
+    {cls:'hidden',label:'Step · hidden',desc:'happens behind the scenes; they never see it'},
+  ];
+  const legendItems = [...head, ...layers.map(L=>({cls:L.cls,label:L.label,desc:L.desc}))];
+  document.getElementById('legend').innerHTML =
+    '<h3>Legend</h3><div class="lh-sub">Every card is one of these. The color tells you what kind it is.</div>' +
+    legendItems.map(it =>
+      '<div class="lrow"><span class="sw'+(it.bord?' bord':'')+'" style="background:'+SWATCH[it.cls]+'"></span>'+
+      '<span><span class="lab">'+esc(it.label)+'</span><span class="des">'+esc(it.desc)+'</span></span></div>'
+    ).join('') +
+    '<div class="pti"><div class="t">Phase timeline indicator</div><div class="pti-bar">The yellow bars on top group the steps into chapters.</div></div>';
+
+  // grid
+  const bpEl = document.getElementById('bp');
+  bpEl.style.gridTemplateColumns = '160px repeat('+n+',1fr)';
+
+  let html = '';
+  // phases row
+  html += '<div class="ph-l">Phases</div>';
+  (bp.phases||[]).forEach(p=>{
+    const sub = p.to>p.from ? (p.from+'–'+p.to) : (''+p.from);
+    html += '<div style="grid-column:'+(p.from+1)+' / '+(p.to+2)+'"><div class="phase">'+esc(p.name)+'<span class="ph-sub">'+sub+'</span></div></div>';
+  });
+  // steps row
+  html += '<div class="lane-l">Steps<span class="lhint">the journey, broken up</span></div>';
+  steps.forEach(s=>{
+    html += '<div class="cell stepcell"><div class="c step'+(s.hidden?' hidden':'')+'">'+
+      (s.hidden?'<span class="htag">Backstage step</span>':'')+
+      '<span class="snum">'+esc(s.n)+'</span><span class="sname">'+esc(s.name)+'</span>'+
+      '<span class="sdef">'+esc(s.def||'')+'</span></div></div>';
+  });
+  // layer rows
+  layers.forEach((L,idx)=>{
+    const band = idx%2===1;
+    html += '<div class="lane-l'+(band?' bnd':'')+'">'+esc(L.label)+'<span class="lhint">'+esc(L.hint)+'</span></div>';
+    const data = (bp.layers&&bp.layers[L.id]) || {};
+    steps.forEach(s=>{
+      let v = data[s.n] != null ? data[s.n] : data[String(s.n)];
+      let cards = '';
+      if(v){ (Array.isArray(v)?v:[v]).forEach(t=>{ cards += '<div class="c '+L.cls+'">'+esc(t)+'</div>'; }); }
+      html += '<div class="cell'+(band?' bnd':'')+'">'+cards+'</div>';
+    });
+  });
+  bpEl.innerHTML = html;
+  document.body.setAttribute('data-rendered','1');
+}
+
+async function main(){
+  const param = new URLSearchParams(location.search).get('data') || 'clearlist';
+  try{
+    const bp = await fetch('./data-'+param+'.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+    render(bp);
+  }catch(err){
+    document.querySelector('.main').innerHTML = '<div class="err">Could not load data-'+esc(param)+'.json: '+esc(err.message)+'</div>';
+    document.body.setAttribute('data-rendered','1');
+  }
+}
+main();
+</script>
+</body>
+</html>

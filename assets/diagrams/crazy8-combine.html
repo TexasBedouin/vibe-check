@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ClearList: The Combine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="engine.css">
+<style>
+  :root{ --scr-dark:#2b2b2e; --scr-gray:#EEEEEC; --ph-border:#1A1A1B; }
+  .stage{padding:34px 52px 24px;}
+  .head .crumb{color:var(--blue);}
+  .madeby2{position:absolute;right:52px;top:40px;font-size:14px;color:var(--ink-muted);text-decoration:none;}
+  .madeby2:hover b{text-decoration:underline;} .madeby2 b{color:var(--blue);font-weight:700;}
+
+  .flow{flex:1;display:flex;align-items:center;justify-content:center;gap:36px;margin-top:10px;}
+  .unit{display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .step-cap{font-size:15px;color:var(--ink-2);font-weight:500;text-align:center;max-width:340px;line-height:1.35;}
+  .step-cap b{color:var(--charcoal);}
+  .step-cap .src{color:var(--blue);font-weight:700;}
+  .arrow{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink-muted);}
+  .arrow .a{font-size:40px;line-height:1;color:var(--charcoal);}
+  .arrow .l{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;}
+
+  .phone{width:340px;height:600px;background:#fff;border:2px solid var(--ph-border);border-radius:30px;overflow:hidden;
+    display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(0,0,0,.12);}
+  .appbar{height:50px;flex:0 0 auto;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;
+    padding:0 16px;font-weight:700;font-size:15px;color:var(--charcoal);}
+  .appbar .count{font-weight:600;font-size:13px;color:var(--ink-muted);}
+  .scr{flex:1;display:flex;flex-direction:column;min-height:0;}
+
+  /* capture screen */
+  .cam{flex:1;background:var(--scr-dark);position:relative;display:flex;align-items:center;justify-content:center;}
+  .cam .hint{color:rgba(255,255,255,.82);font-size:14px;font-weight:600;}
+  .br{position:absolute;width:24px;height:24px;border:3px solid rgba(255,255,255,.85);}
+  .br.tl{top:16px;left:16px;border-right:0;border-bottom:0;} .br.tr{top:16px;right:16px;border-left:0;border-bottom:0;}
+  .br.bl{bottom:16px;left:16px;border-right:0;border-top:0;} .br.brr{bottom:16px;right:16px;border-left:0;border-top:0;}
+  .thumbs{display:flex;gap:6px;padding:10px 14px;background:#1f1f22;align-items:center;}
+  .thumb{width:36px;height:36px;background:#55555a;border:1px solid #6a6a70;}
+  .thumb.more{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;background:#3a3a3f;}
+  .capbar{background:#1f1f22;padding:10px 0 20px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .toast{color:#c9b8ff;background:#2a2540;font-size:12px;font-weight:600;padding:5px 11px;}
+  .controls{display:flex;align-items:center;justify-content:center;gap:34px;}
+  .shutter{width:64px;height:64px;border-radius:50%;background:var(--blue);border:4px solid #fff;box-shadow:0 0 0 2px var(--blue);}
+  .mic-btn{width:50px;height:50px;border-radius:50%;border:2px solid #fff;background:transparent;display:flex;
+    flex-direction:column;align-items:center;justify-content:center;position:relative;}
+  .mic-i{width:11px;height:18px;border-radius:6px;background:#fff;position:relative;}
+  .mic-i:after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);width:15px;height:8px;
+    border:2px solid #fff;border-top:0;border-radius:0 0 9px 9px;}
+  .mic-lab{position:absolute;bottom:-17px;font-size:9px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.06em;}
+
+  /* review screen */
+  .deck{flex:1;background:var(--scr-gray);position:relative;display:flex;align-items:center;justify-content:center;}
+  .card{position:absolute;width:240px;background:#fff;border:2px solid var(--ph-border);padding:14px;}
+  .card.back{transform:rotate(-3deg) translateY(4px);opacity:.6;}
+  .card.top{position:relative;box-shadow:0 8px 18px rgba(0,0,0,.16);}
+  .card-photo{height:150px;background:#dededa;display:flex;align-items:center;justify-content:center;color:#9a9a93;font-size:13px;font-weight:600;}
+  .card-t{font-weight:700;font-size:16px;margin-top:11px;color:var(--charcoal);}
+  .card-meta{font-size:13px;color:var(--ink-2);margin-top:3px;}
+  .card-price{font-size:20px;font-weight:700;color:var(--blue);margin-top:7px;}
+  .swipe{position:absolute;top:46%;transform:translateY(-50%);font-weight:700;font-size:12px;color:#fff;padding:5px 9px;}
+  .swipe.l{left:12px;background:#DC2626;transform:translateY(-50%) rotate(-8deg);}
+  .swipe.r{right:12px;background:#059669;transform:translateY(-50%) rotate(8deg);}
+  .revfoot{height:54px;flex:0 0 auto;border-top:1px solid var(--border);display:flex;}
+  .revfoot span{flex:1;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+  .revfoot .free{background:#DCFCE7;color:#166534;}
+  .revfoot .edit{color:var(--charcoal);border-left:1px solid var(--border);}
+
+  .why{text-align:center;font-size:16px;color:var(--ink-2);margin-top:10px;font-weight:500;}
+  .why b{color:var(--charcoal);}
+</style>
+</head>
+<body class="canvas-dots">
+<div class="stage">
+  <div class="head">
+    <div>
+      <div class="crumb">Phase 2 · The combine</div>
+      <div class="title">Your design: snap, talk if you want, swipe to sort</div>
+      <div class="sub">One direction, fused from your picks. We kept what made each one fast and dropped the rest, so it is simpler than any single sketch.</div>
+    </div>
+  </div>
+  <a class="madeby2" href="https://github.com/TexasBedouin/vibe-check" target="_blank" rel="noopener noreferrer">Created using <b>Vibe-Check</b> skill</a>
+
+  <div class="flow">
+    <div class="unit">
+      <div class="phone">
+        <div class="appbar"><span>Add items</span><span class="count">12 snapped</span></div>
+        <div class="scr">
+          <div class="cam">
+            <span class="br tl"></span><span class="br tr"></span><span class="br bl"></span><span class="br brr"></span>
+            <div class="hint">point at an item</div>
+          </div>
+          <div class="thumbs"><div class="thumb"></div><div class="thumb"></div><div class="thumb"></div><div class="thumb more">+9</div></div>
+          <div class="capbar">
+            <div class="toast">AI is writing your listings...</div>
+            <div class="controls">
+              <div class="mic-btn"><div class="mic-i"></div><div class="mic-lab">TALK</div></div>
+              <div class="shutter"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step-cap"><b>Snap the pile</b> <span class="src">(1)</span>, or tap the mic to add a detail by voice <span class="src">(2)</span></div>
+    </div>
+
+    <div class="arrow"><div class="a">&rarr;</div><div class="l">then</div></div>
+
+    <div class="unit">
+      <div class="phone">
+        <div class="appbar"><span>Review</span><span class="count">3 of 12</span></div>
+        <div class="scr">
+          <div class="deck">
+            <div class="card back"></div>
+            <div class="card top">
+              <div class="card-photo">photo</div>
+              <div class="card-t">IKEA Ektorp Sofa</div>
+              <div class="card-meta">Good condition · Furniture</div>
+              <div class="card-price">$250</div>
+            </div>
+            <div class="swipe l">✕ trash</div>
+            <div class="swipe r">✓ publish</div>
+          </div>
+          <div class="revfoot"><span class="free">Make FREE</span><span class="edit">Edit</span></div>
+        </div>
+      </div>
+      <div class="step-cap"><b>Swipe to sort</b>, one tap to Make FREE <span class="src">(3)</span></div>
+    </div>
+  </div>
+
+  <div class="why"><b>Dropped:</b> the full chat thread and the spreadsheet view... they slowed the core down. You can always talk, but you never have to.</div>
+</div>
+</body>
+</html>

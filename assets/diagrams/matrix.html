@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Competitor Matrix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./engine.css">
+<style>
+  .grid{flex:1;margin-top:20px;display:grid;
+    /* columns + rows are set by the renderer from the data */
+    gap:10px;min-height:0;}
+  .ch{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    background:var(--charcoal);color:#fff;padding:8px;}
+  .ch .n{font-weight:700;font-size:19px;line-height:1.1;}
+  .ch .d{font-size:13px;opacity:.7;margin-top:3px;}
+  .corner-cell{display:flex;align-items:flex-end;padding:6px 4px;}
+  .corner-cell span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);font-weight:700;}
+  .rh{display:flex;flex-direction:column;justify-content:center;padding:14px 16px;background:#fff;border:2px solid var(--charcoal);position:relative;}
+  .rh .need{font-weight:700;font-size:20px;line-height:1.15;}
+  .rh .tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:7px;}
+  .rh.gap{border-left:10px solid var(--dot-green);}
+  .rh.gap .tag{color:var(--dot-green);}
+  .rh.stakes{border-left:10px solid var(--dot-amber);}
+  .rh.stakes .tag{color:#a8830a;}
+  .cell{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.55);border:1px solid var(--border);}
+  .row-gap .cell{background:rgba(46,139,87,.08);}
+  .row-stakes .cell{background:rgba(246,201,14,.10);}
+  .mark{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:24px;box-shadow:2px 2px 6px rgba(0,0,0,.18);}
+  .well{background:var(--dot-green);color:#fff;}
+  .poor{background:var(--dot-amber);color:#3a2e00;}
+  .none{background:#fff;border:2px dashed #cfc8ba;color:#bdb6a6;box-shadow:none;font-size:22px;}
+  .legend{display:flex;gap:30px;align-items:center;margin-top:18px;}
+  .legend .chip{font-size:16px;font-weight:600;}
+  .legend .sw{width:26px;height:26px;}
+  .callout{margin-left:auto;font-size:18px;font-weight:600;color:var(--dot-green);}
+  .err{padding:60px;font-size:20px;color:#DC2626;}
+</style>
+</head>
+<body class="canvas-dots">
+<div class="stage">
+  <div class="head">
+    <div>
+      <div class="crumb" id="crumb"></div>
+      <div class="title" id="title"></div>
+      <div class="sub" id="sub"></div>
+    </div>
+    <a class="madeby" href="https://github.com/TexasBedouin/vibe-check" target="_blank" rel="noopener noreferrer">Created using <b>Vibe-Check</b> skill</a>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="legend" id="legend"></div>
+</div>
+
+<script>
+// ─── Competitor Matrix engine. One mark per cell, pure index placement. ───
+// Mark glyphs are renderer-mapped from the enum, never stored in data.
+const MARK = {
+  well: { cls:'well', glyph:'✓' },
+  poor: { cls:'poor', glyph:'~' },
+  none: { cls:'none', glyph:'✕' },
+  na:   { cls:'none', glyph:'–' },
+};
+// Need type → row-header modifier + the row tint class on its cells.
+const ROW = {
+  gap:    { rh:'gap',    row:'row-gap' },
+  stakes: { rh:'stakes', row:'row-stakes' },
+  plain:  { rh:'',       row:'' },
+};
+const LEGEND_SW = { well:'var(--dot-green)', poor:'var(--dot-amber)', none:'#fff;border:2px dashed #cfc8ba' };
+
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function render(m){
+  const competitors = m.competitors || [];
+  const needs = m.needs || [];
+  const cols = competitors.length;
+
+  const h = m.header || {};
+  document.getElementById('crumb').textContent = h.crumb || '';
+  document.getElementById('title').textContent = h.title || '';
+  document.getElementById('sub').textContent = h.sub || '';
+
+  const grid = document.getElementById('grid');
+  grid.style.gridTemplateColumns = '420px repeat(' + cols + ',1fr)';
+  grid.style.gridTemplateRows = '96px repeat(' + needs.length + ',1fr)';
+
+  let html = '';
+  // header row: corner caption + one column header per competitor
+  html += '<div class="corner-cell"><span>' + esc(m.cornerLabel || '') + '</span></div>';
+  competitors.forEach(c => {
+    html += '<div class="ch"><span class="n">' + esc(c.name) + '</span>' +
+      (c.sub ? '<span class="d">' + esc(c.sub) + '</span>' : '') + '</div>';
+  });
+
+  // one row per need
+  needs.forEach(need => {
+    const row = ROW[need.type] || ROW.plain;
+    html += '<div class="rh' + (row.rh ? ' ' + row.rh : '') + '">' +
+      '<span class="need">' + esc(need.label) + '</span>' +
+      (need.tag ? '<span class="tag">' + esc(need.tag) + '</span>' : '') + '</div>';
+    const marks = need.marks || [];
+    for (let i = 0; i < cols; i++){
+      const mk = MARK[marks[i]] || MARK.na;
+      html += '<div class="cell' + (row.row ? ' ' + row.row : '') + '">' +
+        '<div class="mark ' + mk.cls + '">' + mk.glyph + '</div></div>';
+    }
+  });
+  grid.innerHTML = html;
+
+  // legend + callout
+  const legend = m.legend || [];
+  let leg = legend.map(l =>
+    '<span class="chip"><span class="sw" style="background:' + (LEGEND_SW[l.mark] || '#fff') + '"></span> ' +
+    esc(l.label) + '</span>'
+  ).join('');
+  if (m.callout) leg += '<span class="callout">' + esc(m.callout) + '</span>';
+  document.getElementById('legend').innerHTML = leg;
+
+  document.body.setAttribute('data-rendered','1');
+}
+
+async function main(){
+  const param = new URLSearchParams(location.search).get('data') || 'matrix-example';
+  try{
+    const m = await fetch('./data-'+param+'.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+    render(m);
+  }catch(err){
+    document.querySelector('.stage').innerHTML = '<div class="err">Could not load data-'+esc(param)+'.json: '+esc(err.message)+'</div>';
+    document.body.setAttribute('data-rendered','1');
+  }
+}
+main();
+</script>
+</body>
+</html>

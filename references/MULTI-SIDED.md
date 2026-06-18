@@ -20,7 +20,7 @@ Some products have **three** sides (a food-delivery app has eaters, restaurants,
 Run the discovery you'd run for one product, once per side:
 
 - **Map each side's job** (Step 1). The seller's job is "clear the pile before the deadline." The buyer's job is "furnish a room cheaply without getting scammed." Different jobs.
-- **Pull each side's pain** (Step 2, Reddit). Sellers vent in r/declutter; buyers vent somewhere else entirely. Go to both.
+- **Cast the wide net for each side** (Step 2). Sellers vent in r/declutter and in the reviews of the tools they use; buyers gather somewhere else entirely. Run the full net once per side, and let each quote vote for the axis it speaks to.
 - **Score each side's needs** (Step 4). Two ranked tables, one per side. The buyers' top underserved need will look nothing like the sellers'. That's not a problem, it's the point.
 
 ## The dependency map: the other side's basics are YOUR table stakes

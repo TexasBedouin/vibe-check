@@ -1,0 +1,35 @@
+{
+  "state": "future",
+  "offering": "ClearList",
+  "scenario": "Buyer reserves an item from a moving sale",
+  "explainer": {
+    "title": "New to blueprints? Here's the whole idea.",
+    "body": "This is the map of your product before you build any of it. We take one real moment, here a buyer reserving an item, break it into the steps they go through, and under each step we lay out everything that has to exist for it to work: what they touch, who's involved, the tech and rules behind the scenes, where it could break, and why you chose it that way. You get to see your entire idea on one page... before writing a line of code.",
+    "read": "Read left → right for the journey. Read top → bottom to see everything standing behind each step."
+  },
+  "phases": [
+    { "name": "Discover", "from": 1, "to": 2 },
+    { "name": "Reserve & Hold", "from": 3, "to": 6 },
+    { "name": "Pick Up", "from": 7, "to": 7 }
+  ],
+  "steps": [
+    { "n": 1, "name": "Discover the sale", "def": "Taps a shared link to the sale page" },
+    { "n": 2, "name": "Browse the sale", "def": "Scans the grid of items & prices" },
+    { "n": 3, "name": "Add to basket", "def": "Adds the items they want" },
+    { "n": 4, "name": "Verify email", "def": "Enters email, gets a 6-digit code" },
+    { "n": 5, "name": "Reserve", "def": "Reservation made · place in line set" },
+    { "n": 6, "name": "Hold & queue", "def": "System holds items, runs the timer", "hidden": true },
+    { "n": 7, "name": "Coordinate & pick up", "def": "Messages seller, picks a time slot" }
+  ],
+  "layers": {
+    "touchpoint": { "1": "Shared link / social post", "2": "Item grid · detail view", "3": "Add to Pickup · basket", "4": "Email + 6-digit code screen", "5": "Confirmation page + email", "7": "Inbox thread · scheduler" },
+    "roles": { "1": "Buyer, on mobile", "5": "Seller, gets notified", "7": "Buyer ↔ Seller" },
+    "process": { "4": "Send the code by email", "5": "Create the reservation", "6": "Hold items · run timer · advance the line", "7": "Confirm & schedule the pickup" },
+    "technology": { "1": "Public sale page + link preview", "2": "Item database · image hosting", "3": "Basket (in the browser)", "4": "Login · email service", "5": "Reservations · push alerts", "6": "Scheduled job · database", "7": "Messaging · scheduling · calendar" },
+    "policy": { "2": "Show city only, never the full address", "3": "One seller per basket", "4": "Code expires in 10 minutes", "5": "Up to 3 in line · 48-hour hold", "6": "Hold ends → next person is up", "7": "Address only when seller says yes · hold → 72h" },
+    "pitfall": { "1": "Link preview won't render → looks sketchy", "2": "A truck warning scares buyers off", "3": "Switching sellers wipes the basket", "4": "Code lands in spam → they give up", "5": "They don't notice the timer running", "6": "Hold ends silently → buyer feels ghosted", "7": "No-show wastes the pickup slot" },
+    "rationale": { "1": "Buyers arrive from social → mobile-first", "2": "Privacy first, protect the seller's home", "3": "One basket per seller keeps pickups simple", "4": "A code, not a password = trust, no friction", "5": "A short line creates urgency without a dogpile", "7": "Scheduling turns a maybe into a commitment" },
+    "question": { "1": "Will the link preview always render right?", "3": "Will buyers grasp the one-seller rule?", "5": "Does the buyer realize the clock is ticking?", "6": "Message the buyer the moment a hold opens?" },
+    "note": { "1": "Most buyers are on phones, from Facebook", "2": "People look at photos first, read later", "4": "Often a different email than expected" }
+  }
+}
