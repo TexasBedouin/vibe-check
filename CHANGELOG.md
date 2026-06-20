@@ -2,6 +2,15 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.1.0] - 2026-06-20
+
+### Added
+- **The interactive PRD, the final deliverable.** At the end of a session vibe-check now produces a single self-contained, tabbed HTML file the human opens in a browser: Start Here, the Evidence (with the Opportunity Map and Competitor Matrix embedded live), the Experience (the Crazy 8 and its convergence, then the Experience Blueprint), the Build Plan (with the Story Map and a tech-stack diagram), Coding Guidelines, Distribution & Growth, Before Launch, Hand to Your AI (the full markdown plan with a copy button), and Continue. Every board is embedded live and self-contained (engine.css inlined, data baked in, no external files), and a machine-readable re-hydration snapshot lets the one file resume the session in a new chat. Footer on every tab: "This PRD was created by the vibe-check skill, by Amer Arab." See references/PRD.md and the live example at examples/clearlist-prd.html.
+
+### Changed
+- The interactive PRD replaces the old single-page visual HTML blueprint as the human deliverable. The Experience Blueprint board now lives inside the PRD, and the markdown plan (unchanged) lives in the PRD's "Hand to Your AI" tab.
+- references/HTML-BLUEPRINT.md is now the shared HTML scaffold for the visual checkup report, inherited by the PRD.
+
 ## [2.0.0] - 2026-06-18
 
 ### Added

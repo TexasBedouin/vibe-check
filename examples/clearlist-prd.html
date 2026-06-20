@@ -1,0 +1,2500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ClearList, Product Requirements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F9F9F8; --ink:#1A1A1B; --ink2:#4b5563; --muted:#6B7280; --bd:#E5E5E5;
+    --blue:#2C64E3; --blue-soft:#EEF4FF; --purple:#8B5CF6; --green:#059669;
+    --sans:"DM Sans",ui-sans-serif,system-ui,sans-serif; --serif:"DM Serif Display",Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
+  a{color:var(--blue);}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* header */
+  header.top{background:#fff;border-bottom:1px solid var(--bd);}
+  .top .wrap{padding-top:26px;padding-bottom:20px;}
+  .crumb{font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);}
+  h1.title{font-family:var(--serif);font-size:40px;line-height:1.05;margin-top:6px;}
+  .sub{font-size:17px;color:var(--muted);margin-top:8px;max-width:760px;}
+
+  /* tabs */
+  nav.tabs{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--bd);overflow-x:auto;}
+  nav.tabs .wrap{display:flex;gap:4px;padding-top:0;padding-bottom:0;}
+  .tab{appearance:none;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:14.5px;font-weight:600;
+    color:var(--muted);padding:15px 14px;border-bottom:3px solid transparent;white-space:nowrap;}
+  .tab:hover{color:var(--ink);}
+  .tab.active{color:var(--ink);border-bottom-color:var(--blue);}
+  .tab .n{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;
+    background:#eef0f3;color:var(--muted);font-size:11px;font-weight:700;margin-right:7px;}
+  .tab.active .n{background:var(--blue);color:#fff;}
+
+  /* panels */
+  main{padding:34px 0 60px;}
+  .panel{display:none;}
+  .panel.active{display:block;animation:fade .2s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .panel h2{font-family:var(--serif);font-size:30px;margin-bottom:6px;}
+  .panel .lead{font-size:17px;color:var(--ink2);margin-bottom:22px;max-width:820px;line-height:1.5;}
+  h3{font-size:19px;font-weight:700;margin:26px 0 10px;}
+
+  .card{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:22px 24px;margin:16px 0;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .stat{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:18px 20px;}
+  .stat .k{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .stat .v{font-family:var(--serif);font-size:28px;margin-top:4px;}
+  .stat .d{font-size:14px;color:var(--muted);margin-top:3px;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:#fff;}
+  .three > div{padding:18px 20px;border-right:1px solid var(--bd);}
+  .three > div:last-child{border-right:0;}
+  .three .k{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+  .three p{font-size:15px;color:var(--ink2);line-height:1.45;}
+  .quote{background:var(--blue-soft);border-left:3px solid var(--blue);padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0;font-size:15px;color:var(--ink2);}
+  .pill{display:inline-block;background:#eef0f3;color:var(--ink2);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;margin:0 6px 6px 0;}
+  .pill.win{background:#DCFCE7;color:#166534;}
+  ul.clean{list-style:none;margin:8px 0;} ul.clean li{padding:7px 0 7px 26px;position:relative;font-size:15px;color:var(--ink2);border-bottom:1px solid #f0f0ee;}
+  ul.clean li:before{content:"";position:absolute;left:4px;top:14px;width:8px;height:8px;border-radius:50%;background:var(--blue);}
+
+  /* embedded live board */
+  .board{position:relative;width:1080px;max-width:100%;overflow:hidden;border:1px solid var(--bd);border-radius:12px;background:#fff;margin:14px 0 6px;box-shadow:0 6px 20px rgba(0,0,0,.06);}
+  .board iframe{border:0;width:1920px;transform-origin:top left;transform:scale(0.5625);display:block;}
+  .board-cap{font-size:13px;color:var(--muted);margin:0 0 20px 2px;}
+  .stub{background:#fff;border:1px dashed #cfd2d6;border-radius:12px;padding:30px;text-align:center;color:var(--muted);}
+  .stub b{color:var(--ink);}
+
+  /* footer attribution */
+  footer.attrib{border-top:1px solid var(--bd);background:#fff;}
+  footer.attrib .wrap{padding:22px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  footer.attrib .made{font-size:14px;color:var(--muted);}
+  footer.attrib .made a{font-weight:700;text-decoration:none;}
+  footer.attrib .made a:hover{text-decoration:underline;}
+  footer.attrib .v{font-size:13px;color:#9aa0a6;}
+</style>
+</head>
+<body>
+  <header class="top"><div class="wrap">
+    <div class="crumb">Product Requirements · built from a vibe-check session</div>
+    <h1 class="title">ClearList</h1>
+    <div class="sub">An AI-powered moving-sale platform. Photograph your stuff, the AI writes and prices the listings, buyers reserve and schedule pickup. This document is the whole thinking behind it: the evidence, the design, the plan, and how to build it.</div>
+  </div></header>
+
+  <nav class="tabs"><div class="wrap" id="tabbar">
+    <button class="tab active" data-tab="start"><span class="n">1</span>Start Here</button>
+    <button class="tab" data-tab="evidence"><span class="n">2</span>The Evidence</button>
+    <button class="tab" data-tab="experience"><span class="n">3</span>The Experience</button>
+    <button class="tab" data-tab="plan"><span class="n">4</span>The Build Plan</button>
+    <button class="tab" data-tab="guidelines"><span class="n">5</span>Coding Guidelines</button>
+    <button class="tab" data-tab="growth"><span class="n">6</span>Distribution &amp; Growth</button>
+    <button class="tab" data-tab="launch"><span class="n">7</span>Before Launch</button>
+    <button class="tab" data-tab="handoff"><span class="n">8</span>Hand to Your AI</button>
+    <button class="tab" data-tab="continue"><span class="n">9</span>Continue</button>
+  </div></nav>
+
+  <main><div class="wrap">
+
+    <!-- START -->
+    <section class="panel active" id="start">
+      <h2>Start here</h2>
+      <div class="lead">Everything about ClearList on one page, in the order you'd actually think it through. Read left to right across the tabs: first the proof it's worth building, then how it feels to use, then the plan to build it.</div>
+      <div class="three">
+        <div><div class="k">The goal</div><p>Clear out a whole house fast, before a moving deadline, without it eating your week.</p></div>
+        <div><div class="k">What people do today</div><p>Facebook Marketplace plus a spreadsheet plus endless texts, juggled across apps.</p></div>
+        <div><div class="k">Why that hurts</div><p>Writing listings is tedious, buyers no-show, haggling is draining, and nothing's in one place.</p></div>
+      </div>
+      <h3>The numbers at a glance</h3>
+      <div class="grid3">
+        <div class="stat"><div class="k">Complexity</div><div class="v">6 / 10</div><div class="d">Real, but doable with AI help</div></div>
+        <div class="stat"><div class="k">V1 timeline</div><div class="v">2–3 wks</div><div class="d">Core flow, photo to pickup</div></div>
+        <div class="stat"><div class="k">Cost to start</div><div class="v">~ $0</div><div class="d">Free tiers cover the early days</div></div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">How to use this doc</h3>
+        <p style="color:var(--ink2);font-size:15px;line-height:1.5">The tabs follow the journey: <b>Evidence</b> (proof it's real), <b>Experience</b> (how it works, with the blueprint), <b>Build Plan</b> + <b>Coding Guidelines</b> (how to build it well), <b>Distribution</b> and <b>Before Launch</b> (getting it out safely). <b>Hand to Your AI</b> has the plan to paste into your coding tool. <b>Continue</b> lets you take this one file anywhere and pick up where you left off.</p>
+      </div>
+    </section>
+
+    <!-- EVIDENCE -->
+    <section class="panel" id="evidence">
+      <h2>The evidence</h2>
+      <div class="lead">This is what makes it a plan and not a hunch. Before designing anything, we cast a wide net across Reddit and the reviews of the tools people already pay for, then scored every need by how much it hurts and how badly it's served.</div>
+      <h3>The opportunity map</h3>
+      <div class="board" style="height:608px"><iframe srcdoc="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;/>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/>
+<title>The Opportunity Map</title>
+<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;><link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+<link href=&quot;https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Serif+Display&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+/* ─────────────────────────────────────────────────────────
+   vibe-check diagram engine, shared design layer
+   Built on the ClearList design system tokens.
+   FigJam structure (sticky notes, tape, dots, dotted canvas)
+   + Minimalist Editorial typography (DM Sans / DM Serif Display).
+   One file, many diagram templates.
+   ───────────────────────────────────────────────────────── */
+
+:root{
+  /* canvas */
+  --canvas:#F9F6F0;          /* warm FigJam canvas */
+  --canvas-app:#F9F9F8;      /* editorial / blueprint canvas */
+  --dot:#ddd6c6;
+  --grid-line:rgba(44,100,227,.10);
+
+  /* ink */
+  --charcoal:#1A1A1B;
+  --ink-2:#4b5563;
+  --ink-muted:#6B7280;
+  --border:#E5E5E5;
+
+  /* brand */
+  --blue:#2C64E3;
+  --blue-hover:#2354C2;
+  --purple:#8B5CF6;
+  --purple-light:#F5F3FF;
+  --pink:#ec4899;
+
+  /* moving-sale / figjam */
+  --kraft:#C4A882;
+  --kraft-dark:#A98C63;
+  --tape-blue:#4A90D9;
+  --y:#FFF6A8;   /* softened post-it yellow for sans legibility */
+  --g:#A6E4A0;
+  --b:#A8DBEE;
+  --o:#FFCB7D;
+  --p:#FFA8CC;
+  --lav:#CDBEEA; /* AI = purple family */
+
+  /* status dots */
+  --dot-red:#E03C31;
+  --dot-green:#2E8B57;
+  --dot-amber:#F6C90E;
+
+  /* fonts */
+  --sans:&quot;DM Sans&quot;,ui-sans-serif,system-ui,sans-serif;
+  --serif:&quot;DM Serif Display&quot;,Georgia,serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1920px;height:1080px;overflow:hidden;}
+body{font-family:var(--sans);color:var(--charcoal);-webkit-font-smoothing:antialiased;}
+
+/* canvases */
+.canvas-dots{
+  background-color:var(--canvas);
+  background-image:radial-gradient(var(--dot) 2px,transparent 2px);
+  background-size:30px 30px;background-position:-6px -6px;
+}
+.canvas-blueprint{
+  background-color:var(--canvas-app);
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+.stage{width:1920px;height:1080px;padding:40px 52px 34px;position:relative;display:flex;flex-direction:column;}
+
+/* ── header ───────────────────────────────── */
+.head{display:flex;align-items:flex-start;justify-content:space-between;flex:0 0 auto;}
+.head .crumb{font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.head .title{font-family:var(--serif);font-size:46px;line-height:1.02;color:var(--charcoal);}
+.head .sub{font-size:19px;color:var(--ink-muted);margin-top:10px;max-width:760px;}
+.madeby{text-align:right;font-size:15px;color:var(--ink-muted);line-height:1.3;text-decoration:none;}
+.madeby:hover b{text-decoration:underline;}
+.madeby b{font-weight:700;color:var(--blue);letter-spacing:.02em;}
+.madeby .url{color:var(--blue);font-weight:600;}
+
+/* ── sticky note ──────────────────────────── */
+.note{
+  background:var(--y);
+  padding:13px 15px 14px;
+  box-shadow:3px 4px 12px rgba(0,0,0,.13);
+  position:relative;line-height:1.24;font-size:19px;font-weight:500;
+  border-radius:1px;
+}
+.note .k{display:block;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.40);margin-bottom:5px;}
+.note.sm{font-size:17px;padding:10px 13px;box-shadow:2px 3px 9px rgba(0,0,0,.11);}
+.note.lg{font-size:21px;}
+.note.y{background:var(--y);} .note.g{background:var(--g);} .note.b{background:var(--b);}
+.note.o{background:var(--o);} .note.p{background:var(--p);} .note.ai{background:var(--lav);}
+/* gentle hand-placed tilt + a tape nub */
+.tilt-l{transform:rotate(-1.3deg);} .tilt-r{transform:rotate(1.1deg);} .tilt-0{transform:rotate(-.4deg);}
+.note.pin:before{content:&quot;&quot;;position:absolute;top:-7px;left:50%;width:34px;height:12px;
+  background:rgba(74,144,217,.78);transform:translateX(-50%) rotate(-4deg);box-shadow:1px 1px 3px rgba(0,0,0,.18);}
+
+/* ── tape strip / lane label ──────────────── */
+.tape{display:inline-block;background:var(--tape-blue);color:#fff;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;padding:9px 16px;box-shadow:2px 3px 9px rgba(0,0,0,.16);position:relative;}
+.tape:before,.tape:after{content:&quot;&quot;;position:absolute;top:0;bottom:0;width:14px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 4px,transparent 4px 8px);}
+.tape:before{left:-7px;transform:skewX(-12deg);} .tape:after{right:-7px;transform:skewX(-12deg);}
+.tape.green{background:var(--dot-green);} .tape.kraftt{background:#b9b09c;} .tape.charcoal{background:var(--charcoal);}
+
+/* ── editorial / blueprint box ────────────── */
+.ebox{background:#fff;border:2px solid var(--charcoal);padding:14px 16px;min-width:160px;position:relative;}
+.ebox .t{font-weight:700;font-size:19px;line-height:1.15;}
+.ebox .s{font-size:15px;color:var(--ink-muted);margin-top:4px;line-height:1.25;}
+.ebox.ai{background:var(--purple-light);border-color:var(--purple);}
+.ebox.ai .tag{position:absolute;top:-11px;left:14px;background:var(--purple);color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;}
+.ebox.accent{border-color:var(--blue);}
+
+/* ── garage-sale dot sticker ──────────────── */
+.dot{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;
+  font-weight:700;text-align:center;line-height:1;box-shadow:2px 2px 6px rgba(0,0,0,.22);}
+.dot.red{background:var(--dot-red);} .dot.green{background:var(--dot-green);}
+.dot.amber{background:var(--dot-amber);color:#3a2e00;} .dot.blue{background:var(--tape-blue);}
+
+/* small legend chip */
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-2);font-weight:500;}
+.chip .sw{width:16px;height:16px;border-radius:50%;}
+
+</style>
+<style>
+  /* Layout: header on top, then a body with the plot on the left and the side panels on the right.
+     The plot is a 2x2 CSS grid of quadrants. Each quadrant holds a tidy flex-wrap of notes.
+     Because every note lives INSIDE its quadrant box and the notes flow with flex-wrap,
+     they can never overlap. Position is the bucket, never raw coordinates. */
+  .body-wrap{flex:1;display:flex;gap:26px;margin-top:18px;min-height:0;}
+  .plot-area{flex:1;display:flex;flex-direction:column;min-width:0;}
+  .plot-row{flex:1;display:flex;min-height:0;}
+
+  .y-axis{writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-weight:700;
+    letter-spacing:.04em;color:var(--charcoal);font-size:17px;padding:0 10px 30px 0;
+    display:flex;align-items:center;justify-content:center;}
+  .y-ends{display:flex;flex-direction:column;justify-content:space-between;font-size:13px;color:var(--ink-muted);
+    font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:4px 8px 30px 0;}
+
+  /* the plot is the 2x2 grid; thick axis lines drawn as the grid's left + bottom borders */
+  .plot{flex:1;display:grid;grid-template-columns:56% 44%;grid-template-rows:52% 48%;
+    border-left:3px solid var(--charcoal);border-bottom:3px solid var(--charcoal);min-height:0;}
+
+  /* one quadrant cell: tinted by tone, holds a wrapping row of notes */
+  .quad{position:relative;padding:34px 16px 16px;min-height:0;overflow:auto;
+    display:flex;flex-wrap:wrap;align-content:flex-start;gap:18px 16px;}
+  .quad.win{background:rgba(46,139,87,.12);}
+  .quad.stakes{background:rgba(246,201,14,.14);}
+  .quad.low{background:rgba(0,0,0,.035);}
+  /* faint dividing lines between quadrants so the four boxes read as a grid */
+  .quad.gap{border-right:1.5px dashed rgba(26,26,27,.18);border-bottom:1.5px dashed rgba(26,26,27,.18);}
+  .quad.stakesq{border-bottom:1.5px dashed rgba(26,26,27,.18);}
+  .quad.niche{border-right:1.5px dashed rgba(26,26,27,.18);}
+
+  .q-lbl{position:absolute;top:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:14px;}
+  .q-lbl.win{left:16px;color:var(--dot-green);}
+  .q-lbl.stakes{right:16px;left:16px;text-align:right;color:#a8830a;}
+  .q-lbl.low{left:16px;color:var(--ink-muted);}
+
+  /* a need note. width is fixed so wrapping is tidy; the score badge sits on the corner. */
+  .onote{position:relative;width:228px;flex:0 0 auto;}
+  .seen{border:2px solid var(--charcoal);}
+  .hunch{border:2px dashed #8a8170;}
+  .score{position:absolute;top:-13px;right:-13px;width:42px;height:42px;border-radius:50%;
+    background:var(--charcoal);color:#fff;font-weight:700;font-size:15px;
+    display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 6px rgba(0,0,0,.25);}
+  .score.top{background:var(--dot-red);width:50px;height:50px;}
+
+  .quad-empty{font-size:14px;color:var(--ink-muted);font-style:italic;opacity:.8;align-self:flex-start;}
+
+  .x-axis{text-align:center;font-weight:700;letter-spacing:.04em;font-size:17px;margin-top:8px;padding-left:60px;}
+  .x-ends{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-muted);font-weight:600;
+    text-transform:uppercase;letter-spacing:.08em;margin-top:4px;padding-left:60px;}
+
+  .side{width:330px;flex:0 0 auto;display:flex;flex-direction:column;gap:16px;}
+  .panel{background:#fff;border:2px solid var(--charcoal);padding:18px 20px;}
+  .panel h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:12px;}
+  .winner{background:var(--dot-green);color:#fff;border:none;}
+  .winner h4{color:rgba(255,255,255,.8);}
+  .winner .big{font-family:var(--serif);font-size:26px;line-height:1.1;margin:6px 0 8px;}
+  .winner .meta{font-size:15px;opacity:.92;}
+  .formula{font-size:15px;color:var(--ink-2);line-height:1.5;}
+  .formula code{background:#f1efe9;padding:2px 6px;font-weight:600;color:var(--charcoal);}
+  .ev-row{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink-2);margin-bottom:9px;}
+  .ev-chip{width:46px;height:24px;flex:0 0 auto;}
+  .ev-chip.seen{border:2px solid var(--charcoal);background:#fff;}
+  .ev-chip.hunch{border:2px dashed #8a8170;background:#fff;}
+
+  .madeby2{position:absolute;right:52px;bottom:14px;font-size:13px;color:var(--ink-muted);text-decoration:none;}
+  .madeby2:hover b{text-decoration:underline;}
+  .madeby2 b{color:var(--blue);font-weight:700;}
+  .err{padding:60px;font-size:20px;color:#DC2626;}
+</style>
+<script>window.__D__={
+  &quot;header&quot;: {
+    &quot;crumb&quot;: &quot;Discovery · Step 4 · Opportunity Scoring&quot;,
+    &quot;title&quot;: &quot;The Opportunity Map&quot;,
+    &quot;sub&quot;: &quot;Every need a mover voiced, placed by how much it hurts and how well today's tools handle it. The green corner is where you win.&quot;
+  },
+  &quot;axes&quot;: {
+    &quot;y&quot;: { &quot;label&quot;: &quot;How much it hurts&quot;, &quot;high&quot;: &quot;a lot&quot;, &quot;low&quot;: &quot;a little&quot; },
+    &quot;x&quot;: { &quot;label&quot;: &quot;How well today's tools already handle it&quot;, &quot;low&quot;: &quot;badly&quot;, &quot;high&quot;: &quot;well&quot; }
+  },
+  &quot;quadrants&quot;: {
+    &quot;gap&quot;:    { &quot;title&quot;: &quot;◆ The gap, build here&quot;, &quot;tone&quot;: &quot;win&quot; },
+    &quot;stakes&quot;: { &quot;title&quot;: &quot;Table stakes, just match it&quot;, &quot;tone&quot;: &quot;stakes&quot; },
+    &quot;niche&quot;:  { &quot;title&quot;: &quot;Niche, maybe later&quot;, &quot;tone&quot;: &quot;low&quot; },
+    &quot;low&quot;:    { &quot;title&quot;: &quot;Low priority, leave it&quot;, &quot;tone&quot;: &quot;low&quot; }
+  },
+  &quot;needs&quot;: [
+    { &quot;id&quot;: &quot;listing&quot;, &quot;label&quot;: &quot;Create an accurate listing in seconds&quot;, &quot;kicker&quot;: &quot;the differentiator&quot;, &quot;pain&quot;: 9, &quot;served&quot;: 3, &quot;score&quot;: 15, &quot;evidence&quot;: &quot;seen&quot; },
+    { &quot;id&quot;: &quot;noshow&quot;, &quot;label&quot;: &quot;Stop buyers from no-showing&quot;, &quot;pain&quot;: 8, &quot;served&quot;: 2, &quot;score&quot;: 14, &quot;evidence&quot;: &quot;seen&quot; },
+    { &quot;id&quot;: &quot;haggle&quot;, &quot;label&quot;: &quot;Skip haggling with strangers&quot;, &quot;pain&quot;: 7, &quot;served&quot;: 3, &quot;score&quot;: 11, &quot;evidence&quot;: &quot;seen&quot; },
+    { &quot;id&quot;: &quot;pickup&quot;, &quot;label&quot;: &quot;Coordinate pickup without endless texts&quot;, &quot;pain&quot;: 7, &quot;served&quot;: 4, &quot;score&quot;: 10, &quot;evidence&quot;: &quot;seen&quot; },
+    { &quot;id&quot;: &quot;price&quot;, &quot;label&quot;: &quot;Feel sure the price is fair&quot;, &quot;kicker&quot;: &quot;still guessing&quot;, &quot;pain&quot;: 5, &quot;served&quot;: 3, &quot;score&quot;: 7, &quot;evidence&quot;: &quot;hunch&quot; },
+    { &quot;id&quot;: &quot;truck&quot;, &quot;label&quot;: &quot;Know if it needs a truck to haul&quot;, &quot;pain&quot;: 4, &quot;served&quot;: 2, &quot;score&quot;: 6, &quot;evidence&quot;: &quot;hunch&quot; },
+    { &quot;id&quot;: &quot;share&quot;, &quot;label&quot;: &quot;Share the whole sale in one link&quot;, &quot;pain&quot;: 8, &quot;served&quot;: 7, &quot;score&quot;: 9, &quot;evidence&quot;: &quot;seen&quot; },
+    { &quot;id&quot;: &quot;safety&quot;, &quot;label&quot;: &quot;Avoid sketchy strangers at the door&quot;, &quot;pain&quot;: 7, &quot;served&quot;: 6, &quot;score&quot;: 8, &quot;evidence&quot;: &quot;hunch&quot; },
+    { &quot;id&quot;: &quot;browse&quot;, &quot;label&quot;: &quot;Browse listings easily&quot;, &quot;kicker&quot;: &quot;everyone does this fine&quot;, &quot;pain&quot;: 4, &quot;served&quot;: 8, &quot;score&quot;: 4, &quot;evidence&quot;: &quot;hunch&quot; },
+    { &quot;id&quot;: &quot;photos&quot;, &quot;label&quot;: &quot;Upload photos from a phone&quot;, &quot;pain&quot;: 3, &quot;served&quot;: 7, &quot;score&quot;: 3, &quot;evidence&quot;: &quot;seen&quot; }
+  ],
+  &quot;winner&quot;: {
+    &quot;label&quot;: &quot;Create an accurate listing in seconds&quot;,
+    &quot;meta&quot;: &quot;Opportunity 15 · hurts a lot (9), handled badly (3). Nail this and you beat the market on the thing that matters most.&quot;
+  },
+  &quot;formula&quot;: &quot;Opportunity = Pain + max(0, Pain - Served)&quot;,
+  &quot;evidenceLegend&quot;: [
+    { &quot;type&quot;: &quot;seen&quot;, &quot;label&quot;: &quot;Seen it, real quotes back it up&quot; },
+    { &quot;type&quot;: &quot;hunch&quot;, &quot;label&quot;: &quot;Hunch, plausible but not yet confirmed&quot; }
+  ]
+};(function(){var _f=window.fetch;window.fetch=function(u,o){try{if(typeof u==='string'&amp;&amp;u.indexOf('data-')>-1){return Promise.resolve({ok:true,status:200,json:function(){return Promise.resolve(window.__D__);}});}}catch(e){}return _f.apply(this,arguments);};})();</script>
+</head>
+<body class=&quot;canvas-dots&quot;>
+<div class=&quot;stage&quot;>
+  <div class=&quot;head&quot;>
+    <div>
+      <div class=&quot;crumb&quot; id=&quot;crumb&quot;></div>
+      <div class=&quot;title&quot; id=&quot;title&quot;></div>
+      <div class=&quot;sub&quot; id=&quot;sub&quot;></div>
+    </div>
+  </div>
+
+  <div class=&quot;body-wrap&quot;>
+    <div class=&quot;plot-area&quot;>
+      <div class=&quot;plot-row&quot;>
+        <div class=&quot;y-axis&quot; id=&quot;yLabel&quot;></div>
+        <div class=&quot;y-ends&quot;><span id=&quot;yHigh&quot;></span><span id=&quot;yLow&quot;></span></div>
+        <div class=&quot;plot&quot; id=&quot;plot&quot;></div>
+      </div>
+      <div class=&quot;x-axis&quot; id=&quot;xLabel&quot;></div>
+      <div class=&quot;x-ends&quot;><span id=&quot;xLow&quot;></span><span id=&quot;xHigh&quot;></span></div>
+    </div>
+
+    <div class=&quot;side&quot; id=&quot;side&quot;></div>
+  </div>
+
+  <a class=&quot;madeby2&quot; href=&quot;https://github.com/TexasBedouin/vibe-check&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Created using <b>Vibe-Check</b> skill</a>
+</div>
+
+<script>
+// ─── Opportunity Map engine ───
+// Each need is bucketed into one of four quadrants by deterministic thresholds, then laid out
+// in a tidy flex-wrap inside that quadrant. Position is categorical, so overlap is impossible.
+// Tilt, the &quot;top&quot; badge, evidence border style, and tints are all renderer-computed from enums.
+
+const TILTS = ['tilt-l','tilt-r','tilt-0'];
+const PAIN_HIGH = 6;     // pain >= 6 counts as &quot;hurts a lot&quot;
+const SERVED_WELL = 6;   // served >= 6 counts as &quot;handled well today&quot;
+
+// quadrant key -> note color family (from engine.css .note.<x>) used as the sticky tint
+const QUAD_TINT = { gap:'g', stakes:'y', niche:'b', low:'o' };
+// quadrant key -> the grid-cell class that paints the background tone (win/stakes/low)
+const TONE_CLASS = { win:'win', stakes:'stakes', low:'low' };
+
+const esc = s => String(s).replace(/&amp;/g,'&amp;amp;').replace(/</g,'&amp;lt;').replace(/>/g,'&amp;gt;');
+
+// deterministic bucketing, never uses raw x/y coordinates
+function bucketOf(need){
+  const painHigh = Number(need.pain) >= PAIN_HIGH;
+  const servedWell = Number(need.served) >= SERVED_WELL;
+  if(painHigh &amp;&amp; !servedWell) return 'gap';
+  if(painHigh &amp;&amp; servedWell) return 'stakes';
+  if(!painHigh &amp;&amp; !servedWell) return 'niche';
+  return 'low';
+}
+
+function noteHtml(need, isTop, tilt){
+  const tint = QUAD_TINT[need.__quad] || 'y';
+  const ev = need.evidence === 'seen' ? 'seen' : 'hunch';
+  const kicker = need.kicker
+    ? (ev==='seen'?'Seen it':'Hunch') + ' · ' + esc(need.kicker)
+    : (ev==='seen'?'Seen it':'Hunch');
+  return '<div class=&quot;onote note sm '+tint+' '+ev+' '+tilt+'&quot;>'+
+    '<span class=&quot;k&quot;>'+kicker+'</span>'+esc(need.label)+
+    '<div class=&quot;score'+(isTop?' top':'')+'&quot;>'+esc(need.score)+'</div>'+
+    '</div>';
+}
+
+function quadHtml(qKey, qMeta, needs){
+  // needs already filtered to this quadrant; sort by score desc, top gets .score.top
+  const sorted = needs.slice().sort((a,b)=> Number(b.score)-Number(a.score));
+  const toneCls = TONE_CLASS[qMeta &amp;&amp; qMeta.tone] || 'low';
+  // a structural class per quadrant cell so we can draw the inner divider lines
+  const cellClass = qKey==='gap' ? 'gap' : qKey==='stakes' ? 'stakesq' : qKey==='niche' ? 'niche' : 'lowq';
+  let inner = '';
+  if(sorted.length === 0){
+    inner = '<div class=&quot;quad-empty&quot;>No needs landed here.</div>';
+  } else {
+    sorted.forEach((need, i) => {
+      need.__quad = qKey;
+      inner += noteHtml(need, i===0 &amp;&amp; (qMeta &amp;&amp; qMeta.tone)==='win', TILTS[i % TILTS.length]);
+    });
+  }
+  const lblCls = toneCls; // win | stakes | low for label color
+  const title = (qMeta &amp;&amp; qMeta.title) || '';
+  return '<div class=&quot;quad '+toneCls+' '+cellClass+'&quot;>'+
+    '<div class=&quot;q-lbl '+lblCls+'&quot;>'+esc(title)+'</div>'+
+    inner+
+    '</div>';
+}
+
+function render(d){
+  const h = d.header || {};
+  document.getElementById('crumb').textContent = h.crumb || '';
+  document.getElementById('title').textContent = h.title || '';
+  document.getElementById('sub').textContent = h.sub || '';
+
+  const ax = d.axes || {};
+  const ay = ax.y || {}, axx = ax.x || {};
+  document.getElementById('yLabel').textContent = ay.label || '';
+  document.getElementById('yHigh').innerHTML = (ay.high || '').replace(/ /g,'&amp;nbsp;');
+  document.getElementById('yLow').innerHTML = (ay.low || '').replace(/ /g,'&amp;nbsp;');
+  document.getElementById('xLabel').textContent = (axx.label || '') + ' →';
+  document.getElementById('xLow').textContent = axx.low || '';
+  document.getElementById('xHigh').textContent = axx.high || '';
+
+  // bucket every need
+  const needs = (d.needs || []).map(n => Object.assign({}, n));
+  const buckets = { gap:[], stakes:[], niche:[], low:[] };
+  needs.forEach(n => { buckets[bucketOf(n)].push(n); });
+
+  // grid order: top-left = gap, top-right = stakes, bottom-left = niche, bottom-right = low
+  const q = d.quadrants || {};
+  const plot = document.getElementById('plot');
+  plot.innerHTML =
+    quadHtml('gap',    q.gap,    buckets.gap) +
+    quadHtml('stakes', q.stakes, buckets.stakes) +
+    quadHtml('niche',  q.niche,  buckets.niche) +
+    quadHtml('low',    q.low,    buckets.low);
+
+  // side panels
+  let side = '';
+  if(d.winner){
+    side += '<div class=&quot;panel winner&quot;><h4>★ #1 to build</h4>'+
+      '<div class=&quot;big&quot;>'+esc(d.winner.label||'')+'</div>'+
+      '<div class=&quot;meta&quot;>'+esc(d.winner.meta||'')+'</div></div>';
+  }
+  if(d.formula){
+    side += '<div class=&quot;panel&quot;><h4>The score</h4>'+
+      '<div class=&quot;formula&quot;><code>'+esc(d.formula)+'</code><br><br>'+
+      'High pain + badly served = high score. Already handled well = low, no matter the pain.</div></div>';
+  }
+  if(Array.isArray(d.evidenceLegend) &amp;&amp; d.evidenceLegend.length){
+    side += '<div class=&quot;panel&quot;><h4>Evidence</h4>'+
+      d.evidenceLegend.map(e => {
+        const t = e.type === 'seen' ? 'seen' : 'hunch';
+        return '<div class=&quot;ev-row&quot;><span class=&quot;ev-chip '+t+'&quot;></span> '+esc(e.label||'')+'</div>';
+      }).join('') + '</div>';
+  }
+  document.getElementById('side').innerHTML = side;
+
+  document.body.setAttribute('data-rendered','1');
+}
+
+async function main(){
+  const param = new URLSearchParams(location.search).get('data') || 'opportunity-example';
+  try{
+    const d = await fetch('./data-'+param+'.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+    render(d);
+  }catch(err){
+    document.querySelector('.body-wrap').innerHTML =
+      '<div class=&quot;err&quot;>Could not load data-'+esc(param)+'.json: '+esc(err.message)+'</div>';
+    document.body.setAttribute('data-rendered','1');
+  }
+}
+main();
+</script>
+</body>
+</html>
+" scrolling="no" loading="eager" style="height:1080px"></iframe></div>
+      <div class="board-cap">Every need, placed by pain and how well today's tools handle it. The green corner is where ClearList wins.</div>
+      <h3>Where everyone's weak</h3>
+      <div class="board" style="height:608px"><iframe srcdoc="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;/>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/>
+<title>Competitor Matrix</title>
+<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;><link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+<link href=&quot;https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Serif+Display&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+/* ─────────────────────────────────────────────────────────
+   vibe-check diagram engine, shared design layer
+   Built on the ClearList design system tokens.
+   FigJam structure (sticky notes, tape, dots, dotted canvas)
+   + Minimalist Editorial typography (DM Sans / DM Serif Display).
+   One file, many diagram templates.
+   ───────────────────────────────────────────────────────── */
+
+:root{
+  /* canvas */
+  --canvas:#F9F6F0;          /* warm FigJam canvas */
+  --canvas-app:#F9F9F8;      /* editorial / blueprint canvas */
+  --dot:#ddd6c6;
+  --grid-line:rgba(44,100,227,.10);
+
+  /* ink */
+  --charcoal:#1A1A1B;
+  --ink-2:#4b5563;
+  --ink-muted:#6B7280;
+  --border:#E5E5E5;
+
+  /* brand */
+  --blue:#2C64E3;
+  --blue-hover:#2354C2;
+  --purple:#8B5CF6;
+  --purple-light:#F5F3FF;
+  --pink:#ec4899;
+
+  /* moving-sale / figjam */
+  --kraft:#C4A882;
+  --kraft-dark:#A98C63;
+  --tape-blue:#4A90D9;
+  --y:#FFF6A8;   /* softened post-it yellow for sans legibility */
+  --g:#A6E4A0;
+  --b:#A8DBEE;
+  --o:#FFCB7D;
+  --p:#FFA8CC;
+  --lav:#CDBEEA; /* AI = purple family */
+
+  /* status dots */
+  --dot-red:#E03C31;
+  --dot-green:#2E8B57;
+  --dot-amber:#F6C90E;
+
+  /* fonts */
+  --sans:&quot;DM Sans&quot;,ui-sans-serif,system-ui,sans-serif;
+  --serif:&quot;DM Serif Display&quot;,Georgia,serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1920px;height:1080px;overflow:hidden;}
+body{font-family:var(--sans);color:var(--charcoal);-webkit-font-smoothing:antialiased;}
+
+/* canvases */
+.canvas-dots{
+  background-color:var(--canvas);
+  background-image:radial-gradient(var(--dot) 2px,transparent 2px);
+  background-size:30px 30px;background-position:-6px -6px;
+}
+.canvas-blueprint{
+  background-color:var(--canvas-app);
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+.stage{width:1920px;height:1080px;padding:40px 52px 34px;position:relative;display:flex;flex-direction:column;}
+
+/* ── header ───────────────────────────────── */
+.head{display:flex;align-items:flex-start;justify-content:space-between;flex:0 0 auto;}
+.head .crumb{font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.head .title{font-family:var(--serif);font-size:46px;line-height:1.02;color:var(--charcoal);}
+.head .sub{font-size:19px;color:var(--ink-muted);margin-top:10px;max-width:760px;}
+.madeby{text-align:right;font-size:15px;color:var(--ink-muted);line-height:1.3;text-decoration:none;}
+.madeby:hover b{text-decoration:underline;}
+.madeby b{font-weight:700;color:var(--blue);letter-spacing:.02em;}
+.madeby .url{color:var(--blue);font-weight:600;}
+
+/* ── sticky note ──────────────────────────── */
+.note{
+  background:var(--y);
+  padding:13px 15px 14px;
+  box-shadow:3px 4px 12px rgba(0,0,0,.13);
+  position:relative;line-height:1.24;font-size:19px;font-weight:500;
+  border-radius:1px;
+}
+.note .k{display:block;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.40);margin-bottom:5px;}
+.note.sm{font-size:17px;padding:10px 13px;box-shadow:2px 3px 9px rgba(0,0,0,.11);}
+.note.lg{font-size:21px;}
+.note.y{background:var(--y);} .note.g{background:var(--g);} .note.b{background:var(--b);}
+.note.o{background:var(--o);} .note.p{background:var(--p);} .note.ai{background:var(--lav);}
+/* gentle hand-placed tilt + a tape nub */
+.tilt-l{transform:rotate(-1.3deg);} .tilt-r{transform:rotate(1.1deg);} .tilt-0{transform:rotate(-.4deg);}
+.note.pin:before{content:&quot;&quot;;position:absolute;top:-7px;left:50%;width:34px;height:12px;
+  background:rgba(74,144,217,.78);transform:translateX(-50%) rotate(-4deg);box-shadow:1px 1px 3px rgba(0,0,0,.18);}
+
+/* ── tape strip / lane label ──────────────── */
+.tape{display:inline-block;background:var(--tape-blue);color:#fff;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;padding:9px 16px;box-shadow:2px 3px 9px rgba(0,0,0,.16);position:relative;}
+.tape:before,.tape:after{content:&quot;&quot;;position:absolute;top:0;bottom:0;width:14px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 4px,transparent 4px 8px);}
+.tape:before{left:-7px;transform:skewX(-12deg);} .tape:after{right:-7px;transform:skewX(-12deg);}
+.tape.green{background:var(--dot-green);} .tape.kraftt{background:#b9b09c;} .tape.charcoal{background:var(--charcoal);}
+
+/* ── editorial / blueprint box ────────────── */
+.ebox{background:#fff;border:2px solid var(--charcoal);padding:14px 16px;min-width:160px;position:relative;}
+.ebox .t{font-weight:700;font-size:19px;line-height:1.15;}
+.ebox .s{font-size:15px;color:var(--ink-muted);margin-top:4px;line-height:1.25;}
+.ebox.ai{background:var(--purple-light);border-color:var(--purple);}
+.ebox.ai .tag{position:absolute;top:-11px;left:14px;background:var(--purple);color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;}
+.ebox.accent{border-color:var(--blue);}
+
+/* ── garage-sale dot sticker ──────────────── */
+.dot{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;
+  font-weight:700;text-align:center;line-height:1;box-shadow:2px 2px 6px rgba(0,0,0,.22);}
+.dot.red{background:var(--dot-red);} .dot.green{background:var(--dot-green);}
+.dot.amber{background:var(--dot-amber);color:#3a2e00;} .dot.blue{background:var(--tape-blue);}
+
+/* small legend chip */
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-2);font-weight:500;}
+.chip .sw{width:16px;height:16px;border-radius:50%;}
+
+</style>
+<style>
+  .grid{flex:1;margin-top:20px;display:grid;
+    /* columns + rows are set by the renderer from the data */
+    gap:10px;min-height:0;}
+  .ch{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    background:var(--charcoal);color:#fff;padding:8px;}
+  .ch .n{font-weight:700;font-size:19px;line-height:1.1;}
+  .ch .d{font-size:13px;opacity:.7;margin-top:3px;}
+  .corner-cell{display:flex;align-items:flex-end;padding:6px 4px;}
+  .corner-cell span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);font-weight:700;}
+  .rh{display:flex;flex-direction:column;justify-content:center;padding:14px 16px;background:#fff;border:2px solid var(--charcoal);position:relative;}
+  .rh .need{font-weight:700;font-size:20px;line-height:1.15;}
+  .rh .tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:7px;}
+  .rh.gap{border-left:10px solid var(--dot-green);}
+  .rh.gap .tag{color:var(--dot-green);}
+  .rh.stakes{border-left:10px solid var(--dot-amber);}
+  .rh.stakes .tag{color:#a8830a;}
+  .cell{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.55);border:1px solid var(--border);}
+  .row-gap .cell{background:rgba(46,139,87,.08);}
+  .row-stakes .cell{background:rgba(246,201,14,.10);}
+  .mark{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:24px;box-shadow:2px 2px 6px rgba(0,0,0,.18);}
+  .well{background:var(--dot-green);color:#fff;}
+  .poor{background:var(--dot-amber);color:#3a2e00;}
+  .none{background:#fff;border:2px dashed #cfc8ba;color:#bdb6a6;box-shadow:none;font-size:22px;}
+  .legend{display:flex;gap:30px;align-items:center;margin-top:18px;}
+  .legend .chip{font-size:16px;font-weight:600;}
+  .legend .sw{width:26px;height:26px;}
+  .callout{margin-left:auto;font-size:18px;font-weight:600;color:var(--dot-green);}
+  .err{padding:60px;font-size:20px;color:#DC2626;}
+</style>
+<script>window.__D__={
+  &quot;header&quot;: {
+    &quot;crumb&quot;: &quot;Discovery · Step 3.5 · Competitor Matrix&quot;,
+    &quot;title&quot;: &quot;Where Everyone's Weak&quot;,
+    &quot;sub&quot;: &quot;A row everyone handles badly is your gap. A row everyone nails is table stakes, you must match it, but it wins you nothing.&quot;
+  },
+  &quot;cornerLabel&quot;: &quot;The need ↓ / How they do →&quot;,
+  &quot;competitors&quot;: [
+    { &quot;name&quot;: &quot;Facebook Marketplace&quot; },
+    { &quot;name&quot;: &quot;Craigslist&quot; },
+    { &quot;name&quot;: &quot;OfferUp&quot; },
+    { &quot;name&quot;: &quot;A spreadsheet&quot;, &quot;sub&quot;: &quot;+ texts&quot; },
+    { &quot;name&quot;: &quot;Just give it away&quot; }
+  ],
+  &quot;needs&quot;: [
+    {
+      &quot;label&quot;: &quot;Create an accurate listing fast&quot;,
+      &quot;type&quot;: &quot;gap&quot;,
+      &quot;tag&quot;: &quot;◆ your gap&quot;,
+      &quot;marks&quot;: [&quot;poor&quot;, &quot;none&quot;, &quot;poor&quot;, &quot;none&quot;, &quot;none&quot;]
+    },
+    {
+      &quot;label&quot;: &quot;Stop buyers from no-showing&quot;,
+      &quot;type&quot;: &quot;gap&quot;,
+      &quot;tag&quot;: &quot;◆ your gap&quot;,
+      &quot;marks&quot;: [&quot;none&quot;, &quot;none&quot;, &quot;poor&quot;, &quot;none&quot;, &quot;none&quot;]
+    },
+    {
+      &quot;label&quot;: &quot;Skip haggling with strangers&quot;,
+      &quot;type&quot;: &quot;gap&quot;,
+      &quot;tag&quot;: &quot;◆ your gap&quot;,
+      &quot;marks&quot;: [&quot;none&quot;, &quot;none&quot;, &quot;poor&quot;, &quot;na&quot;, &quot;well&quot;]
+    },
+    {
+      &quot;label&quot;: &quot;Coordinate pickup without endless texts&quot;,
+      &quot;type&quot;: &quot;gap&quot;,
+      &quot;tag&quot;: &quot;◆ your gap&quot;,
+      &quot;marks&quot;: [&quot;poor&quot;, &quot;poor&quot;, &quot;poor&quot;, &quot;none&quot;, &quot;none&quot;]
+    },
+    {
+      &quot;label&quot;: &quot;Sell a whole house at once&quot;,
+      &quot;type&quot;: &quot;plain&quot;,
+      &quot;marks&quot;: [&quot;none&quot;, &quot;poor&quot;, &quot;none&quot;, &quot;well&quot;, &quot;well&quot;]
+    },
+    {
+      &quot;label&quot;: &quot;Browse listings easily&quot;,
+      &quot;type&quot;: &quot;stakes&quot;,
+      &quot;tag&quot;: &quot;table stakes&quot;,
+      &quot;marks&quot;: [&quot;well&quot;, &quot;well&quot;, &quot;well&quot;, &quot;none&quot;, &quot;none&quot;]
+    }
+  ],
+  &quot;legend&quot;: [
+    { &quot;mark&quot;: &quot;well&quot;, &quot;label&quot;: &quot;Does it well&quot; },
+    { &quot;mark&quot;: &quot;poor&quot;, &quot;label&quot;: &quot;Does it poorly&quot; },
+    { &quot;mark&quot;: &quot;none&quot;, &quot;label&quot;: &quot;Doesn't do it&quot; }
+  ],
+  &quot;callout&quot;: &quot;4 of 6 needs are wide open, that's the moving-sale gap.&quot;
+};(function(){var _f=window.fetch;window.fetch=function(u,o){try{if(typeof u==='string'&amp;&amp;u.indexOf('data-')>-1){return Promise.resolve({ok:true,status:200,json:function(){return Promise.resolve(window.__D__);}});}}catch(e){}return _f.apply(this,arguments);};})();</script>
+</head>
+<body class=&quot;canvas-dots&quot;>
+<div class=&quot;stage&quot;>
+  <div class=&quot;head&quot;>
+    <div>
+      <div class=&quot;crumb&quot; id=&quot;crumb&quot;></div>
+      <div class=&quot;title&quot; id=&quot;title&quot;></div>
+      <div class=&quot;sub&quot; id=&quot;sub&quot;></div>
+    </div>
+    <a class=&quot;madeby&quot; href=&quot;https://github.com/TexasBedouin/vibe-check&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Created using <b>Vibe-Check</b> skill</a>
+  </div>
+
+  <div class=&quot;grid&quot; id=&quot;grid&quot;></div>
+
+  <div class=&quot;legend&quot; id=&quot;legend&quot;></div>
+</div>
+
+<script>
+// ─── Competitor Matrix engine. One mark per cell, pure index placement. ───
+// Mark glyphs are renderer-mapped from the enum, never stored in data.
+const MARK = {
+  well: { cls:'well', glyph:'✓' },
+  poor: { cls:'poor', glyph:'~' },
+  none: { cls:'none', glyph:'✕' },
+  na:   { cls:'none', glyph:'–' },
+};
+// Need type → row-header modifier + the row tint class on its cells.
+const ROW = {
+  gap:    { rh:'gap',    row:'row-gap' },
+  stakes: { rh:'stakes', row:'row-stakes' },
+  plain:  { rh:'',       row:'' },
+};
+const LEGEND_SW = { well:'var(--dot-green)', poor:'var(--dot-amber)', none:'#fff;border:2px dashed #cfc8ba' };
+
+const esc = s => String(s).replace(/&amp;/g,'&amp;amp;').replace(/</g,'&amp;lt;').replace(/>/g,'&amp;gt;');
+
+function render(m){
+  const competitors = m.competitors || [];
+  const needs = m.needs || [];
+  const cols = competitors.length;
+
+  const h = m.header || {};
+  document.getElementById('crumb').textContent = h.crumb || '';
+  document.getElementById('title').textContent = h.title || '';
+  document.getElementById('sub').textContent = h.sub || '';
+
+  const grid = document.getElementById('grid');
+  grid.style.gridTemplateColumns = '420px repeat(' + cols + ',1fr)';
+  grid.style.gridTemplateRows = '96px repeat(' + needs.length + ',1fr)';
+
+  let html = '';
+  // header row: corner caption + one column header per competitor
+  html += '<div class=&quot;corner-cell&quot;><span>' + esc(m.cornerLabel || '') + '</span></div>';
+  competitors.forEach(c => {
+    html += '<div class=&quot;ch&quot;><span class=&quot;n&quot;>' + esc(c.name) + '</span>' +
+      (c.sub ? '<span class=&quot;d&quot;>' + esc(c.sub) + '</span>' : '') + '</div>';
+  });
+
+  // one row per need
+  needs.forEach(need => {
+    const row = ROW[need.type] || ROW.plain;
+    html += '<div class=&quot;rh' + (row.rh ? ' ' + row.rh : '') + '&quot;>' +
+      '<span class=&quot;need&quot;>' + esc(need.label) + '</span>' +
+      (need.tag ? '<span class=&quot;tag&quot;>' + esc(need.tag) + '</span>' : '') + '</div>';
+    const marks = need.marks || [];
+    for (let i = 0; i < cols; i++){
+      const mk = MARK[marks[i]] || MARK.na;
+      html += '<div class=&quot;cell' + (row.row ? ' ' + row.row : '') + '&quot;>' +
+        '<div class=&quot;mark ' + mk.cls + '&quot;>' + mk.glyph + '</div></div>';
+    }
+  });
+  grid.innerHTML = html;
+
+  // legend + callout
+  const legend = m.legend || [];
+  let leg = legend.map(l =>
+    '<span class=&quot;chip&quot;><span class=&quot;sw&quot; style=&quot;background:' + (LEGEND_SW[l.mark] || '#fff') + '&quot;></span> ' +
+    esc(l.label) + '</span>'
+  ).join('');
+  if (m.callout) leg += '<span class=&quot;callout&quot;>' + esc(m.callout) + '</span>';
+  document.getElementById('legend').innerHTML = leg;
+
+  document.body.setAttribute('data-rendered','1');
+}
+
+async function main(){
+  const param = new URLSearchParams(location.search).get('data') || 'matrix-example';
+  try{
+    const m = await fetch('./data-'+param+'.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+    render(m);
+  }catch(err){
+    document.querySelector('.stage').innerHTML = '<div class=&quot;err&quot;>Could not load data-'+esc(param)+'.json: '+esc(err.message)+'</div>';
+    document.body.setAttribute('data-rendered','1');
+  }
+}
+main();
+</script>
+</body>
+</html>
+" scrolling="no" loading="eager" style="height:1080px"></iframe></div>
+      <div class="board-cap">Four of six needs are wide open. That gap is the moving-sale opportunity.</div>
+      <h3>In their own words</h3>
+      <div class="quote">"I gave up and just left a pile on the curb. Writing all those listings wasn't worth it."</div>
+      <div class="quote">"Three people said they'd come for the couch. None showed. I wasted a whole Saturday."</div>
+      <p style="margin-top:14px"><span class="pill win">#1 to build · opportunity 15</span> Create an accurate listing in seconds. Hurts a lot, handled badly everywhere.</p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="panel" id="experience">
+      <h2>The experience</h2>
+      <div class="lead">The experience wasn't guessed. We sketched several directions for the core moment, combined the best into one, and <em>that</em> chosen direction is what the blueprint maps. Here's the lineage.</div>
+
+      <h3>1 · We explored the core moment (Crazy 8)</h3>
+      <div class="board" style="height:608px"><iframe srcdoc="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;/>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/>
+<title>ClearList: Crazy Board</title>
+<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;><link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+<link href=&quot;https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Serif+Display&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+/* ─────────────────────────────────────────────────────────
+   vibe-check diagram engine, shared design layer
+   Built on the ClearList design system tokens.
+   FigJam structure (sticky notes, tape, dots, dotted canvas)
+   + Minimalist Editorial typography (DM Sans / DM Serif Display).
+   One file, many diagram templates.
+   ───────────────────────────────────────────────────────── */
+
+:root{
+  /* canvas */
+  --canvas:#F9F6F0;          /* warm FigJam canvas */
+  --canvas-app:#F9F9F8;      /* editorial / blueprint canvas */
+  --dot:#ddd6c6;
+  --grid-line:rgba(44,100,227,.10);
+
+  /* ink */
+  --charcoal:#1A1A1B;
+  --ink-2:#4b5563;
+  --ink-muted:#6B7280;
+  --border:#E5E5E5;
+
+  /* brand */
+  --blue:#2C64E3;
+  --blue-hover:#2354C2;
+  --purple:#8B5CF6;
+  --purple-light:#F5F3FF;
+  --pink:#ec4899;
+
+  /* moving-sale / figjam */
+  --kraft:#C4A882;
+  --kraft-dark:#A98C63;
+  --tape-blue:#4A90D9;
+  --y:#FFF6A8;   /* softened post-it yellow for sans legibility */
+  --g:#A6E4A0;
+  --b:#A8DBEE;
+  --o:#FFCB7D;
+  --p:#FFA8CC;
+  --lav:#CDBEEA; /* AI = purple family */
+
+  /* status dots */
+  --dot-red:#E03C31;
+  --dot-green:#2E8B57;
+  --dot-amber:#F6C90E;
+
+  /* fonts */
+  --sans:&quot;DM Sans&quot;,ui-sans-serif,system-ui,sans-serif;
+  --serif:&quot;DM Serif Display&quot;,Georgia,serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1920px;height:1080px;overflow:hidden;}
+body{font-family:var(--sans);color:var(--charcoal);-webkit-font-smoothing:antialiased;}
+
+/* canvases */
+.canvas-dots{
+  background-color:var(--canvas);
+  background-image:radial-gradient(var(--dot) 2px,transparent 2px);
+  background-size:30px 30px;background-position:-6px -6px;
+}
+.canvas-blueprint{
+  background-color:var(--canvas-app);
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+.stage{width:1920px;height:1080px;padding:40px 52px 34px;position:relative;display:flex;flex-direction:column;}
+
+/* ── header ───────────────────────────────── */
+.head{display:flex;align-items:flex-start;justify-content:space-between;flex:0 0 auto;}
+.head .crumb{font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.head .title{font-family:var(--serif);font-size:46px;line-height:1.02;color:var(--charcoal);}
+.head .sub{font-size:19px;color:var(--ink-muted);margin-top:10px;max-width:760px;}
+.madeby{text-align:right;font-size:15px;color:var(--ink-muted);line-height:1.3;text-decoration:none;}
+.madeby:hover b{text-decoration:underline;}
+.madeby b{font-weight:700;color:var(--blue);letter-spacing:.02em;}
+.madeby .url{color:var(--blue);font-weight:600;}
+
+/* ── sticky note ──────────────────────────── */
+.note{
+  background:var(--y);
+  padding:13px 15px 14px;
+  box-shadow:3px 4px 12px rgba(0,0,0,.13);
+  position:relative;line-height:1.24;font-size:19px;font-weight:500;
+  border-radius:1px;
+}
+.note .k{display:block;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.40);margin-bottom:5px;}
+.note.sm{font-size:17px;padding:10px 13px;box-shadow:2px 3px 9px rgba(0,0,0,.11);}
+.note.lg{font-size:21px;}
+.note.y{background:var(--y);} .note.g{background:var(--g);} .note.b{background:var(--b);}
+.note.o{background:var(--o);} .note.p{background:var(--p);} .note.ai{background:var(--lav);}
+/* gentle hand-placed tilt + a tape nub */
+.tilt-l{transform:rotate(-1.3deg);} .tilt-r{transform:rotate(1.1deg);} .tilt-0{transform:rotate(-.4deg);}
+.note.pin:before{content:&quot;&quot;;position:absolute;top:-7px;left:50%;width:34px;height:12px;
+  background:rgba(74,144,217,.78);transform:translateX(-50%) rotate(-4deg);box-shadow:1px 1px 3px rgba(0,0,0,.18);}
+
+/* ── tape strip / lane label ──────────────── */
+.tape{display:inline-block;background:var(--tape-blue);color:#fff;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;padding:9px 16px;box-shadow:2px 3px 9px rgba(0,0,0,.16);position:relative;}
+.tape:before,.tape:after{content:&quot;&quot;;position:absolute;top:0;bottom:0;width:14px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 4px,transparent 4px 8px);}
+.tape:before{left:-7px;transform:skewX(-12deg);} .tape:after{right:-7px;transform:skewX(-12deg);}
+.tape.green{background:var(--dot-green);} .tape.kraftt{background:#b9b09c;} .tape.charcoal{background:var(--charcoal);}
+
+/* ── editorial / blueprint box ────────────── */
+.ebox{background:#fff;border:2px solid var(--charcoal);padding:14px 16px;min-width:160px;position:relative;}
+.ebox .t{font-weight:700;font-size:19px;line-height:1.15;}
+.ebox .s{font-size:15px;color:var(--ink-muted);margin-top:4px;line-height:1.25;}
+.ebox.ai{background:var(--purple-light);border-color:var(--purple);}
+.ebox.ai .tag{position:absolute;top:-11px;left:14px;background:var(--purple);color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;}
+.ebox.accent{border-color:var(--blue);}
+
+/* ── garage-sale dot sticker ──────────────── */
+.dot{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;
+  font-weight:700;text-align:center;line-height:1;box-shadow:2px 2px 6px rgba(0,0,0,.22);}
+.dot.red{background:var(--dot-red);} .dot.green{background:var(--dot-green);}
+.dot.amber{background:var(--dot-amber);color:#3a2e00;} .dot.blue{background:var(--tape-blue);}
+
+/* small legend chip */
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-2);font-weight:500;}
+.chip .sw{width:16px;height:16px;border-radius:50%;}
+
+</style>
+<style>
+  :root{ --scr-dark:#2b2b2e; --scr-gray:#EEEEEC; --ph-border:#1A1A1B; --ph2:#9CA3AF; }
+  .stage{padding:32px 48px 22px;}
+  .head .crumb{color:var(--blue);}
+  .madeby2{position:absolute;right:48px;top:38px;font-size:14px;color:var(--ink-muted);text-decoration:none;}
+  .madeby2:hover b{text-decoration:underline;} .madeby2 b{color:var(--blue);font-weight:700;}
+
+  .board{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);
+    gap:22px 26px;margin-top:14px;min-height:0;}
+  .card{display:flex;flex-direction:column;gap:9px;min-height:0;}
+  .dir{align-self:flex-start;background:var(--charcoal);color:#fff;font-weight:700;font-size:14px;letter-spacing:.03em;
+    padding:6px 13px;transform:rotate(-.8deg);box-shadow:2px 2px 6px rgba(0,0,0,.16);}
+  .sketch{flex:1;background:#fff;border:2px solid var(--ph-border);position:relative;overflow:hidden;min-height:0;}
+  .bestfor{font-size:14px;color:var(--ink-2);font-weight:500;}
+  .bestfor b{color:var(--charcoal);}
+  .tag{position:absolute;left:10px;bottom:10px;font-size:11px;font-weight:700;padding:4px 8px;letter-spacing:.02em;}
+  .tag.ai{background:#2a2540;color:#c9b8ff;}
+
+  /* 1 camera */
+  .cam{background:var(--scr-dark);display:flex;align-items:center;justify-content:center;}
+  .cam .hint{color:rgba(255,255,255,.8);font-size:14px;font-weight:600;}
+  .br{position:absolute;width:22px;height:22px;border:3px solid rgba(255,255,255,.85);}
+  .br.tl{top:14px;left:14px;border-right:0;border-bottom:0;} .br.tr{top:14px;right:14px;border-left:0;border-bottom:0;}
+  .br.bl{bottom:14px;left:14px;border-right:0;border-top:0;} .br.brr{bottom:14px;right:14px;border-left:0;border-top:0;}
+  .shutter{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;
+    background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 2px var(--blue);}
+
+  /* 2 chat */
+  .chat{background:var(--scr-gray);padding:16px;display:flex;flex-direction:column;gap:9px;}
+  .bub{max-width:80%;padding:8px 11px;font-size:13px;line-height:1.25;border-radius:4px;}
+  .bub.ai{align-self:flex-start;background:var(--purple-light);border-left:3px solid var(--purple);color:var(--charcoal);}
+  .bub.me{align-self:flex-end;background:var(--blue);color:#fff;}
+
+  /* 3 swipe */
+  .swipe{background:var(--scr-gray);display:flex;align-items:center;justify-content:center;}
+  .mini-card{width:60%;background:#fff;border:2px solid var(--ph-border);padding:10px;}
+  .mini-card .ph{height:88px;background:#dededa;display:flex;align-items:center;justify-content:center;color:#9a9a93;font-size:12px;font-weight:600;}
+  .mini-card .t{font-size:13px;font-weight:700;margin-top:8px;color:var(--charcoal);}
+  .mini-card .p{font-size:14px;font-weight:700;color:var(--blue);margin-top:2px;}
+  .chip{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;color:#fff;
+    font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.2);}
+  .chip.l{left:18px;background:#DC2626;} .chip.r{right:18px;background:#059669;}
+
+  /* 4 voice */
+  .voice{background:var(--scr-gray);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px;}
+  .mic{width:60px;height:60px;border-radius:50%;background:var(--blue);position:relative;}
+  .mic:after{content:&quot;&quot;;position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 8px rgba(44,100,227,.18);}
+  .wave{display:flex;gap:4px;align-items:flex-end;height:34px;}
+  .wave i{width:5px;background:var(--charcoal);}
+  .transcript{font-size:13px;color:var(--charcoal);font-style:italic;text-align:center;background:#fff;border:1px solid var(--border);padding:7px 10px;}
+
+  /* 5 list */
+  .list{background:#fff;display:flex;flex-direction:column;}
+  .lrow{display:flex;justify-content:space-between;padding:10px 14px;font-size:13px;border-bottom:1px solid var(--border);color:var(--charcoal);}
+  .lrow.head{background:#f4f4f2;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);}
+  .lrow .pr{font-weight:700;color:var(--blue);}
+  .lrow.add{color:var(--blue);font-weight:700;border-bottom:0;}
+
+  /* 6 room scan */
+  .scan{background:#cfcfca;display:flex;align-items:center;justify-content:center;color:#7a7a72;font-size:13px;font-weight:600;}
+  .det{position:absolute;border:2px dashed var(--blue);background:rgba(44,100,227,.08);}
+  .det span{position:absolute;top:-9px;left:4px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;}
+  .d1{top:30%;left:12%;width:34%;height:30%;} .d2{top:22%;left:56%;width:26%;height:24%;} .d3{top:60%;left:40%;width:38%;height:26%;}
+
+  .pickline{text-align:center;font-size:16px;color:var(--ink-2);margin-top:12px;font-weight:500;}
+  .pickline b{color:var(--charcoal);}
+</style>
+</head>
+<body class=&quot;canvas-dots&quot;>
+<div class=&quot;stage&quot;>
+  <div class=&quot;head&quot;>
+    <div>
+      <div class=&quot;crumb&quot;>Phase 2 · Crazy 8s (we usually show 5 to 6)</div>
+      <div class=&quot;title&quot;>Six ways ClearList could feel</div>
+      <div class=&quot;sub&quot;>More rough ideas means more to remix. Don't pick one... grab the bits you like from any card and we fuse them into a single design.</div>
+    </div>
+  </div>
+  <a class=&quot;madeby2&quot; href=&quot;https://github.com/TexasBedouin/vibe-check&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Created using <b>Vibe-Check</b> skill</a>
+
+  <div class=&quot;board&quot;>
+    <!-- 1 -->
+    <div class=&quot;card&quot;>
+      <div class=&quot;dir&quot;>1 · Camera-first</div>
+      <div class=&quot;sketch cam&quot;>
+        <span class=&quot;br tl&quot;></span><span class=&quot;br tr&quot;></span><span class=&quot;br bl&quot;></span><span class=&quot;br brr&quot;></span>
+        <div class=&quot;hint&quot;>point &amp;amp; snap</div>
+        <div class=&quot;tag ai&quot;>AI lists them</div>
+        <div class=&quot;shutter&quot;></div>
+      </div>
+      <div class=&quot;bestfor&quot;><b>Best for:</b> clearing a whole house, fast.</div>
+    </div>
+    <!-- 2 -->
+    <div class=&quot;card&quot;>
+      <div class=&quot;dir&quot;>2 · Talk it out</div>
+      <div class=&quot;sketch chat&quot;>
+        <div class=&quot;bub ai&quot;>What are you selling?</div>
+        <div class=&quot;bub me&quot;>A couch, a desk...</div>
+        <div class=&quot;bub ai&quot;>Here's your couch listing, $250. Look right?</div>
+      </div>
+      <div class=&quot;bestfor&quot;><b>Best for:</b> first-timers who want a guide.</div>
+    </div>
+    <!-- 3 -->
+    <div class=&quot;card&quot;>
+      <div class=&quot;dir&quot;>3 · Swipe to sort</div>
+      <div class=&quot;sketch swipe&quot;>
+        <div class=&quot;mini-card&quot;><div class=&quot;ph&quot;>photo</div><div class=&quot;t&quot;>IKEA Ektorp Sofa</div><div class=&quot;p&quot;>$250</div></div>
+        <span class=&quot;chip l&quot;>✕</span><span class=&quot;chip r&quot;>✓</span>
+      </div>
+      <div class=&quot;bestfor&quot;><b>Best for:</b> quick calls on lots of items.</div>
+    </div>
+    <!-- 4 -->
+    <div class=&quot;card&quot;>
+      <div class=&quot;dir&quot;>4 · Voice-first</div>
+      <div class=&quot;sketch voice&quot;>
+        <div class=&quot;mic&quot;></div>
+        <div class=&quot;wave&quot;><i style=&quot;height:10px&quot;></i><i style=&quot;height:22px&quot;></i><i style=&quot;height:32px&quot;></i><i style=&quot;height:18px&quot;></i><i style=&quot;height:26px&quot;></i><i style=&quot;height:12px&quot;></i><i style=&quot;height:20px&quot;></i></div>
+        <div class=&quot;transcript&quot;>&quot;couch, 250 bucks, good condition&quot;</div>
+      </div>
+      <div class=&quot;bestfor&quot;><b>Best for:</b> hands full on moving day.</div>
+    </div>
+    <!-- 5 -->
+    <div class=&quot;card&quot;>
+      <div class=&quot;dir&quot;>5 · One big list</div>
+      <div class=&quot;sketch list&quot;>
+        <div class=&quot;lrow head&quot;><span>Item</span><span>Price</span></div>
+        <div class=&quot;lrow&quot;><span>IKEA Ektorp Sofa</span><span class=&quot;pr&quot;>$250</span></div>
+        <div class=&quot;lrow&quot;><span>Oak Desk</span><span class=&quot;pr&quot;>$80</span></div>
+        <div class=&quot;lrow&quot;><span>Vitamix Blender</span><span class=&quot;pr&quot;>$40</span></div>
+        <div class=&quot;lrow add&quot;>+ add an item</div>
+      </div>
+      <div class=&quot;bestfor&quot;><b>Best for:</b> people who want full control, fast.</div>
+    </div>
+    <!-- 6 -->
+    <div class=&quot;card&quot;>
+      <div class=&quot;dir&quot;>6 · Room scan</div>
+      <div class=&quot;sketch scan&quot;>
+        room photo
+        <span class=&quot;det d1&quot;><span>sofa</span></span>
+        <span class=&quot;det d2&quot;><span>lamp</span></span>
+        <span class=&quot;det d3&quot;><span>rug</span></span>
+        <div class=&quot;tag ai&quot;>AI found 3 items</div>
+      </div>
+      <div class=&quot;bestfor&quot;><b>Best for:</b> one photo, many items at once.</div>
+    </div>
+  </div>
+
+  <div class=&quot;pickline&quot;>Point at the bits you like... any card, any element... and I'll combine them into one simpler design.</div>
+</div>
+</body>
+</html>
+" scrolling="no" loading="eager" style="height:1080px"></iframe></div>
+      <div class="board-cap">Many rough directions for the one main interaction, side by side, so we react to real options instead of marrying the first idea.</div>
+
+      <h3>2 · We combined the best into one</h3>
+      <div class="board" style="height:608px"><iframe srcdoc="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;/>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/>
+<title>ClearList: The Combine</title>
+<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;><link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+<link href=&quot;https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Serif+Display&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+/* ─────────────────────────────────────────────────────────
+   vibe-check diagram engine, shared design layer
+   Built on the ClearList design system tokens.
+   FigJam structure (sticky notes, tape, dots, dotted canvas)
+   + Minimalist Editorial typography (DM Sans / DM Serif Display).
+   One file, many diagram templates.
+   ───────────────────────────────────────────────────────── */
+
+:root{
+  /* canvas */
+  --canvas:#F9F6F0;          /* warm FigJam canvas */
+  --canvas-app:#F9F9F8;      /* editorial / blueprint canvas */
+  --dot:#ddd6c6;
+  --grid-line:rgba(44,100,227,.10);
+
+  /* ink */
+  --charcoal:#1A1A1B;
+  --ink-2:#4b5563;
+  --ink-muted:#6B7280;
+  --border:#E5E5E5;
+
+  /* brand */
+  --blue:#2C64E3;
+  --blue-hover:#2354C2;
+  --purple:#8B5CF6;
+  --purple-light:#F5F3FF;
+  --pink:#ec4899;
+
+  /* moving-sale / figjam */
+  --kraft:#C4A882;
+  --kraft-dark:#A98C63;
+  --tape-blue:#4A90D9;
+  --y:#FFF6A8;   /* softened post-it yellow for sans legibility */
+  --g:#A6E4A0;
+  --b:#A8DBEE;
+  --o:#FFCB7D;
+  --p:#FFA8CC;
+  --lav:#CDBEEA; /* AI = purple family */
+
+  /* status dots */
+  --dot-red:#E03C31;
+  --dot-green:#2E8B57;
+  --dot-amber:#F6C90E;
+
+  /* fonts */
+  --sans:&quot;DM Sans&quot;,ui-sans-serif,system-ui,sans-serif;
+  --serif:&quot;DM Serif Display&quot;,Georgia,serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1920px;height:1080px;overflow:hidden;}
+body{font-family:var(--sans);color:var(--charcoal);-webkit-font-smoothing:antialiased;}
+
+/* canvases */
+.canvas-dots{
+  background-color:var(--canvas);
+  background-image:radial-gradient(var(--dot) 2px,transparent 2px);
+  background-size:30px 30px;background-position:-6px -6px;
+}
+.canvas-blueprint{
+  background-color:var(--canvas-app);
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+.stage{width:1920px;height:1080px;padding:40px 52px 34px;position:relative;display:flex;flex-direction:column;}
+
+/* ── header ───────────────────────────────── */
+.head{display:flex;align-items:flex-start;justify-content:space-between;flex:0 0 auto;}
+.head .crumb{font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.head .title{font-family:var(--serif);font-size:46px;line-height:1.02;color:var(--charcoal);}
+.head .sub{font-size:19px;color:var(--ink-muted);margin-top:10px;max-width:760px;}
+.madeby{text-align:right;font-size:15px;color:var(--ink-muted);line-height:1.3;text-decoration:none;}
+.madeby:hover b{text-decoration:underline;}
+.madeby b{font-weight:700;color:var(--blue);letter-spacing:.02em;}
+.madeby .url{color:var(--blue);font-weight:600;}
+
+/* ── sticky note ──────────────────────────── */
+.note{
+  background:var(--y);
+  padding:13px 15px 14px;
+  box-shadow:3px 4px 12px rgba(0,0,0,.13);
+  position:relative;line-height:1.24;font-size:19px;font-weight:500;
+  border-radius:1px;
+}
+.note .k{display:block;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.40);margin-bottom:5px;}
+.note.sm{font-size:17px;padding:10px 13px;box-shadow:2px 3px 9px rgba(0,0,0,.11);}
+.note.lg{font-size:21px;}
+.note.y{background:var(--y);} .note.g{background:var(--g);} .note.b{background:var(--b);}
+.note.o{background:var(--o);} .note.p{background:var(--p);} .note.ai{background:var(--lav);}
+/* gentle hand-placed tilt + a tape nub */
+.tilt-l{transform:rotate(-1.3deg);} .tilt-r{transform:rotate(1.1deg);} .tilt-0{transform:rotate(-.4deg);}
+.note.pin:before{content:&quot;&quot;;position:absolute;top:-7px;left:50%;width:34px;height:12px;
+  background:rgba(74,144,217,.78);transform:translateX(-50%) rotate(-4deg);box-shadow:1px 1px 3px rgba(0,0,0,.18);}
+
+/* ── tape strip / lane label ──────────────── */
+.tape{display:inline-block;background:var(--tape-blue);color:#fff;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;padding:9px 16px;box-shadow:2px 3px 9px rgba(0,0,0,.16);position:relative;}
+.tape:before,.tape:after{content:&quot;&quot;;position:absolute;top:0;bottom:0;width:14px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 4px,transparent 4px 8px);}
+.tape:before{left:-7px;transform:skewX(-12deg);} .tape:after{right:-7px;transform:skewX(-12deg);}
+.tape.green{background:var(--dot-green);} .tape.kraftt{background:#b9b09c;} .tape.charcoal{background:var(--charcoal);}
+
+/* ── editorial / blueprint box ────────────── */
+.ebox{background:#fff;border:2px solid var(--charcoal);padding:14px 16px;min-width:160px;position:relative;}
+.ebox .t{font-weight:700;font-size:19px;line-height:1.15;}
+.ebox .s{font-size:15px;color:var(--ink-muted);margin-top:4px;line-height:1.25;}
+.ebox.ai{background:var(--purple-light);border-color:var(--purple);}
+.ebox.ai .tag{position:absolute;top:-11px;left:14px;background:var(--purple);color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;}
+.ebox.accent{border-color:var(--blue);}
+
+/* ── garage-sale dot sticker ──────────────── */
+.dot{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;
+  font-weight:700;text-align:center;line-height:1;box-shadow:2px 2px 6px rgba(0,0,0,.22);}
+.dot.red{background:var(--dot-red);} .dot.green{background:var(--dot-green);}
+.dot.amber{background:var(--dot-amber);color:#3a2e00;} .dot.blue{background:var(--tape-blue);}
+
+/* small legend chip */
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-2);font-weight:500;}
+.chip .sw{width:16px;height:16px;border-radius:50%;}
+
+</style>
+<style>
+  :root{ --scr-dark:#2b2b2e; --scr-gray:#EEEEEC; --ph-border:#1A1A1B; }
+  .stage{padding:34px 52px 24px;}
+  .head .crumb{color:var(--blue);}
+  .madeby2{position:absolute;right:52px;top:40px;font-size:14px;color:var(--ink-muted);text-decoration:none;}
+  .madeby2:hover b{text-decoration:underline;} .madeby2 b{color:var(--blue);font-weight:700;}
+
+  .flow{flex:1;display:flex;align-items:center;justify-content:center;gap:36px;margin-top:10px;}
+  .unit{display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .step-cap{font-size:15px;color:var(--ink-2);font-weight:500;text-align:center;max-width:340px;line-height:1.35;}
+  .step-cap b{color:var(--charcoal);}
+  .step-cap .src{color:var(--blue);font-weight:700;}
+  .arrow{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink-muted);}
+  .arrow .a{font-size:40px;line-height:1;color:var(--charcoal);}
+  .arrow .l{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;}
+
+  .phone{width:340px;height:600px;background:#fff;border:2px solid var(--ph-border);border-radius:30px;overflow:hidden;
+    display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(0,0,0,.12);}
+  .appbar{height:50px;flex:0 0 auto;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;
+    padding:0 16px;font-weight:700;font-size:15px;color:var(--charcoal);}
+  .appbar .count{font-weight:600;font-size:13px;color:var(--ink-muted);}
+  .scr{flex:1;display:flex;flex-direction:column;min-height:0;}
+
+  /* capture screen */
+  .cam{flex:1;background:var(--scr-dark);position:relative;display:flex;align-items:center;justify-content:center;}
+  .cam .hint{color:rgba(255,255,255,.82);font-size:14px;font-weight:600;}
+  .br{position:absolute;width:24px;height:24px;border:3px solid rgba(255,255,255,.85);}
+  .br.tl{top:16px;left:16px;border-right:0;border-bottom:0;} .br.tr{top:16px;right:16px;border-left:0;border-bottom:0;}
+  .br.bl{bottom:16px;left:16px;border-right:0;border-top:0;} .br.brr{bottom:16px;right:16px;border-left:0;border-top:0;}
+  .thumbs{display:flex;gap:6px;padding:10px 14px;background:#1f1f22;align-items:center;}
+  .thumb{width:36px;height:36px;background:#55555a;border:1px solid #6a6a70;}
+  .thumb.more{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;background:#3a3a3f;}
+  .capbar{background:#1f1f22;padding:10px 0 20px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .toast{color:#c9b8ff;background:#2a2540;font-size:12px;font-weight:600;padding:5px 11px;}
+  .controls{display:flex;align-items:center;justify-content:center;gap:34px;}
+  .shutter{width:64px;height:64px;border-radius:50%;background:var(--blue);border:4px solid #fff;box-shadow:0 0 0 2px var(--blue);}
+  .mic-btn{width:50px;height:50px;border-radius:50%;border:2px solid #fff;background:transparent;display:flex;
+    flex-direction:column;align-items:center;justify-content:center;position:relative;}
+  .mic-i{width:11px;height:18px;border-radius:6px;background:#fff;position:relative;}
+  .mic-i:after{content:&quot;&quot;;position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);width:15px;height:8px;
+    border:2px solid #fff;border-top:0;border-radius:0 0 9px 9px;}
+  .mic-lab{position:absolute;bottom:-17px;font-size:9px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.06em;}
+
+  /* review screen */
+  .deck{flex:1;background:var(--scr-gray);position:relative;display:flex;align-items:center;justify-content:center;}
+  .card{position:absolute;width:240px;background:#fff;border:2px solid var(--ph-border);padding:14px;}
+  .card.back{transform:rotate(-3deg) translateY(4px);opacity:.6;}
+  .card.top{position:relative;box-shadow:0 8px 18px rgba(0,0,0,.16);}
+  .card-photo{height:150px;background:#dededa;display:flex;align-items:center;justify-content:center;color:#9a9a93;font-size:13px;font-weight:600;}
+  .card-t{font-weight:700;font-size:16px;margin-top:11px;color:var(--charcoal);}
+  .card-meta{font-size:13px;color:var(--ink-2);margin-top:3px;}
+  .card-price{font-size:20px;font-weight:700;color:var(--blue);margin-top:7px;}
+  .swipe{position:absolute;top:46%;transform:translateY(-50%);font-weight:700;font-size:12px;color:#fff;padding:5px 9px;}
+  .swipe.l{left:12px;background:#DC2626;transform:translateY(-50%) rotate(-8deg);}
+  .swipe.r{right:12px;background:#059669;transform:translateY(-50%) rotate(8deg);}
+  .revfoot{height:54px;flex:0 0 auto;border-top:1px solid var(--border);display:flex;}
+  .revfoot span{flex:1;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+  .revfoot .free{background:#DCFCE7;color:#166534;}
+  .revfoot .edit{color:var(--charcoal);border-left:1px solid var(--border);}
+
+  .why{text-align:center;font-size:16px;color:var(--ink-2);margin-top:10px;font-weight:500;}
+  .why b{color:var(--charcoal);}
+</style>
+</head>
+<body class=&quot;canvas-dots&quot;>
+<div class=&quot;stage&quot;>
+  <div class=&quot;head&quot;>
+    <div>
+      <div class=&quot;crumb&quot;>Phase 2 · The combine</div>
+      <div class=&quot;title&quot;>Your design: snap, talk if you want, swipe to sort</div>
+      <div class=&quot;sub&quot;>One direction, fused from your picks. We kept what made each one fast and dropped the rest, so it is simpler than any single sketch.</div>
+    </div>
+  </div>
+  <a class=&quot;madeby2&quot; href=&quot;https://github.com/TexasBedouin/vibe-check&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Created using <b>Vibe-Check</b> skill</a>
+
+  <div class=&quot;flow&quot;>
+    <div class=&quot;unit&quot;>
+      <div class=&quot;phone&quot;>
+        <div class=&quot;appbar&quot;><span>Add items</span><span class=&quot;count&quot;>12 snapped</span></div>
+        <div class=&quot;scr&quot;>
+          <div class=&quot;cam&quot;>
+            <span class=&quot;br tl&quot;></span><span class=&quot;br tr&quot;></span><span class=&quot;br bl&quot;></span><span class=&quot;br brr&quot;></span>
+            <div class=&quot;hint&quot;>point at an item</div>
+          </div>
+          <div class=&quot;thumbs&quot;><div class=&quot;thumb&quot;></div><div class=&quot;thumb&quot;></div><div class=&quot;thumb&quot;></div><div class=&quot;thumb more&quot;>+9</div></div>
+          <div class=&quot;capbar&quot;>
+            <div class=&quot;toast&quot;>AI is writing your listings...</div>
+            <div class=&quot;controls&quot;>
+              <div class=&quot;mic-btn&quot;><div class=&quot;mic-i&quot;></div><div class=&quot;mic-lab&quot;>TALK</div></div>
+              <div class=&quot;shutter&quot;></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=&quot;step-cap&quot;><b>Snap the pile</b> <span class=&quot;src&quot;>(1)</span>, or tap the mic to add a detail by voice <span class=&quot;src&quot;>(2)</span></div>
+    </div>
+
+    <div class=&quot;arrow&quot;><div class=&quot;a&quot;>&amp;rarr;</div><div class=&quot;l&quot;>then</div></div>
+
+    <div class=&quot;unit&quot;>
+      <div class=&quot;phone&quot;>
+        <div class=&quot;appbar&quot;><span>Review</span><span class=&quot;count&quot;>3 of 12</span></div>
+        <div class=&quot;scr&quot;>
+          <div class=&quot;deck&quot;>
+            <div class=&quot;card back&quot;></div>
+            <div class=&quot;card top&quot;>
+              <div class=&quot;card-photo&quot;>photo</div>
+              <div class=&quot;card-t&quot;>IKEA Ektorp Sofa</div>
+              <div class=&quot;card-meta&quot;>Good condition · Furniture</div>
+              <div class=&quot;card-price&quot;>$250</div>
+            </div>
+            <div class=&quot;swipe l&quot;>✕ trash</div>
+            <div class=&quot;swipe r&quot;>✓ publish</div>
+          </div>
+          <div class=&quot;revfoot&quot;><span class=&quot;free&quot;>Make FREE</span><span class=&quot;edit&quot;>Edit</span></div>
+        </div>
+      </div>
+      <div class=&quot;step-cap&quot;><b>Swipe to sort</b>, one tap to Make FREE <span class=&quot;src&quot;>(3)</span></div>
+    </div>
+  </div>
+
+  <div class=&quot;why&quot;><b>Dropped:</b> the full chat thread and the spreadsheet view... they slowed the core down. You can always talk, but you never have to.</div>
+</div>
+</body>
+</html>
+" scrolling="no" loading="eager" style="height:1080px"></iframe></div>
+      <div class="board-cap">The picks fused into a single direction (snap, talk if you want, swipe to sort), simpler than any one sketch.</div>
+
+      <div class="card" style="background:var(--blue-soft);border-color:#cdddff">
+        <h3 style="margin-top:0">★ This is the most important part</h3>
+        <p style="color:var(--ink2);font-size:15px;line-height:1.55">That combined direction is the one experience that solves the biggest problem from the Evidence tab: the proven <b>aha moment</b>, the thing people will actually switch for. The blueprint below maps <em>this</em> flow end to end, because it is where ClearList earns its place. Everything else in this document exists to support it.</p>
+      </div>
+
+      <h3>3 · The Experience Blueprint, buyer reserves an item</h3>
+      <div class="board" style="height:754px"><iframe srcdoc="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;/>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/>
+<title>Experience Blueprint Engine</title>
+<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;><link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+<link href=&quot;https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Serif+Display&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+/* ─────────────────────────────────────────────────────────
+   vibe-check diagram engine, shared design layer
+   Built on the ClearList design system tokens.
+   FigJam structure (sticky notes, tape, dots, dotted canvas)
+   + Minimalist Editorial typography (DM Sans / DM Serif Display).
+   One file, many diagram templates.
+   ───────────────────────────────────────────────────────── */
+
+:root{
+  /* canvas */
+  --canvas:#F9F6F0;          /* warm FigJam canvas */
+  --canvas-app:#F9F9F8;      /* editorial / blueprint canvas */
+  --dot:#ddd6c6;
+  --grid-line:rgba(44,100,227,.10);
+
+  /* ink */
+  --charcoal:#1A1A1B;
+  --ink-2:#4b5563;
+  --ink-muted:#6B7280;
+  --border:#E5E5E5;
+
+  /* brand */
+  --blue:#2C64E3;
+  --blue-hover:#2354C2;
+  --purple:#8B5CF6;
+  --purple-light:#F5F3FF;
+  --pink:#ec4899;
+
+  /* moving-sale / figjam */
+  --kraft:#C4A882;
+  --kraft-dark:#A98C63;
+  --tape-blue:#4A90D9;
+  --y:#FFF6A8;   /* softened post-it yellow for sans legibility */
+  --g:#A6E4A0;
+  --b:#A8DBEE;
+  --o:#FFCB7D;
+  --p:#FFA8CC;
+  --lav:#CDBEEA; /* AI = purple family */
+
+  /* status dots */
+  --dot-red:#E03C31;
+  --dot-green:#2E8B57;
+  --dot-amber:#F6C90E;
+
+  /* fonts */
+  --sans:&quot;DM Sans&quot;,ui-sans-serif,system-ui,sans-serif;
+  --serif:&quot;DM Serif Display&quot;,Georgia,serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1920px;height:1080px;overflow:hidden;}
+body{font-family:var(--sans);color:var(--charcoal);-webkit-font-smoothing:antialiased;}
+
+/* canvases */
+.canvas-dots{
+  background-color:var(--canvas);
+  background-image:radial-gradient(var(--dot) 2px,transparent 2px);
+  background-size:30px 30px;background-position:-6px -6px;
+}
+.canvas-blueprint{
+  background-color:var(--canvas-app);
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+.stage{width:1920px;height:1080px;padding:40px 52px 34px;position:relative;display:flex;flex-direction:column;}
+
+/* ── header ───────────────────────────────── */
+.head{display:flex;align-items:flex-start;justify-content:space-between;flex:0 0 auto;}
+.head .crumb{font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.head .title{font-family:var(--serif);font-size:46px;line-height:1.02;color:var(--charcoal);}
+.head .sub{font-size:19px;color:var(--ink-muted);margin-top:10px;max-width:760px;}
+.madeby{text-align:right;font-size:15px;color:var(--ink-muted);line-height:1.3;text-decoration:none;}
+.madeby:hover b{text-decoration:underline;}
+.madeby b{font-weight:700;color:var(--blue);letter-spacing:.02em;}
+.madeby .url{color:var(--blue);font-weight:600;}
+
+/* ── sticky note ──────────────────────────── */
+.note{
+  background:var(--y);
+  padding:13px 15px 14px;
+  box-shadow:3px 4px 12px rgba(0,0,0,.13);
+  position:relative;line-height:1.24;font-size:19px;font-weight:500;
+  border-radius:1px;
+}
+.note .k{display:block;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.40);margin-bottom:5px;}
+.note.sm{font-size:17px;padding:10px 13px;box-shadow:2px 3px 9px rgba(0,0,0,.11);}
+.note.lg{font-size:21px;}
+.note.y{background:var(--y);} .note.g{background:var(--g);} .note.b{background:var(--b);}
+.note.o{background:var(--o);} .note.p{background:var(--p);} .note.ai{background:var(--lav);}
+/* gentle hand-placed tilt + a tape nub */
+.tilt-l{transform:rotate(-1.3deg);} .tilt-r{transform:rotate(1.1deg);} .tilt-0{transform:rotate(-.4deg);}
+.note.pin:before{content:&quot;&quot;;position:absolute;top:-7px;left:50%;width:34px;height:12px;
+  background:rgba(74,144,217,.78);transform:translateX(-50%) rotate(-4deg);box-shadow:1px 1px 3px rgba(0,0,0,.18);}
+
+/* ── tape strip / lane label ──────────────── */
+.tape{display:inline-block;background:var(--tape-blue);color:#fff;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;padding:9px 16px;box-shadow:2px 3px 9px rgba(0,0,0,.16);position:relative;}
+.tape:before,.tape:after{content:&quot;&quot;;position:absolute;top:0;bottom:0;width:14px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 4px,transparent 4px 8px);}
+.tape:before{left:-7px;transform:skewX(-12deg);} .tape:after{right:-7px;transform:skewX(-12deg);}
+.tape.green{background:var(--dot-green);} .tape.kraftt{background:#b9b09c;} .tape.charcoal{background:var(--charcoal);}
+
+/* ── editorial / blueprint box ────────────── */
+.ebox{background:#fff;border:2px solid var(--charcoal);padding:14px 16px;min-width:160px;position:relative;}
+.ebox .t{font-weight:700;font-size:19px;line-height:1.15;}
+.ebox .s{font-size:15px;color:var(--ink-muted);margin-top:4px;line-height:1.25;}
+.ebox.ai{background:var(--purple-light);border-color:var(--purple);}
+.ebox.ai .tag{position:absolute;top:-11px;left:14px;background:var(--purple);color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;}
+.ebox.accent{border-color:var(--blue);}
+
+/* ── garage-sale dot sticker ──────────────── */
+.dot{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;
+  font-weight:700;text-align:center;line-height:1;box-shadow:2px 2px 6px rgba(0,0,0,.22);}
+.dot.red{background:var(--dot-red);} .dot.green{background:var(--dot-green);}
+.dot.amber{background:var(--dot-amber);color:#3a2e00;} .dot.blue{background:var(--tape-blue);}
+
+/* small legend chip */
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-2);font-weight:500;}
+.chip .sw{width:16px;height:16px;border-radius:50%;}
+
+</style>
+<style>
+  :root{
+    --t-phase:#F2EA52; --t-step:#FFFFFF; --t-hidden:#16161a; --t-touch:#1CA3DE;
+    --t-roles:#5BB12F; --t-process:#C2C2C2; --t-tech:#8A8A8A; --t-policy:#FBB13C;
+    --t-critical:#F4145B; --t-opp:#F2EA52; --t-metric:#C9A6F2;
+    --t-pitfall:#F4145B; --t-rationale:#C9A6F2; --t-question:#A833C2; --t-notes:#A6E7FB;
+  }
+  html,body{height:auto!important;min-height:1320px!important;overflow:visible!important;background:#fff;}
+  .stage{height:auto;min-height:1320px;padding:38px 44px;flex-direction:row;gap:26px;}
+  .legend{width:312px;flex:0 0 auto;background:#F4F4F2;border:1px solid var(--border);padding:20px 18px;align-self:flex-start;}
+  .legend h3{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--charcoal);font-weight:700;margin-bottom:6px;}
+  .legend .lh-sub{font-size:12.5px;color:var(--ink-muted);margin-bottom:14px;line-height:1.3;}
+  .lrow{display:flex;align-items:flex-start;gap:11px;margin-bottom:10px;}
+  .sw{width:34px;height:22px;flex:0 0 auto;border-radius:2px;margin-top:1px;}
+  .sw.bord{border:1.5px solid var(--charcoal);}
+  .lrow .lab{font-size:13.5px;color:var(--charcoal);font-weight:700;line-height:1.15;}
+  .lrow .des{font-size:12px;color:var(--ink-muted);line-height:1.2;display:block;margin-top:1px;font-weight:500;}
+  .legend .pti{margin-top:13px;padding-top:12px;border-top:1px solid var(--border);}
+  .legend .pti .t{font-size:12px;font-weight:700;color:var(--charcoal);margin-bottom:6px;}
+  .pti-bar{background:var(--t-phase);color:#4a4400;font-size:11px;font-weight:600;padding:6px 9px;border-radius:2px;line-height:1.2;}
+  .main{flex:1;min-width:0;display:flex;flex-direction:column;}
+  .crumb2{font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;}
+  .offering{font-size:14px;color:var(--ink-muted);font-weight:600;margin-bottom:4px;}
+  .offering b{color:var(--charcoal);}
+  .scn-title{font-family:var(--serif);font-size:38px;line-height:1.05;color:var(--charcoal);}
+  .explainer{margin-top:14px;background:#EEF4FF;border-left:4px solid var(--blue);padding:14px 18px;}
+  .explainer .eh{font-weight:700;font-size:14px;color:var(--charcoal);margin-bottom:5px;}
+  .explainer p{font-size:14px;color:var(--ink-2);line-height:1.45;max-width:1180px;}
+  .explainer .read{margin-top:8px;font-size:13px;color:var(--blue);font-weight:600;}
+  .bp{display:grid;column-gap:7px;margin-top:18px;}
+  .ph-l{display:flex;align-items:center;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-muted);}
+  .phase{background:var(--t-phase);color:#4a4400;font-weight:700;font-size:13px;padding:7px 12px;border-radius:2px;display:flex;align-items:center;margin-bottom:8px;}
+  .phase .ph-sub{font-weight:500;opacity:.7;margin-left:7px;font-size:11.5px;}
+  .lane-l{display:flex;flex-direction:column;justify-content:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-2);padding:7px 7px 7px 0;}
+  .lane-l .lhint{display:block;font-size:10.5px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink-muted);margin-top:2px;line-height:1.15;}
+  .cell{padding:6px 4px;display:flex;flex-direction:column;gap:5px;min-height:72px;border-top:1px solid #efece6;}
+  .lane-l.bnd,.cell.bnd{background:rgba(26,26,27,.04);}
+  .stepcell{min-height:94px;border-top:none;}
+  .c{padding:7px 9px;border-radius:2px;font-size:12.5px;line-height:1.2;font-weight:500;box-shadow:1px 2px 4px rgba(0,0,0,.10);}
+  .c.step{background:var(--t-step);border:1.5px solid var(--charcoal);box-shadow:none;}
+  .c.step .snum{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--charcoal);color:#fff;font-size:11px;font-weight:700;margin-right:5px;}
+  .c.step .sname{font-weight:700;font-size:13.5px;}
+  .c.step .sdef{display:block;margin-top:4px;color:var(--ink-2);font-size:11.5px;line-height:1.18;}
+  .c.step.hidden{background:var(--t-hidden);border-color:var(--t-hidden);}
+  .c.step.hidden .sname{color:#fff;} .c.step.hidden .sdef{color:#c7c7c7;}
+  .c.step.hidden .snum{background:#fff;color:#16161a;}
+  .c.step.hidden .htag{display:block;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;margin-bottom:3px;}
+  .c.touch{background:var(--t-touch);color:#fff;} .c.roles{background:var(--t-roles);color:#fff;}
+  .c.process{background:var(--t-process);color:#2a2a2a;} .c.tech{background:var(--t-tech);color:#fff;}
+  .c.policy{background:var(--t-policy);color:#3a2a05;} .c.critical{background:var(--t-critical);color:#fff;}
+  .c.opp{background:var(--t-opp);color:#4a4400;} .c.metric{background:var(--t-metric);color:#3a2057;}
+  .c.pitfall{background:var(--t-pitfall);color:#fff;} .c.rationale{background:var(--t-rationale);color:#3a2057;}
+  .c.question{background:var(--t-question);color:#fff;} .c.notes{background:var(--t-notes);color:#0c3a4a;}
+  .madeby2{position:absolute;right:44px;bottom:14px;font-size:13px;color:var(--ink-muted);text-decoration:none;}
+  .madeby2:hover b{text-decoration:underline;}
+  .madeby2 b{color:var(--blue);font-weight:700;}
+  .err{padding:60px;font-size:20px;color:#DC2626;}
+</style>
+<script>window.__D__={
+  &quot;state&quot;: &quot;future&quot;,
+  &quot;offering&quot;: &quot;ClearList&quot;,
+  &quot;scenario&quot;: &quot;Buyer reserves an item from a moving sale&quot;,
+  &quot;explainer&quot;: {
+    &quot;title&quot;: &quot;New to blueprints? Here's the whole idea.&quot;,
+    &quot;body&quot;: &quot;This is the map of your product before you build any of it. We take one real moment, here a buyer reserving an item, break it into the steps they go through, and under each step we lay out everything that has to exist for it to work: what they touch, who's involved, the tech and rules behind the scenes, where it could break, and why you chose it that way. You get to see your entire idea on one page... before writing a line of code.&quot;,
+    &quot;read&quot;: &quot;Read left → right for the journey. Read top → bottom to see everything standing behind each step.&quot;
+  },
+  &quot;phases&quot;: [
+    { &quot;name&quot;: &quot;Discover&quot;, &quot;from&quot;: 1, &quot;to&quot;: 2 },
+    { &quot;name&quot;: &quot;Reserve &amp; Hold&quot;, &quot;from&quot;: 3, &quot;to&quot;: 6 },
+    { &quot;name&quot;: &quot;Pick Up&quot;, &quot;from&quot;: 7, &quot;to&quot;: 7 }
+  ],
+  &quot;steps&quot;: [
+    { &quot;n&quot;: 1, &quot;name&quot;: &quot;Discover the sale&quot;, &quot;def&quot;: &quot;Taps a shared link to the sale page&quot; },
+    { &quot;n&quot;: 2, &quot;name&quot;: &quot;Browse the sale&quot;, &quot;def&quot;: &quot;Scans the grid of items &amp; prices&quot; },
+    { &quot;n&quot;: 3, &quot;name&quot;: &quot;Add to basket&quot;, &quot;def&quot;: &quot;Adds the items they want&quot; },
+    { &quot;n&quot;: 4, &quot;name&quot;: &quot;Verify email&quot;, &quot;def&quot;: &quot;Enters email, gets a 6-digit code&quot; },
+    { &quot;n&quot;: 5, &quot;name&quot;: &quot;Reserve&quot;, &quot;def&quot;: &quot;Reservation made · place in line set&quot; },
+    { &quot;n&quot;: 6, &quot;name&quot;: &quot;Hold &amp; queue&quot;, &quot;def&quot;: &quot;System holds items, runs the timer&quot;, &quot;hidden&quot;: true },
+    { &quot;n&quot;: 7, &quot;name&quot;: &quot;Coordinate &amp; pick up&quot;, &quot;def&quot;: &quot;Messages seller, picks a time slot&quot; }
+  ],
+  &quot;layers&quot;: {
+    &quot;touchpoint&quot;: { &quot;1&quot;: &quot;Shared link / social post&quot;, &quot;2&quot;: &quot;Item grid · detail view&quot;, &quot;3&quot;: &quot;Add to Pickup · basket&quot;, &quot;4&quot;: &quot;Email + 6-digit code screen&quot;, &quot;5&quot;: &quot;Confirmation page + email&quot;, &quot;7&quot;: &quot;Inbox thread · scheduler&quot; },
+    &quot;roles&quot;: { &quot;1&quot;: &quot;Buyer, on mobile&quot;, &quot;5&quot;: &quot;Seller, gets notified&quot;, &quot;7&quot;: &quot;Buyer ↔ Seller&quot; },
+    &quot;process&quot;: { &quot;4&quot;: &quot;Send the code by email&quot;, &quot;5&quot;: &quot;Create the reservation&quot;, &quot;6&quot;: &quot;Hold items · run timer · advance the line&quot;, &quot;7&quot;: &quot;Confirm &amp; schedule the pickup&quot; },
+    &quot;technology&quot;: { &quot;1&quot;: &quot;Public sale page + link preview&quot;, &quot;2&quot;: &quot;Item database · image hosting&quot;, &quot;3&quot;: &quot;Basket (in the browser)&quot;, &quot;4&quot;: &quot;Login · email service&quot;, &quot;5&quot;: &quot;Reservations · push alerts&quot;, &quot;6&quot;: &quot;Scheduled job · database&quot;, &quot;7&quot;: &quot;Messaging · scheduling · calendar&quot; },
+    &quot;policy&quot;: { &quot;2&quot;: &quot;Show city only, never the full address&quot;, &quot;3&quot;: &quot;One seller per basket&quot;, &quot;4&quot;: &quot;Code expires in 10 minutes&quot;, &quot;5&quot;: &quot;Up to 3 in line · 48-hour hold&quot;, &quot;6&quot;: &quot;Hold ends → next person is up&quot;, &quot;7&quot;: &quot;Address only when seller says yes · hold → 72h&quot; },
+    &quot;pitfall&quot;: { &quot;1&quot;: &quot;Link preview won't render → looks sketchy&quot;, &quot;2&quot;: &quot;A truck warning scares buyers off&quot;, &quot;3&quot;: &quot;Switching sellers wipes the basket&quot;, &quot;4&quot;: &quot;Code lands in spam → they give up&quot;, &quot;5&quot;: &quot;They don't notice the timer running&quot;, &quot;6&quot;: &quot;Hold ends silently → buyer feels ghosted&quot;, &quot;7&quot;: &quot;No-show wastes the pickup slot&quot; },
+    &quot;rationale&quot;: { &quot;1&quot;: &quot;Buyers arrive from social → mobile-first&quot;, &quot;2&quot;: &quot;Privacy first, protect the seller's home&quot;, &quot;3&quot;: &quot;One basket per seller keeps pickups simple&quot;, &quot;4&quot;: &quot;A code, not a password = trust, no friction&quot;, &quot;5&quot;: &quot;A short line creates urgency without a dogpile&quot;, &quot;7&quot;: &quot;Scheduling turns a maybe into a commitment&quot; },
+    &quot;question&quot;: { &quot;1&quot;: &quot;Will the link preview always render right?&quot;, &quot;3&quot;: &quot;Will buyers grasp the one-seller rule?&quot;, &quot;5&quot;: &quot;Does the buyer realize the clock is ticking?&quot;, &quot;6&quot;: &quot;Message the buyer the moment a hold opens?&quot; },
+    &quot;note&quot;: { &quot;1&quot;: &quot;Most buyers are on phones, from Facebook&quot;, &quot;2&quot;: &quot;People look at photos first, read later&quot;, &quot;4&quot;: &quot;Often a different email than expected&quot; }
+  }
+};(function(){var _f=window.fetch;window.fetch=function(u,o){try{if(typeof u==='string'&amp;&amp;u.indexOf('data-')>-1){return Promise.resolve({ok:true,status:200,json:function(){return Promise.resolve(window.__D__);}});}}catch(e){}return _f.apply(this,arguments);};})();</script>
+</head>
+<body>
+<div class=&quot;stage&quot;>
+  <aside class=&quot;legend&quot; id=&quot;legend&quot;></aside>
+  <div class=&quot;main&quot;>
+    <div class=&quot;crumb2&quot; id=&quot;crumb&quot;></div>
+    <div class=&quot;offering&quot; id=&quot;offering&quot;></div>
+    <div class=&quot;scn-title&quot; id=&quot;scn&quot;></div>
+    <div id=&quot;explainer&quot;></div>
+    <div class=&quot;bp&quot; id=&quot;bp&quot;></div>
+  </div>
+  <a class=&quot;madeby2&quot; href=&quot;https://github.com/TexasBedouin/vibe-check&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Created using <b>Vibe-Check</b> skill</a>
+</div>
+
+<script>
+// ─── Engine config: the layer taxonomy (per the Practical Experience Blueprinting guide) ───
+const COMMON = [
+  {id:'touchpoint',label:'Touchpoint',hint:'what they touch',desc:'what they actually tap, read, or use',cls:'touch'},
+  {id:'roles',label:'Roles',hint:&quot;who's involved&quot;,desc:&quot;who's involved at this step&quot;,cls:'roles'},
+  {id:'process',label:'Process',hint:'work behind the step',desc:'behind-the-scenes work that makes it happen',cls:'process'},
+  {id:'technology',label:'Technology',hint:'tools doing the work',desc:'the tools and systems doing the work',cls:'tech'},
+  {id:'policy',label:'Policy',hint:'rules you set',desc:&quot;a rule you're choosing to set&quot;,cls:'policy'},
+];
+const CURRENT = [
+  {id:'critical',label:'Critical Moments',hint:'what can go wrong',desc:'where the experience breaks today',cls:'critical'},
+  {id:'opportunity',label:'Opportunities',hint:'ideas to improve',desc:'ideas or ah-ha fixes for this step',cls:'opp'},
+  {id:'metric',label:'Metrics',hint:'data for this step',desc:'data or analytics about this step',cls:'metric'},
+];
+const FUTURE = [
+  {id:'pitfall',label:'Potential Pitfalls',hint:'what could break',desc:'what could go wrong here',cls:'pitfall'},
+  {id:'rationale',label:'Rationale',hint:'why this way',desc:'why you designed it this way',cls:'rationale'},
+];
+const TAIL = [
+  {id:'question',label:'Questions',hint:'still to figure out',desc:'what you still need to figure out',cls:'question'},
+  {id:'note',label:'Notes',hint:'worth remembering',desc:'anything else worth remembering',cls:'notes'},
+];
+const SWATCH = {phase:'var(--t-phase)',step:'var(--t-step)',hidden:'var(--t-hidden)',touch:'var(--t-touch)',
+  roles:'var(--t-roles)',process:'var(--t-process)',tech:'var(--t-tech)',policy:'var(--t-policy)',
+  critical:'var(--t-critical)',opp:'var(--t-opp)',metric:'var(--t-metric)',pitfall:'var(--t-pitfall)',
+  rationale:'var(--t-rationale)',question:'var(--t-question)',notes:'var(--t-notes)'};
+
+const esc = s => String(s).replace(/&amp;/g,'&amp;amp;').replace(/</g,'&amp;lt;').replace(/>/g,'&amp;gt;');
+
+function layersFor(state){ return [...COMMON, ...(state==='current'?CURRENT:FUTURE), ...TAIL]; }
+
+function render(bp){
+  const state = bp.state==='current' ? 'current' : 'future';
+  const layers = layersFor(state);
+  const steps = bp.steps || [];
+  const n = steps.length;
+
+  document.getElementById('crumb').textContent = 'Experience Blueprint · ' + (state==='current'?'Current State':'Future State');
+  document.getElementById('offering').innerHTML = 'Offering: <b>'+esc(bp.offering||'')+'</b>';
+  document.getElementById('scn').textContent = 'Scenario: ' + (bp.scenario||'');
+
+  // explainer
+  if(bp.explainer){
+    const e = bp.explainer;
+    document.getElementById('explainer').innerHTML =
+      '<div class=&quot;explainer&quot;><div class=&quot;eh&quot;>'+esc(e.title||'')+'</div><p>'+esc(e.body||'')+'</p>'+
+      (e.read?'<div class=&quot;read&quot;>'+esc(e.read)+'</div>':'')+'</div>';
+  }
+
+  // legend
+  const head = [
+    {cls:'phase',label:'Phase',desc:'a chapter of the journey'},
+    {cls:'step',label:'Step · visible',desc:'something the user sees or does',bord:true},
+    {cls:'hidden',label:'Step · hidden',desc:'happens behind the scenes; they never see it'},
+  ];
+  const legendItems = [...head, ...layers.map(L=>({cls:L.cls,label:L.label,desc:L.desc}))];
+  document.getElementById('legend').innerHTML =
+    '<h3>Legend</h3><div class=&quot;lh-sub&quot;>Every card is one of these. The color tells you what kind it is.</div>' +
+    legendItems.map(it =>
+      '<div class=&quot;lrow&quot;><span class=&quot;sw'+(it.bord?' bord':'')+'&quot; style=&quot;background:'+SWATCH[it.cls]+'&quot;></span>'+
+      '<span><span class=&quot;lab&quot;>'+esc(it.label)+'</span><span class=&quot;des&quot;>'+esc(it.desc)+'</span></span></div>'
+    ).join('') +
+    '<div class=&quot;pti&quot;><div class=&quot;t&quot;>Phase timeline indicator</div><div class=&quot;pti-bar&quot;>The yellow bars on top group the steps into chapters.</div></div>';
+
+  // grid
+  const bpEl = document.getElementById('bp');
+  bpEl.style.gridTemplateColumns = '160px repeat('+n+',1fr)';
+
+  let html = '';
+  // phases row
+  html += '<div class=&quot;ph-l&quot;>Phases</div>';
+  (bp.phases||[]).forEach(p=>{
+    const sub = p.to>p.from ? (p.from+'–'+p.to) : (''+p.from);
+    html += '<div style=&quot;grid-column:'+(p.from+1)+' / '+(p.to+2)+'&quot;><div class=&quot;phase&quot;>'+esc(p.name)+'<span class=&quot;ph-sub&quot;>'+sub+'</span></div></div>';
+  });
+  // steps row
+  html += '<div class=&quot;lane-l&quot;>Steps<span class=&quot;lhint&quot;>the journey, broken up</span></div>';
+  steps.forEach(s=>{
+    html += '<div class=&quot;cell stepcell&quot;><div class=&quot;c step'+(s.hidden?' hidden':'')+'&quot;>'+
+      (s.hidden?'<span class=&quot;htag&quot;>Backstage step</span>':'')+
+      '<span class=&quot;snum&quot;>'+esc(s.n)+'</span><span class=&quot;sname&quot;>'+esc(s.name)+'</span>'+
+      '<span class=&quot;sdef&quot;>'+esc(s.def||'')+'</span></div></div>';
+  });
+  // layer rows
+  layers.forEach((L,idx)=>{
+    const band = idx%2===1;
+    html += '<div class=&quot;lane-l'+(band?' bnd':'')+'&quot;>'+esc(L.label)+'<span class=&quot;lhint&quot;>'+esc(L.hint)+'</span></div>';
+    const data = (bp.layers&amp;&amp;bp.layers[L.id]) || {};
+    steps.forEach(s=>{
+      let v = data[s.n] != null ? data[s.n] : data[String(s.n)];
+      let cards = '';
+      if(v){ (Array.isArray(v)?v:[v]).forEach(t=>{ cards += '<div class=&quot;c '+L.cls+'&quot;>'+esc(t)+'</div>'; }); }
+      html += '<div class=&quot;cell'+(band?' bnd':'')+'&quot;>'+cards+'</div>';
+    });
+  });
+  bpEl.innerHTML = html;
+  document.body.setAttribute('data-rendered','1');
+}
+
+async function main(){
+  const param = new URLSearchParams(location.search).get('data') || 'clearlist';
+  try{
+    const bp = await fetch('./data-'+param+'.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+    render(bp);
+  }catch(err){
+    document.querySelector('.main').innerHTML = '<div class=&quot;err&quot;>Could not load data-'+esc(param)+'.json: '+esc(err.message)+'</div>';
+    document.body.setAttribute('data-rendered','1');
+  }
+}
+main();
+</script>
+</body>
+</html>
+" scrolling="no" loading="eager" style="height:1340px"></iframe></div>
+      <div class="board-cap">Read left to right for the journey, top to bottom for everything standing behind each step.</div>
+    </section>
+
+    <!-- stubs -->
+    <section class="panel" id="plan">
+      <h2>The build plan</h2>
+      <div class="lead">What to build, in what order, on what stack. V1 is the smallest thing that is genuinely useful, photo to pickup for one seller. Everything else waits.</div>
+
+      <h3>The tech stack</h3>
+      <div class="card" style="padding:20px 22px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:160px;flex:0 0 auto;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">What users see</div><div style="flex:1;display:flex;gap:8px;flex-wrap:wrap"><span class="pill">Next.js · App Router</span><span class="pill">TypeScript</span><span class="pill">Tailwind</span><span class="pill">PWA (sellers)</span></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:160px;flex:0 0 auto;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">The AI brain</div><div style="flex:1;display:flex;gap:8px;flex-wrap:wrap"><span class="pill" style="background:#F5F3FF;color:#6D28D9">Gemini 3.0, writes &amp; prices listings</span></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:160px;flex:0 0 auto;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Where data lives</div><div style="flex:1;display:flex;gap:8px;flex-wrap:wrap"><span class="pill">Firestore (database)</span><span class="pill">Firebase Storage (photos)</span><span class="pill">Firebase Auth (email codes)</span></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:160px;flex:0 0 auto;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Money &amp; messages</div><div style="flex:1;display:flex;gap:8px;flex-wrap:wrap"><span class="pill">Stripe (paid tiers)</span><span class="pill">SendGrid (email)</span><span class="pill">FCM (push)</span><span class="pill">Bannerbear (social cards)</span></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:160px;flex:0 0 auto;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Lives online</div><div style="flex:1;display:flex;gap:8px;flex-wrap:wrap"><span class="pill" style="background:#e6f0ff;color:#1d4ed8">Vercel (hosting)</span><span class="pill">clearlist.me</span></div></div>
+        </div>
+      </div>
+      <div class="board-cap">Boring, modern, beginner-friendly: managed services over self-hosted, one codebase, no DevOps hire. Your code stays on GitHub, so you can always walk with it.</div>
+
+      <h3>What to build first</h3>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0;color:var(--green)">V1, build now</h3>
+          <ul class="clean">
+            <li>Snap photos, AI writes &amp; prices each listing</li>
+            <li>Review and edit every field, mark an item FREE</li>
+            <li>Publish a shareable sale page (city + payment note)</li>
+            <li>Buyers reserve with an email code</li>
+            <li>Inbox, and share your address only after you confirm</li>
+          </ul>
+        </div>
+        <div class="card"><h3 style="margin-top:0;color:var(--muted)">V2+, build later</h3>
+          <ul class="clean">
+            <li>Queue (max 3) + the 48-hour hold timer</li>
+            <li>Pickup scheduling (availability, time slots)</li>
+            <li>Push notifications + the full email set</li>
+            <li>Auto social cards + custom URL (paid)</li>
+            <li>Paid tiers via Stripe</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>The story map</h3>
+      <div class="board" style="height:608px"><iframe srcdoc="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;utf-8&quot;/>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/>
+<title>Story Map Engine</title>
+<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;><link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+<link href=&quot;https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Serif+Display&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+/* ─────────────────────────────────────────────────────────
+   vibe-check diagram engine, shared design layer
+   Built on the ClearList design system tokens.
+   FigJam structure (sticky notes, tape, dots, dotted canvas)
+   + Minimalist Editorial typography (DM Sans / DM Serif Display).
+   One file, many diagram templates.
+   ───────────────────────────────────────────────────────── */
+
+:root{
+  /* canvas */
+  --canvas:#F9F6F0;          /* warm FigJam canvas */
+  --canvas-app:#F9F9F8;      /* editorial / blueprint canvas */
+  --dot:#ddd6c6;
+  --grid-line:rgba(44,100,227,.10);
+
+  /* ink */
+  --charcoal:#1A1A1B;
+  --ink-2:#4b5563;
+  --ink-muted:#6B7280;
+  --border:#E5E5E5;
+
+  /* brand */
+  --blue:#2C64E3;
+  --blue-hover:#2354C2;
+  --purple:#8B5CF6;
+  --purple-light:#F5F3FF;
+  --pink:#ec4899;
+
+  /* moving-sale / figjam */
+  --kraft:#C4A882;
+  --kraft-dark:#A98C63;
+  --tape-blue:#4A90D9;
+  --y:#FFF6A8;   /* softened post-it yellow for sans legibility */
+  --g:#A6E4A0;
+  --b:#A8DBEE;
+  --o:#FFCB7D;
+  --p:#FFA8CC;
+  --lav:#CDBEEA; /* AI = purple family */
+
+  /* status dots */
+  --dot-red:#E03C31;
+  --dot-green:#2E8B57;
+  --dot-amber:#F6C90E;
+
+  /* fonts */
+  --sans:&quot;DM Sans&quot;,ui-sans-serif,system-ui,sans-serif;
+  --serif:&quot;DM Serif Display&quot;,Georgia,serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1920px;height:1080px;overflow:hidden;}
+body{font-family:var(--sans);color:var(--charcoal);-webkit-font-smoothing:antialiased;}
+
+/* canvases */
+.canvas-dots{
+  background-color:var(--canvas);
+  background-image:radial-gradient(var(--dot) 2px,transparent 2px);
+  background-size:30px 30px;background-position:-6px -6px;
+}
+.canvas-blueprint{
+  background-color:var(--canvas-app);
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+.stage{width:1920px;height:1080px;padding:40px 52px 34px;position:relative;display:flex;flex-direction:column;}
+
+/* ── header ───────────────────────────────── */
+.head{display:flex;align-items:flex-start;justify-content:space-between;flex:0 0 auto;}
+.head .crumb{font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.head .title{font-family:var(--serif);font-size:46px;line-height:1.02;color:var(--charcoal);}
+.head .sub{font-size:19px;color:var(--ink-muted);margin-top:10px;max-width:760px;}
+.madeby{text-align:right;font-size:15px;color:var(--ink-muted);line-height:1.3;text-decoration:none;}
+.madeby:hover b{text-decoration:underline;}
+.madeby b{font-weight:700;color:var(--blue);letter-spacing:.02em;}
+.madeby .url{color:var(--blue);font-weight:600;}
+
+/* ── sticky note ──────────────────────────── */
+.note{
+  background:var(--y);
+  padding:13px 15px 14px;
+  box-shadow:3px 4px 12px rgba(0,0,0,.13);
+  position:relative;line-height:1.24;font-size:19px;font-weight:500;
+  border-radius:1px;
+}
+.note .k{display:block;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.40);margin-bottom:5px;}
+.note.sm{font-size:17px;padding:10px 13px;box-shadow:2px 3px 9px rgba(0,0,0,.11);}
+.note.lg{font-size:21px;}
+.note.y{background:var(--y);} .note.g{background:var(--g);} .note.b{background:var(--b);}
+.note.o{background:var(--o);} .note.p{background:var(--p);} .note.ai{background:var(--lav);}
+/* gentle hand-placed tilt + a tape nub */
+.tilt-l{transform:rotate(-1.3deg);} .tilt-r{transform:rotate(1.1deg);} .tilt-0{transform:rotate(-.4deg);}
+.note.pin:before{content:&quot;&quot;;position:absolute;top:-7px;left:50%;width:34px;height:12px;
+  background:rgba(74,144,217,.78);transform:translateX(-50%) rotate(-4deg);box-shadow:1px 1px 3px rgba(0,0,0,.18);}
+
+/* ── tape strip / lane label ──────────────── */
+.tape{display:inline-block;background:var(--tape-blue);color:#fff;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;padding:9px 16px;box-shadow:2px 3px 9px rgba(0,0,0,.16);position:relative;}
+.tape:before,.tape:after{content:&quot;&quot;;position:absolute;top:0;bottom:0;width:14px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 4px,transparent 4px 8px);}
+.tape:before{left:-7px;transform:skewX(-12deg);} .tape:after{right:-7px;transform:skewX(-12deg);}
+.tape.green{background:var(--dot-green);} .tape.kraftt{background:#b9b09c;} .tape.charcoal{background:var(--charcoal);}
+
+/* ── editorial / blueprint box ────────────── */
+.ebox{background:#fff;border:2px solid var(--charcoal);padding:14px 16px;min-width:160px;position:relative;}
+.ebox .t{font-weight:700;font-size:19px;line-height:1.15;}
+.ebox .s{font-size:15px;color:var(--ink-muted);margin-top:4px;line-height:1.25;}
+.ebox.ai{background:var(--purple-light);border-color:var(--purple);}
+.ebox.ai .tag{position:absolute;top:-11px;left:14px;background:var(--purple);color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;}
+.ebox.accent{border-color:var(--blue);}
+
+/* ── garage-sale dot sticker ──────────────── */
+.dot{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;
+  font-weight:700;text-align:center;line-height:1;box-shadow:2px 2px 6px rgba(0,0,0,.22);}
+.dot.red{background:var(--dot-red);} .dot.green{background:var(--dot-green);}
+.dot.amber{background:var(--dot-amber);color:#3a2e00;} .dot.blue{background:var(--tape-blue);}
+
+/* small legend chip */
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-2);font-weight:500;}
+.chip .sw{width:16px;height:16px;border-radius:50%;}
+
+</style>
+<style>
+  .map{flex:1;margin-top:16px;display:grid;column-gap:13px;row-gap:14px;min-height:0;}
+  .corner{display:flex;align-items:flex-end;padding-bottom:8px;}
+  .corner span{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);}
+  .activity{background:linear-gradient(180deg,#cdb287,var(--kraft));border:2px solid var(--kraft-dark);
+    box-shadow:2px 3px 0 var(--kraft-dark);padding:11px 13px;display:flex;flex-direction:column;gap:2px;justify-content:center;min-height:78px;}
+  .activity .step{font-size:12px;font-weight:700;letter-spacing:.1em;color:#6f5a37;}
+  .activity .name{font-size:20px;font-weight:700;line-height:1.08;color:#2b2417;}
+  .lane{display:flex;flex-direction:column;gap:9px;padding-top:4px;}
+  .lane .sub{font-size:15px;color:var(--ink-2);font-weight:500;padding-left:2px;line-height:1.25;}
+  .lane .skel{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--dot-green);}
+  .lane .skel .gd{width:14px;height:14px;border-radius:50%;background:var(--dot-green);flex:0 0 auto;}
+  .cell{display:flex;flex-direction:column;gap:10px;}
+  /* walking-skeleton band: tint the whole V1 lane, no floating text */
+  .v1band{background:rgba(46,139,87,.10);border-top:2px dashed var(--dot-green);border-bottom:2px dashed var(--dot-green);}
+  .aha{display:inline-block;margin-top:8px;background:var(--dot-red);color:#fff;font-size:12px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;}
+  .err{padding:60px;font-size:20px;color:#DC2626;}
+</style>
+<script>window.__D__={
+  &quot;header&quot;: {
+    &quot;crumb&quot;: &quot;Phase 2 · User Story Map&quot;,
+    &quot;title&quot;: &quot;ClearList Seller, Story Map&quot;,
+    &quot;sub&quot;: &quot;Read the journey left to right. Ship top to bottom. The green band alone is a real, working app.&quot;
+  },
+  &quot;activities&quot;: [
+    { &quot;step&quot;: 1, &quot;name&quot;: &quot;Snap the items&quot; },
+    { &quot;step&quot;: 2, &quot;name&quot;: &quot;AI writes the listing&quot; },
+    { &quot;step&quot;: 3, &quot;name&quot;: &quot;Review &amp; tweak&quot; },
+    { &quot;step&quot;: 4, &quot;name&quot;: &quot;Publish the page&quot; },
+    { &quot;step&quot;: 5, &quot;name&quot;: &quot;Share the link&quot; },
+    { &quot;step&quot;: 6, &quot;name&quot;: &quot;Field the buyers&quot; },
+    { &quot;step&quot;: 7, &quot;name&quot;: &quot;Coordinate pickup&quot; }
+  ],
+  &quot;releases&quot;: [
+    {
+      &quot;id&quot;: &quot;v1&quot;,
+      &quot;label&quot;: &quot;V1 · first sale&quot;,
+      &quot;tape&quot;: &quot;green&quot;,
+      &quot;subnote&quot;: &quot;start to finish&quot;,
+      &quot;skeleton&quot;: &quot;ship just this row&quot;,
+      &quot;band&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;v2&quot;,
+      &quot;label&quot;: &quot;V2 · make it shine&quot;,
+      &quot;tape&quot;: &quot;blue&quot;,
+      &quot;subnote&quot;: &quot;once V1 works&quot;
+    },
+    {
+      &quot;id&quot;: &quot;later&quot;,
+      &quot;label&quot;: &quot;Later · someday&quot;,
+      &quot;tape&quot;: &quot;kraft&quot;
+    }
+  ],
+  &quot;cells&quot;: {
+    &quot;v1&quot;: {
+      &quot;1&quot;: [
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Take or upload photos (up to 5)&quot;, &quot;color&quot;: &quot;g&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Try it before signing up&quot;, &quot;color&quot;: &quot;g&quot; }
+      ],
+      &quot;2&quot;: [
+        { &quot;kicker&quot;: &quot;AI&quot;, &quot;text&quot;: &quot;Fills title, price, size &amp; condition&quot;, &quot;color&quot;: &quot;ai&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;AI&quot;, &quot;text&quot;: &quot;Your listing, in ~15 seconds&quot;, &quot;color&quot;: &quot;ai&quot;, &quot;aha&quot;: true }
+      ],
+      &quot;3&quot;: [
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Edit any field by hand&quot;, &quot;color&quot;: &quot;g&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Mark an item FREE&quot;, &quot;color&quot;: &quot;g&quot; },
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Save as a draft&quot;, &quot;color&quot;: &quot;g&quot; }
+      ],
+      &quot;4&quot;: [
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Add your city&quot;, &quot;color&quot;: &quot;g&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Write payment instructions&quot;, &quot;color&quot;: &quot;g&quot; },
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Get a shareable link&quot;, &quot;color&quot;: &quot;g&quot; }
+      ],
+      &quot;5&quot;: [
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Copy the link&quot;, &quot;color&quot;: &quot;g&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;See&quot;, &quot;text&quot;: &quot;Public sale page goes live&quot;, &quot;color&quot;: &quot;g&quot; }
+      ],
+      &quot;6&quot;: [
+        { &quot;kicker&quot;: &quot;Buyer&quot;, &quot;text&quot;: &quot;Reserves with an email code&quot;, &quot;color&quot;: &quot;g&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;See&quot;, &quot;text&quot;: &quot;Messages land in your inbox&quot;, &quot;color&quot;: &quot;g&quot; }
+      ],
+      &quot;7&quot;: [
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Share address, you confirm first&quot;, &quot;color&quot;: &quot;g&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Sort out pickup in chat&quot;, &quot;color&quot;: &quot;g&quot; }
+      ]
+    },
+    &quot;v2&quot;: {
+      &quot;1&quot;: [
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Add a voice note&quot;, &quot;color&quot;: &quot;b&quot;, &quot;size&quot;: &quot;sm&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Auto&quot;, &quot;text&quot;: &quot;Compress photos&quot;, &quot;color&quot;: &quot;b&quot;, &quot;size&quot;: &quot;sm&quot; }
+      ],
+      &quot;2&quot;: [
+        { &quot;kicker&quot;: &quot;AI&quot;, &quot;text&quot;: &quot;Confidence badges (green / amber / red)&quot;, &quot;color&quot;: &quot;ai&quot;, &quot;size&quot;: &quot;sm&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;AI&quot;, &quot;text&quot;: &quot;Why this price&quot;, &quot;color&quot;: &quot;ai&quot;, &quot;size&quot;: &quot;sm&quot; }
+      ],
+      &quot;3&quot;: [
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Available to Sold&quot;, &quot;color&quot;: &quot;b&quot;, &quot;size&quot;: &quot;sm&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;Delete with a safety check&quot;, &quot;color&quot;: &quot;b&quot;, &quot;size&quot;: &quot;sm&quot; }
+      ],
+      &quot;4&quot;: [
+        { &quot;kicker&quot;: &quot;Paid&quot;, &quot;text&quot;: &quot;Custom URL&quot;, &quot;color&quot;: &quot;o&quot;, &quot;size&quot;: &quot;sm&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Auto&quot;, &quot;text&quot;: &quot;Pretty link previews&quot;, &quot;color&quot;: &quot;o&quot;, &quot;size&quot;: &quot;sm&quot; }
+      ],
+      &quot;5&quot;: [
+        { &quot;kicker&quot;: &quot;Auto&quot;, &quot;text&quot;: &quot;Auto social card&quot;, &quot;color&quot;: &quot;o&quot;, &quot;size&quot;: &quot;sm&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Do&quot;, &quot;text&quot;: &quot;One-tap share buttons&quot;, &quot;color&quot;: &quot;o&quot;, &quot;size&quot;: &quot;sm&quot; }
+      ],
+      &quot;6&quot;: [
+        { &quot;kicker&quot;: &quot;Rule&quot;, &quot;text&quot;: &quot;Queue, max 3 waiting&quot;, &quot;color&quot;: &quot;p&quot;, &quot;size&quot;: &quot;sm&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Rule&quot;, &quot;text&quot;: &quot;48-hour hold timer&quot;, &quot;color&quot;: &quot;p&quot;, &quot;size&quot;: &quot;sm&quot; },
+        { &quot;kicker&quot;: &quot;Push&quot;, &quot;text&quot;: &quot;New-buyer alerts&quot;, &quot;color&quot;: &quot;p&quot;, &quot;size&quot;: &quot;sm&quot; }
+      ],
+      &quot;7&quot;: [
+        { &quot;kicker&quot;: &quot;Buyer&quot;, &quot;text&quot;: &quot;Pick a pickup time slot&quot;, &quot;color&quot;: &quot;b&quot;, &quot;size&quot;: &quot;sm&quot;, &quot;pin&quot;: true },
+        { &quot;kicker&quot;: &quot;Rule&quot;, &quot;text&quot;: &quot;72h hold once scheduled&quot;, &quot;color&quot;: &quot;b&quot;, &quot;size&quot;: &quot;sm&quot; },
+        { &quot;kicker&quot;: &quot;Buyer&quot;, &quot;text&quot;: &quot;Reschedule&quot;, &quot;color&quot;: &quot;b&quot;, &quot;size&quot;: &quot;sm&quot; }
+      ]
+    },
+    &quot;later&quot;: {
+      &quot;1&quot;: [ { &quot;kicker&quot;: &quot;Idea&quot;, &quot;text&quot;: &quot;Bulk multi-item upload&quot;, &quot;color&quot;: &quot;y&quot;, &quot;size&quot;: &quot;sm&quot; } ],
+      &quot;2&quot;: [ { &quot;kicker&quot;: &quot;Idea&quot;, &quot;text&quot;: &quot;Re-generate / steer the AI&quot;, &quot;color&quot;: &quot;ai&quot;, &quot;size&quot;: &quot;sm&quot; } ],
+      &quot;3&quot;: [ { &quot;kicker&quot;: &quot;Idea&quot;, &quot;text&quot;: &quot;Dashboard stats&quot;, &quot;color&quot;: &quot;y&quot;, &quot;size&quot;: &quot;sm&quot; } ],
+      &quot;4&quot;: [ { &quot;kicker&quot;: &quot;Idea&quot;, &quot;text&quot;: &quot;Re-publish expired page&quot;, &quot;color&quot;: &quot;y&quot;, &quot;size&quot;: &quot;sm&quot; } ],
+      &quot;5&quot;: [ { &quot;kicker&quot;: &quot;Idea&quot;, &quot;text&quot;: &quot;Social carousel designer&quot;, &quot;color&quot;: &quot;y&quot;, &quot;size&quot;: &quot;sm&quot; } ],
+      &quot;6&quot;: [ { &quot;kicker&quot;: &quot;Idea&quot;, &quot;text&quot;: &quot;Saved quick replies&quot;, &quot;color&quot;: &quot;y&quot;, &quot;size&quot;: &quot;sm&quot; } ],
+      &quot;7&quot;: [ { &quot;kicker&quot;: &quot;Idea&quot;, &quot;text&quot;: &quot;Sync Google Calendar&quot;, &quot;color&quot;: &quot;y&quot;, &quot;size&quot;: &quot;sm&quot; } ]
+    }
+  }
+};(function(){var _f=window.fetch;window.fetch=function(u,o){try{if(typeof u==='string'&amp;&amp;u.indexOf('data-')>-1){return Promise.resolve({ok:true,status:200,json:function(){return Promise.resolve(window.__D__);}});}}catch(e){}return _f.apply(this,arguments);};})();</script>
+</head>
+<body class=&quot;canvas-dots&quot;>
+<div class=&quot;stage&quot;>
+  <div class=&quot;head&quot;>
+    <div>
+      <div class=&quot;crumb&quot; id=&quot;crumb&quot;></div>
+      <div class=&quot;title&quot; id=&quot;title&quot;></div>
+      <div class=&quot;sub&quot; id=&quot;sub&quot;></div>
+    </div>
+    <a class=&quot;madeby&quot; href=&quot;https://github.com/TexasBedouin/vibe-check&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Created using <b>Vibe-Check</b> skill</a>
+  </div>
+
+  <div class=&quot;map&quot; id=&quot;map&quot;></div>
+</div>
+
+<script>
+const esc = s => String(s).replace(/&amp;/g,'&amp;amp;').replace(/</g,'&amp;lt;').replace(/>/g,'&amp;gt;');
+
+// renderer-computed decoration, never stored in data
+const TILTS = ['tilt-l','tilt-r','tilt-0'];
+const NOTE_COLORS = {y:'y',g:'g',b:'b',o:'o',p:'p',ai:'ai'};
+
+// tape ∈ green | blue | kraft  → class on the .tape element
+function tapeClass(tape){
+  if(tape === 'green') return 'tape green';
+  if(tape === 'kraft') return 'tape kraftt';
+  return 'tape'; // blue is the default tape-blue look
+}
+
+function noteHtml(note, idx){
+  const color = NOTE_COLORS[note.color] || 'y';
+  const cls = ['note', color];
+  if(note.size === 'sm') cls.push('sm');
+  if(note.pin) cls.push('pin');
+  cls.push(TILTS[idx % TILTS.length]); // auto-cycle tilt by index
+  const kicker = note.kicker ? '<span class=&quot;k&quot;>'+esc(note.kicker)+'</span>' : '';
+  const aha = note.aha ? '<span class=&quot;aha&quot;>★ the aha moment</span>' : '';
+  return '<div class=&quot;'+cls.join(' ')+'&quot;>'+kicker+esc(note.text||'')+aha+'</div>';
+}
+
+function render(sm){
+  const activities = sm.activities || [];
+  const releases = sm.releases || [];
+  const cells = sm.cells || {};
+
+  document.getElementById('crumb').textContent = (sm.header &amp;&amp; sm.header.crumb) || '';
+  document.getElementById('title').textContent = (sm.header &amp;&amp; sm.header.title) || '';
+  document.getElementById('sub').textContent = (sm.header &amp;&amp; sm.header.sub) || '';
+
+  const map = document.getElementById('map');
+  // columns: a fixed lane-label column, then one flexible column per activity
+  map.style.gridTemplateColumns = '172px repeat('+activities.length+',1fr)';
+
+  let html = '';
+
+  // ── backbone row: corner + one activity per column ──
+  html += '<div class=&quot;corner&quot;><span>the journey ↓</span></div>';
+  activities.forEach(a => {
+    html += '<div class=&quot;activity&quot;><span class=&quot;step&quot;>STEP '+esc(a.step)+'</span>'+
+            '<span class=&quot;name&quot;>'+esc(a.name)+'</span></div>';
+  });
+
+  // ── one row per release lane ──
+  releases.forEach(rel => {
+    const band = rel.band ? ' v1band' : '';
+
+    // lane label cell
+    html += '<div class=&quot;lane&quot;>';
+    html += '<span class=&quot;'+tapeClass(rel.tape)+'&quot;>'+esc(rel.label)+'</span>';
+    if(rel.subnote) html += '<span class=&quot;sub&quot;>'+esc(rel.subnote)+'</span>';
+    if(rel.skeleton) html += '<span class=&quot;skel&quot;><span class=&quot;gd&quot;></span>'+esc(rel.skeleton)+'</span>';
+    html += '</div>';
+
+    // one cell per activity column
+    const laneCells = cells[rel.id] || {};
+    activities.forEach(a => {
+      let notes = laneCells[a.step];
+      if(notes == null) notes = laneCells[String(a.step)];
+      let inner = '';
+      if(notes){
+        (Array.isArray(notes) ? notes : [notes]).forEach((note, i) => {
+          inner += noteHtml(note, i);
+        });
+      }
+      html += '<div class=&quot;cell'+band+'&quot;>'+inner+'</div>';
+    });
+  });
+
+  map.innerHTML = html;
+  document.body.setAttribute('data-rendered','1');
+}
+
+async function main(){
+  const param = new URLSearchParams(location.search).get('data') || 'storymap-example';
+  try{
+    const sm = await fetch('./data-'+param+'.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+    render(sm);
+  }catch(err){
+    document.getElementById('map').innerHTML = '<div class=&quot;err&quot;>Could not load data-'+esc(param)+'.json: '+esc(err.message)+'</div>';
+    document.body.setAttribute('data-rendered','1');
+  }
+}
+main();
+</script>
+</body>
+</html>
+" scrolling="no" loading="eager" style="height:1080px"></iframe></div>
+      <div class="board-cap">The seller's journey across the top, each capability hung under its step in V1 / V2 / Later lanes. The same V1/V2 split above, seen as the build spine.</div>
+
+      <h3>Build order, with checkpoints</h3>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="card" style="display:flex;gap:14px;align-items:flex-start;padding:14px 18px"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">1</span><div><b>Sign in + try it free.</b> <span style="color:var(--ink2)">Email-code login, plus a visitor can try the AI on one photo before signing up.</span><br><span style="color:var(--muted);font-size:13px">Checkpoint: you log in with a code, and the try-before-signup demo works.</span></div></div>
+        <div class="card" style="display:flex;gap:14px;align-items:flex-start;padding:14px 18px"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">2</span><div><b>Snap to listing.</b> <span style="color:var(--ink2)">Photograph an item, the AI fills title, price, size, condition; you edit and save.</span><br><span style="color:var(--muted);font-size:13px">Checkpoint: one photo becomes an editable, saved listing.</span></div></div>
+        <div class="card" style="display:flex;gap:14px;align-items:flex-start;padding:14px 18px"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">3</span><div><b>Dashboard + manage.</b> <span style="color:var(--ink2)">All items in a list with status badges; edit, delete, mark FREE.</span><br><span style="color:var(--muted);font-size:13px">Checkpoint: you manage several items and change their status.</span></div></div>
+        <div class="card" style="display:flex;gap:14px;align-items:flex-start;padding:14px 18px"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">4</span><div><b>Publish + share.</b> <span style="color:var(--ink2)">Set city + payment note, get a sale-page link with a clean preview card.</span><br><span style="color:var(--muted);font-size:13px">Checkpoint: a shared link shows a real preview and a live page.</span></div></div>
+        <div class="card" style="display:flex;gap:14px;align-items:flex-start;padding:14px 18px"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">5</span><div><b>Buyers reserve.</b> <span style="color:var(--ink2)">A buyer browses, verifies email, reserves; it lands in your inbox.</span><br><span style="color:var(--muted);font-size:13px">Checkpoint: a reservation flows end to end into the inbox.</span></div></div>
+        <div class="card" style="display:flex;gap:14px;align-items:flex-start;padding:14px 18px"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">6</span><div><b>Coordinate pickup.</b> <span style="color:var(--ink2)">Message the buyer and share your address only after you confirm.</span><br><span style="color:var(--muted);font-size:13px">Checkpoint: address sharing requires your explicit tap.</span></div></div>
+      </div>
+
+      <h3>Data model, 5 collections</h3>
+      <div class="grid3">
+        <div class="stat"><div class="k">users</div><div class="d" style="margin-top:6px">Seller accounts: email, tier, location, custom URL, availability.</div></div>
+        <div class="stat"><div class="k">items</div><div class="d" style="margin-top:6px">Listings: status, title, price, dimensions, photos.</div></div>
+        <div class="stat"><div class="k">reservations</div><div class="d" style="margin-top:6px">Buyer holds: item ids, expiry, queue position, cancel token.</div></div>
+        <div class="stat"><div class="k">conversations</div><div class="d" style="margin-top:6px">Inbox threads: seller, buyer email, unread count.</div></div>
+        <div class="stat"><div class="k">messages</div><div class="d" style="margin-top:6px">Inside a conversation: sender, content, read state.</div></div>
+        <div class="stat" style="background:var(--blue-soft);border-color:#cdddff"><div class="k" style="color:var(--blue)">house rule</div><div class="d" style="margin-top:6px;color:var(--ink2)">Every action goes through an API route, so an AI agent can do anything the UI can.</div></div>
+      </div>
+    </section>
+    <section class="panel" id="guidelines">
+      <h2>Coding guidelines</h2>
+      <div class="lead">The house rules your AI coding tool should follow on every line, so the build starts on solid ground and stays one your AI can keep working in. Paste the block at the bottom into your project guide.</div>
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">How to work with your AI</h3>
+          <ul class="clean">
+            <li><b>Think first.</b> Before non-trivial code, have it say what it'll build and ask about anything unclear. No guessing.</li>
+            <li><b>Keep it simple.</b> The simplest thing that solves the problem. No extra features, no "just in case" code.</li>
+            <li><b>Change only what you asked.</b> Don't let it rewrite unrelated code. If it spots something, it tells you, it doesn't do it.</li>
+            <li><b>When it loops, stop and reset.</b> If the AI goes in circles or breaks things, revert to the last working version, then give it the exact error and what you already tried.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">How the code should be built</h3>
+          <ul class="clean">
+            <li><b>One home per thing.</b> The same logic lives in exactly one place (one place for prices, one for login).</li>
+            <li><b>Call things the same name everywhere.</b> If it's a "pickup," it's always a "pickup," in the code and on the screens.</li>
+            <li><b>Self-contained features.</b> Each feature is one tidy piece (the "microwave": lots inside, one simple front), not smeared across the app.</li>
+            <li><b>Keep the layers apart.</b> Screens, decisions, and where data is saved stay separate.</li>
+            <li><b>Handle the sad path.</b> Every failure shows a friendly message and a way out, never a blank screen.</li>
+            <li><b>Leave a trail.</b> Important actions log what happened, so the day it breaks, your AI finds it in minutes.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Safety basics (do these from day one)</h3>
+        <div class="grid2" style="margin-top:4px">
+          <ul class="clean">
+            <li><b>Secrets stay out of the code.</b> API keys live in environment variables, never in a file you commit.</li>
+            <li><b>Never trust what users type.</b> Check and clean input before you use it.</li>
+          </ul>
+          <ul class="clean">
+            <li><b>Commit small and often.</b> Save your work in little steps so you can always roll back.</li>
+            <li><b>Backups on.</b> Make sure your database keeps automatic backups (most managed ones do).</li>
+          </ul>
+        </div>
+      </div>
+      <h3>Paste this into your project guide (CLAUDE.md or similar)</h3>
+      <pre style="background:#1A1A1B;color:#e8e8e8;padding:18px 20px;border-radius:10px;overflow:auto;font-size:13px;line-height:1.55;font-family:ui-monospace,SFMono-Regular,Menlo,monospace"># House Rules for ClearList
+
+You're the engineer. I'm the product manager. Follow these on every change.
+
+## How to work
+- Think first: before non-trivial code, say what you'll build and ask about anything unclear.
+- Keep it simple: the simplest thing that solves the problem. No extra features.
+- Change only what I asked: don't rewrite unrelated code. If you spot something, tell me.
+- If you get stuck or start looping: stop, tell me, and we revert to the last working version.
+
+## How to write code
+- One home for each piece of logic (don't repeat yourself).
+- Same name everywhere: if it's a "pickup," it's always a "pickup."
+- Self-contained features: each feature in its own folder as one tidy piece.
+- Keep layers apart: screens vs. decisions vs. where data is saved.
+- Handle the sad path: every failure shows a friendly message and a way out.
+- Leave a trail: log important actions (what happened, worked or failed, any error).
+
+## Safety
+- Secrets in environment variables, never in committed code.
+- Validate all user input before using it.
+- Commit small and often.</pre>
+      <p style="color:var(--muted);font-size:14px;margin-top:14px">These are the architecture essentials (deep, navigable modules, a single source of truth, consistent names) in plain language. They're enough to start on solid ground. You do not need decision-record formalism or coverage gates on a first app.</p>
+    </section>
+    <section class="panel" id="growth">
+      <h2>Distribution &amp; growth</h2>
+      <div class="lead">The question that kills more apps than bad code: once it's built, how does a single human find out it exists? Good news, you already did this research. The communities where you found the pain are where your first users live.</div>
+      <h3>Your first 10 users</h3>
+      <div class="three">
+        <div><div class="k">Who, specifically</div><p>The people in r/declutter ranting about the "death pile," and posters in the moving subreddits with a deadline.</p></div>
+        <div><div class="k">Where they gather</div><p>r/declutter, the moving subreddits, and local "moving sale" Facebook groups, the exact place you mined for pain.</p></div>
+        <div><div class="k">Your first move</div><p>Be genuinely useful there for two weeks, then one honest "I built this because I had a pile too" post. Stand up a waitlist now.</p></div>
+      </div>
+      <h3>The growth loop</h3>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;padding:6px 0">
+          <span style="background:#fff;border:1px solid var(--bd);border-radius:8px;padding:9px 13px;font-size:13px;font-weight:600">Seller lists items</span><span style="color:var(--muted);font-weight:700">&rarr;</span>
+          <span style="background:#fff;border:1px solid var(--bd);border-radius:8px;padding:9px 13px;font-size:13px;font-weight:600">Public sale page</span><span style="color:var(--muted);font-weight:700">&rarr;</span>
+          <span style="background:#fff;border:1px solid var(--bd);border-radius:8px;padding:9px 13px;font-size:13px;font-weight:600">Found on Google &amp; shared</span><span style="color:var(--muted);font-weight:700">&rarr;</span>
+          <span style="background:#fff;border:1px solid var(--bd);border-radius:8px;padding:9px 13px;font-size:13px;font-weight:600">Buyer has a great sale</span><span style="color:var(--muted);font-weight:700">&rarr;</span>
+          <span style="background:#DCFCE7;color:#166534;border:1px solid #bbf7d0;border-radius:8px;padding:9px 13px;font-size:13px;font-weight:700">Buyer moves, becomes a seller</span>
+          <span style="color:var(--green);font-weight:700;font-size:18px" title="loops back to the start">&#8635;</span>
+        </div>
+      </div>
+      <div class="board-cap">A content loop: every sale page is public, so it gets found on Google, and the happy buyer becomes your next seller. The product markets itself.</div>
+      <h3>Will the loop start? (the cold-start check)</h3>
+      <div class="card"><p style="color:var(--ink2);font-size:15px;line-height:1.55">ClearList is useful to <b>one</b> seller on day one, no network required, so the core has no cold-start trap. The future city directory <em>does</em> need liquidity, so hold it closed until about <b>50 sale pages exist in a city</b>. Otherwise the first visitor lands on a near-empty page and never comes back.</p></div>
+    </section>
+    <section class="panel" id="launch">
+      <h2>Before launch</h2>
+      <div class="lead">The things beginners never see coming. Each is tagged so you know when to deal with it, not all at once.</div>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0;color:var(--green)">Handle now</h3>
+          <ul class="clean">
+            <li><b>Secrets.</b> API keys live in environment variables, never in committed code.</li>
+            <li><b>Privacy.</b> Show only city + state in public; the seller's address is shared only on explicit confirm.</li>
+            <li><b>Backups.</b> Make sure the database keeps automatic backups (most managed ones do).</li>
+            <li><b>Accessibility.</b> Usable by keyboard and screen reader. Far harder to bolt on later.</li>
+          </ul>
+        </div>
+        <div class="card"><h3 style="margin-top:0;color:#a8830a">Before you launch</h3>
+          <ul class="clean">
+            <li><b>Legal.</b> A privacy policy and terms; a refund policy once you take money (14-day cooling-off for EU buyers).</li>
+            <li><b>Payments early.</b> Apply to Stripe <em>before</em> writing payment code; keep a backup (Shopify buy button).</li>
+            <li><b>Error tracking.</b> Know when it breaks at 3am before your users do.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="panel" id="handoff">
+      <h2>Hand to your AI</h2>
+      <div class="lead">This is the instruction manual for your AI coding tool. Copy it, paste it into your tool, and start building. The more specific the plan, the better it builds the first time.</div>
+      <button id="copybtn" onclick="copyPlan()" style="appearance:none;border:0;background:var(--blue);color:#fff;font-family:var(--sans);font-weight:700;font-size:14px;padding:11px 20px;border-radius:8px;cursor:pointer;margin-bottom:12px">Copy the plan</button>
+      <pre id="planmd" style="background:#1A1A1B;color:#e8e8e8;padding:20px 22px;border-radius:10px;overflow:auto;font-size:13px;line-height:1.55;font-family:ui-monospace,SFMono-Regular,Menlo,monospace"># ClearList, build plan for your AI coding tool
+
+## The problem
+People moving with a deadline need to clear out a whole house fast. Today they juggle Facebook Marketplace, a spreadsheet, and endless texts. Writing listings is tedious, buyers no-show, and nothing is in one place.
+
+## The goal
+Photograph your stuff, the AI writes and prices the listings, buyers reserve and schedule pickup. One place, photo to pickup.
+
+## Who it is for
+People in a move with a pile to sell and a deadline (the r/declutter and moving-subreddit crowd).
+
+## V1 features (build now)
+- Snap photos, AI writes and prices each listing
+- Review and edit every field, mark an item FREE
+- Publish a shareable sale page (city + payment note)
+- Buyers reserve with an email code
+- Inbox; share address only after the seller confirms
+
+## V2+ (later)
+- Queue (max 3) + the 48-hour hold timer
+- Pickup scheduling (availability, time slots)
+- Push notifications + the full email set
+- Auto social cards + custom URL (paid)
+- Paid tiers via Stripe
+
+## Tech stack
+- Frontend: Next.js (App Router), TypeScript, Tailwind; PWA for sellers
+- AI: Gemini 3.0 (writes and prices listings)
+- Data: Firestore, Firebase Storage, Firebase Auth (email codes)
+- Money and messages: Stripe, SendGrid, FCM, Bannerbear
+- Hosting: Vercel; domain clearlist.me
+
+## Data model (5 collections)
+- users: email, tier, location, custom_url, availability
+- items: status, title, price, dimensions, photos
+- reservations: item_ids, expires_at, queue_position, cancel_token
+- conversations: seller_id, buyer_email, unread_count
+- messages (subcollection): sender, content, read
+
+## Build order (each ends with a checkpoint)
+1. Sign in + try-before-signup
+2. Snap to AI listing
+3. Dashboard + manage
+4. Publish + share
+5. Buyers reserve
+6. Coordinate pickup
+(then V2: queue/timer, scheduling, push, social cards, payments)
+
+## House rules
+- Think first; keep it simple; change only what is asked; if you loop, stop and reset.
+- One home per piece of logic; same name everywhere; self-contained features; keep layers apart.
+- Handle the sad path; leave a trail (logging).
+- Secrets in environment variables; validate user input; commit small and often.
+- Every action goes through an API route, so an agent can do anything the UI can.</pre>
+    </section>
+
+    <!-- CONTINUE -->
+    <section class="panel" id="continue">
+      <h2>Continue anywhere</h2>
+      <div class="lead">This file carries the whole session inside it. Take it to a new chat, a different AI tool, or hand it to a teammate, and nothing is lost.</div>
+      <div class="card">
+        <h3 style="margin-top:0">Pick up where you left off</h3>
+        <p style="color:var(--ink2);font-size:15px;line-height:1.5">A complete machine-readable snapshot of this session is embedded in this file. To resume: open a new vibe-check chat, attach this HTML file, and say "continue from this PRD." Your AI reads the snapshot and has every decision, every piece of evidence, and the full plan, no context lost.</p>
+        <p style="color:var(--muted);font-size:13px;margin-top:12px">Snapshot status: <b id="blob-status" style="color:var(--green)">embedded</b> <span id="blob-size"></span></p>
+      </div>
+    </section>
+
+  </div></main>
+
+  <footer class="attrib"><div class="wrap">
+    <div class="made">This PRD was created by the <a href="https://github.com/TexasBedouin/vibe-check" target="_blank" rel="noopener noreferrer">vibe-check</a> skill, by Amer Arab.</div>
+    <div class="v">ClearList · generated from a vibe-check session</div>
+  </div></footer>
+
+  <!-- machine-readable session snapshot (re-hydration blob) -->
+  <script type="application/json" id="vibe-check-session">
+  {
+    "skill": "vibe-check",
+    "version": "2.0.0",
+    "doc": "ClearList Product Requirements",
+    "how_to_resume": "Open a new vibe-check chat, attach this HTML file, and say 'continue from this PRD'. This snapshot plus the full content in every tab of this document is the whole session. No context lost.",
+    "offering": "ClearList",
+    "one_liner": "An AI-powered moving-sale platform: photograph your stuff, AI writes and prices the listings, buyers reserve and schedule pickup.",
+    "goal": "Clear out a whole house fast before a moving deadline, without it eating your week.",
+    "workaround": "Facebook Marketplace plus a spreadsheet plus endless texts, juggled across apps.",
+    "frustration": "Writing listings is tedious, buyers no-show, haggling is draining, and nothing is in one place.",
+    "who_its_for": "People in a move with a pile to sell and a deadline (the r/declutter and moving-subreddit crowd).",
+    "numbers": { "complexity": "6/10", "v1_timeline": "2 to 3 weeks with AI help", "cost_to_start": "about $0 on free tiers" },
+    "discovery": {
+      "method": "Cast a wide net (Reddit + reviews of paid tools: G2, Capterra, Trustpilot, app stores), sort every quote through five lenses into Pain and Served, then score Opportunity = Pain + max(0, Pain - Served).",
+      "winner": "Create an accurate listing in seconds (opportunity 15)",
+      "top_needs": [
+        { "need": "Create an accurate listing in seconds", "pain": 9, "served": 3, "opportunity": 15, "evidence": "seen" },
+        { "need": "Stop buyers from no-showing", "pain": 8, "served": 2, "opportunity": 14, "evidence": "seen" },
+        { "need": "Skip haggling with strangers", "pain": 7, "served": 2, "opportunity": 12, "evidence": "seen" },
+        { "need": "Coordinate pickup without endless texts", "pain": 7, "served": 3, "opportunity": 11, "evidence": "seen" },
+        { "need": "Browse listings easily", "pain": 7, "served": 8, "opportunity": 7, "evidence": "hunch" }
+      ],
+      "competitors": ["Facebook Marketplace", "Craigslist", "OfferUp", "a spreadsheet + texts", "just give it away"],
+      "gap": "Four of six needs are wide open across all current tools.",
+      "quotes": [
+        "I gave up and just left a pile on the curb. Writing all those listings wasn't worth it.",
+        "Three people said they'd come for the couch. None showed. I wasted a whole Saturday."
+      ]
+    },
+    "experience": {
+      "crazy8_directions": ["Camera-first", "Talk it out", "Swipe to sort", "Voice-first", "One big list", "Room scan"],
+      "chosen_direction": "Snap, talk if you want, swipe to sort: camera-first capture with an optional voice note, then a swipe review with one-tap Make FREE.",
+      "dropped": ["the full chat thread", "the spreadsheet view"],
+      "aha_moment": "Your listing, written and priced, in about 15 seconds.",
+      "blueprint_scenario": "Buyer reserves an item from a moving sale",
+      "blueprint_state": "future"
+    },
+    "features": {
+      "v1": ["Snap photos, AI writes and prices each listing", "Review/edit every field, mark an item FREE", "Publish a shareable sale page (city + payment note)", "Buyers reserve with an email code", "Inbox; share address only after the seller confirms"],
+      "v2": ["Queue (max 3) + 48-hour hold timer", "Pickup scheduling (availability, slots)", "Push notifications + full email set", "Auto social cards + custom URL (paid)", "Paid tiers via Stripe"]
+    },
+    "tech_stack": {
+      "frontend": ["Next.js (App Router)", "TypeScript", "Tailwind", "PWA for sellers"],
+      "ai": "Gemini 3.0 (writes and prices listings)",
+      "data": ["Firestore", "Firebase Storage", "Firebase Auth (email codes)"],
+      "money_and_messages": ["Stripe", "SendGrid", "FCM", "Bannerbear"],
+      "hosting": ["Vercel", "clearlist.me"]
+    },
+    "data_model": {
+      "users": "email, tier, location, custom_url, availability",
+      "items": "status, title, price, dimensions, photos",
+      "reservations": "item_ids, expires_at, queue_position, cancel_token",
+      "conversations": "seller_id, buyer_email, unread_count",
+      "messages": "(subcollection) sender, content, read"
+    },
+    "build_order": [
+      { "n": 1, "step": "Sign in + try-before-signup", "checkpoint": "log in with an email code; the try-before-signup demo works" },
+      { "n": 2, "step": "Snap to AI listing", "checkpoint": "one photo becomes an editable, saved listing" },
+      { "n": 3, "step": "Dashboard + manage", "checkpoint": "manage several items, change status" },
+      { "n": 4, "step": "Publish + share", "checkpoint": "a shared link shows a real preview and a live page" },
+      { "n": 5, "step": "Buyers reserve", "checkpoint": "a reservation flows end to end into the inbox" },
+      { "n": 6, "step": "Coordinate pickup", "checkpoint": "address sharing requires the seller's explicit tap" }
+    ],
+    "coding_guidelines": ["Think first; keep it simple; change only what's asked; if you loop, stop and reset", "One home per piece of logic; same name everywhere; self-contained features; keep layers apart", "Handle the sad path; leave a trail (logging)", "Secrets in env vars; validate user input; commit small and often", "Every action goes through an API route"],
+    "distribution": {
+      "first_10_users": "People in r/declutter ranting about the death pile, and moving-subreddit posters with a deadline.",
+      "channel": "Be genuinely useful in those communities for two weeks, then one honest post. Stand up a waitlist now.",
+      "growth_loop": "Content loop: every sale page is public, gets found on Google, and the happy buyer becomes the next seller.",
+      "cold_start": "Core is useful to one seller (no network needed). Hold the future city directory closed until about 50 sale pages exist per city."
+    },
+    "before_launch": {
+      "handle_now": ["Secrets in env vars", "Privacy: city + state only, address on confirm", "Backups on", "Accessibility"],
+      "before_launch": ["Privacy policy + terms + refund policy (14-day EU cooling-off)", "Apply to Stripe early; keep a backup", "Error tracking"]
+    },
+    "next_steps": "Build V1 in the order above. Validate the riskiest assumption (people will switch for AI listing speed) with a waitlist + 10 DMs before building much. Full detail for every section is in the tabs of this document."
+  }
+  </script>
+
+  <script>
+    const bar = document.getElementById('tabbar');
+    const panels = document.querySelectorAll('.panel');
+    bar.addEventListener('click', e => {
+      const b = e.target.closest('.tab'); if(!b) return;
+      document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t===b));
+      const id = b.dataset.tab;
+      panels.forEach(p=>p.classList.toggle('active', p.id===id));
+      window.scrollTo({top:0,behavior:'instant'});
+    });
+    // confirm the re-hydration blob is present + show its size
+    try{
+      const blob = document.getElementById('vibe-check-session').textContent.trim();
+      JSON.parse(blob);
+      document.getElementById('blob-size').textContent = '(' + (new Blob([blob]).size) + ' bytes of session data)';
+    }catch(e){ document.getElementById('blob-status').textContent='missing'; }
+    function copyPlan(){
+      const t = document.getElementById('planmd').textContent;
+      navigator.clipboard.writeText(t).then(()=>{
+        const b = document.getElementById('copybtn'); if(!b) return;
+        const o = b.textContent; b.textContent = 'Copied ✓';
+        setTimeout(()=>{ b.textContent = o; }, 1600);
+      });
+    }
+  </script>
+</body>
+</html>

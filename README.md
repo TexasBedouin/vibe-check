@@ -20,7 +20,7 @@ When someone who's never coded before says "I want to build an app that does X,"
 2. **Maps the entire user experience**: happy flows, failure flows, and edge cases
 3. **Surfaces decisions they don't know they need to make**: auth, databases, payments, hosting, legal
 4. **Recommends a modern tech stack**: with plain-language explanations of what each piece does and why
-5. **Produces a complete plan document**: structured as the AI coding tool's onboarding manual, plus a **visual HTML blueprint** the human opens in their browser
+5. **Produces a complete plan document**: structured as the AI coding tool's onboarding manual, plus an **interactive PRD** the human opens in their browser, the whole session in one navigable, self-contained file
 6. **Includes build checkpoints**: so the beginner is never lost during construction. The AI stops after each phase to explain what was just built, why, and what's next.
 7. **Teaches the build-time basics** in language for someone who has never touched code: local vs. GitHub vs. live, how to save and back up code (commit/push/deploy), and keeping secret keys safe.
 8. **Finds a growth loop**: how the app recruits its next user on its own, preferably viral and organic, built into the core flow rather than bolted on, so growth compounds instead of needing a constant push.
@@ -80,14 +80,14 @@ This plan is designed to be handed directly to your AI coding tool to start buil
 
 ## Example output
 
-Wondering what a session actually looks like? Two complete examples in [examples/](examples/), each walks the *entire* skill (discovery, ODI opportunity scoring, the five-lens gut-check, growth loops, the lot) and produces both deliverables: the markdown plan **and** a visual HTML blueprint.
+Wondering what a session actually looks like? Two complete examples in [examples/](examples/), each walks the *entire* skill (discovery, ODI opportunity scoring, the five-lens gut-check, growth loops, the lot) and produces both deliverables: the markdown plan **and** an interactive PRD.
 
-- **[A full ClearList session](examples/clearlist-session.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/clearlist-blueprint.html)): the complete back-and-forth from a one-line idea to the finished plan, including the Reddit reality-check. This is what running the skill *feels* like, and **ClearList is a real, live product that was built with vibe-check** ([clearlist.me](https://clearlist.me)).
+- **[A full ClearList session](examples/clearlist-session.md)** (+ the [interactive PRD](https://texasbedouin.github.io/vibe-check/examples/clearlist-prd.html) it produces): the complete back-and-forth from a one-line idea to the finished plan, including the wide-net reality-check. The interactive PRD is the final deliverable, tabs, live boards, the whole session in one navigable file. **ClearList is a real, live product that was built with vibe-check** ([clearlist.me](https://clearlist.me)).
 - **[Idea → plan: a plant-care app](examples/plant-watering.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)): one sentence in ("an app that reminds me to water my plants"), a full buildable plan out.
 
 ## Version
 
-Current version: **2.0.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **2.1.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, run `git pull` inside `.claude/skills/vibe-check`. Versioning is semantic (MAJOR.MINOR.PATCH).
 
