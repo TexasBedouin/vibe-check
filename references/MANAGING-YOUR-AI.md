@@ -40,7 +40,7 @@ Simple code is code you can understand, and code your AI can keep working in. Cl
 
 **The trap:** you ask for one small fix, and the AI rewrites three files that were working perfectly fine, "tidies up" code it doesn't fully understand, and breaks two things in the process. This is the exact feeling behind "my AI keeps breaking stuff every time I ask for something."
 
-**The rule:** touch only what the task needs. Leave working code alone, including its existing style. No surprise refactors, no side quests, no reaching into unrelated corners of the app.
+**The rule:** touch only what the task needs. Leave working code alone, including its existing style. No surprise refactors, no side quests. Unrelated corners of the app stay untouched.
 
 **Say this to your AI:**
 > "Only change what's needed for this specific task. Don't touch, rewrite, or 'improve' anything else, even if you think it could be better. If you spot something worth fixing elsewhere, just tell me, don't do it."

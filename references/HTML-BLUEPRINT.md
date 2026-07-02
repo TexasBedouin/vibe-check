@@ -1,16 +1,12 @@
-# The Visual Blueprint (and the Checkup Report)
+# The Shared HTML Scaffold (and the Checkup Report)
 
-vibe-check produces two versions of its output, for two very different readers.
+This file documents the shared HTML scaffold that vibe-check's visual pages are built on. The **Checkup Mode report** ([CODE-CHECKUP.md](CODE-CHECKUP.md)) uses it directly. The **interactive PRD**, the final deliverable since v2.1.0, inherits its conventions; the planning sections described below now live inside the PRD's tabs rather than as a standalone page. See [PRD.md](PRD.md) for that deliverable.
 
-First, a markdown plan. That's the precise instruction manual the user hands to their AI coding tool. Dense, specific, complete.
+The centerpiece of the planning content is the **Experience Blueprint**, the one big board the whole session has been quietly filling in. It is not made cold at the end. It starts as a skeleton after Phase 2 and grows a section at a time as the person makes decisions, so by the time you reveal the finished board they recognize every piece of it. The rest of the content (the goal, who it's for, the features, the cost, the build phases, the distribution, the growth loop) wraps around that board as the supporting story. See [EXPERIENCE-BLUEPRINT.md](EXPERIENCE-BLUEPRINT.md) for what the board is and how it fills.
 
-Second, a visual HTML blueprint. That's a friendly web page the human opens in a browser to actually see what they're building, and to believe they can pull it off.
+A wall of markdown is intimidating to someone who has never coded. A visual page built around one board they watched grow makes them feel "oh... I can see my whole app, and it's not scary." That confidence is the entire reason this scaffold exists.
 
-The centerpiece of that page is the **Experience Blueprint**, the one big board the whole session has been quietly filling in. It is not made cold at the end. It starts as a skeleton after Phase 2 and grows a section at a time as the person makes decisions, so by the time you reveal the finished board they recognize every piece of it. The rest of the page (the goal, who it's for, the features, the cost, the build phases, the distribution, the growth loop) wraps around that board as the supporting story. See [EXPERIENCE-BLUEPRINT.md](EXPERIENCE-BLUEPRINT.md) for what the board is and how it fills.
-
-A wall of markdown is intimidating to someone who has never coded. A visual page built around one board they watched grow makes them feel "oh... I can see my whole app, and it's not scary." That confidence is the entire reason this thing exists.
-
-The same scaffold gets reused for the **checkup report** in [CODE-CHECKUP.md](CODE-CHECKUP.md). The technique is borrowed from Matt Pocock's `improve-codebase-architecture` HTML report. The content and tone here are tuned for beginners.
+The technique is borrowed from Matt Pocock's `improve-codebase-architecture` HTML report. The content and tone here are tuned for beginners.
 
 ---
 
@@ -30,11 +26,11 @@ Styling for the page comes from a CDN, so the file stands on its own. No build s
 
 Plain inline mermaid stays available only as a throwaway fallback for a quick sketch in chat, never for the boards on this page.
 
-The only script in the page itself is the Tailwind CDN include. Everything else is static HTML. No app code, no tracking, nothing that phones home.
+The only script in the page itself is the Tailwind CDN include. Everything else is static HTML. No app code and no tracking. Nothing phones home.
 
 ### Rendering the boards
 
-The diagram engine is **input-driven**: you never hand-write board HTML. You produce a small structured JSON object and a vendored renderer draws it (same renderer, any idea). To draw a board at render time, do exactly what the engine doc spells out: copy the renderer (`blueprint.html`, `opportunity.html`, `storymap.html`, or `matrix.html`), its `engine.css`, and a `data-<name>.json` file together into one fresh temp folder, then open the renderer in the browser. Because the renderer fetches its JSON over `file://`, all three files have to sit in the same folder.
+The diagram engine is **input-driven**: you never hand-write board HTML. You produce a small structured JSON object and a vendored renderer draws it (same renderer, any idea). To draw a board at render time, do exactly what the engine doc spells out: copy the renderer (`blueprint.html`, `opportunity.html`, `storymap.html`, or `matrix.html`) and its `engine.css` together into one fresh temp folder, bake the board's JSON into the copied renderer with the small fetch shim described there (browsers block `fetch()` between local files, so a `data-*.json` sibling cannot be loaded over `file://`), then open the renderer in the browser.
 
 The Experience Blueprint is the board you re-render at each checkpoint (skeleton after Phase 2, more cells after the tech decisions, complete at Phase 5) by rewriting its JSON and re-opening it, matching "Show it filling" in [EXPERIENCE-BLUEPRINT.md](EXPERIENCE-BLUEPRINT.md).
 
@@ -112,15 +108,9 @@ The diagrams carry the weight. For a visual thinker, they explain more than any 
 
 ---
 
-## The Crazy 3s comparison board
+## The Crazy 8 sketch board
 
-Reused in Phase 2 to show the three design directions side by side, so the user picks by seeing them rather than reading three paragraphs one after another. The idea is borrowed from gstack's design-shotgun, minus the image generation and the local server. Same self-contained HTML, no extra tools.
-
-- Three cards in a row (they stack on mobile). One card per direction.
-- Each card holds: the direction's name, a rough sketch of the layout (hand-built `<div>` boxes or a short text wireframe, never a generated image), and a one-line "best for" that says what it optimizes for.
-- A short line under the board: *"Tell me which one feels right, or which bits you'd take from each, and I'll combine them into one."* The picking and mixing happen in chat, not in the page.
-
-Keep it dead simple. No buttons, no JavaScript (the only script on the page is the Tailwind include). The board's only job is to make three options easy to compare at a glance. It is a plain Tailwind comparison, not a diagram-engine board, so it does not carry the engine footer.
+The side-by-side design comparison in Phase 2 is the **Crazy 8 board**, and its full spec lives in the Crazy 8 section of [DIAGRAM-SYSTEM.md](DIAGRAM-SYSTEM.md), not here. In short: it is hand-composed against `engine.css` tokens from the starting files `crazy8.html` (phone frames) or `crazy8-web.html` (desktop browser frames), the confidence dial scales it between four and eight sketches, and `crazy8-combine.html` is the worked example of the converged board. The engine footer applies (hardcoded in the markup, like every board). Do not build a plain Tailwind comparison for this; use the engine files.
 
 ## For the checkup report
 

@@ -20,7 +20,7 @@
     { "id": "haggle", "label": "Skip haggling with strangers", "pain": 7, "served": 3, "score": 11, "evidence": "seen" },
     { "id": "pickup", "label": "Coordinate pickup without endless texts", "pain": 7, "served": 4, "score": 10, "evidence": "seen" },
     { "id": "price", "label": "Feel sure the price is fair", "kicker": "still guessing", "pain": 5, "served": 3, "score": 7, "evidence": "hunch" },
-    { "id": "truck", "label": "Know if it needs a truck to haul", "pain": 4, "served": 2, "score": 6, "evidence": "hunch" },
+    { "id": "truck", "label": "Know if it needs a truck to haul", "pain": 4, "served": 2, "score": 6, "evidence": "guess" },
     { "id": "share", "label": "Share the whole sale in one link", "pain": 8, "served": 7, "score": 9, "evidence": "seen" },
     { "id": "safety", "label": "Avoid sketchy strangers at the door", "pain": 7, "served": 6, "score": 8, "evidence": "hunch" },
     { "id": "browse", "label": "Browse listings easily", "kicker": "everyone does this fine", "pain": 4, "served": 8, "score": 4, "evidence": "hunch" },
@@ -33,6 +33,7 @@
   "formula": "Opportunity = Pain + max(0, Pain - Served)",
   "evidenceLegend": [
     { "type": "seen", "label": "Seen it, real quotes back it up" },
-    { "type": "hunch", "label": "Hunch, plausible but not yet confirmed" }
+    { "type": "hunch", "label": "Hunch, plausible but not yet confirmed" },
+    { "type": "guess", "label": "Guess, pure speculation so far" }
   ]
 }

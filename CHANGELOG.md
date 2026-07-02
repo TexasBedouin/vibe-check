@@ -2,6 +2,29 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.2.0] - 2026-07-02
+
+The honesty release. A full multi-agent audit of the skill (six review dimensions, adversarial verification, then a live end-to-end dress rehearsal on a real idea) surfaced everything below.
+
+### Added
+- **Discovery can now end in "don't build this."** Beat 2 has a third scripted outcome alongside confirm and redirect: when every high-pain need is already well served, the money gut-check fails completely, or the evidence stays mostly guesses after a full sweep, the skill says so plainly and offers the three honest moves: narrow and re-check, pivot to the adjacent underserved need the evidence does point at, or stop with a findings summary instead of a build plan. Knowing not to build something is discovery working, not failing.
+- **Evidence now gates the big decisions.** A need earns "seen it" only with roughly three independent sources; a hunch or guess at the top of the ranking triggers a targeted re-search or an explicit demotion; the Step 5 differentiator must carry a "seen it" tag. Plus an anchoring rubric so Pain and Served scores stop being vibes, and two confirm gates so the user corrects the needs list and challenges the top three before anything locks.
+- **The riskiest-assumption test is now Build Phase 0** in the plan template, with its own checkpoint, and its own plan section. It was named in Phase 6 and then structurally skippable.
+- **An ethics check at the top of Beat 1**, before any grilling or research, for ideas whose core purpose is to harm, deceive, or surveil people who did not opt in.
+- **A third evidence tier on the Opportunity Map.** "Guess" now renders with its own dotted style and legend entry; unknown values render as guess, never silently upgraded to hunch.
+- **The fetch ladder learned about crawler blocks**: what to do when `site:reddit.com` returns nothing (the PullPush archive, with its limits stated), and a rule to capture permalinks at the moment of capture.
+- The session glossary ("Words You Now Know") actually lands in the plan as its own numbered section, as promised.
+
+### Fixed
+- **The board render flow never worked from disk.** Since 2.0.0 the docs said to open a renderer beside its JSON file; every modern browser blocks `fetch()` between local files, so that showed an error page. Boards now bake the data in via the same shim the PRD uses. (Empirically reproduced during the audit, in headless Edge, before the fix.)
+- Escaping gaps in two renderers (the Opportunity Map's axis labels, the blueprint's phase ranges) and a type-coercion bug that corrupted blueprint phase bars when JSON carried string numbers.
+- The invented "80% of the signal" statistic in the honesty script is gone; the paragraph that teaches calibration no longer fabricates precision.
+- The job map is now solution-free, as ODI intends: steps name the outcome sought, never the tool used today.
+- Stale docs from the 2.1.0 transition: HTML-BLUEPRINT.md no longer claims to be the second deliverable and no longer documents the retired Crazy 3s board; examples/README.md and both example sessions now describe the interactive PRD honestly; README's mermaid and Crazy 3s references updated; DIAGRAM-SYSTEM.md's stale Step 3.5 crumbs, header rule, note-shape rule, and score-badge claim corrected; PRD.md's srcdoc escape order spelled out (& first, then quotes); broken relative links inside references/ fixed; EXPERIENCE-BLUEPRINT.md added to the reference index.
+- The assistant no longer claims the author's products as its own ("ClearList, the product this skill's author built").
+- Rule 1's question pacing and the confidence dial no longer contradict each other, and research depth is now explicitly set by evidence, not confidence.
+- RELEASING.md's manual checklist now includes README.md (bump.sh already required it), and bump.sh fails loudly if the CHANGELOG entry doesn't land instead of shipping a release without one.
+
 ## [2.1.0] - 2026-06-20
 
 ### Added

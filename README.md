@@ -66,7 +66,7 @@ Copy the contents of `SKILL.md` into your AI tool's system prompt or project ins
 By the end of a vibe-check session, you'll have a plan document that includes:
 
 - **Problem statement**: in your own words
-- **User flows**: mermaid diagrams for happy path, failure path, and edge cases
+- **User flows**: happy path, failure path, and edge cases, drawn in the engine's visual style (with mermaid as the fallback)
 - **Feature breakdown**: V1 (build now) vs V2+ (build later)
 - **System architecture**: visual diagram with beginner-friendly labels
 - **Tech stack**: every tool, what it does, why it was chosen, what it costs
@@ -80,14 +80,14 @@ This plan is designed to be handed directly to your AI coding tool to start buil
 
 ## Example output
 
-Wondering what a session actually looks like? Two complete examples in [examples/](examples/), each walks the *entire* skill (discovery, ODI opportunity scoring, the five-lens gut-check, growth loops, the lot) and produces both deliverables: the markdown plan **and** an interactive PRD.
+Wondering what a session actually looks like? Two complete examples in [examples/](examples/), each walks the *entire* skill (discovery, ODI opportunity scoring, the five-lens gut-check, growth loops, the lot). The ClearList example shows the full current flow, ending with the markdown plan **and** the interactive PRD. The plant example predates the PRD and ends with the older visual blueprint instead.
 
 - **[A full ClearList session](examples/clearlist-session.md)** (+ the [interactive PRD](https://texasbedouin.github.io/vibe-check/examples/clearlist-prd.html) it produces): the complete back-and-forth from a one-line idea to the finished plan, including the wide-net reality-check. The interactive PRD is the final deliverable, tabs, live boards, the whole session in one navigable file. **ClearList is a real, live product that was built with vibe-check** ([clearlist.me](https://clearlist.me)).
 - **[Idea → plan: a plant-care app](examples/plant-watering.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)): one sentence in ("an app that reminds me to water my plants"), a full buildable plan out.
 
 ## Version
 
-Current version: **2.1.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **2.2.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, run `git pull` inside `.claude/skills/vibe-check`. Versioning is semantic (MAJOR.MINOR.PATCH).
 
@@ -102,7 +102,7 @@ Built by Amer Arab. I spent 12-plus years as a product manager, most of it takin
 - [andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) by multica-ai: the four "how your AI should behave" ground rules (think before coding, keep it simple, surgical changes, goal-driven), translated here for beginners
 - [autoresearch](https://github.com/uditgoenka/autoresearch) by Udit Goenka: the verify-and-iterate loop (one change, check it, keep or revert, repeat), translated here as the beginner's supervised improvement loop
 - [/office-hours](https://github.com/garrytan/gstack) by Garry Tan: the problem reframing and premise challenging
-- [The Design Sprint](https://designsprintkit.withgoogle.com/) by Jake Knapp / Google Ventures: the future press release (vision extraction) and Crazy 8s, adapted here to Crazy 3s with sharing and voting
+- [The Design Sprint](https://designsprintkit.withgoogle.com/) by Jake Knapp / Google Ventures: the future press release (vision extraction) and Crazy 8s, adapted here with a confidence-dial sketch count (four to eight) plus sharing and voting
 - [User Story Mapping](https://www.jpattonassociates.com/user-story-mapping/) by Jeff Patton: walking the chosen journey step by step to surface the features each step requires
 - [Bob Moesta / The Rewired Group](https://therewiredgroup.com/) (Jobs to be Done): demand is born in the struggling moment, the demand-side lens behind the worst-moment question
 - [Tony Ulwick / Strategyn](https://strategyn.com/) (Outcome-Driven Innovation): the opportunity-scoring engine, and the competitor gap matrix used here as the beginner stand-in for ODI's satisfaction survey

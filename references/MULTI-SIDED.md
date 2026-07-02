@@ -55,4 +55,4 @@ And name the **hard side**: one side is always harder to get than the other (usu
 
 ## Then: the cold-start problem
 
-Discovering both sides tells you *what* to build. It doesn't get the first people in the door. An empty marketplace is worthless to whoever shows up first, on either side, so a multi-sided product almost always has a **cold-start problem**: how do you get enough of both sides at once for the thing to be useful to anyone? That's its own playbook, in **[references/COLD-START.md](references/COLD-START.md)**. Surface it in Phase 6.6.
+Discovering both sides tells you *what* to build. It doesn't get the first people in the door. An empty marketplace is worthless to whoever shows up first, on either side, so a multi-sided product almost always has a **cold-start problem**: how do you get enough of both sides at once for the thing to be useful to anyone? That's its own playbook, in **[COLD-START.md](COLD-START.md)**. Surface it in Phase 6.6.

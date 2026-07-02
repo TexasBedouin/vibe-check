@@ -46,6 +46,7 @@
   .onote{position:relative;width:228px;flex:0 0 auto;}
   .seen{border:2px solid var(--charcoal);}
   .hunch{border:2px dashed #8a8170;}
+  .guess{border:2px dotted #aaa294;}
   .score{position:absolute;top:-13px;right:-13px;width:42px;height:42px;border-radius:50%;
     background:var(--charcoal);color:#fff;font-weight:700;font-size:15px;
     display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 6px rgba(0,0,0,.25);}
@@ -70,6 +71,7 @@
   .ev-chip{width:46px;height:24px;flex:0 0 auto;}
   .ev-chip.seen{border:2px solid var(--charcoal);background:#fff;}
   .ev-chip.hunch{border:2px dashed #8a8170;background:#fff;}
+  .ev-chip.guess{border:2px dotted #aaa294;background:#fff;}
 
   .madeby2{position:absolute;right:52px;bottom:14px;font-size:13px;color:var(--ink-muted);text-decoration:none;}
   .madeby2:hover b{text-decoration:underline;}
@@ -133,10 +135,9 @@ function bucketOf(need){
 
 function noteHtml(need, isTop, tilt){
   const tint = QUAD_TINT[need.__quad] || 'y';
-  const ev = need.evidence === 'seen' ? 'seen' : 'hunch';
-  const kicker = need.kicker
-    ? (ev==='seen'?'Seen it':'Hunch') + ' · ' + esc(need.kicker)
-    : (ev==='seen'?'Seen it':'Hunch');
+  const ev = need.evidence === 'seen' ? 'seen' : need.evidence === 'hunch' ? 'hunch' : 'guess';
+  const evLabel = ev==='seen' ? 'Seen it' : ev==='hunch' ? 'Hunch' : 'Guess';
+  const kicker = need.kicker ? evLabel + ' · ' + esc(need.kicker) : evLabel;
   return '<div class="onote note sm '+tint+' '+ev+' '+tilt+'">'+
     '<span class="k">'+kicker+'</span>'+esc(need.label)+
     '<div class="score'+(isTop?' top':'')+'">'+esc(need.score)+'</div>'+
@@ -175,8 +176,8 @@ function render(d){
   const ax = d.axes || {};
   const ay = ax.y || {}, axx = ax.x || {};
   document.getElementById('yLabel').textContent = ay.label || '';
-  document.getElementById('yHigh').innerHTML = (ay.high || '').replace(/ /g,'&nbsp;');
-  document.getElementById('yLow').innerHTML = (ay.low || '').replace(/ /g,'&nbsp;');
+  document.getElementById('yHigh').innerHTML = esc(ay.high || '').replace(/ /g,'&nbsp;');
+  document.getElementById('yLow').innerHTML = esc(ay.low || '').replace(/ /g,'&nbsp;');
   document.getElementById('xLabel').textContent = (axx.label || '') + ' →';
   document.getElementById('xLow').textContent = axx.low || '';
   document.getElementById('xHigh').textContent = axx.high || '';
@@ -210,7 +211,7 @@ function render(d){
   if(Array.isArray(d.evidenceLegend) && d.evidenceLegend.length){
     side += '<div class="panel"><h4>Evidence</h4>'+
       d.evidenceLegend.map(e => {
-        const t = e.type === 'seen' ? 'seen' : 'hunch';
+        const t = e.type === 'seen' ? 'seen' : e.type === 'hunch' ? 'hunch' : 'guess';
         return '<div class="ev-row"><span class="ev-chip '+t+'"></span> '+esc(e.label||'')+'</div>';
       }).join('') + '</div>';
   }

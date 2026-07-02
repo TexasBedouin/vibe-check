@@ -151,8 +151,9 @@ function render(bp){
   // phases row
   html += '<div class="ph-l">Phases</div>';
   (bp.phases||[]).forEach(p=>{
-    const sub = p.to>p.from ? (p.from+'–'+p.to) : (''+p.from);
-    html += '<div style="grid-column:'+(p.from+1)+' / '+(p.to+2)+'"><div class="phase">'+esc(p.name)+'<span class="ph-sub">'+sub+'</span></div></div>';
+    const from = Number(p.from), to = Number(p.to);
+    const sub = to>from ? (from+'–'+to) : (''+from);
+    html += '<div style="grid-column:'+(from+1)+' / '+(to+2)+'"><div class="phase">'+esc(p.name)+'<span class="ph-sub">'+esc(sub)+'</span></div></div>';
   });
   // steps row
   html += '<div class="lane-l">Steps<span class="lhint">the journey, broken up</span></div>';

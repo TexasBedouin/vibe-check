@@ -114,6 +114,15 @@ awk -v ver="$new" -v d="$today" -v s="$summary" '
   { print }
 ' CHANGELOG.md > "$tmp" && mv "$tmp" CHANGELOG.md
 
+# Same safety net as the version substitutions: the awk above silently no-ops
+# when CHANGELOG.md has no "## [" heading, and a release must never ship
+# without its entry.
+if ! grep -qF "## [$new]" CHANGELOG.md; then
+  echo "ERROR: CHANGELOG entry for $new did not land (no existing '## [' heading to anchor on?)." >&2
+  echo "       Undo the half-change with: git checkout -- VERSION SKILL.md README.md CHANGELOG.md" >&2
+  exit 1
+fi
+
 # 4. Commit, tag, push (straight to the default branch, normal for a solo release)
 git add VERSION CHANGELOG.md SKILL.md README.md
 git commit -m "release: v$new - $summary"

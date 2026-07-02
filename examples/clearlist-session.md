@@ -1,4 +1,4 @@
-*This is a full vibe-check session on the ClearList idea, start to finish, the flagship example that walks every beat of the skill. Claude asks the questions, I answer, and it ends with the plan it generated plus a visual blueprint. The reality-check pulls from real seller complaints on r/declutter. This is what running the skill actually feels like, nothing skipped.*
+*This is a full vibe-check session on the ClearList idea, start to finish, the flagship example that walks every beat of the skill. Claude asks the questions, I answer, and it ends with the plan it generated plus the interactive PRD. The reality-check pulls from real seller complaints on r/declutter. This is what running the skill actually feels like, nothing skipped.*
 
 ---
 
@@ -18,7 +18,7 @@ One light question so I pitch this at the right level: have you built or coded a
 
 Quick framing before we start: **you're the product manager**, you know what your users need. **Your AI tool is the engineer**, it writes the code. When the AI makes a choice that's technically fine but wrong for your users, you push back. My job right now is to get you clear enough that your AI builds the right thing the first time.
 
-Here's the map so you can see the whole path: we'll figure out what you're *really* building, pressure-test it against what real people say, sketch how it feels to use, make a handful of decisions, and finish with a full plan plus a visual blueprint you can open in a browser. I'll explain everything as we go.
+Here's the map so you can see the whole path: we'll figure out what you're *really* building, pressure-test it against what real people say, sketch how it feels to use, make a handful of decisions, and finish with a full plan plus an interactive PRD you can open in a browser. I'll explain everything as we go.
 
 ---
 
@@ -771,7 +771,7 @@ A running glossary that grew through the session:
 
 ---
 
-*vibe-check also produced a **visual HTML blueprint** alongside this plan: [clearlist-blueprint.html](https://texasbedouin.github.io/vibe-check/examples/clearlist-blueprint.html), a warm, friendly web page you open in your browser to actually see your app and believe in it. The flow diagrams, the architecture, the cost table, and the build phases laid out as a journey you can picture finishing. The markdown above is the plan you hand to your AI tool; the HTML is what makes you believe you can build it.*
+*vibe-check also produced an **interactive PRD** alongside this plan: [clearlist-prd.html](https://texasbedouin.github.io/vibe-check/examples/clearlist-prd.html), a warm, navigable web page you open in your browser to actually see your app and believe in it. Tabs, live boards, the flow diagrams, the architecture, the cost table, and the build phases laid out as a journey you can picture finishing (the blueprint board lives inside it now). The markdown above is the plan you hand to your AI tool; the PRD is what makes you believe you can build it.*
 
 ---
 
@@ -779,4 +779,4 @@ A running glossary that grew through the session:
 
 *This isn't a hypothetical. **ClearList** is a real, live product, and it was built with vibe-check itself. The session above is the kind of plan the skill produced for it, and the V2+ list is roughly what it has grown into since. That's the real test of this skill: it didn't just generate a nice-looking plan, it shipped something that actually works. See the grown-up result at [clearlist.me](https://clearlist.me).*
 
-*Reflects vibe-check v1.8.0.*
+*Reflects vibe-check v2.1.0. The transcript predates the Crazy 8 rename and the PRD ending; both appear in their current form in the linked PRD.*

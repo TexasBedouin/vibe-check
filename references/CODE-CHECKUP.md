@@ -58,7 +58,7 @@ Read [KEEPING-CODE-NAVIGABLE.md](KEEPING-CODE-NAVIGABLE.md) first, so the microw
 
 ## Step 2: Show them a friendly visual report
 
-Don't deliver findings as a wall of text. To a beginner that reads like a list of failures, and it crushes them. Build a visual HTML checkup report instead, using [HTML-BLUEPRINT.md](HTML-BLUEPRINT.md) (same scaffold as the planning blueprint, warm styling, written to a temp file, opened in the browser).
+Don't deliver findings as a wall of text. To a beginner that reads like a list of failures, and it crushes them. Build a visual HTML checkup report instead, using [HTML-BLUEPRINT.md](HTML-BLUEPRINT.md) (the shared HTML scaffold documented there, warm styling, written to a temp file, opened in the browser).
 
 The report lays out each thing worth tidying as a friendly card. For each one:
 

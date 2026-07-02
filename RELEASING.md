@@ -24,11 +24,12 @@ The script writes `VERSION`, updates the version number in `SKILL.md` and `READM
 
 ## The manual way
 
-If you'd rather do it by hand, bump the version in three places that must stay in sync:
+If you'd rather do it by hand, bump the version in four places that must stay in sync:
 
 1. `VERSION`
 2. the version line near the top of `SKILL.md` (so the running skill knows its own number)
-3. a new entry at the top of `CHANGELOG.md`
+3. the "Current version" line in `README.md` (bump.sh hard-fails on its next run if this drifts)
+4. a new entry at the top of `CHANGELOG.md`
 
 Then:
 ```

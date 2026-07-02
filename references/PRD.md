@@ -2,7 +2,7 @@
 
 At the end of a session, vibe-check produces two things for two readers:
 
-1. **The markdown plan**, for the AI coding tool. Dense, specific, complete. This is the "Hand to Your AI" content.
+1. **The markdown plan**, for the AI coding tool. Dense and specific, with nothing left out. This is the "Hand to Your AI" content.
 2. **The interactive PRD**, for the human. A single self-contained HTML file, tabbed and navigable, that bundles the whole session: the evidence, the chosen experience, the plan, and how to move forward, with every board embedded live.
 
 The interactive PRD **replaces the old single-page visual blueprint**. The blueprint board still exists, it now lives *inside* the PRD as the centerpiece of the Experience tab. The markdown plan stays, it lives inside the PRD's "Hand to Your AI" tab (with a copy button) and is still the thing the user pastes into their coding tool.
@@ -36,7 +36,7 @@ Every board is embedded as a live, crisp diagram, not a screenshot, and the file
 1. Take the board's renderer HTML (see [DIAGRAM-SYSTEM.md](DIAGRAM-SYSTEM.md)).
 2. Inline `engine.css` into it (replace the `<link>` with a `<style>` holding the stylesheet).
 3. Bake the data in. For the JSON-driven boards (blueprint, opportunity, matrix, story map), add a tiny `fetch` shim in the head that returns the board's data object for any `data-*.json` request, so the renderer runs with no server. The hand-composed Crazy 8 boards have no data, so they need only the `engine.css` inline.
-4. Embed that self-contained board document in the page via an `<iframe srcdoc="...">` (HTML-escape the `"` and `&`). The iframe is sized to the board's native width (1920) and scaled down with a CSS transform to fit the column, so it stays crisp at any zoom.
+4. Embed that self-contained board document in the page via an `<iframe srcdoc="...">` (HTML-escape `&` to `&amp;` first, then `"` to `&quot;`; the other order double-escapes the quotes and the boards fail to parse). The iframe is sized to the board's native width (1920) and scaled down with a CSS transform to fit the column, so it stays crisp at any zoom.
 
 The result is one HTML file that renders every board with no server and no external files. Google Fonts over a CDN is the only network call, and the page degrades gracefully without it.
 

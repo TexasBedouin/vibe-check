@@ -2,13 +2,14 @@
 
 Curious what a vibe-check session actually does? These two examples walk the **entire** skill, beat for beat, from a one-line idea, through discovery (the wide-net pain-mining, the competitor gap matrix, ODI opportunity scoring), the five-lens gut-check, the growth loop, all of it, out to the plan it hands your AI coding tool. Nothing skipped.
 
-Each one produces **both** of vibe-check's deliverables: the **markdown plan** (the document you hand your AI coding tool) and a **visual HTML blueprint** (the warm web page a human opens to actually see their app and believe they can build it).
+vibe-check's current deliverables are the **markdown plan** (the document you hand your AI coding tool) and the **interactive PRD** (the navigable web page a human opens to actually see their app and believe they can build it). The visual blueprint board now lives inside the PRD as one of its tabs.
 
 ## The examples
 
 ### 1. A full ClearList session
 - **[clearlist-session.md](clearlist-session.md)**: the complete back-and-forth, start to finish, every beat. The reality-check pulls from real seller complaints on r/declutter. This is what running the skill *feels* like. And **ClearList is a real, live product that was built with vibe-check**, see the grown-up result at [clearlist.me](https://clearlist.me).
-- **[View the ClearList blueprint](https://texasbedouin.github.io/vibe-check/examples/clearlist-blueprint.html)**: the visual blueprint for that plan, rendered live.
+- **[View the ClearList interactive PRD](https://texasbedouin.github.io/vibe-check/examples/clearlist-prd.html)**: the final deliverable for that session, rendered live. Tabs, live boards, the whole plan in one file.
+- **[View the ClearList blueprint](https://texasbedouin.github.io/vibe-check/examples/clearlist-blueprint.html)**: the older standalone visual blueprint for that plan, rendered live.
 
 ### 2. Idea → plan: a plant-care app
 - **[plant-watering.md](plant-watering.md)**: one sentence in ("an app that reminds me to water my plants"), a full buildable plan out. The ODI opportunity table numerically proves why the *original* idea was the weak one.
@@ -16,7 +17,7 @@ Each one produces **both** of vibe-check's deliverables: the **markdown plan** (
 
 > **The blueprints render live on GitHub Pages**, the links above open the real, styled pages in any browser. (GitHub shows raw `.html` files as source code in the repo view, which is why the links point to the rendered Pages versions. They also work if you download the files and open them locally.)
 
-Both reflect vibe-check **v1.8.0**. When the skill's flow changes, refresh these to match.
+The ClearList example is updated through **v2.1.0**, including the interactive PRD. The plant example reflects the **v1.8.0**-era flow and is kept as a second worked example. When the skill's flow changes, refresh these to match.
 
 ---
 

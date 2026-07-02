@@ -4,7 +4,7 @@ This is the vibe-check diagram engine. It is how you draw the big, polished boar
 
 ## What this is
 
-One shared stylesheet (`engine.css`) plus four small renderers, one per board. You never hand-write the board's HTML. You produce a structured JSON object that describes the board, and the matching renderer draws it. Same renderer, any idea. The three sample datasets that ship beside the renderers (`data-clearlist.json`, `data-vinti.json`, `data-skillconcierge.json`) all drive the same blueprint engine with no code changes, so you can trust the pattern: change the JSON, never the renderer. One board breaks this pattern on purpose: the Crazy 8 board is hand-composed, not JSON-driven, and it gets its own section below.
+One shared stylesheet (`engine.css`) plus four small renderers, one per board. You never hand-write the board's HTML. You produce a structured JSON object that describes the board, and the matching renderer draws it. Same renderer, any idea. The three sample datasets that ship beside the renderers (`data-clearlist.json`, `data-vinti.json`, `data-skillconcierge.json`) all drive the same blueprint engine with no code changes, so you can trust the pattern: change the JSON, never the renderer. The `data-*.json` files are structural references only; never reuse their content (ClearList, Vinti, and the rest) in a real session's boards. One board breaks this pattern on purpose: the Crazy 8 board is hand-composed, not JSON-driven, and it gets its own section below.
 
 Plain inline mermaid is only a fallback for a quick throwaway sketch in chat. Anything that lands in the blueprint or that the person keeps gets drawn with this engine.
 
@@ -25,17 +25,17 @@ All four files live here:
 |---|---|---|
 | Experience Blueprint | `blueprint.html` | The spine. It fills across the whole session, from Phase 0 through Phase 5. See [EXPERIENCE-BLUEPRINT.md](EXPERIENCE-BLUEPRINT.md). |
 | Opportunity Map | `opportunity.html` | Phase 0, Step 4. Every need, placed by how much it hurts and how well today's tools handle it. |
-| Competitor Matrix | `matrix.html` | Phase 0, Step 3.5. Rows are needs, columns are rivals, each cell is how well that rival handles that need. |
+| Competitor Matrix | `matrix.html` | Phase 0, Step 3. Rows are needs, columns are rivals, each cell is how well that rival handles that need. |
 | Story Map | `storymap.html` | Phase 2. The journey across the top, capabilities hung under each step in V1 / V2 / Later lanes. This board lays the skeleton the blueprint fills in around. |
 
 ## The shared rules (true for all four boards)
 
 Read these once. They keep the JSON small and stop the boards from ever overlapping.
 
-- **Uniform header.** Every board takes a `header` object: `{ "crumb": "...", "title": "...", "sub": "..." }`. The `crumb` is the small all-caps line on top, the `title` is the big headline, the `sub` is the one-sentence plain-language explainer under it.
+- **Uniform header.** Every board except the Experience Blueprint takes a `header` object: `{ "crumb": "...", "title": "...", "sub": "..." }`. The `crumb` is the small all-caps line on top, the `title` is the big headline, the `sub` is the one-sentence plain-language explainer under it. The blueprint takes `offering`, `scenario`, and `explainer` instead, and computes its own crumb from `state`.
 - **Placement is never coordinates.** You never give an x and a y. You give an index or a bucket (a quadrant, a grid cell, a column, a lane), and the renderer works out where it goes. This is why cards can never sit on top of each other. Overlap is structurally impossible.
 - **Decoration is computed, not stored.** The little hand-placed tilt on sticky notes, the mark glyphs (the check, the squiggle, the cross), and the color tints all come from the renderer reading an enum you set (like `"well"` or `"gap"`). You never store a rotation angle or a hex color in the JSON.
-- **Arrays for more than one card.** Anywhere a single cell can hold several notes, pass an array. One note can be a plain string or an object; the renderer handles both.
+- **Arrays for more than one card.** Anywhere a single cell can hold several notes, pass an array. The note shape is per board: blueprint cells take plain strings (or arrays of strings), story-map cells take note objects (or arrays of them). Match the shape shown in each board's schema below.
 - **The footer is not data.** Every renderer hardcodes the footer text **Created using Vibe-Check skill** into its own markup. It is not a field you pass, so it can never be left out by accident. See the footer note at the end.
 
 ## The JSON shapes
@@ -64,17 +64,17 @@ The renderer owns the layer taxonomy, the colors, and the layer order. Your data
 
 ### Opportunity Map (`opportunity.html`)
 
-The renderer drops each need into one of four quadrants using fixed thresholds, then flows the cards inside that quadrant so they wrap neatly. Cards sort by `score` (highest first) inside a quadrant, and the top one gets the big red score badge.
+The renderer drops each need into one of four quadrants using fixed thresholds, then flows the cards inside that quadrant so they wrap neatly. Cards sort by `score` (highest first) inside a quadrant, and the top card of the win-tone (gap) quadrant gets the big red score badge.
 
 Fields:
 
 - `header`: `{ crumb, title, sub }`.
 - `axes`: the framing labels around the plot. `{ "y": {"label","high","low"}, "x": {"label","low","high"} }`. Y top means high pain, bottom means low pain. X left means handled badly, right means handled well.
 - `quadrants`: `{ gap, stakes, niche, low }`, each `{ "title", "tone" }`. `tone` is one of `win | stakes | low` and drives the background tint.
-- `needs[]`: `{ "id", "label", "kicker?", "pain" (1 to 10), "served" (1 to 10), "score", "evidence" }`. `evidence` is `seen` (a solid border, you have real quotes) or `hunch` (a dashed border, plausible but not yet confirmed).
+- `needs[]`: `{ "id", "label", "kicker?", "pain" (1 to 10), "served" (1 to 10), "score", "evidence" }`. `evidence` is `seen` (a solid border, you have real quotes), `hunch` (a dashed border, plausible but not yet confirmed), or `guess` (a dotted border, you're inferring it). The renderer treats any unknown value as `guess`, never silently as `hunch`.
 - `winner`: `{ "label", "meta" }` for the green side panel that names the single thing to build first.
 - `formula`: a short string shown in the score panel, for example `Opportunity = Pain + max(0, Pain - Served)` (the gap never drops below zero, so a well-served need just scores its own Pain).
-- `evidenceLegend[]`: `{ "type": "seen|hunch", "label" }`.
+- `evidenceLegend[]`: `{ "type": "seen|hunch|guess", "label" }`.
 
 How the renderer buckets each need (fixed, so it is the same every time): `painHigh = pain >= 6`, `servedWell = served >= 6`.
 
@@ -163,7 +163,7 @@ The renderer maps each mark to a glyph: `well` becomes a check, `poor` becomes a
 
 ```json
 {
-  "header": { "crumb": "Discovery · Step 3.5 · Competitor Matrix", "title": "Where Everyone's Weak", "sub": "A row everyone handles badly is your gap. A row everyone nails is table stakes." },
+  "header": { "crumb": "Discovery · Step 3 · Competitor Matrix", "title": "Where Everyone's Weak", "sub": "A row everyone handles badly is your gap. A row everyone nails is table stakes." },
   "cornerLabel": "The need ↓ / How they do →",
   "competitors": [
     { "name": "Facebook Marketplace" },
@@ -207,21 +207,21 @@ Copy the one that matches the platform, then hand-edit the eight (or four, or si
 
 ## How to render a board
 
-This is the same move the visual blueprint uses (see [HTML-BLUEPRINT.md](HTML-BLUEPRINT.md), "How to generate it"). The renderer fetches a sibling JSON file and links the shared CSS, so all three files have to sit in the same folder.
+This is the same temp-folder-and-open move described in [HTML-BLUEPRINT.md](HTML-BLUEPRINT.md) ("How to generate it"). The renderer links the shared CSS, so `engine.css` has to sit beside it; the board's data gets baked into the renderer itself, because browsers block `fetch()` between local files, so a renderer opened from disk cannot load a sibling JSON file over `file://`.
 
 1. **Find the temp folder.** `%TEMP%` on Windows. `$TMPDIR`, falling back to `/tmp`, on macOS and Linux.
-2. **Write three files into the same fresh folder.** Stamp the folder name with a timestamp so each run is clean, for example `<tmpdir>/vibe-check-storymap-<timestamp>/`. Into it write:
+2. **Write two files into the same fresh folder.** Stamp the folder name with a timestamp so each run is clean, for example `<tmpdir>/vibe-check-storymap-<timestamp>/`. Into it write:
    - the renderer for that board (`blueprint.html`, `opportunity.html`, `storymap.html`, or `matrix.html`), copied from `assets/diagrams/`,
-   - its data file, named to match the param the renderer fetches (for example `data-clearlist.json`),
    - `engine.css`, copied from `assets/diagrams/`.
-3. **Open the renderer in the browser.** `start <path>` on Windows, `open <path>` on macOS, `xdg-open <path>` on Linux. Open the HTML file from inside that folder, because it fetches its JSON sibling over `file://`.
-4. **Print the full path in chat too**, in case it does not pop open on its own.
+3. **Bake the data into the copied renderer.** Use the same tiny fetch shim the interactive PRD uses (see [PRD.md](PRD.md), "Boards embedded live and self-contained"): in the copied renderer's `<head>`, add a small script that sets `window.__D__` to the board's JSON object and wraps `window.fetch` to return it for any `data-*.json` request. The renderer then runs with no server and no sibling data file. (Writing a `data-<name>.json` sibling instead only works if you also serve the folder over a local HTTP server; the shim needs no server, so prefer it.)
+4. **Open the renderer in the browser.** `start <path>` on Windows, `open <path>` on macOS, `xdg-open <path>` on Linux.
+5. **Print the full path in chat too**, in case it does not pop open on its own.
 
 Crazy 8 is the exception to this flow: it has no data file, so you open its single self-contained HTML directly (with engine.css beside it in the same folder) rather than writing a renderer-plus-data pair.
 
 A few things worth knowing:
 
-- Each renderer reads `?data=<name>` from the URL and fetches `./data-<name>.json`, with a sensible default per board. On success it draws the board. On failure it writes a small error message into the page instead. Either way it sets `body[data-rendered="1"]` when it finishes, which a later platform can use to grab a headless screenshot.
+- Each renderer reads `?data=<name>` from the URL and fetches `./data-<name>.json`, with a sensible default per board. The step 3 shim intercepts that fetch when the file is opened straight from disk. On success it draws the board. On failure it writes a small error message into the page instead. Either way it sets `body[data-rendered="1"]` when it finishes, which a later platform can use to grab a headless screenshot.
 - **PNG export is a later platform concern, not something the skill builds.** Inside the skill, the deliverable is the self-contained HTML opened in the browser, exactly like the existing blueprint flow.
 - The Experience Blueprint is re-rendered at each checkpoint (the skeleton after Phase 2, more cells after the tech decisions, complete at Phase 5) by rewriting its JSON and opening it again. See "Show it filling" in [EXPERIENCE-BLUEPRINT.md](EXPERIENCE-BLUEPRINT.md).
 - The renderers are stable. Between runs and between different app ideas, only the JSON changes.
@@ -245,7 +245,7 @@ A board's own `<style>` block is only for layout that is unique to that board (i
 Do not rebrand these. They are not decoration. The legend on each board tells the reader what each color means, so changing them would break the board's own explanation of itself.
 
 - For the Experience Blueprint layers, see the color list in [EXPERIENCE-BLUEPRINT.md](EXPERIENCE-BLUEPRINT.md).
-- For the Opportunity Map, the Competitor Matrix, and the Story Map, the status colors line up: green means "well" or the gap to build, amber means "poorly" or table stakes, and a dashed border means "doesn't do it" (matrix) or "a hunch, not yet confirmed" (opportunity map).
+- For the Opportunity Map, the Competitor Matrix, and the Story Map, the status colors line up: green means "well" or the gap to build, amber means "poorly" or table stakes, and a dashed border means "doesn't do it" (matrix) or "a hunch, not yet confirmed" (opportunity map). On the opportunity map a dotted border means "a guess."
 
 ## The footer
 

@@ -36,9 +36,11 @@ Cast the net across two kinds of places at once:
 
 **The fetch ladder, the same three rungs for every source.** Reddit and the review sites all block bots, so never just open a link and give up when it fails:
 
-1. **Web search with `site:` first.** Add `site:reddit.com`, `site:g2.com`, `site:capterra.com`, `site:trustpilot.com` (and so on) to your searches. Search engines have already indexed these pages, so the results carry the real quotes even when the page itself won't load. This is the rung that usually works.
-2. **Read endpoints, if your tool can fetch URLs.** Reddit: `old.reddit.com`, add `.json` to a thread URL, or the `search.json` endpoint. Review sites: try the cached or mobile version of the page.
+1. **Web search with `site:` first.** Add `site:reddit.com`, `site:g2.com`, `site:capterra.com`, `site:trustpilot.com` (and so on) to your searches. Search engines have already indexed these pages, so the results carry the real quotes even when the page itself won't load. This is the rung that usually works. Fair warning: some search tools now return zero results for `site:reddit.com` because Reddit blocks their crawler entirely. If that happens, don't keep retrying the same search... move to rung 2.
+2. **Read endpoints and archives, if your tool can fetch URLs.** Reddit: `old.reddit.com`, add `.json` to a thread URL, or the `search.json` endpoint. When Reddit blocks all of those, the PullPush archive (`api.pullpush.io`) can search archived posts and comments; its coverage of smaller subreddits is thin and its vote counts are often stale, so say so if you lean on it. Review sites: try the cached or mobile version of the page.
 3. **Hand it to the user.** If nothing loads, give them the exact sites and phrases to paste in and ask them to copy back what they find. You do the analysis; they're your browser for a minute. Never invent a quote or a competitor you didn't actually see.
+
+**Capture the permalink while you're there.** Any quote that might end up in the plan or on a board should carry its thread or review URL from the moment you grab it. A quote you can't point back to is a quote you'll end up defending from memory.
 
 **The confidence dial sets the net's width.** A nervous first-timer gets Reddit plus the two or three most obvious review sites, enough to ground the idea without overwhelming them. A confident user making a specific claim gets the full net so the reality-check has teeth. Cast wide first, then prune in the sort. Narrowing too early is how you miss the signal that would have changed the plan.
 
@@ -56,7 +58,7 @@ Once the net is in, you have a pile of raw quotes from both kinds of source. Sor
 - which need it touches,
 - whether it speaks to **Pain**, **Served**, or **both**,
 - its source (which site, which sub),
-- evidence strength: **seen it / hunch / guess** (the same tags the skill already uses).
+- evidence strength: **seen it / hunch / guess** (the same tags the skill already uses). A need only earns **seen it** when at least three independent sources back it up (different people in different threads or reviews, not one loud thread); with fewer, it stays a hunch.
 
 Keep this light and directional, not a CRM. Per item, capture the verbatim quote, the source, and the rating / role / date *if it's there*. A star rating is a cheap Served proxy (1 to 3 stars usually means badly served), but it's optional, not required.
 
@@ -101,7 +103,7 @@ The same need is underserved for one group and perfectly handled for another. So
 - Score the needs as if you were one specific kind of person (the cook, the busy parent, the solo estate-sale operator), not an average of everyone.
 - If you have an existing product, two lenses help: your current users (their gaps are churn risks) and people you don't serve yet (their gaps are growth).
 - A tell that you picked too broad a group: every need lands middling, nothing stands out as clearly underserved. That flat result means "go narrower," not "there's no opportunity." Pick a sharper group and the gaps appear.
-- **For a marketplace, segment per side.** A two-sided product has one ICP per side (the seller and the buyer), and you run this whole exercise once for each. Their top needs usually look nothing alike, and the second side's basics become the first side's table stakes. The fuller method is in [references/MULTI-SIDED.md](references/MULTI-SIDED.md).
+- **For a marketplace, segment per side.** A two-sided product has one ICP per side (the seller and the buyer), and you run this whole exercise once for each. Their top needs usually look nothing alike, and the second side's basics become the first side's table stakes. The fuller method is in [MULTI-SIDED.md](MULTI-SIDED.md).
 
 This ties straight to Phase 6.5: the specific group you score for is the same group you'll name as your first 10 users and reach through their community.
 

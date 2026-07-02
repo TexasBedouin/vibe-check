@@ -95,7 +95,7 @@ The shape (one object):
 
 Layers are keyed by step number, so sparse cells are natural (omit a step to leave it empty, use an array for more than one card). A `state` of `"current"` swaps the layer set for Checkup Mode (Critical Moments, Opportunities, Metrics instead of Pitfalls and Rationale).
 
-Render it the same way as the visual blueprint in [HTML-BLUEPRINT.md](HTML-BLUEPRINT.md): write a self-contained HTML file to the temp directory and open it in the browser. The renderer carries the taxonomy, the colors, the layer order, and the beginner hand-holding (a legend that defines every type in plain language, and a one-line hint under each lane). Every board carries the footer **"Created using Vibe-Check skill."**
+Render it with the same temp-folder-and-open move described in [HTML-BLUEPRINT.md](HTML-BLUEPRINT.md): write a self-contained HTML file to the temp directory and open it in the browser. The renderer carries the taxonomy, the colors, the layer order, and the beginner hand-holding (a legend that defines every type in plain language, and a one-line hint under each lane). Every board carries the footer **"Created using Vibe-Check skill."**
 
 ## Colors (the taxonomy)
 
