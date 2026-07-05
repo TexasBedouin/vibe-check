@@ -2,6 +2,13 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.4.1] - 2026-07-05
+
+Correction to the 2.4.0 fetch ladder. The Google Custom Search API it floated as an optional direct path turns out to be a dead end for anyone new: Google closed the Custom Search JSON API to new customers and is retiring it entirely on Jan 1 2027. The console still lets you enable it and shows a green badge, but every call returns a permission error, so the suggestion would send people down a long rabbit hole.
+
+### Fixed
+- Rung 2 in SKILL.md Step 2 and references/DISCOVERY-DEEP-DIVE.md no longer suggests a Google Custom Search API key. It now says plainly that Google's own API is closed to new users and retiring in 2027, and that the only keyed option is an optional paid third-party search API (Serper, SerpAPI). The real browser + Redlib mirror method stays the primary workaround.
+
 ## [2.4.0] - 2026-07-04
 
 The Reddit-access release. Reddit changed the ground under the discovery sweep: since mid-2024 it blocks every search crawler except Google, so the old rung-1 advice ("just search `site:reddit.com`") now quietly returns nothing on most tools, and the fetch endpoints it leaned on are increasingly blocked too. The ladder is rewritten to match reality.
