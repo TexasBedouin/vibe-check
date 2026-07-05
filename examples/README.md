@@ -15,9 +15,12 @@ vibe-check's current deliverables are the **markdown plan** (the document you ha
 - **[plant-watering.md](plant-watering.md)**: one sentence in ("an app that reminds me to water my plants"), a full buildable plan out. The ODI opportunity table numerically proves why the *original* idea was the weak one.
 - **[View the plant blueprint](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)**: the visual blueprint for that plan, rendered live.
 
+### 3. A harder idea: a productivity app for AuDHD
+- **[View the AuDHD validation report](https://texasbedouin.github.io/vibe-check/examples/audhd-validation-report.html)**: say the idea is "a productivity app for people with AuDHD." This is the kind of report vibe-check's discovery and gut-check process surfaces, real pain points mined from the communities living the problem, a competitor gap map, and a plain verdict on whether it's worth building.
+
 > **The blueprints render live on GitHub Pages**, the links above open the real, styled pages in any browser. (GitHub shows raw `.html` files as source code in the repo view, which is why the links point to the rendered Pages versions. They also work if you download the files and open them locally.)
 
-The ClearList example is updated through **v2.1.0**, including the interactive PRD. The plant example reflects the **v1.8.0**-era flow and is kept as a second worked example. When the skill's flow changes, refresh these to match.
+The ClearList example is updated through **v2.1.0**, including the interactive PRD. The plant example reflects the **v1.8.0**-era flow and is kept as a second worked example. The AuDHD report is a real discovery + verdict pass, kept as-is. When the skill's flow changes, refresh these to match.
 
 ---
 
