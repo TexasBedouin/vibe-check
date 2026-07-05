@@ -2,6 +2,13 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.4.0] - 2026-07-04
+
+The Reddit-access release. Reddit changed the ground under the discovery sweep: since mid-2024 it blocks every search crawler except Google, so the old rung-1 advice ("just search `site:reddit.com`") now quietly returns nothing on most tools, and the fetch endpoints it leaned on are increasingly blocked too. The ladder is rewritten to match reality.
+
+### Changed
+- **The fetch ladder tells the truth about Reddit now.** Rung 1 warns that `site:reddit.com` returns zero on most tools (a policy block, not a dead topic) and that no rephrasing gets around it, so stop retrying and move on; the review-site filters still work. Rung 2 is rewritten around the method that actually holds up: a real browser pointed at a Redlib mirror (an alternative Reddit front-end like safereddit.com that fetches Reddit from an allowed address), with a rotating instance list because mirrors are volatile, plus an optional note that a Google Custom Search API key (free ~100/day) is the one sanctioned direct path for heavy repeated use. Rung 3 (hand it to the user) keeps the "never invent a thread you didn't load" floor. Both SKILL.md Step 2 and references/DISCOVERY-DEEP-DIVE.md updated.
+
 ## [2.3.0] - 2026-07-04
 
 The verification release. Discovery cast a wide net, sorted the catch, and scored it, but nothing ever went back to confirm the evidence was real. An AI research pass can attach a confident, well-formatted quote to a Reddit thread or a G2 review that never existed, and a single invented source can tilt a whole opportunity score. This release closes that gap.
