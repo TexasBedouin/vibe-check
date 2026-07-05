@@ -2,6 +2,14 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.3.0] - 2026-07-04
+
+The verification release. Discovery cast a wide net, sorted the catch, and scored it, but nothing ever went back to confirm the evidence was real. An AI research pass can attach a confident, well-formatted quote to a Reddit thread or a G2 review that never existed, and a single invented source can tilt a whole opportunity score. This release closes that gap.
+
+### Added
+- **A source-verification pass, sitting between gathering and scoring.** Step 3 now re-opens every quote's permalink before anything gets scored, using the same fetch ladder, and confirms two things: the page still loads, and the quoted words are actually on it. It fails closed. A source that will not resolve, or whose text is not there, cannot earn a "seen it" tag and cannot carry a need on its own; it gets dropped or flagged "unverified" and kept out of the scoring math. When more than a couple of quotes fail the check, the whole sweep is treated as unreliable and re-run, because a cluster of bad sources means the research pass was inventing, not reading. The honest checked/failed/dropped count gets said out loud when it matters.
+- **references/DISCOVERY-DEEP-DIVE.md** carries the fuller version, "Verify sources before they steer anything," with the text-match rule, the fail-closed rule, and the rule that a high fail rate condemns the sweep.
+
 ## [2.2.0] - 2026-07-02
 
 The honesty release. A full multi-agent audit of the skill (six review dimensions, adversarial verification, then a live end-to-end dress rehearsal on a real idea) surfaced everything below.

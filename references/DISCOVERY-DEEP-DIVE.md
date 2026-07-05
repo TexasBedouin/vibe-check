@@ -42,6 +42,15 @@ Cast the net across two kinds of places at once:
 
 **Capture the permalink while you're there.** Any quote that might end up in the plan or on a board should carry its thread or review URL from the moment you grab it. A quote you can't point back to is a quote you'll end up defending from memory.
 
+**Verify sources before they steer anything.** Capturing a permalink is not the same as confirming it is real. An AI research pass can produce a confident, well-formatted quote attached to a Reddit thread or a G2 review that does not exist, and a single hallucinated source can tilt a whole opportunity score. So there is a verification pass between gathering and scoring, and it is not optional:
+
+1. **Re-fetch every deliverable-bound source.** For each quote or competitor-matrix claim you intend to keep, go back to its URL and confirm the page resolves and the quoted text is present on it. Use the same three-rung ladder; a source you cannot re-fetch by any rung has not been verified.
+2. **Text match, not gist match.** The words in your notes must be findable at the URL (only `[...]` elisions allowed). Page loads but the sentence isn't there means the quote was reconstructed from memory: correct it to the real text or drop it.
+3. **Fail closed.** A source that fails either check cannot lift a need to **seen it** and cannot carry a need alone. Cut it, or keep it flagged "unverified" and exclude it from the scoring math.
+4. **A high fail rate condemns the whole sweep.** A stray dead link happens. Several failing quotes means the research pass was inventing, so throw the batch out and re-research rather than salvaging pieces of it.
+
+Record the verification outcome (how many checked, how many failed, how many dropped) so it can be stated plainly later. That count is what separates a directional finding from a fabricated one.
+
 **The confidence dial sets the net's width.** A nervous first-timer gets Reddit plus the two or three most obvious review sites, enough to ground the idea without overwhelming them. A confident user making a specific claim gets the full net so the reality-check has teeth. Cast wide first, then prune in the sort. Narrowing too early is how you miss the signal that would have changed the plan.
 
 ## Sort the catch: five lenses
