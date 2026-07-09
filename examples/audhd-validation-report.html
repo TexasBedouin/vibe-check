@@ -150,6 +150,7 @@ ul.limits li{margin-bottom:11px;font-size:15.5px;}
   <div class="wrap">
     <span class="vc-eyebrow">Example output · <a href="https://github.com/TexasBedouin/vibe-check">vibe-check</a></span>
     <p>Say you tell vibe-check <em>"I have an idea for a productivity app for people with AuDHD."</em> This is the kind of report its discovery process surfaces: real pain points mined from the communities living the problem, a competitor gap map, and a plain verdict on whether it's worth building. Real research, on a real idea, nothing staged.</p>
+    <p>This public sample shows the shape and the verdict. The engagement version goes further: the claim-by-claim table, the full source-pool breakdown, and the per-need scoring behind the boards. Want one for your idea? Write to <a href="mailto:arab.amer@gmail.com">arab.amer@gmail.com</a>.</p>
     <p class="vc-back">← <a href="https://github.com/TexasBedouin/vibe-check#readme">Back to the vibe-check examples</a></p>
   </div>
 </div>
@@ -201,44 +202,8 @@ ul.limits li{margin-bottom:11px;font-size:15.5px;}
     </div>
   </div>
 
-  <h2>The brief's five claims, checked</h2>
-  <div class="table-scroll">
-    <table class="rt">
-      <thead><tr><th>#</th><th style="width:27%">The brief claimed</th><th>What the evidence says</th><th>Standing</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="cnum">1</td>
-          <td>"Nothing is designed for AuDHD specifically."</td>
-          <td>False in its strong form. Focus Bear's store listing is literally titled "Focus Bear: AuDHD routines". Sprout markets this exact thesis. Tiimo was co-designed with ADHD and autism experts, and Thruday targets "ADHD, autism and time agnosia". The niche is claimed, though thinly executed.</td>
-          <td><span class="stand contra">Contradicted</span></td>
-        </tr>
-        <tr>
-          <td class="cnum">2</td>
-          <td>"People like me try every app, use it for a week, and abandon it."</td>
-          <td>Confirmed, with the timescale corrected: the community says two weeks to a month, not one week. "A graveyard of planners [...] dedicated to for all of two weeks" (r/ADHD). One author's essay counted 47 deleted apps.</td>
-          <td><span class="stand conf">Confirmed</span></td>
-        </tr>
-        <tr>
-          <td class="cnum">3</td>
-          <td>Apps are "either too rigid [...] or too gamified and childish."</td>
-          <td>Confirmed, with a twist. Rigid: "too rigid. Too pushy" (r/ADHD). Gamified: Finch's streak reward "turned into a subtle dread". The twist: Finch sticks for some AuDHD users, and wins precisely when they can turn pressure mechanics off. Configurability is the real lesson.</td>
-          <td><span class="stand conf">Confirmed, nuanced</span></td>
-        </tr>
-        <tr>
-          <td class="cnum">4</td>
-          <td>"You need structure AND flexibility at the same time", adapting to daily energy.</td>
-          <td>Confirmed as a real articulated need, but no longer unclaimed. "AuDHD chafes under scheduling structure as much as it craves structure" (r/AutisticWithADHD). Thruday and Sprout already market energy-adaptive planning, and the single best matching thread was posted by a competing founder.</td>
-          <td><span class="stand part">Confirmed, crowded</span></td>
-        </tr>
-        <tr>
-          <td class="cnum">5</td>
-          <td>"I know the community would pay for something that actually works because we're desperate."</td>
-          <td>Partly confirmed: the money is real but shaped. Tiimo reports 50k+ paying subscribers; body doubling commands $8 to $40 a month. But "tried Tiimo but it was too expensive" recurs, and lifetime loyalty appears only after a tool demonstrably works.</td>
-          <td><span class="stand part">Partly confirmed</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h2>The brief's claims, checked</h2>
+  <p>Every checkable claim in the brief was tested against the evidence. One was contradicted outright: the founding premise that nothing is designed for AuDHD did not survive contact with the store listings. Two were confirmed loudly, and two survived only in a reshaped form. The two claims that reshaped the verdict are unpacked at the bottom of the Evidence tab. The full claim-by-claim table, with every source and standing, ships with the engagement version of this report.</p>
 
   <div class="note-box">
     <h3>How to read this report</h3>
@@ -1059,36 +1024,8 @@ main();
   <h2 style="margin-top:0">How this was done</h2>
   <p>The brief's checkable claims were extracted first. A discovery sweep then ran across five source pools, and every candidate need was scored with <code>Opportunity = Pain + max(0, Pain - Served)</code> against a fixed rubric. Evidence tags are earned, not assumed: a need is marked "seen it" only when roughly three or more independent sources back it. Below that floor it stays a hunch, and a hunch cannot anchor a verdict or a differentiator. 102 verbatim quotes were pooled in total. The strongest 26 appear in the Evidence tab; all 102 are retained in the engagement record with their sources.</p>
 
-  <h3>The five source pools</h3>
-  <div class="table-scroll">
-    <table class="rt">
-      <thead><tr><th>Pool</th><th>What was searched, and with what phrases</th><th>Quotes pooled</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Reddit communities</strong></td><td>r/ADHD, r/adhdwomen, r/AutisticWithADHD, r/finch and neighboring subs, reached through the PullPush archive because Reddit blocks direct crawling. Representative phrases: "tried every planner", "too gamified", "crave structure", "body doubling", "designed for neurotypical", "stopped opening".</td><td>20</td></tr>
-        <tr><td><strong>Neurodivergent app reviews</strong></td><td>App Store pages for Goblin Tools, Tiimo, Finch, Focus Bear, Llama Life, Routinery, Numo, neurolist and Thruday, plus one vendor blog and Product Hunt. Phrases: "stopped using", "too rigid", "too childish", "abandoned".</td><td>22</td></tr>
-        <tr><td><strong>Mainstream tool failures</strong></td><td>First-person essays on Medium and Substack, App Store reviews of Motion, one Threads post, and blog analyses of Todoist, TickTick, Sunsama and Motion. Phrases: "overdue guilt", "spent hours setting up", "didn't stick", "used it for a week".</td><td>22</td></tr>
-        <tr><td><strong>Money signals</strong></td><td>Pricing pages (Focusmate, Flow Club), Tiimo's funding announcement, App Store pricing for Inflow and Llama Life, Hacker News via the Algolia API, a Mumsnet thread, and ADHD coaching fee references. Phrases: "worth it", "would pay", "subscription fatigue", "coaching cost".</td><td>22</td></tr>
-        <tr><td><strong>Competitor landscape</strong></td><td>Marketing pages and store listings for twelve rivals, plus review roundups. Phrases: "designed for AuDHD", plus per-app weakness searches ("too rigid", "overwhelming setup", "too expensive").</td><td>16</td></tr>
-        <tr><td></td><td><strong>Total</strong></td><td><strong>102</strong></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>Evidence tags, per scored need</h3>
-  <div class="table-scroll">
-    <table class="rt">
-      <thead><tr><th>Need</th><th>Pain</th><th>Served</th><th>Opportunity</th><th>Tag</th></tr></thead>
-      <tbody>
-        <tr><td>N1 · Plans collapse on a bad day</td><td>9</td><td>4</td><td>14</td><td>Seen it</td></tr>
-        <tr><td>N2 · Energy swings, plans do not adapt</td><td>8</td><td>5</td><td>11</td><td>Seen it, with a crowding note: Thruday and Sprout attack this explicitly</td></tr>
-        <tr><td>N3 · Pressure mechanics backfire</td><td>7</td><td>3</td><td>11</td><td>Seen it</td></tr>
-        <tr><td>N4 · The abandonment cycle</td><td>8</td><td>2</td><td>14</td><td>Seen it, four or more independent sources</td></tr>
-        <tr><td>N5 · Demand avoidance (PDA)</td><td>8</td><td>2</td><td>14</td><td>Hunch: two sources, below the three-source floor. Demoted from differentiator candidacy and flagged for targeted re-search</td></tr>
-        <tr><td>N6 · Human presence (body doubling)</td><td>7</td><td>6</td><td>8</td><td>Seen it; served by paid services, money proven</td></tr>
-        <tr><td>N7 · Price and subscription fatigue</td><td>5</td><td>3</td><td>7</td><td>Seen it</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <h3>The sources, in brief</h3>
+  <p>Five source pools were mined: the Reddit communities living the problem, the store reviews of neurodivergent-focused apps, first-person essays on mainstream tool failures, money signals (pricing pages, funding news, what people say they pay), and the competitor landscape itself. Each of the seven scored needs carries an earned evidence tag, and one (demand avoidance) sat below the three-source floor, so it stayed a hunch and was demoted from differentiator candidacy. The full source-pool breakdown, the search phrases used, and the per-need scoring table ship with the engagement version of this report.</p>
 
   <h3>Limits, stated plainly</h3>
   <ul class="limits">
@@ -1102,7 +1039,7 @@ main();
   </ul>
 
   <h3>What the thin spots did to the verdict</h3>
-  <p>Thin r/AuDHD coverage and the below-floor PDA signal pushed this verdict toward GO-IF rather than GO. That direction is a rule of the method, not a judgment call: thin evidence never pushes a verdict toward GO.</p>
+  <p>Thin r/AuDHD coverage and the below-floor PDA signal pushed this verdict toward GO-IF rather than GO.</p>
 
   <p class="caveat">This method mines what people say publicly, in community threads and on review pages. It is directional, not statistical. A loud thread is a strong hypothesis, not proof.</p>
 

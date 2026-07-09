@@ -56,7 +56,7 @@ You pitched "an app that writes your listings." But writing a listing faster is 
 
 **Claude:** Good. That reframing changes everything downstream, so I want to make sure it's true and not just a nice story. Time for Beat 2, reality-checking it against what real sellers say.
 
-Quick honesty about what this is: Reddit gets us maybe 80% of the signal in an afternoon, which beats what almost everyone does, which is build on a pure guess. Real product teams survey hundreds of customers for this; we stand in for that by casting one wide net, Reddit for raw venting plus the reviews of the tools sellers already use (G2, Capterra, Trustpilot, Google Play, the Apple App Store, plus competitor-specific spots like Facebook Marketplace and eBay). It's directional, not statistical, a loud thread is a strong hypothesis, not proof. We're hunting for where the pain is clearly real and badly unsolved.
+Quick honesty about what this is: Reddit and review mining get us a real head start in an afternoon, which beats what almost everyone does, which is build on a pure guess. Real product teams survey hundreds of customers for this; we stand in for that by casting one wide net, Reddit for raw venting plus the reviews of the tools sellers already use (G2, Capterra, Trustpilot, Google Play, the Apple App Store, plus competitor-specific spots like Facebook Marketplace and eBay). It's directional, not statistical, a loud thread is a strong hypothesis, not proof. We're hunting for where the pain is clearly real and badly unsolved.
 
 ### Step 1: Map the job
 
@@ -779,4 +779,4 @@ A running glossary that grew through the session:
 
 *This isn't a hypothetical. **ClearList** is a real, live product, and it was built with vibe-check itself. The session above is the kind of plan the skill produced for it, and the V2+ list is roughly what it has grown into since. That's the real test of this skill: it didn't just generate a nice-looking plan, it shipped something that actually works. See the grown-up result at [clearlist.me](https://clearlist.me).*
 
-*Reflects vibe-check v2.1.0. The transcript predates the Crazy 8 rename and the PRD ending; both appear in their current form in the linked PRD.*
+*This transcript was recorded on vibe-check v1.8.0 (as the session opener says) and later touched up toward v2.1.0. It predates the Crazy 8 rename, the interactive PRD ending, and the newer discovery rules (source verification, the current fetch ladder); the PRD linked above shows those in their current form.*

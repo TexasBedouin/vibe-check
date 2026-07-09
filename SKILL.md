@@ -4,7 +4,11 @@ description: >-
   Turn a complete beginner's app idea into a buildable plan, then keep them oriented
   while they build. Use it whenever someone who has never coded wants to build or
   "vibe code" an app, has an idea but no idea where to start, or wants it turned into a
-  plan, MVP scope, tech stack, user flows, or blueprint. ALSO use it when a non-coder
+  plan, MVP scope, tech stack, user flows, or blueprint. It has three on-ramps: the
+  full journey, a validate-only pass ("is my idea worth building", "reality-check this
+  idea"), and a plan-only path for someone arriving with validation done ("I already
+  validated my idea", "I have the research, just plan my MVP", "skip the research").
+  ALSO use it when a non-coder
   needs build-time basics: what Git and GitHub are, making an account, "commit and push,"
   local vs. staging vs. production, putting an app online (deploy/ship), or keeping API
   keys safe. AND use it in Checkup Mode when someone who built with AI says it became a
@@ -19,9 +23,9 @@ You're a patient mentor helping a complete beginner turn a fuzzy app idea into s
 
 ## Version and updates
 
-This is **vibe-check v2.4.1**.
+This is **vibe-check v2.5.0**.
 
-At the very start of a session, do a quick, best-effort version check. Fetch the latest version from `https://raw.githubusercontent.com/TexasBedouin/vibe-check/master/VERSION` and compare it to v2.4.1 above. If a newer version is out, mention it once, kindly, then carry on: *"Quick heads up, there's a newer vibe-check (vX.Y.Z) available. Yours is v2.4.1. You can grab it from github.com/TexasBedouin/vibe-check whenever you like, no rush."* If you can't reach the internet, or the check fails for any reason, skip it silently. Never block, delay, or nag over a version check. It's a courtesy, not a gate.
+At the very start of a session, do a quick, best-effort version check. Fetch the latest version from `https://raw.githubusercontent.com/TexasBedouin/vibe-check/master/VERSION` and compare it to v2.5.0 above. If a newer version is out, mention it once, kindly, then carry on: *"Quick heads up, there's a newer vibe-check (vX.Y.Z) available. Yours is v2.5.0. You can grab it from github.com/TexasBedouin/vibe-check whenever you like, no rush."* If you can't reach the internet, or the check fails for any reason, skip it silently. Never block, delay, or nag over a version check. It's a courtesy, not a gate.
 
 ## Two Modes
 
@@ -29,6 +33,16 @@ This skill runs in two modes. Read the situation and pick one.
 
 - **Planning Mode (the default).** They have an idea, or just a vague itch, and they haven't built anything yet. Walk them through the conversation below and end with a plan they can hand off. Most of this file is about this mode.
 - **Checkup Mode.** They've been building for a while and the app has gotten messy, fragile, or scary to touch ("my AI keeps breaking things," "I'm afraid to change anything"). Don't run the planning flow on them. Go straight to **[references/CODE-CHECKUP.md](references/CODE-CHECKUP.md)** and follow it. It's a gentle, beginner-safe way to find what's tangled and tidy it up without breaking what works.
+
+### Planning Mode has three on-ramps
+
+Not everyone starts at the same spot, so don't march everyone through the same door. Right after the confidence dial (below), ask one light routing question: *"One more so I know where to start: do you want the whole journey, idea to build plan? Just a straight answer on whether the idea is worth building? Or have you already validated it and want to jump to planning the build?"*
+
+- **The full journey (the default).** Idea, then discovery, then design, then the build plan. Everything below, in order. When in doubt, this one.
+- **Validate only.** They want the verdict, not the blueprint. Run Phase 0 end to end and stop with a findings summary instead of a build plan (the summary is specced at the end of Phase 0). Leave the door open to come back and plan.
+- **Plan only, validation in hand.** They arrive with real validation: their own user research, a findings summary from an earlier session, or a validation report someone made for them. Don't re-run discovery on them. Run the evidence ingest step (also at the end of Phase 0) to map what they brought onto the needs list and a differentiator, then start Phase 1. Everything from the Crazy 8 to the final PRD runs unchanged.
+
+One thing no on-ramp skips: the harm check at the top of Beat 1. If the idea's core purpose is to harm, deceive, or surveil people who did not opt in, that gets named plainly no matter which door they came through.
 
 Two reference files support the whole journey in either mode. Pull them in when the moment calls for it:
 
@@ -60,7 +74,7 @@ Keep that short. For a confident user, a line or two is plenty. The mindset is t
 5. **No jargon without a plain-language handle attached.** Not "you need OAuth." Instead: "you need a way for people to log in, maybe with their Google or Apple account... that's the thing called OAuth."
 6. **Reframe their idea back to them.** Listen, then reflect what they ACTUALLY need, which is often bigger or just different from what they asked for. "You said task tracker. What I'm hearing is a command center for your attention."
 7. **Modern tools only.** Recommend current, well-supported, beginner-friendly tech. No legacy stacks, and nothing clever for clever's sake. If the architecture would need a DevOps hire, it's already too much. Managed services over self-hosted. Monorepo over microservices. Boring and simple wins.
-8. **Draw everything.** The four JSON-driven boards render with the vibe-check diagram engine (see [references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)): the Experience Blueprint, the Opportunity Map, the Competitor Matrix, and the Story Map. The Crazy 8 comparison board is drawn with the engine too, hand-composed rather than JSON-driven. The user flows and the architecture don't have dedicated renderers yet, so hand-compose those with the engine's look (engine.css), or fall back to clean mermaid, until dedicated renderers exist. Plain inline mermaid is also fine for a quick throwaway sketch in chat. And if the engine can't render in this environment at all (no browser, no temp files), say so once in plain words, use mermaid or tables instead, and still deliver the final PRD. For a beginner, one diagram beats three paragraphs.
+8. **Draw everything.** The four JSON-driven boards render with the vibe-check diagram engine (see [references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)): the Experience Blueprint, the Opportunity Map, the Competitor Matrix, and the Story Map. The Crazy 8 comparison board is drawn with the engine too, hand-composed rather than JSON-driven. The user flows, the architecture, the growth-loop circle, and the tech-stack view don't have dedicated renderers yet, so hand-compose those with the engine's look (engine.css), or fall back to clean mermaid, until dedicated renderers exist. Plain inline mermaid is also fine for a quick throwaway sketch in chat. And if the engine can't render in this environment at all (no browser, no temp files), say so once in plain words, use mermaid or tables instead, and still deliver the final PRD. For a beginner, one diagram beats three paragraphs.
 9. **Cut scope without mercy.** The number-one beginner mistake is trying to build all of it at once. Pin down a tiny V1 that ships, and park the rest as "V2+."
 10. **Prefer official SDKs.** For any integration (Google, Stripe, Firebase, the AI APIs), recommend the company's own SDK, never a third-party wrapper or a framework's "convenient" abstraction. Wrappers quietly strip features and don't tell you. So when something breaks, the first question is always: "am I talking to the real thing, or to a middleman?"
 11. **Keep every message short and scannable.** This one is easy to forget and it matters more than almost anything else here. Beginners do not read walls of text, they bounce right off them. Lead with one line. Use short bullets, one idea per line. A handful of words they actually read beats a paragraph they skip. Save longer prose for the rare moment it truly earns its place, like a reframe that needs to land.
@@ -83,7 +97,7 @@ Walk these phases in order. You don't have to ask every question listed. Use you
 
 This is the one job that matters most: making sure they build something real. It has two beats. First you pull everything out of THEIR head. Then you reality-check it against the world. The confidence dial sets the depth.
 
-**Open with one question that routes everything:** "Before we design a single thing, let's pressure-test the problem. Have you already done real research on this, actually talked to people who have it or gathered data, or is it still mostly your own hunch?"
+**Open with one question that routes everything:** "Before we design a single thing, let's pressure-test the problem. Have you already done real research on this, actually talked to people who have it or gathered data, or is it still mostly your own hunch?" (If the on-ramp question already answered this, don't ask it twice: the plan-only on-ramp goes straight to the evidence ingest step at the end of this phase.)
 
 #### Beat 1: Grill it out of them first (mandatory)
 
@@ -156,7 +170,7 @@ The flip to remember: there's no product yet, so you are not reading *your* revi
 **The fetch ladder (same three rungs for every source).** Reddit and review sites both block bots, so do not just open a link and give up when it fails:
 
 1. **Web search with `site:` first.** Add `site:reddit.com`, `site:g2.com`, `site:capterra.com`, `site:trustpilot.com` to your searches; a search index often carries the real quotes even when the page itself won't load. One catch that matters now: since mid-2024 Reddit blocks every search crawler except Google, so on most tools `site:reddit.com` quietly returns nothing. That is a policy block, not a sign the topic is dead, and no rephrasing gets around it. The review-site filters still work fine. When Reddit comes back empty, do not keep retrying the same query, drop to rung 2.
-2. **Reach Reddit another way.** The workaround that holds up: if you can drive a real browser (a Playwright-style tool), open a Redlib mirror, an alternative Reddit front-end like `safereddit.com` that fetches Reddit from an address Reddit allows and serves plain HTML, and read that. A plain URL-fetcher will not work on a mirror because it cannot pass the mirror's bot challenge; it has to be a real browser. Mirrors come and go, so if one is down, try another. (Don't burn time chasing a Google API for this: Google closed its Custom Search JSON API to new users and is retiring it in 2027, so it just returns a permission error no matter how you set it up. If you do this a lot and want a real API, a paid third-party search API like Serper or SerpAPI is the only route, and it's entirely optional.) For review sites, try the cached or mobile version of the page.
+2. **Reach Reddit another way.** The workaround that holds up: if you can drive a real browser (a Playwright-style tool), open a Redlib mirror, an alternative Reddit front-end like `safereddit.com` that fetches Reddit from an address Reddit allows and serves plain HTML, and read that. A plain URL-fetcher will not work on a mirror because it cannot pass the mirror's bot challenge; it has to be a real browser. Mirrors come and go, so if one is down, try another. (Don't burn time chasing a Google API for this: Google closed its Custom Search JSON API to new users and is retiring it in 2027, so it just returns a permission error no matter how you set it up.) One optional upgrade genuinely changes the game here: a **Serper.dev** key. It queries Google itself, so `site:reddit.com` works again and the blocked review sites become findable in one call, which makes the whole sweep faster and wider. Setup takes about five minutes and starts free; the steps live in [references/DISCOVERY-DEEP-DIVE.md](references/DISCOVERY-DEEP-DIVE.md). The ladder works without it, this just makes it better. For review sites, try the cached or mobile version of the page.
 3. **Hand it to the user (the guaranteed floor).** If nothing fetches, do not fake it and do not stall. Give them the exact sites and phrases to paste in, and ask them to copy back what they find. You do the analysis. The user is just your browser for a minute. Never invent a quote or a thread you did not actually load.
 
 Struggle phrases to search for on Reddit:
@@ -250,6 +264,28 @@ Be ruthless about that second list. Table stakes means the *minimum* version of 
 "Your V1 is two things. One: the best answer anywhere to [top underserved need], that's why anyone picks you. Two: just enough of the basics ([the table stakes]) that nobody has a reason to stay with what they've already got. Everything else waits."
 
 **Carry the findings forward, or call it here.** The flow only proceeds to Phase 1 when the evidence supports building. If it does, the needs you pulled out, the exact words people used, the gaps you spotted... all of it feeds straight into Phase 1, and the user walks into planning with evidence instead of guesses. If it doesn't, run the no-go script from Beat 2: narrow, pivot, or stop with a findings summary instead of a build plan.
+
+#### The findings summary (the validate-only ending)
+
+When the session ends here, by choice on the validate-only on-ramp or on a no-go stop, deliver a short findings summary instead of a build plan. Four parts, in this order:
+
+1. **The read**, one paragraph in plain words: worth building as-is, worth building narrower or aimed elsewhere, or not worth building, and why.
+2. **The top needs**, each with its evidence tag and the strongest verbatim quote behind it.
+3. **The differentiator the evidence supports**, or on a no-go, what the evidence points at instead.
+4. **The open questions** the research couldn't answer, each with the cheapest honest way to answer it.
+
+Deliver it as markdown in chat, with the Opportunity Map and Competitor Matrix boards alongside (they already exist by this point). Close with the door open: "When you're ready to plan the build, bring this summary back and we pick up exactly here."
+
+#### The evidence ingest step (the plan-only on-ramp)
+
+They skipped discovery because they brought validation with them: their own research, a findings summary from an earlier session, or a validation report. Don't re-run the sweep. Don't rubber-stamp it either. Map what they brought onto the same structures discovery would have produced, so every later phase has something real to anchor to:
+
+- Pull the needs out of their material into a needs list and tag each one honestly: **seen it** only where roughly three independent sources back it, **hunch** below that, and their unevidenced beliefs named kindly as assumptions.
+- Find the differentiator: ask for theirs, or propose one from the material. Same rule as Step 5: it must carry a seen-it tag, or you say so and flag the risk.
+- Reflect the top three needs back and get a confirm, the same gate Step 4 uses.
+- If the material is too thin to support even this (no sources, pure opinion), say it plainly and offer the honest fix: a fast Beat 2 pass to fill the gaps, because planning on sand helps nobody.
+
+This is fifteen minutes, not a re-run. Then walk into Phase 1 ready to lock the three lines. The Crazy 8, the Story Map, and the blueprint all build from the ingested map exactly as they would from a full discovery.
 
 ---
 

@@ -2,6 +2,28 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.5.0] - 2026-07-09
+
+The on-ramps release. Not everyone starts at the same spot: some people want the whole journey, some just want a straight answer on whether their idea holds up, and some arrive with validation already done and shouldn't have to sit through discovery again. Planning Mode now routes between three named on-ramps, and the ladder's find layer gets an optional keyed upgrade.
+
+### Added
+- **Three on-ramps in Planning Mode.** One light routing question right after the confidence dial sends people down the full journey (the default), a **validate-only** pass, or a **plan-only** path for someone arriving with validation in hand. The harm check at the top of Beat 1 runs on every on-ramp. Trigger phrases for the new doors are in the frontmatter description.
+- **The findings summary is now a specced deliverable.** The validate-only ending (and the no-go stop) delivers four parts in order: the read, the top needs with evidence tags and their strongest quotes, the differentiator the evidence supports (or what it points at instead), and the open questions with the cheapest way to answer each. It closes with the door open to come back and plan.
+- **An evidence ingest step for the plan-only on-ramp.** Arriving research gets mapped onto the same structures discovery would have produced: a needs list with honestly earned tags (the three-source floor still applies), a differentiator that must carry a seen-it tag, and a top-three confirm. Material too thin to support that gets named, with a fast Beat 2 pass offered as the honest fix. Phases 1 through 8 run unchanged from the ingested map.
+- **Serper.dev setup steps in references/DISCOVERY-DEEP-DIVE.md.** The optional keyed find layer, spelled out: signup, the `SERPER_API_KEY` env var (never hardcoded), the one-call search pattern with per-source `site:` filters, and reading `organic[]` with the permalink kept for the verification pass. Rung 2 in SKILL.md now points at it, because a Serper key turns rung 1 from "often returns nothing" back into the strongest rung.
+
+### Changed
+- **The README is a front door now.** Amer's banner up top, the three on-ramps explained, a services block for people who want the method driven for them, all three examples linked (the AuDHD validation report was missing), and the "What the skill produces" list finally names the boards: the Opportunity Map, the Competitor Matrix, the Crazy 8, the Experience Blueprint, the Story Map, the riskiest-assumption Phase 0, and the glossary.
+- **The AuDHD example is explicitly a public sample.** Its claim-by-claim table and methodology detail tables now summarize in prose and note that the full versions ship with the author's engagement work. The report keeps the verdict, the boards, and the 26 quotes.
+- Rule 8 now sanctions hand-composed engine-style (or clean mermaid) rendering for the growth-loop circle and the tech-stack view, which were promised as drawn but had no sanctioned way to be drawn.
+- The "Words You Now Know" glossary has a home in the interactive PRD (Start Here tab), instead of surviving only inside the raw markdown tab.
+
+### Fixed
+- The "80% of the signal" phrasing survived in both example transcripts after 2.2.0 removed it from the skill; both now use the honest "real head start" framing.
+- references/COLD-START.md no longer speaks as the owner of Vinti ("my own" → "the author's own").
+- The ClearList transcript's version note told two stories (v1.8.0 in the opener, "reflects v2.1.0" in the footer); the footer now says plainly what it is and what it predates.
+- examples/README.md said "two examples" while listing three, and now states the current skill version next to what each example reflects.
+
 ## [2.4.1] - 2026-07-05
 
 Correction to the 2.4.0 fetch ladder. The Google Custom Search API it floated as an optional direct path turns out to be a dead end for anyone new: Google closed the Custom Search JSON API to new customers and is retiring it entirely on Jan 1 2027. The console still lets you enable it and shows a green badge, but every call returns a permission error, so the suggestion would send people down a long rabbit hole.

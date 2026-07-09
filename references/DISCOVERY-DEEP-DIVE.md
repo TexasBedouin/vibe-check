@@ -37,8 +37,24 @@ Cast the net across two kinds of places at once:
 **The fetch ladder, the same three rungs for every source.** Reddit and the review sites all block bots, so never just open a link and give up when it fails:
 
 1. **Web search with `site:` first.** Add `site:reddit.com`, `site:g2.com`, `site:capterra.com`, `site:trustpilot.com` (and so on) to your searches. Search engines have already indexed these pages, so the results carry the real quotes even when the page itself won't load. Fair warning, and it's now the norm rather than the exception: since mid-2024 Reddit blocks every search crawler except Google, so on most tools `site:reddit.com` returns zero. That's a policy block, not a dead topic, and no rephrasing gets around it. Don't keep retrying the same search, move to rung 2. The review-site filters are unaffected.
-2. **Reach Reddit another way; fetch endpoints for the rest.** For Reddit, the workaround that actually holds up is a real browser (a Playwright-style tool) pointed at a Redlib mirror, an alternative Reddit front-end (e.g. `safereddit.com`) that fetches Reddit from an allowed address and serves plain HTML; scrape that. A plain URL-fetcher fails on the mirror because it can't pass the mirror's bot challenge, so it has to be a real browser. Mirrors are volatile, so keep a rotating list (`eu.safereddit.com`, `redlib.perennialte.ch`, `l.opnxng.com`, and whatever the live redlib instance list shows) and fall through it. Don't reach for a Google API here: Google closed its Custom Search JSON API to new users and is retiring it in 2027, so it returns a permission error no matter how it's configured. The only keyed option left is a paid third-party search API (Serper, SerpAPI), and it's optional. The old `old.reddit.com` / `.json` / PullPush archive (`api.pullpush.io`) paths still occasionally work but are increasingly blocked, so don't rely on them. For review sites: try the cached or mobile version of the page.
+2. **Reach Reddit another way; fetch endpoints for the rest.** For Reddit, the workaround that actually holds up is a real browser (a Playwright-style tool) pointed at a Redlib mirror, an alternative Reddit front-end (e.g. `safereddit.com`) that fetches Reddit from an allowed address and serves plain HTML; scrape that. A plain URL-fetcher fails on the mirror because it can't pass the mirror's bot challenge, so it has to be a real browser. Mirrors are volatile, so keep a rotating list (`eu.safereddit.com`, `redlib.perennialte.ch`, `l.opnxng.com`, and whatever the live redlib instance list shows) and fall through it. Don't reach for a Google API here: Google closed its Custom Search JSON API to new users and is retiring it in 2027, so it returns a permission error no matter how it's configured. The only keyed option left is a paid third-party search API, and the one worth setting up is Serper.dev (see "The Serper.dev upgrade" right below the ladder). The old `old.reddit.com` / `.json` / PullPush archive (`api.pullpush.io`) paths still occasionally work but are increasingly blocked, so don't rely on them. For review sites: try the cached or mobile version of the page.
 3. **Hand it to the user.** If nothing loads, give them the exact sites and phrases to paste in and ask them to copy back what they find. You do the analysis; they're your browser for a minute. Never invent a quote or a competitor you didn't actually see.
+
+**The Serper.dev upgrade (optional, and worth it if you do this more than once).** Serper.dev is a keyed API that queries Google itself, which means `site:reddit.com` works again and every blocked review site becomes findable in one call. It turns rung 1 from "often returns nothing" into the strongest rung on the ladder. If the user is willing to spend five minutes:
+
+1. Sign up at `serper.dev` (email, no card). New accounts start with a pile of free credits; after that it's roughly a dollar per thousand searches.
+2. In the Serper dashboard, copy the API key.
+3. Store it as an environment variable named `SERPER_API_KEY`. Never paste the key into code, a chat, or a plan document; that's the same "keys are secrets" rule the build phase teaches.
+4. Search with one call per query:
+
+```bash
+curl -s -X POST https://google.serper.dev/search \
+  -H "X-API-KEY: $SERPER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"q":"site:reddit.com <struggle phrase>","num":10}'
+```
+
+Swap the `site:` filter per source (`site:g2.com`, `site:capterra.com`, `site:trustpilot.com`, and so on). Read the `organic[]` array in the response: each item carries `link`, `title`, `snippet`, and often `date`. Keep the `link` as the quote's permalink, because the verification pass below needs it. Serper finds the threads; reading them in full still goes through rung 2's browser-and-mirror route, since the API returns snippets, not whole pages.
 
 **Capture the permalink while you're there.** Any quote that might end up in the plan or on a board should carry its thread or review URL from the moment you grab it. A quote you can't point back to is a quote you'll end up defending from memory.
 

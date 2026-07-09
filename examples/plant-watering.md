@@ -49,7 +49,7 @@ grill-me energy, aimed at the *problem and the person*, not features:
 
 ### Beat 2: Reality-check by the confidence dial
 
-Hunch + first-timer → **full discovery.** Honest framing up front: *"Reddit gets us maybe 80% of the signal in an afternoon, and we widen it with the reviews of the plant apps people already use (G2, Capterra, Trustpilot, Google Play, the Apple App Store). It's directional, not statistical, so hold it loosely. A loud thread is a strong hypothesis, not proof."*
+Hunch + first-timer → **full discovery.** Honest framing up front: *"Reddit gets us a real head start in an afternoon, and we widen it with the reviews of the plant apps people already use (G2, Capterra, Trustpilot, Google Play, the Apple App Store). It's directional, not statistical, so hold it loosely. A loud thread is a strong hypothesis, not proof."*
 
 #### Step 1: Map the job
 

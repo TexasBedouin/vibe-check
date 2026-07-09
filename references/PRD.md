@@ -17,7 +17,7 @@ At the very end, once the session's work is done. It is the binder that the whol
 
 Organize around the session, not around a dev spec. Nine tabs:
 
-1. **Start Here**: the offering, the three lines (goal, workaround, why it hurts), who it's for, the headline numbers (complexity, V1 timeline, cost), and how to use the doc.
+1. **Start Here**: the offering, the three lines (goal, workaround, why it hurts), who it's for, the headline numbers (complexity, V1 timeline, cost), how to use the doc, and the **"Words You Now Know" glossary** that grew through the session (it's a mandated plan section, and the human deserves it somewhere friendlier than the raw markdown tab).
 2. **The Evidence**: proof it is worth building: the Opportunity Map and Competitor Matrix boards, the real quotes, the #1 underserved need. This is vibe-check's differentiator over a generic PRD.
 3. **The Experience**: the lineage, in order: the **Crazy 8** board (the directions explored), the **convergence** (the combined direction), an "this is the most important part" callout tying it to the proven aha moment, then the **Experience Blueprint**. The experience is built on top of the Crazy 8 outcome, so show that.
 4. **The Build Plan**: V1 vs V2, the **Story Map** (the journey with capabilities in V1/V2/Later lanes), the build phases with checkpoints, the data model, and a **tech-stack diagram**.

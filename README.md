@@ -1,3 +1,7 @@
+![vibe-check: an open-source PM skill for Claude. Know what to build before you build.](assets/readme-banner.png)
+
+<!-- PRODUCT HUNT BADGE: paste the live PH badge snippet here on launch morning, directly below the banner. -->
+
 # vibe-check
 
 A skill for AI coding tools that guides complete beginners from a vague app idea to a buildable blueprint.
@@ -11,6 +15,23 @@ You come in with a vague idea. It helps you dig out the real problem hiding unde
 ---
 
 **Every other skill helps you build it right. This one makes sure you're building the right thing.**
+
+> ### Want it done for you?
+>
+> The method below is free, and it works. If you'd rather have the person who wrote it drive it, that's my day job. I validate ideas before they cost you money, audit AI-built apps that got scary to touch, and turn ideas into validated blueprints your AI agent builds from.
+>
+> **[Idea Validation](https://www.fiverr.com/texasbedouin)** · **[Vibe-Code Rescue Audit](https://www.fiverr.com/texasbedouin)** · **[Validated MVP Blueprint](https://www.fiverr.com/texasbedouin)** · or just write to **arab.amer@gmail.com**
+>
+> <!-- TODO: swap the profile link above for the three direct gig URLs once the Fiverr gigs are live. -->
+> See a real sample: the [AuDHD validation report](https://texasbedouin.github.io/vibe-check/examples/audhd-validation-report.html), produced on a real idea with real research.
+
+## Start wherever you are
+
+vibe-check has three on-ramps, so you don't repeat work you've already done:
+
+- **The full journey**: vague idea in, validated buildable plan out. The default.
+- **Validate only**: "Is this worth building?" gets a straight, evidence-backed answer and a findings summary. No blueprint for a dead idea.
+- **Plan only**: already validated it? Bring your research (or your findings summary) and jump straight to planning the build.
 
 ## What it does
 
@@ -55,6 +76,16 @@ Then tell Claude:
 Use the vibe-check skill to help me plan my app.
 ```
 
+Or pick your on-ramp directly:
+
+```
+Is my idea worth building? Reality-check it with vibe-check.
+```
+
+```
+I already validated my idea. Use vibe-check to plan the build.
+```
+
 To update later: run `npx skills update` if you installed via the CLI, or `git pull` inside `.claude/skills/vibe-check` if you cloned.
 
 ### With other AI tools
@@ -66,28 +97,35 @@ Copy the contents of `SKILL.md` into your AI tool's system prompt or project ins
 By the end of a vibe-check session, you'll have a plan document that includes:
 
 - **Problem statement**: in your own words
+- **The evidence boards**: an Opportunity Map of scored, evidence-tagged needs and a Competitor Matrix showing exactly where the gap is
+- **The chosen experience**: Crazy 8 sketches, the converged direction, and the Experience Blueprint (the future-state board the whole session fills in)
+- **Story Map**: the user journey with every capability sorted into V1 / V2 / Later lanes
 - **User flows**: happy path, failure path, and edge cases, drawn in the engine's visual style (with mermaid as the fallback)
 - **Feature breakdown**: V1 (build now) vs V2+ (build later)
 - **System architecture**: visual diagram with beginner-friendly labels
 - **Tech stack**: every tool, what it does, why it was chosen, what it costs
 - **Data model**: what gets stored, in plain language
 - **Cost breakdown**: monthly estimates with free tier details
+- **Riskiest assumption as Build Phase 0**: the cheap test that runs before any real code
+- **Distribution**: your first 10 users, where they gather, and the first concrete move
 - **Pre-launch checklists**: security, legal, accessibility
 - **Growth loop**: the one way the app brings in its next user on its own, plus the number that proves it's working
 - **Build phases with checkpoints**: numbered phases with guided explanations at every step
+- **"Words You Now Know"**: the plain-language glossary that grew through your session
 
-This plan is designed to be handed directly to your AI coding tool to start building.
+This plan is designed to be handed directly to your AI coding tool to start building. It arrives twice: as the markdown instruction manual for the AI, and as an **interactive PRD**, one self-contained HTML file with every board embedded live, for you.
 
 ## Example output
 
-Wondering what a session actually looks like? Two complete examples in [examples/](examples/), each walks the *entire* skill (discovery, ODI opportunity scoring, the five-lens gut-check, growth loops, the lot). The ClearList example shows the full current flow, ending with the markdown plan **and** the interactive PRD. The plant example predates the PRD and ends with the older visual blueprint instead.
+Wondering what a session actually looks like? Three examples in [examples/](examples/). The two session transcripts walk the full journey (discovery, ODI opportunity scoring, the five-lens gut-check, growth loops, the lot); the third shows what the validate-only path surfaces. The ClearList example shows the full current flow, ending with the markdown plan **and** the interactive PRD. The plant example predates the PRD and ends with the older visual blueprint instead.
 
 - **[A full ClearList session](examples/clearlist-session.md)** (+ the [interactive PRD](https://texasbedouin.github.io/vibe-check/examples/clearlist-prd.html) it produces): the complete back-and-forth from a one-line idea to the finished plan, including the wide-net reality-check. The interactive PRD is the final deliverable, tabs, live boards, the whole session in one navigable file. **ClearList is a real, live product that was built with vibe-check** ([clearlist.me](https://clearlist.me)).
 - **[Idea → plan: a plant-care app](examples/plant-watering.md)** (+ [visual blueprint](https://texasbedouin.github.io/vibe-check/examples/plant-blueprint.html)): one sentence in ("an app that reminds me to water my plants"), a full buildable plan out.
+- **[The AuDHD validation report](https://texasbedouin.github.io/vibe-check/examples/audhd-validation-report.html)**: what the discovery and gut-check surface on a harder idea, real research on a real brief, ending in a verdict instead of a blueprint. This is the validate-only ending in the wild.
 
 ## Version
 
-Current version: **2.4.1** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **2.5.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, run `git pull` inside `.claude/skills/vibe-check`. Versioning is semantic (MAJOR.MINOR.PATCH).
 
