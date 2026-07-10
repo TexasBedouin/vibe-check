@@ -20,9 +20,8 @@ You come in with a vague idea. It helps you dig out the real problem hiding unde
 >
 > The method below is free, and it works. If you'd rather have the person who wrote it drive it, that's my day job. I validate ideas before they cost you money, audit AI-built apps that got scary to touch, and turn ideas into validated blueprints your AI agent builds from.
 >
-> **[Idea Validation](https://www.fiverr.com/texasbedouin)** · **[Vibe-Code Rescue Audit](https://www.fiverr.com/texasbedouin)** · **[Validated MVP Blueprint](https://www.fiverr.com/texasbedouin)** · or just write to **arab.amer@gmail.com**
+> **[Idea Validation](https://www.fiverr.com/amer_arab/validate-your-startup-or-app-idea-before-you-build-it)** · **[Vibe-Code Rescue Audit](https://www.fiverr.com/amer_arab/audit-your-lovable-cursor-or-bolt-vibe-coded-app-and-tell-you-what-to-fix)** · **[Validated MVP Blueprint](https://www.fiverr.com/amer_arab/validate-your-app-idea-and-blueprint-an-mvp-your-ai-agent-can-build)** · or just write to **arab.amer@gmail.com**
 >
-> <!-- TODO: swap the profile link above for the three direct gig URLs once the Fiverr gigs are live. -->
 > See a real sample: the [AuDHD validation report](https://texasbedouin.github.io/vibe-check/examples/audhd-validation-report.html), produced on a real idea with real research.
 
 ## Start wherever you are
