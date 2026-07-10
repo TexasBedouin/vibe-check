@@ -2,6 +2,12 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.5.1] - 2026-07-10
+
+Launch day. vibe-check is live on Product Hunt. This is a marker release, no behavior changes: it adds the Product Hunt badge and launch note to the README so the repo points visitors at the launch, and it exists mostly so the people watching this repo for releases hear about the launch. Everything in v2.5.0 (the three on-ramps, the Serper.dev find layer, the README front door) is the substance.
+
+Live on Product Hunt: https://www.producthunt.com/products/vibe-check-6?launch=vibe-check-7
+
 ## [2.5.0] - 2026-07-09
 
 The on-ramps release. Not everyone starts at the same spot: some people want the whole journey, some just want a straight answer on whether their idea holds up, and some arrive with validation already done and shouldn't have to sit through discovery again. Planning Mode now routes between three named on-ramps, and the ladder's find layer gets an optional keyed upgrade.

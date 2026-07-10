@@ -1,6 +1,10 @@
 ![vibe-check: an open-source PM skill for Claude. Know what to build before you build.](assets/readme-banner.png)
 
-<!-- PRODUCT HUNT BADGE: paste the live PH badge snippet here on launch morning, directly below the banner. -->
+[![Live on Product Hunt](https://img.shields.io/badge/Product_Hunt-Live_today-da552f?logo=producthunt&logoColor=white&style=for-the-badge)](https://www.producthunt.com/products/vibe-check-6?launch=vibe-check-7)
+
+<!-- To use the official animated Product Hunt badge instead, grab the embed snippet (with the numeric post_id) from the launch page's "Embed" panel and replace the line above. -->
+
+**[vibe-check is live on Product Hunt today.](https://www.producthunt.com/products/vibe-check-6?launch=vibe-check-7)** If it helped you, an upvote or a comment there means a lot.
 
 # vibe-check
 
@@ -124,7 +128,7 @@ Wondering what a session actually looks like? Three examples in [examples/](exam
 
 ## Version
 
-Current version: **2.5.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **2.5.1** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, run `git pull` inside `.claude/skills/vibe-check`. Versioning is semantic (MAJOR.MINOR.PATCH).
 

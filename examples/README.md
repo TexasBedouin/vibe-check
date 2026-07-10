@@ -20,7 +20,7 @@ vibe-check's current deliverables are the **markdown plan** (the document you ha
 
 > **The blueprints render live on GitHub Pages**, the links above open the real, styled pages in any browser. (GitHub shows raw `.html` files as source code in the repo view, which is why the links point to the rendered Pages versions. They also work if you download the files and open them locally.)
 
-A note on versions: the skill is currently at **v2.5.0**. The ClearList example is updated through **v2.1.0** (so it predates the source-verification pass and the current fetch ladder), the plant example reflects the **v1.8.0**-era flow and is kept as a second worked example, and the AuDHD report is a real discovery + verdict pass from July 2026, kept as-is. When the skill's flow changes, refresh these to match.
+A note on versions: the skill is currently at **v2.5.1**. The ClearList example is updated through **v2.1.0** (so it predates the source-verification pass and the current fetch ladder), the plant example reflects the **v1.8.0**-era flow and is kept as a second worked example, and the AuDHD report is a real discovery + verdict pass from July 2026, kept as-is. When the skill's flow changes, refresh these to match.
 
 ---
 
