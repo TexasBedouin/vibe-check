@@ -53,6 +53,30 @@ These are the small loops you can design into a V1. They map to the three shapes
 
 **3. Paid loop, money out comes back as money in.** You make money, then spend some of it to acquire more users (ads, sales reps, integrations). It's a real loop, but it costs cash and it's the least "free" of the three. Reach for it once you have money coming in, not at the start.
 
+## The three shapes, walked out loud
+
+SKILL.md names three shapes a beginner can actually build: the content loop, the invite loop, and the signal loop. Here's each one spinning, so you can narrate it in the user's own terms:
+
+1. **The content loop (your users' stuff pulls in strangers).** People use the app to make something public; that thing gets found on Google or shared around; new people land on it; some sign up and make more.
+   - *How it spins:* you Google "how to fix a leaky tap" → you land on a Reddit thread → "Reddit's useful" → you sign up → later you post your own question → that ranks on Google → the next person finds *you*.
+   - Reddit, every recipe blog, Substack, YouTube. The app's output is the bait for the next user.
+2. **The invite loop (using it naturally puts it in front of someone new).** The app can't really be used without pulling another person in.
+   - *How it spins:* a client shares a file with you on a tool like Figma or Google Docs → to see it, you have to open the app → "oh, this is nice" → now you share *your* work with someone else → and they get pulled in too.
+   - The sharing isn't a bolt-on "invite your friends" button. It's baked into the core thing the app does.
+3. **The signal loop (people see others using it and copy them).** Using it visibly marks the user, and others notice.
+   - *How it spins:* you spot a yellow "Livestrong" wristband on someone → "what's that?" → you look it up and buy one → now *you're* wearing it → the next person sees you. Same engine behind "Sent from my iPhone," a Calendly link in an email signature, or a "Made with [tool]" badge on a website.
+   - Every user becomes a tiny, free, walking billboard.
+
+(The **referral loop**, give a friend $10 and get $10, works, but reach for it *last*. Paying people to invite each other is weaker and pricier than a loop where sharing is just how the product works. Lead with the three above; add referrals as a booster, not the main engine.)
+
+And when you name the user's own loop (SKILL.md's Rule 2, make the call yourself), walk it concretely in *their* app, like these:
+
+> *Content:* "Every moving sale your seller lists is a public page that shows up when someone Googles 'moving sale near me.' The buyer who finds it has a great experience, and when *they* move, they become your next seller. Every sale quietly recruits the next one."
+>
+> *Invite:* "Every invoice your user sends lands in a client's inbox with your tool's name at the bottom. The client who pays one is two clicks from becoming a user who sends one."
+>
+> *Signal:* "That share-your-streak image people post after a workout *is* the loop. Their friends see it, ask about it, and download the app."
+
 ## How to find your loop
 
 Two questions, asked plainly, get you most of the way:

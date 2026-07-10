@@ -2,6 +2,24 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.6.0] - 2026-07-10
+
+The lean core release. The most common piece of feedback on the skill was that SKILL.md had grown too big, and the feedback was right: the whole file loads into the AI's context every time the skill triggers, no matter which door someone came through, and at 16,000 words it was starting a long session deep in the hole. This release finally makes SKILL.md practice the progressive disclosure it preaches. Nothing was deleted: every gate, every formula, every script, and every conversational move survives word for word. What moved was the reference-grade detail, into the reference files that already existed for exactly this purpose (much of it was duplicated there all along). SKILL.md drops from 16,149 words to about 13,000, from 96KB to 78KB, and every session now starts thousands of tokens lighter, which means more room for the session itself and better attention on the rules that stay.
+
+### Added
+- **references/PLAN-TEMPLATE.md.** The verbatim blocks for the Phase 8 plan document now live in one paste-ready file: the House Rules block, the checkpoint block format with its five rules, the three pre-launch audit prompts, the Working With Your AI Tool checklist, and the debug-logging prompt. Phase 8 pulls it in when assembling the plan, so the blocks land word for word.
+- **The three loop shapes, walked out loud, in references/GROWTH-LOOPS.md.** The "how it spins" narratives for the content, invite, and signal loops (the leaky tap, the shared Figma file, the Livestrong wristband) and the worked call examples moved there from Phase 6.6, next to the taxonomy they belong with.
+
+### Changed
+- **Phase 0 now points instead of repeating.** The fetch ladder, the five sorting lenses, and the source-verification protocol were fully specced in references/DISCOVERY-DEEP-DIVE.md and re-taught in SKILL.md. The skill file now keeps the beats, the gates, the scoring formula, the anchors, the evidence floor, and the no-go script, and sends the sweep itself to the deep-dive.
+- **Phase 6.6 keeps the diagnostic, the reference keeps the teaching.** The three routing questions, the honest no-loop rule, and the cold-start gate stay; the shape narratives and the bootstrap strategies point at GROWTH-LOOPS.md and COLD-START.md instead of restating them.
+- **Phase 8 keeps the outline, PLAN-TEMPLATE.md keeps the blocks.** The 22-section plan structure, the framing scripts, and the build-phase list are unchanged; the verbatim templates moved out.
+- Repeated statements now appear once: the depth rule (evidence sets the width of the net, the confidence dial only shapes delivery) and the evidence-tag definitions each have a single home with short callbacks.
+- The Reference Files index entries were tightened to what routes a decision, since each file explains itself once opened.
+
+### Fixed
+- SKILL.md no longer violates its own design rule ("depth goes in conditional references, SKILL.md stays lean").
+
 ## [2.5.1] - 2026-07-10
 
 Launch day. vibe-check is live on Product Hunt. This is a marker release, no behavior changes: it adds the Product Hunt badge and launch note to the README so the repo points visitors at the launch, and it exists mostly so the people watching this repo for releases hear about the launch. Everything in v2.5.0 (the three on-ramps, the Serper.dev find layer, the README front door) is the substance.

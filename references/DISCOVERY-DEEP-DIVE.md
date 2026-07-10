@@ -1,6 +1,6 @@
 # Discovery Deep-Dive: ODI and the Competitor Gap
 
-The discovery steps in SKILL.md (Steps 1 to 5) are the beginner-light version of Outcome-Driven Innovation, from Tony Ulwick and the Strategyn team. This file is the detail behind them: how to map needs properly, how to estimate the "served" side without surveying real customers, and how to read the result. Pull it in when you want the fuller method. None of it requires a research team or a survey.
+The discovery steps in SKILL.md (Steps 2 to 5) are the beginner-light version of Outcome-Driven Innovation, from Tony Ulwick and the Strategyn team. This file is the detail behind them: how to map needs properly, how to estimate the "served" side without surveying real customers, and how to read the result. Pull it in when you want the fuller method. None of it requires a research team or a survey.
 
 ## The honest version of what we're doing
 
