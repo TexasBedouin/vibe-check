@@ -2,6 +2,10 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.6.1] - 2026-07-17
+
+Reddit fetch ladder corrected. Rung 2 previously sent everyone to a Redlib mirror as the primary way to read a thread. As of 2026-07-17 the durable path is a real browser pointed **straight at the reddit.com thread URL** — a real browser on a residential connection passes Reddit's own bot challenge and renders the full page including comments. The mirror is now the documented fallback for two cases only: an environment that policy-blocks reddit.com in its built-in browser (Claude Code's browser pane does this, but a separate Playwright tool in the same environment is not blocked), or Reddit escalating to a CAPTCHA under heavy repeated load. Updated both SKILL.md Step 2 and references/DISCOVERY-DEEP-DIVE.md rung 2 (plus the Serper note that reading still routes through rung 2). Mirror example refreshed to `redlib.privacyredirect.com` / `l.opnxng.com` since the older instances went dead.
+
 ## [2.6.0] - 2026-07-10
 
 The lean core release. The most common piece of feedback on the skill was that SKILL.md had grown too big, and the feedback was right: the whole file loads into the AI's context every time the skill triggers, no matter which door someone came through, and at 16,000 words it was starting a long session deep in the hole. This release finally makes SKILL.md practice the progressive disclosure it preaches. Nothing was deleted: every gate, every formula, every script, and every conversational move survives word for word. What moved was the reference-grade detail, into the reference files that already existed for exactly this purpose (much of it was duplicated there all along). SKILL.md drops from 16,149 words to about 13,000, from 96KB to 78KB, and every session now starts thousands of tokens lighter, which means more room for the session itself and better attention on the rules that stay.
