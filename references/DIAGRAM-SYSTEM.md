@@ -192,13 +192,13 @@ One card that says where the idea stands today. The renderer owns the ladder (it
 Fields:
 
 - `header`: `{ crumb, title, sub }`.
-- `idea`: the idea in one plain line. `who`: the specific group it's for (the renderer puts "For" in front).
-- `verdict`: one of `test | narrow | stop`. The stamp reads "Worth testing" (green), "Worth testing, narrower" (amber), or "Not worth building as-is" (red). Any other value shows a gray "Verdict pending", never a green light by accident. There is no "validated" stamp on purpose: only a passed test earns the next rung.
+- `idea`: the idea in one plain line (about 110 characters at most, because the card is a fixed size; `read` fits about 260 and the quote about 220, and `bake.js` stops on anything longer). `who`: the specific group it's for (the renderer puts "For" in front).
+- `verdict`: one of `test | narrow | stop`. The stamp reads "Worth testing" (green), "Worth testing, narrower" (amber), or "Not worth building as-is" (red). Any other value is rejected by `bake.js`, and a hand-baked card shows a gray "Verdict pending", never a green light by accident. There is no "validated" stamp on purpose: only a passed test earns the next rung.
 - `read`: one or two sentences, what we know and what we don't.
 - `rung`: a whole number from 1 to 5, the highest rung with evidence you can point at. Rungs up to it get a check, and the top one is marked "you are here".
 - `need`: `{ "label", "score", "evidence" }`, the top need, with `evidence` as `seen | hunch | guess`.
 - `quote`: `{ "text", "source" }`, the strongest **verified** quote, word for word, and where it came from. Leave it out if nothing passed verification. Never fill it with a paraphrase.
-- `nextTest`: `{ "what", "pass" }`, the test and the pass line written down before it runs (see [TEST-KIT.md](TEST-KIT.md)).
+- `nextTest`: `{ "what", "pass" }`, the test and the pass line written down before it runs (see [TEST-KIT.md](TEST-KIT.md)). Optional: leave it out on a `stop` verdict.
 
 ```json
 {
@@ -249,7 +249,7 @@ This is the same temp-folder-and-open move described in [HTML-BLUEPRINT.md](HTML
 node <skill folder>/assets/diagrams/bake.js opportunity <tmpdir>/vibe-check-opportunity-<timestamp>/data.json <tmpdir>/vibe-check-opportunity-<timestamp>/opportunity.html
 ```
 
-Add `--inline` for one fully self-contained file, or `--srcdoc` for a ready `<iframe srcdoc="...">` snippet to drop into the PRD. For a hand-composed Crazy 8 file, pass its path as the board and `-` as the data. Then open the result (step 4). No Node? Do it by hand:
+Add `--inline` for one fully self-contained file, or `--srcdoc` for a ready-to-paste embed (a sized wrapper with the `<iframe srcdoc="...">` inside it) to drop into the PRD. The output always goes to a temp folder: the helper refuses to write into the skill's own `assets/diagrams` folder, so it can never overwrite a renderer. For a hand-composed Crazy 8 file, pass its path as the board and `-` as the data. Then open the result (step 4). No Node? Do it by hand:
 
 1. **Find the temp folder.** `%TEMP%` on Windows. `$TMPDIR`, falling back to `/tmp`, on macOS and Linux.
 2. **Write two files into the same fresh folder.** Stamp the folder name with a timestamp so each run is clean, for example `<tmpdir>/vibe-check-storymap-<timestamp>/`. Into it write:

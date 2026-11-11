@@ -12,7 +12,7 @@ Saying is cheap. Doing costs something. Each rung up costs the other person more
 |---|---|---|---|
 | 1. **People complain** | Verified quotes from Reddit and reviews (Phase 0) | The pain exists and people feel it | That they'd do anything about it |
 | 2. **People work around it** | They already spend time or money on a clumsy fix: a spreadsheet, a freelancer, a paid tool they grumble about | The pain is bad enough to act on | That they'd pick *your* fix |
-| 3. **People sign up** | Strangers gave an email, replied to a DM, booked a call | Your framing of the answer pulls people in | That they'd pay |
+| 3. **People sign up** | Strangers gave an email, joined a waitlist, asked to be told when it's ready | Your framing of the answer pulls people in | That they'd pay |
 | 4. **People commit** | A pre-order, a deposit, a signed letter, a calendar slot they kept | They'll put something real on the line | That it works at scale |
 | 5. **People pay** | Money changed hands for the thing | It's a business, at least a small one | That it grows |
 
@@ -67,7 +67,7 @@ No market reports. Three honest numbers, from the bottom up:
 Then one line of arithmetic, said out loud and held loosely: "If one in a hundred of those people paid about what the workaround costs, that's roughly ___ a month." The number isn't a forecast. It's a smell test with three outcomes:
 
 - **Clearly enough** for what this person wants (a side income, a small business, a venture bet). Carry on.
-- **Clearly too small.** Say so kindly, and offer the same three moves as a no-go: widen the group, raise the price by solving a costlier pain, or stop.
+- **Clearly too small.** Say so kindly, and offer three honest moves: widen the group, solve a costlier pain so the price can rise, or stop.
 - **Can't tell.** Write it down as an open question. That's an honest answer too.
 
 Every number carries its source, the same as a quote does. A count you can't point at is a guess, so tag it as one.

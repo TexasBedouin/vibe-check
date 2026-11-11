@@ -12,7 +12,7 @@
   .left{display:flex;flex-direction:column;gap:26px;min-height:0;}
   .idea-box{background:#fff;border:2px solid var(--charcoal);padding:30px 34px;position:relative;}
   .idea-box .lbl,.panel .lbl{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted);}
-  .idea-box .idea{font-family:var(--serif);font-size:44px;line-height:1.08;margin-top:10px;}
+  .idea-box .idea{font-family:var(--serif);font-size:44px;line-height:1.08;margin-top:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
   .idea-box .who{font-size:21px;color:var(--ink-2);margin-top:14px;}
   .stamp{position:absolute;top:-22px;right:26px;padding:11px 20px;color:#fff;font-weight:700;font-size:19px;
     letter-spacing:.08em;text-transform:uppercase;transform:rotate(2deg);box-shadow:3px 4px 10px rgba(0,0,0,.2);}
@@ -20,7 +20,7 @@
   .stamp.narrow{background:var(--dot-amber);color:#3a2e00;}
   .stamp.stop{background:var(--dot-red);}
   .stamp.pending{background:var(--ink-muted);}
-  .read{font-size:24px;line-height:1.35;color:var(--charcoal);}
+  .read{font-size:24px;line-height:1.35;color:var(--charcoal);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
   .quote{font-size:23px;line-height:1.3;}
   .quote .src{display:block;font-size:15px;color:rgba(0,0,0,.55);margin-top:12px;font-weight:600;}

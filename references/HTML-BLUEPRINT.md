@@ -22,7 +22,7 @@ Write a single self-contained HTML file to the operating system's temp directory
 Styling for the page comes from a CDN, so the file stands on its own. No build step, nothing to install.
 
 - Tailwind (`https://cdn.tailwindcss.com`) for the page's layout and styling.
-- The hero board and every other diagram are drawn with the **vibe-check diagram engine**, not plain mermaid. The engine is vendored with the skill, so nothing is fetched from a diagram CDN. See [DIAGRAM-SYSTEM.md](DIAGRAM-SYSTEM.md) for the engine, the four boards, their JSON shapes, and how to render one.
+- The hero board and every other diagram are drawn with the **vibe-check diagram engine**, not plain mermaid. The engine is vendored with the skill, so nothing is fetched from a diagram CDN. See [DIAGRAM-SYSTEM.md](DIAGRAM-SYSTEM.md) for the engine, the five boards, their JSON shapes, and how to render one.
 
 Plain inline mermaid stays available only as a throwaway fallback for a quick sketch in chat, never for the boards on this page.
 
@@ -30,7 +30,7 @@ The only script in the page itself is the Tailwind CDN include. Everything else 
 
 ### Rendering the boards
 
-The diagram engine is **input-driven**: you never hand-write board HTML. You produce a small structured JSON object and a vendored renderer draws it (same renderer, any idea). To draw a board at render time, do exactly what the engine doc spells out: copy the renderer (`blueprint.html`, `opportunity.html`, `storymap.html`, or `matrix.html`) and its `engine.css` together into one fresh temp folder, bake the board's JSON into the copied renderer with the small fetch shim described there (browsers block `fetch()` between local files, so a `data-*.json` sibling cannot be loaded over `file://`), then open the renderer in the browser.
+The diagram engine is **input-driven**: you never hand-write board HTML. You produce a small structured JSON object and a vendored renderer draws it (same renderer, any idea). To draw a board at render time, do exactly what the engine doc spells out: copy the renderer (`blueprint.html`, `opportunity.html`, `storymap.html`, `matrix.html`, or `verdict.html`) and its `engine.css` together into one fresh temp folder, bake the board's JSON into the copied renderer with the small fetch shim described there (browsers block `fetch()` between local files, so a `data-*.json` sibling cannot be loaded over `file://`), then open the renderer in the browser.
 
 The Experience Blueprint is the board you re-render at each checkpoint (skeleton after Phase 2, more cells after the tech decisions, complete at Phase 5) by rewriting its JSON and re-opening it, matching "Show it filling" in [EXPERIENCE-BLUEPRINT.md](EXPERIENCE-BLUEPRINT.md).
 

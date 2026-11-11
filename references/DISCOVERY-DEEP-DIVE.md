@@ -84,7 +84,7 @@ For each one you find, capture four things: what it was, roughly when it lived, 
 
 Sort each death into one of four causes, because each one teaches something different:
 
-- **Nobody wanted it.** The strongest warning there is. If two or three attempts died this way, the no-go triggers in Beat 2 apply, unless your group or your angle is plainly different. Say what's different, out loud.
+- **Nobody wanted it.** The strongest warning there is. If two or three attempts died this way, that is one of the no-go triggers in Beat 2, unless your group or your angle is plainly different. Say what's different, out loud.
 - **Couldn't reach people.** The product was fine, the users never heard of it. That's a Phase 6.5 lesson: your channel has to be better than theirs.
 - **Couldn't make money.** People used it and wouldn't pay. That feeds the money gut-check and the size-and-price check in [EVIDENCE-LADDER.md](EVIDENCE-LADDER.md).
 - **Something else broke.** The team split, a platform changed its rules, the timing was early. Note it, and ask whether that thing is still true today.

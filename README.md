@@ -30,7 +30,7 @@ You come in with a vague idea. It helps you dig out the real problem hiding unde
 
 vibe-check has three on-ramps, so you don't repeat work you've already done:
 
-- **The full journey**: vague idea in, validated buildable plan out. The default.
+- **The full journey**: vague idea in, evidence-checked buildable plan out. The default.
 - **Validate only**: "Is this worth building?" gets a straight, evidence-backed answer, a findings summary, and a cheap real-world test to run next. No blueprint for a dead idea.
 - **Plan only**: already validated it? Bring your research (or your findings summary) and jump straight to planning the build.
 
