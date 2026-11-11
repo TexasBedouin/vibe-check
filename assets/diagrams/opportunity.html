@@ -206,7 +206,7 @@ function render(d){
   if(d.formula){
     side += '<div class="panel"><h4>The score</h4>'+
       '<div class="formula"><code>'+esc(d.formula)+'</code><br><br>'+
-      'High pain + badly served = high score. Already handled well = low, no matter the pain.</div></div>';
+      'High pain + badly served = high score. Already handled well = no bonus, it just scores its own pain.</div></div>';
   }
   if(Array.isArray(d.evidenceLegend) && d.evidenceLegend.length){
     side += '<div class="panel"><h4>Evidence</h4>'+

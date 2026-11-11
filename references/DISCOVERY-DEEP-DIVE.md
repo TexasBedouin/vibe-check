@@ -69,6 +69,30 @@ Record the verification outcome (how many checked, how many failed, how many dro
 
 **The confidence dial sets the net's width.** A nervous first-timer gets Reddit plus the two or three most obvious review sites, enough to ground the idea without overwhelming them. A confident user making a specific claim gets the full net so the reality-check has teeth. Cast wide first, then prune in the sort. Narrowing too early is how you miss the signal that would have changed the plan.
 
+## The graveyard walk: who already tried this, and why did it die?
+
+The wide net reads the tools that are alive. The graveyard walk looks for the ones that aren't. Somebody has probably tried this idea before, and a dead attempt is the cheapest lesson on the table: they already spent the money to find out what goes wrong. Founders almost never look. Do it in the same sweep as Step 2, with the same fetch ladder.
+
+Where the bodies are:
+
+- **Shutdown notices and founder write-ups.** Search "[idea or category] shut down", "[tool] is shutting down", "why we shut down", "post-mortem", "lessons from". Founders often say exactly what killed it, in their own words.
+- **Old launches.** Product Hunt and Hacker News launches from a few years back in this category. Follow the links. A dead domain is a finding.
+- **Abandoned apps.** App store and Chrome Web Store listings with no update in years and reviews asking "is this still supported?"
+- **The "alternatives to" trail.** Searches like "[tool] alternative" and "[tool] discontinued" show where its users went, and what they miss.
+
+For each one you find, capture four things: what it was, roughly when it lived, what killed it (the founder's words if you can get them, your read if you can't, and say which), and the permalink. The same verification rule applies as for quotes: the page must load and say what you claim it says. **Never invent a dead company.** A made-up cautionary tale is worse than none.
+
+Sort each death into one of four causes, because each one teaches something different:
+
+- **Nobody wanted it.** The strongest warning there is. If two or three attempts died this way, the no-go triggers in Beat 2 apply, unless your group or your angle is plainly different. Say what's different, out loud.
+- **Couldn't reach people.** The product was fine, the users never heard of it. That's a Phase 6.5 lesson: your channel has to be better than theirs.
+- **Couldn't make money.** People used it and wouldn't pay. That feeds the money gut-check and the size-and-price check in [EVIDENCE-LADDER.md](EVIDENCE-LADDER.md).
+- **Something else broke.** The team split, a platform changed its rules, the timing was early. Note it, and ask whether that thing is still true today.
+
+And if the graveyard is empty? There are two readings, and you can't tell them apart from a search: either the idea is new, or nobody cared enough to try. Write it down as an open question. Don't present an empty graveyard as good news.
+
+Report it to the user plainly: "Two teams tried this before. One ran out of ways to reach people, one found that people liked it and wouldn't pay. Here's what that changes for us." The graveyard findings go into the findings summary, the assumption list, and the blueprint's Notes row.
+
 ## Sort the catch: five lenses
 
 Once the net is in, you have a pile of raw quotes from both kinds of source. Sort each one through five lenses, borrowed from a sales-research method and reframed for a builder deciding *what to build* rather than someone selling. Each lens feeds a specific downstream artifact, so nothing you gather goes to waste.

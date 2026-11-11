@@ -1,25 +1,27 @@
 # The Diagram System (the hero boards)
 
-This is the vibe-check diagram engine. It is how you draw the big, polished boards a beginner actually wants to look at: the Experience Blueprint, the Opportunity Map, the Competitor Matrix, and the Story Map.
+This is the vibe-check diagram engine. It is how you draw the big, polished boards a beginner actually wants to look at: the Experience Blueprint, the Opportunity Map, the Competitor Matrix, the Story Map, and the Verdict Card.
 
 ## What this is
 
-One shared stylesheet (`engine.css`) plus four small renderers, one per board. You never hand-write the board's HTML. You produce a structured JSON object that describes the board, and the matching renderer draws it. Same renderer, any idea. The three sample datasets that ship beside the renderers (`data-clearlist.json`, `data-vinti.json`, `data-skillconcierge.json`) all drive the same blueprint engine with no code changes, so you can trust the pattern: change the JSON, never the renderer. The `data-*.json` files are structural references only; never reuse their content (ClearList, Vinti, and the rest) in a real session's boards. One board breaks this pattern on purpose: the Crazy 8 board is hand-composed, not JSON-driven, and it gets its own section below.
+One shared stylesheet (`engine.css`) plus five small renderers, one per board. You never hand-write the board's HTML. You produce a structured JSON object that describes the board, and the matching renderer draws it. Same renderer, any idea. The three sample datasets that ship beside the renderers (`data-clearlist.json`, `data-vinti.json`, `data-skillconcierge.json`) all drive the same blueprint engine with no code changes, so you can trust the pattern: change the JSON, never the renderer. The `data-*.json` files are structural references only; never reuse their content (ClearList, Vinti, and the rest) in a real session's boards. One board breaks this pattern on purpose: the Crazy 8 board is hand-composed, not JSON-driven, and it gets its own section below.
 
 Plain inline mermaid is only a fallback for a quick throwaway sketch in chat. Anything that lands in the blueprint or that the person keeps gets drawn with this engine.
 
-All four files live here:
+All of it lives inside the skill's own folder, wherever the skill is installed (`.claude/skills/vibe-check/` for a clone, `.agents/skills/vibe-check/` for an `npx skills add` install):
 
 ```
-.claude/skills/vibe-check/assets/diagrams/
+<skill folder>/assets/diagrams/
+  bake.js           the helper that bakes a board into a file that opens with no server
   engine.css        the shared look (never edit per board)
   blueprint.html    Experience Blueprint renderer
   opportunity.html  Opportunity Map renderer
   storymap.html     Story Map renderer
   matrix.html       Competitor Matrix renderer
+  verdict.html      Verdict Card renderer
 ```
 
-## The four boards, and when each one shows up
+## The five boards, and when each one shows up
 
 | Board | Renderer | When you draw it |
 |---|---|---|
@@ -27,8 +29,9 @@ All four files live here:
 | Opportunity Map | `opportunity.html` | Phase 0, Step 4. Every need, placed by how much it hurts and how well today's tools handle it. |
 | Competitor Matrix | `matrix.html` | Phase 0, Step 3. Rows are needs, columns are rivals, each cell is how well that rival handles that need. |
 | Story Map | `storymap.html` | Phase 2. The journey across the top, capabilities hung under each step in V1 / V2 / Later lanes. This board lays the skeleton the blueprint fills in around. |
+| Verdict Card | `verdict.html` | End of Phase 0, and again every time a test comes back. One idea, the verdict, the rung on the evidence ladder, the strongest quote, and the next test. Built to be shared. |
 
-## The shared rules (true for all four boards)
+## The shared rules (true for all five boards)
 
 Read these once. They keep the JSON small and stop the boards from ever overlapping.
 
@@ -182,6 +185,37 @@ The renderer maps each mark to a glyph: `well` becomes a check, `poor` becomes a
 }
 ```
 
+### Verdict Card (`verdict.html`)
+
+One card that says where the idea stands today. The renderer owns the ladder (its five rungs and their wording, see [EVIDENCE-LADDER.md](EVIDENCE-LADDER.md)), the stamp wording, and every color. Your data supplies the content and two enums.
+
+Fields:
+
+- `header`: `{ crumb, title, sub }`.
+- `idea`: the idea in one plain line. `who`: the specific group it's for (the renderer puts "For" in front).
+- `verdict`: one of `test | narrow | stop`. The stamp reads "Worth testing" (green), "Worth testing, narrower" (amber), or "Not worth building as-is" (red). Any other value shows a gray "Verdict pending", never a green light by accident. There is no "validated" stamp on purpose: only a passed test earns the next rung.
+- `read`: one or two sentences, what we know and what we don't.
+- `rung`: a whole number from 1 to 5, the highest rung with evidence you can point at. Rungs up to it get a check, and the top one is marked "you are here".
+- `need`: `{ "label", "score", "evidence" }`, the top need, with `evidence` as `seen | hunch | guess`.
+- `quote`: `{ "text", "source" }`, the strongest **verified** quote, word for word, and where it came from. Leave it out if nothing passed verification. Never fill it with a paraphrase.
+- `nextTest`: `{ "what", "pass" }`, the test and the pass line written down before it runs (see [TEST-KIT.md](TEST-KIT.md)).
+
+```json
+{
+  "header": { "crumb": "Discovery · The Verdict", "title": "The Verdict Card", "sub": "One idea, how strong the proof is today, and the next test to run." },
+  "idea": "A helper that writes the polite chase email for a late invoice",
+  "who": "solo freelancers who hate asking clients for money",
+  "verdict": "test",
+  "read": "The pain is real and nobody handles the awkward part well. What we don't know yet is whether people will hand their invoices to a new tool.",
+  "rung": 2,
+  "need": { "label": "Chase a late client without feeling rude", "score": 15, "evidence": "seen" },
+  "quote": { "text": "the verified quote, word for word", "source": "r/freelance" },
+  "nextTest": { "what": "Ten DMs to freelancers who posted about late payers", "pass": "5 or more reply, and 3 or more ask to hear when it's ready" }
+}
+```
+
+Redraw it whenever the rung or the next test changes. Tell the user they can share it: it carries no private detail beyond what they chose to put on it.
+
 ## Crazy 8 (hand-composed, not JSON-driven)
 
 This is the one board you draw by hand. Every other board on this page is JSON in, renderer out. Crazy 8 is the opposite: there is no renderer and no data file. You compose the HTML directly, one rough screen sketch per idea, authored straight against `engine.css` tokens and the shared `.stage` and `.head` primitives, with bespoke per-sketch classes for the card content itself. Each sketch is a real-ish core moment, not a labeled box, so the user reacts to something that feels like the app instead of an abstraction.
@@ -209,9 +243,17 @@ Copy the one that matches the platform, then hand-edit the eight (or four, or si
 
 This is the same temp-folder-and-open move described in [HTML-BLUEPRINT.md](HTML-BLUEPRINT.md) ("How to generate it"). The renderer links the shared CSS, so `engine.css` has to sit beside it; the board's data gets baked into the renderer itself, because browsers block `fetch()` between local files, so a renderer opened from disk cannot load a sibling JSON file over `file://`.
 
+**The fast way, when Node is available** (it is, for anyone who installed with `npx`): write the board's JSON to a file, then let the helper do steps 2 and 3 below in one command, with the data checked on the way in (a wrong mark count or a score that doesn't match the formula stops it with a plain message):
+
+```bash
+node <skill folder>/assets/diagrams/bake.js opportunity <tmpdir>/vibe-check-opportunity-<timestamp>/data.json <tmpdir>/vibe-check-opportunity-<timestamp>/opportunity.html
+```
+
+Add `--inline` for one fully self-contained file, or `--srcdoc` for a ready `<iframe srcdoc="...">` snippet to drop into the PRD. For a hand-composed Crazy 8 file, pass its path as the board and `-` as the data. Then open the result (step 4). No Node? Do it by hand:
+
 1. **Find the temp folder.** `%TEMP%` on Windows. `$TMPDIR`, falling back to `/tmp`, on macOS and Linux.
 2. **Write two files into the same fresh folder.** Stamp the folder name with a timestamp so each run is clean, for example `<tmpdir>/vibe-check-storymap-<timestamp>/`. Into it write:
-   - the renderer for that board (`blueprint.html`, `opportunity.html`, `storymap.html`, or `matrix.html`), copied from `assets/diagrams/`,
+   - the renderer for that board (`blueprint.html`, `opportunity.html`, `storymap.html`, `matrix.html`, or `verdict.html`), copied from `assets/diagrams/`,
    - `engine.css`, copied from `assets/diagrams/`.
 3. **Bake the data into the copied renderer.** Use the same tiny fetch shim the interactive PRD uses (see [PRD.md](PRD.md), "Boards embedded live and self-contained"): in the copied renderer's `<head>`, add a small script that sets `window.__D__` to the board's JSON object and wraps `window.fetch` to return it for any `data-*.json` request. The renderer then runs with no server and no sibling data file. (Writing a `data-<name>.json` sibling instead only works if you also serve the folder over a local HTTP server; the shim needs no server, so prefer it.)
 4. **Open the renderer in the browser.** `start <path>` on Windows, `open <path>` on macOS, `xdg-open <path>` on Linux.

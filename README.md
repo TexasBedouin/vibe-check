@@ -1,10 +1,8 @@
 ![vibe-check: an open-source PM skill for Claude. Know what to build before you build.](assets/readme-banner.png)
 
-[![Live on Product Hunt](https://img.shields.io/badge/Product_Hunt-Live_today-da552f?logo=producthunt&logoColor=white&style=for-the-badge)](https://www.producthunt.com/products/vibe-check-6?launch=vibe-check-7)
+[![vibe-check on Product Hunt](https://img.shields.io/badge/Product_Hunt-vibe--check-da552f?logo=producthunt&logoColor=white&style=for-the-badge)](https://www.producthunt.com/products/vibe-check-6?launch=vibe-check-7)
 
-<!-- To use the official animated Product Hunt badge instead, grab the embed snippet (with the numeric post_id) from the launch page's "Embed" panel and replace the line above. -->
-
-**[vibe-check is live on Product Hunt today.](https://www.producthunt.com/products/vibe-check-6?launch=vibe-check-7)** If it helped you, an upvote or a comment there means a lot.
+**[vibe-check is on Product Hunt.](https://www.producthunt.com/products/vibe-check-6?launch=vibe-check-7)** If it helped you, an upvote or a comment there means a lot.
 
 # vibe-check
 
@@ -33,8 +31,24 @@ You come in with a vague idea. It helps you dig out the real problem hiding unde
 vibe-check has three on-ramps, so you don't repeat work you've already done:
 
 - **The full journey**: vague idea in, validated buildable plan out. The default.
-- **Validate only**: "Is this worth building?" gets a straight, evidence-backed answer and a findings summary. No blueprint for a dead idea.
+- **Validate only**: "Is this worth building?" gets a straight, evidence-backed answer, a findings summary, and a cheap real-world test to run next. No blueprint for a dead idea.
 - **Plan only**: already validated it? Bring your research (or your findings summary) and jump straight to planning the build.
+
+And one way back in: **"I ran the test."** Come back with your results and it reads them against the pass/fail line you set, then tells you what's next.
+
+## How strong is your proof? The evidence ladder
+
+Most idea validation stops at what people *say*. vibe-check tells you which rung you're actually on, and hands you the script to climb to the next one:
+
+1. **People complain** (verified quotes, in their own words)
+2. **People work around it** (they already spend time or money on a clumsy fix)
+3. **People sign up** (strangers raised a hand)
+4. **People commit** (a pre-order, a deposit, a signed letter)
+5. **People pay**
+
+Desk research gets you to rung 2. The built-in test kit (ready-to-send DMs, interview questions, a waitlist page, pass/fail numbers written down *before* the test) gets you the rest of the way. Along the way it walks the graveyard (who already tried this, and why it died), lists every assumption your idea rests on, and for anyone chasing real money, runs a bottom-up size-and-price check.
+
+It all lands on one shareable **Verdict Card**. And if you want the strongest honest case against your own idea, just say **"roast it."**
 
 ## What it does
 
@@ -100,7 +114,8 @@ Copy the contents of `SKILL.md` into your AI tool's system prompt or project ins
 By the end of a vibe-check session, you'll have a plan document that includes:
 
 - **Problem statement**: in your own words
-- **The evidence boards**: an Opportunity Map of scored, evidence-tagged needs and a Competitor Matrix showing exactly where the gap is
+- **The evidence boards**: an Opportunity Map of scored, evidence-tagged needs, a Competitor Matrix showing exactly where the gap is, and a Verdict Card with your rung on the evidence ladder and the next test to run
+- **A save file**: `vibe-check-session.md`, refreshed as you go, so a cut-off chat never loses the session
 - **The chosen experience**: Crazy 8 sketches, the converged direction, and the Experience Blueprint (the future-state board the whole session fills in)
 - **Story Map**: the user journey with every capability sorted into V1 / V2 / Later lanes
 - **User flows**: happy path, failure path, and edge cases, drawn in the engine's visual style (with mermaid as the fallback)

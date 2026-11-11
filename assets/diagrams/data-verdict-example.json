@@ -1,0 +1,15 @@
+{
+  "header": {
+    "crumb": "Discovery · The Verdict",
+    "title": "The Verdict Card",
+    "sub": "One idea, how strong the proof is today, and the next test to run."
+  },
+  "idea": "A helper that writes the polite chase email for a late invoice",
+  "who": "solo freelancers who hate asking clients for money",
+  "verdict": "test",
+  "read": "The pain is real and nobody handles the awkward part well. What we don't know yet is whether people will hand their invoices to a new tool.",
+  "rung": 2,
+  "need": { "label": "Chase a late client without feeling rude", "score": 15, "evidence": "seen" },
+  "quote": { "text": "Example quote only. Replace it with a real, verified one.", "source": "structural sample, not a real source" },
+  "nextTest": { "what": "Ten DMs to freelancers who posted about late payers", "pass": "5 or more reply, and 3 or more ask to hear when it's ready" }
+}

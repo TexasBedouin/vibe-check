@@ -8,7 +8,8 @@ description: >-
   full journey, a validate-only pass ("is my idea worth building", "reality-check this
   idea"), and a plan-only path for someone arriving with validation done ("I already
   validated my idea", "I have the research, just plan my MVP", "skip the research").
-  ALSO use it when a non-coder
+  Also for someone returning with test results ("I ran the test") or asking to
+  "roast my idea." ALSO use it when a non-coder
   needs build-time basics: what Git and GitHub are, making an account, "commit and push,"
   local vs. staging vs. production, putting an app online (deploy/ship), or keeping API
   keys safe. AND use it in Checkup Mode when someone who built with AI says it became a
@@ -46,6 +47,23 @@ One thing no on-ramp skips: the harm check at the top of Beat 1. If the idea's c
 
 Two reference files support the whole journey in either mode, pulled in when the moment calls for it: **[references/GITHUB-AND-DEPLOYMENT.md](references/GITHUB-AND-DEPLOYMENT.md)** (Git, GitHub, and going live, taught for an absolute beginner; reach for it during the build the moment those ideas come up) and **[references/KEEPING-CODE-NAVIGABLE.md](references/KEEPING-CODE-NAVIGABLE.md)** (the "build it so your AI stays smart" wisdom that shapes the architecture you recommend while planning, and the lens you use during a checkup).
 
+## Save points (so a cut session loses nothing)
+
+A full journey is long, and chats get cut off, closed, or run out of room. So don't wait for the final PRD to save the work. At four moments, write or refresh one session file:
+
+- after Phase 0 (the needs are scored and V1 is defined),
+- after Phase 2 (the direction is chosen and the Story Map exists),
+- after Phase 4 (the decisions are made),
+- after Phase 6.6 (distribution and the growth loop are set).
+
+The file is `vibe-check-session.md`, saved in the folder the user is working in. Not the temp folder, because temp files vanish. Overwrite the same file each time, never pile up copies. It holds everything needed to pick up cold: the on-ramp and the confidence-dial read, the three lines, the job steps, the needs table with scores, evidence tags, and quote permalinks, the competitor matrix, the differentiator and table stakes, the chosen direction, the V1 list, every decision made so far, the open questions, the glossary so far, the JSON for every board already drawn, and one line naming the next step.
+
+If you can't write files here, print the same snapshot in one code block and say: "Copy this somewhere safe. It's your save point." Mention the save in a single line each time ("Saved. If this chat ever dies, we pick up right here."), then keep moving.
+
+**Resuming.** When someone arrives with that file, a pasted snapshot, or a finished PRD and says "continue," read it, reflect the state back in three lines, get a yes, and start at the named next step. Don't re-ask anything it already answers. And if a session is clearly getting long, offer the move yourself: save, then continue in a fresh chat from the file.
+
+**Coming back with test results.** "I ran the test" is its own door. Don't restart the journey. Follow "Reading the results" in [references/TEST-KIT.md](references/TEST-KIT.md): get the facts, judge them against the pass/fail line that was written down beforehand (never move the line), mine the replies for new quotes, name the new rung, pick the next riskiest assumption, and redraw the Verdict Card. A clean fail gets celebrated as much as a pass. Both are the test working.
+
 ## Before Anything Else: Two Quick Moves
 
 **First, read the room (the confidence dial).** Before you teach anything, get a one-line sense of who you're talking to. Ask something light: *"Quick one so I pitch this right: have you built or coded anything before, or is this your first time?"* This isn't a label, it's a soft dial you keep nudging all session: turn it up the moment someone looks lost, down the moment they're racing ahead. It sets a handful of knobs:
@@ -71,7 +89,7 @@ Keep that short. For a confident user, a line or two is plenty. The mindset is t
 5. **No jargon without a plain-language handle attached.** Not "you need OAuth." Instead: "you need a way for people to log in, maybe with their Google or Apple account... that's the thing called OAuth."
 6. **Reframe their idea back to them.** Listen, then reflect what they ACTUALLY need, which is often bigger or just different from what they asked for. "You said task tracker. What I'm hearing is a command center for your attention."
 7. **Modern tools only.** Recommend current, well-supported, beginner-friendly tech. No legacy stacks, and nothing clever for clever's sake. If the architecture would need a DevOps hire, it's already too much. Managed services over self-hosted. Monorepo over microservices. Boring and simple wins.
-8. **Draw everything.** The four JSON-driven boards render with the vibe-check diagram engine (see [references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)): the Experience Blueprint, the Opportunity Map, the Competitor Matrix, and the Story Map. The Crazy 8 comparison board is drawn with the engine too, hand-composed rather than JSON-driven. The user flows, the architecture, the growth-loop circle, and the tech-stack view don't have dedicated renderers yet, so hand-compose those with the engine's look (engine.css), or fall back to clean mermaid, until dedicated renderers exist. Plain inline mermaid is also fine for a quick throwaway sketch in chat. And if the engine can't render in this environment at all (no browser, no temp files), say so once in plain words, use mermaid or tables instead, and still deliver the final PRD. For a beginner, one diagram beats three paragraphs.
+8. **Draw everything.** The five JSON-driven boards render with the vibe-check diagram engine (see [references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)): the Experience Blueprint, the Opportunity Map, the Competitor Matrix, the Story Map, and the Verdict Card. The Crazy 8 comparison board is drawn with the engine too, hand-composed rather than JSON-driven. The user flows, the architecture, the growth-loop circle, and the tech-stack view don't have dedicated renderers yet, so hand-compose those with the engine's look (engine.css), or fall back to clean mermaid, until dedicated renderers exist. Plain inline mermaid is also fine for a quick throwaway sketch in chat. And if the engine can't render in this environment at all (no browser, no temp files), say so once in plain words, use mermaid or tables instead, and still deliver the final PRD. For a beginner, one diagram beats three paragraphs.
 9. **Cut scope without mercy.** The number-one beginner mistake is trying to build all of it at once. Pin down a tiny V1 that ships, and park the rest as "V2+."
 10. **Prefer official SDKs.** For any integration (Google, Stripe, Firebase, the AI APIs), recommend the company's own SDK, never a third-party wrapper or a framework's "convenient" abstraction. Wrappers quietly strip features and don't tell you. So when something breaks, the first question is always: "am I talking to the real thing, or to a middleman?"
 11. **Keep every message short and scannable.** This one is easy to forget and it matters more than almost anything else here. Beginners do not read walls of text, they bounce right off them. Lead with one line. Use short bullets, one idea per line. A handful of words they actually read beats a paragraph they skip. Save longer prose for the rare moment it truly earns its place, like a reframe that needs to land.
@@ -110,6 +128,8 @@ The most valuable knowledge in the room is already in their head, mixed in with 
 - Who else is it for, beyond you?
 
 Keep pushing until the answers are concrete. The goal is to surface what they know but haven't said, and to drag their hidden assumptions into the open where you can test them. A confident "I already know what I'm building" still gets grilled, because knowing your solution is not the same as having proven the problem.
+
+**The friends-and-family catch.** The moment someone offers "everyone I've told loves it" or "my friends said they'd use it" as proof, catch it, kindly: "That's lovely, and it's also the one kind of feedback we can't count. People who like you will say nice things. What did any of them *do* the last time they had this problem?" Compliments are not evidence. What people already did is.
 
 **One more grill, and it reshapes everything if the answer is yes: how many sides does this have?** Some products only work when two or more different kinds of people both show up (buyers and sellers, hosts and guests). If that's this one, you don't have a user to discover, you have two, and the second side is just as load-bearing as the first. Name each side as a real person you can picture, pull in **[references/MULTI-SIDED.md](references/MULTI-SIDED.md)**, and run discovery for *each* of them. If it delivers value to one person on their own, skip this, you're single-sided.
 
@@ -161,6 +181,7 @@ One research sweep across every relevant source at once, pooling every quote you
 
 - **Reddit, for raw venting.** Search the struggle phrases below in the subreddits where these people gather. This is the unfiltered pain.
 - **The reviews of tools people already pay for.** G2, Capterra, Trustpilot, Google Play, and the Apple App Store, plus the category-specific ones when they fit (Amazon for physical goods, the Chrome Web Store for extensions, Product Hunt for new tools). There's no product yet, so you're reading the reviews of competitors and adjacent tools, never your own.
+- **The graveyard, for who already tried this.** In the same sweep, look for the attempts that died: shutdown notices, founder post-mortems, abandoned apps. A dead attempt is the cheapest lesson on the table, and almost nobody looks. Sort each death by cause (nobody wanted it, couldn't reach people, couldn't make money, something else broke) and say what it changes. The how is "The graveyard walk" in [references/DISCOVERY-DEEP-DIVE.md](references/DISCOVERY-DEEP-DIVE.md). Same honesty rule: never invent a dead company.
 
 **How to actually reach these sources lives in [references/DISCOVERY-DEEP-DIVE.md](references/DISCOVERY-DEEP-DIVE.md), and you follow its three-rung fetch ladder every time:** a `site:` web search first, then a real browser pointed straight at the reddit.com thread to read it in full (a real browser on a residential connection passes Reddit's bot challenge; fall back to a Redlib mirror only if your environment blocks reddit.com or Reddit throws a CAPTCHA), and, as the guaranteed floor, handing the user the exact sites and phrases to paste in while you do the analysis. The same file has the optional **Serper.dev** upgrade, a five-minute setup that makes the whole sweep faster and wider. Two rules from that ladder are non-negotiable no matter what: don't keep retrying a fetch a policy block already killed, and never invent a quote or a thread you did not actually load.
 
@@ -183,7 +204,7 @@ Now you have a pile of quotes from both kinds of source. Sort each one through f
 - **D, switching and displacement:** "we switched to X," "I wish it did Y." The reason people move is the gap worth owning.
 - **E, buyer language:** roles, titles, and "vs [competitor]" phrasing reveal who this is for and who belongs in the matrix.
 
-Out of this sort, two things take shape. **The needs:** walk the job steps from Step 1 and pull a few needs per step (so you cover the whole journey, not one part), each framed plainly and kept in the user's language: "Reduce the time it takes to [tedious thing]", "Increase the confidence that [thing works out]". A statement that names a feature ("add a sold-badge") is a solution wearing a need's clothes; dig under it for the pain. **The competitor matrix:** list the 3 to 7 real solutions people use today (including the ugly ones, like a spreadsheet or "I just don't bother"), rows are your needs, columns are those solutions, each cell is "does it well / poorly / doesn't." Render it with the Competitor Matrix board (matrix.html in [references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)). It's the first panel in the Experience Blueprint's discovery section.
+Out of this sort, two things take shape. **The needs:** walk the job steps from Step 1 and pull a few needs per step (so you cover the whole journey, not one part), each framed plainly and kept in the user's language: "Reduce the time it takes to [tedious thing]", "Increase the confidence that [thing works out]". A statement that names a feature ("add a sold-badge") is a solution wearing a need's clothes; dig under it for the pain. **The competitor matrix:** list the 3 to 7 real solutions people use today (including the ugly ones, like a spreadsheet or "I just don't bother"), rows are your needs, columns are those solutions, each cell is "does it well / poorly / doesn't." Render it with the Competitor Matrix board (matrix.html in [references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)). It's the first of the two evidence boards. They sit beside the Experience Blueprint, not inside it, and land in the PRD's Evidence tab.
 
 Tag every item you keep: which need it touches, whether it's Pain / Served / both, its source, and how solid it is, **seen it** (real quotes or reviews back it up), **hunch** (plausible from what you've read, but not confirmed), or **guess** (you're inferring it with nothing behind it).
 
@@ -206,7 +227,7 @@ For each need from Step 3, rate two things from 1 to 10. Both now read off the s
 
 (In ODI terms, Pain is Importance and Served is Satisfaction. Same idea, plainer words.)
 
-**Anchor the numbers so they're not vibes.** Pain 8 to 10 means the same complaint recurs across three or more independent threads or sources, with visible workaround attempts. Pain 4 to 7 means it recurs but people live with it. On the other axis, Served 8 or above means people mostly praise existing tools for handling it. Served 3 or below means recurring, unaddressed complaints about every incumbent.
+**Anchor the numbers so they're not vibes.** Pain 8 to 10 means the same complaint recurs across three or more independent threads or sources, with visible workaround attempts. Pain 4 to 7 means it recurs but people live with it. Pain 1 to 3 means a one-off gripe. On the other axis, Served 8 or above means people mostly praise existing tools for handling it. Served 4 to 7 means tools handle it, with caveats that keep coming up. Served 3 or below means recurring, unaddressed complaints about every incumbent.
 
 Then score the gap:
 
@@ -222,11 +243,13 @@ So a need that hurts a lot AND is handled badly scores highest. A need that hurt
 | Stop buyers from no-showing | 8 | 2 | 14 | seen it |
 | Browse listings easily | 7 | 8 | 7 | hunch |
 
-The top of that list is where you can win. Render the ranked needs as the Opportunity Map board (opportunity.html in [references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)), each need placed by pain and how well it's served, sorted by score. With the Competitor Matrix, this is the second panel that fills the Experience Blueprint's discovery section. Frame it for the user: "The single most underserved need is ___ (opportunity 15). People clearly care [evidence] and today's tools are bad at it [evidence]. Nail this and you already beat the market on the thing that matters most." Keep the full ranked table, because Step 5 needs the bottom of it too.
+The top of that list is where you can win. Render the ranked needs as the Opportunity Map board (opportunity.html in [references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)), each need placed by pain and how well it's served, sorted by score. With the Competitor Matrix, this is the second evidence board. The two sit beside the Experience Blueprint and feed its Rationale and Notes rows. Frame it for the user: "The single most underserved need is ___ (opportunity 15). People clearly care [evidence] and today's tools are bad at it [evidence]. Nail this and you already beat the market on the thing that matters most." Keep the full ranked table, because Step 5 needs the bottom of it too.
 
 **Confirm gate (before Step 5).** Show the user the top three needs with the evidence behind each, and invite pushback. If the ranking surprises them, dig into why before anything gets locked in.
 
-**One more gut-check: is there money here?** A need can be painful and underserved and still not be a business. So glance for a wallet behind it: do paid products already exist? Do people hire freelancers for this? Are companies buying ads on these keywords? Money already moving is the strongest demand signal there is. Real pain with no money anywhere near it is a yellow flag worth saying out loud.
+**One more gut-check: is there money here?** A need can be painful and underserved and still not be a business. So glance for a wallet behind it: do paid products already exist? Do people hire freelancers for this? Are companies buying ads on these keywords? Money already moving is the strongest demand signal there is. Real pain with no money anywhere near it is a yellow flag worth saying out loud. Write down what you actually found (which paid products, at what price, who is hiring for it), so the money check is evidence in the findings and the plan, not a feeling.
+
+**For anyone who wants real users or real money: the size-and-price check.** Let the dial decide. A first-timer on a learning project skips it. Everyone else gets three honest numbers, counted from the bottom up: how many of these people you can actually count, what the pain costs them today, and what the closest tools charge. Then one line of arithmetic, held loosely. It's in [references/EVIDENCE-LADDER.md](references/EVIDENCE-LADDER.md). An investor asks this in the first meeting, so it's better met here.
 
 **Score for a specific group, not for everyone.** The same need is underserved for one kind of person and perfectly fine for another. So score as if you were one specific user (the busy parent, the solo operator). If every need lands middling, your group is too broad; go narrower and the gaps appear. That specific group is also your first 10 users in Phase 6.5. **For a marketplace, score each side separately**: one ideal customer profile per side, the narrow-ICP discipline run once for each, and remember the second side's basics are *your* table stakes ([references/MULTI-SIDED.md](references/MULTI-SIDED.md) goes deeper).
 
@@ -237,9 +260,9 @@ The top of that list is where you can win. Render the ranked needs as the Opport
 Here's the trap most "MVP" advice walks into (an MVP is the smallest version that is still genuinely useful): "just solve the one unsolved problem better than anyone" is half the truth. It's necessary, not sufficient. Nobody leaves Spotify because you nailed one clever thing, if you're missing search, playlists, and playback that just works. The basics are the price of entry. So V1 has two parts, and the ranked table from Step 4 hands you both:
 
 - **The differentiator (build to win):** the top-scoring underserved need. This is your reason to exist, the one thing you do better than anyone. Usually there's just one. It must carry a **seen it** tag; a differentiator built on a hunch is a bet, not a finding, so re-search or demote before you build around it.
-- **The table stakes (build to not lose):** the high-Pain, already-well-served needs (the high-Served rows at the bottom of your Step 4 table). Users expect these from any tool in the category. Skip them and your brilliant differentiator never gets a shot, because people won't switch to something that can't do the basics.
+- **The table stakes (build to not lose):** the high-Pain, already-well-served needs (the rows with high Pain and high Served in your Step 4 table, the "table stakes" corner of the Opportunity Map). Users expect these from any tool in the category. Skip them and your brilliant differentiator never gets a shot, because people won't switch to something that can't do the basics.
 
-The reviews from Step 4 hand you both lists directly: what reviewers praise in every tool is your table stakes, and what they keep begging for (the 1-to-3-star "I wish it did X") is differentiator fuel.
+The reviews you gathered in Step 2 and sorted in Step 3 hand you both lists directly: what reviewers praise in every tool is your table stakes, and what they keep begging for (the 1-to-3-star "I wish it did X") is differentiator fuel.
 
 Be ruthless about that second list. Table stakes means the *minimum* version of each basic that lets someone actually switch, not a polished clone of the incumbent. Anything that's neither the differentiator nor a true table stake goes to V2.
 
@@ -247,16 +270,21 @@ Be ruthless about that second list. Table stakes means the *minimum* version of 
 
 **Carry the findings forward, or call it here.** The flow only proceeds to Phase 1 when the evidence supports building. If it does, the needs you pulled out, the exact words people used, the gaps you spotted... all of it feeds straight into Phase 1, and the user walks into planning with evidence instead of guesses. If it doesn't, run the no-go script from Beat 2: narrow, pivot, or stop with a findings summary instead of a build plan.
 
+**Name the rung (the evidence ladder).** Before leaving Phase 0, tell the user how strong their proof is, in one line. There are five rungs, weakest to strongest: people complain, people work around it, people sign up, people commit, people pay. Desk research tops out at rung 2. The rest take a real-world test. "You're on rung 2: people complain about this, and they already pay for clumsy fixes. That's further than most ideas get. Rung 3 is ten strangers raising a hand." The full ladder and its rules are in [references/EVIDENCE-LADDER.md](references/EVIDENCE-LADDER.md). Then draw the **Verdict Card** (verdict.html in [references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)): the idea, the verdict, the rung, the strongest verified quote, and the next test, on one board they can share.
+
 #### The findings summary (the validate-only ending)
 
 When the session ends here, by choice on the validate-only on-ramp or on a no-go stop, deliver a short findings summary instead of a build plan. Four parts, in this order:
 
-1. **The read**, one paragraph in plain words: worth building as-is, worth building narrower or aimed elsewhere, or not worth building, and why.
+1. **The read**, one paragraph in plain words: worth testing as-is, worth testing narrower or aimed elsewhere, or not worth building, and why. Name the rung on the evidence ladder, and what the graveyard walk turned up.
 2. **The top needs**, each with its evidence tag and the strongest verbatim quote behind it.
 3. **The differentiator the evidence supports**, or on a no-go, what the evidence points at instead.
 4. **The open questions** the research couldn't answer, each with the cheapest honest way to answer it.
+5. **The riskiest assumption and its cheap test** (skip this part on a no-go stop). Name the single belief that sinks the idea if it's wrong, usually "people want this enough to switch, or to pay." Pick the cheapest real-world check from the riskiest-assumption test in Phase 6 (a one-page waitlist, ten DMs to people who have the problem, a fake-door button), hand them the ready-to-send script from [references/TEST-KIT.md](references/TEST-KIT.md), and write down the pass/fail number before they run it.
 
-Deliver it as markdown in chat, with the Opportunity Map and Competitor Matrix boards alongside (they already exist by this point). Close with the door open: "When you're ready to plan the build, bring this summary back and we pick up exactly here."
+**Say what this verdict is, and what it is not.** Desk research can show the pain is real and badly served. It cannot show that people will switch or pay. So never call an idea "validated" off this summary alone. Call it evidence-checked, and say plainly that the cheap test in part 5 is what finishes the job: "The research says this is worth testing. The test says whether it's worth building."
+
+Deliver it as markdown in chat, with the Opportunity Map, Competitor Matrix, and Verdict Card boards alongside (they already exist by this point). Close with both doors open: "Run the test, then come back and tell me what happened, and we'll read the results together. And when you're ready to plan the build, bring this summary back and we pick up exactly here."
 
 #### The evidence ingest step (the plan-only on-ramp)
 
@@ -342,7 +370,7 @@ After that, generate THREE user-flow diagrams:
 2. **Rough Day Flow.** Things go wrong. Login fails, data won't load, the payment bounces, the AI gives a dumb suggestion. Built from the stress test above.
 3. **Edge Cases.** Weird but real. The power user with 500 items. The person who comes back after 3 months away. Two connected apps disagreeing about the data. Account deletion.
 
-Flows have no dedicated engine renderer yet, so hand-compose them with the engine's look (engine.css), or fall back to clean mermaid, and talk through each one. These flows are blueprint content too, so place them into the Experience Blueprint now, here in Phase 2, rather than waiting for the end.
+Flows have no dedicated engine renderer yet, so hand-compose them with the engine's look (engine.css), or fall back to clean mermaid, and talk through each one. These flows feed the Experience Blueprint: the happy flow becomes its steps, and the rough-day and edge-case breaks become its Potential Pitfalls row. Fill those in now, here in Phase 2, rather than waiting for the end. The flow diagrams themselves live beside the board, in the plan and the PRD.
 
 **Then map the story, step by step (this is where the real feature list comes from).** Adapted from Jeff Patton's user story mapping. Take the happy flow you just drew and walk it one step at a time, asking the same question at each: *what has to be true for the user to get through this step?* Each answer is a feature you actually need ("to reserve an item, the buyer has to see it's still available" means live availability). Do it for every step, start to finish: the features fall out of the journey instead of being dreamed up and bolted on later, and the table stakes from discovery turn into a concrete list. A journey with a step nobody can complete is a product that breaks exactly there.
 
@@ -390,7 +418,7 @@ For EACH decision, give:
 
 ### Phase 5: The Blueprint
 
-By now your Experience Blueprint has been filling since Phase 0 (Opportunity Map and Competitor Matrix) and Phase 2 (the Story Map skeleton and the flows). Phase 5 adds the last missing layer, the system architecture, then reveals the finished board. Add the architecture onto the existing skeleton, rendered with the diagram engine, with labels a beginner reads instantly:
+By now the Experience Blueprint has its skeleton from Phase 2 (the steps, the touchpoints, the pitfalls), with the Opportunity Map, the Competitor Matrix, and the Story Map sitting beside it. Phase 5 adds the last missing layer, the system architecture, then reveals the finished board. The architecture lands in two places: the blueprint's Technology and Process rows (which tool does the work at each step), and one separate architecture diagram showing how the pieces connect, hand-composed with the engine's look (Rule 8). In both, use labels a beginner reads instantly:
 - "Your App," not "Application Server"
 - "Database (where your stuff gets saved)," not "PostgreSQL"
 - "Stripe (handles credit cards safely)," not "Payment Gateway"
@@ -420,7 +448,9 @@ Put the plan on the ground.
 - *A solution dressed as a need.* Did any "need" actually name a feature? Dig under it for the real pain.
 If none apply, say so plainly. The point is to catch the expensive mistakes now, not after weeks of building.
 
-**The riskiest-assumption test.** Name the single belief that, if it's wrong, sinks the whole thing (usually some version of "people want this enough to switch"). Then find the cheapest way to check it BEFORE building the app: a landing page with a waitlist, ten DMs to people who have the problem, a fake-door button (a button for a not-yet-built feature that just measures who clicks), a rough mock shown to five of them. The rule: if the test takes two weeks to set up, it's not a test, it's a project. Build the real thing only after the riskiest bet survives a cheap check.
+**The failure story.** The mirror of the future press release, and worth one minute here: "Imagine it's a year from now and this failed. Not a disaster, it just quietly didn't work. What happened?" People who can't list risks will tell that story easily, and every reason they give is an assumption for the list below.
+
+**The riskiest-assumption test.** First get the whole pile on the table: list every belief the idea rests on (people want it, you can find them, they'll pay, it can be built), and rate each by how bad it is if wrong and how much proof you have. The method is "The assumption list" in [references/EVIDENCE-LADDER.md](references/EVIDENCE-LADDER.md). Six to eight rows for a beginner. Then name the single belief that, if it's wrong, sinks the whole thing: the row that's fatal and still a guess (usually some version of "people want this enough to switch"). Then find the cheapest way to check it BEFORE building the app, with the scripts and pass/fail numbers in [references/TEST-KIT.md](references/TEST-KIT.md): a landing page with a waitlist, ten DMs to people who have the problem, a fake-door button (a button for a not-yet-built feature that just measures who clicks), a rough mock shown to five of them. The rule: if the test takes two weeks to set up, it's not a test, it's a project. Build the real thing only after the riskiest bet survives a cheap check.
 
 **For a marketplace, the riskiest assumption is usually not "people want this" but "both sides actually show up."** A seller tool dies with no buyers; a buyer tool dies with no sellers. So test *both* sides cheaply, not just the one you're closer to: ten DMs to potential sellers AND ten to potential buyers, or a one-page "are you a buyer or a seller?" waitlist that collects both. And name which side is **harder to get**, because that's the side your launch has to crack first. (How to actually crack it is the cold-start part of Phase 6.6.)
 
@@ -464,7 +494,7 @@ Three nos is a real answer (see the honest part below). Any yes, and you make th
 
 > "Every moving sale your seller lists is a public page that shows up when someone Googles 'moving sale near me.' The buyer who finds it has a great experience, and when *they* move, they become your next seller. Every sale quietly recruits the next one."
 
-**Draw it (Rule 8).** A loop you can see going around explains itself in a way no paragraph can. Sketch their loop as a small circular diagram with the diagram engine (user does the thing → the thing becomes visible to someone new → that someone signs up → back to the top) and put it in the plan and the blueprint.
+**Draw it (Rule 8).** A loop you can see going around explains itself in a way no paragraph can. Sketch their loop as a small circular diagram with the diagram engine (user does the thing → the thing becomes visible to someone new → that someone signs up → back to the top) and put it in the plan and the PRD's Distribution & Growth tab.
 
 **Build the loop into the core flow, or it won't spin.** The biggest mistake is a "share" feature bolted on at the end that nobody taps. The loops that work are part of the thing the user does anyway: the output is *automatically* shareable, public, or visible, ideally right at the aha moment from Phase 2. And whatever the loop needs to exist goes on the **V1 feature list in Phase 8**, not the someday pile. A loop deferred to V2 is a loop that never starts spinning.
 
@@ -503,7 +533,7 @@ Compile everything into a structured plan with these sections:
 4. **Who It's For**: who the user is, how many you expect
 5. **User Flows**: the flow diagrams from Phase 2 (happy, rough day, edge cases), rendered with the diagram engine, each step with a real outcome and clear behavior when things break. For a marketplace, one set of flows per side (the seller's and the buyer's), plus the moment they meet
 6. **Features**: V1 (build now) vs. V2+ (build later), clearly split
-7. **System Architecture**: the architecture panel completed and revealed in Phase 5, rendered with the diagram engine, beginner labels
+7. **System Architecture**: the architecture diagram drawn in Phase 5, hand-composed with the engine's look, beginner labels
 8. **Tech Stack**: every tool, what it does, why it's here, what it costs
 9. **Data Model**: what gets stored, in plain words ("a task has a title, a due date, a priority, and belongs to a user")
 10. **House Rules for Your AI**: a short, plain-language list of the rules your AI tool should follow on every line it writes, so the AI builds the same way twice and the codebase stays one it can keep working in (the navigability idea from [references/KEEPING-CODE-NAVIGABLE.md](references/KEEPING-CODE-NAVIGABLE.md), written down where the AI will actually read it). Keep it to the handful that matter for this app: don't repeat yourself (one home for each piece of logic), keep it simple (boring and obvious beats clever), call things by the same name everywhere, handle the sad path (a friendly message and a way out, never a silent shrug), leave a trail (log important actions, so the day something breaks the AI finds the problem in minutes instead of guessing for an hour), keep the layers apart (screens, logic, and data storage stay separate), and self-contained features (each in its own folder, not smeared across the app). Then hand them the ready-to-paste House Rules block from **[references/PLAN-TEMPLATE.md](references/PLAN-TEMPLATE.md)**, copied word for word into the plan, so they can drop it into their project guide (CLAUDE.md or whatever their tool uses) and adapt the names to their app.
@@ -517,30 +547,30 @@ Compile everything into a structured plan with these sections:
 18. **Working With Your AI Tool**: the practical build habits, assembled from the checklist and debug-logging prompt in [references/PLAN-TEMPLATE.md](references/PLAN-TEMPLATE.md) (project guide under 100 lines, logging set up early, unused plugins off, every prompt a tiny spec, the worst-day question before every fix), plus the management discipline in **[references/MANAGING-YOUR-AI.md](references/MANAGING-YOUR-AI.md)**: the four ground rules that stop guessing, overbuilding, and "improving" untouched code, the supervised improvement loop for the messy middle, and the definition of done every change must clear. Walk them through it and put a short version in the project guide. The one line to carry everywhere: working is the floor, not the bar.
 19. **Build Phases with Checkpoints**: (see below)
 20. **Open Questions**: whatever's still up in the air
-21. **The Riskiest Assumption**: the single belief from Phase 6 that sinks the whole thing if it's wrong, the cheap test chosen to check it, and the pass/fail signal that says the bet survived. This is what Build Phase 0 runs before any code gets written.
+21. **The Riskiest Assumption**: the rung on the evidence ladder today, the short assumption list from Phase 6, the single belief on it that sinks the whole thing if it's wrong, the cheap test chosen to check it (with its ready-to-send script), and the pass/fail number that says the bet survived. This is what Build Phase 0 runs before any code gets written.
 22. **Words You Now Know**: the session glossary. Every term explained along the way, gathered in one plain-language list, so they can see how much they actually learned.
 
 #### Build Phases with Checkpoints
 
 This is the most important piece of the whole plan. Break the build into numbered phases. Each phase is a self-contained chunk that produces something the user can see and actually understand.
 
-Shape the phases around the project. A typical app might run like this:
+Shape the phases around the project. They are numbered as **Build Phases**, so nobody confuses them with the phases of this conversation. A typical app might run like this:
 
-- **Phase 0:** The riskiest-assumption check. Before any project setup, run the cheap test from Phase 6 (the landing page, the ten DMs, the fake-door button) and record the result against the pass/fail signal in the plan's Riskiest Assumption section. This phase gets its own checkpoint block like every other, and the build proper only starts once the bet survives.
-- **Phase 1:** Project setup and folder structure
-- **Phase 2:** Database setup and the data model
-- **Phase 3:** Authentication (sign up, log in, log out)
-- **Phase 4:** The core feature, the main thing the app does
-- **Phase 5:** Secondary features
-- **Phase 6:** Integrations (connecting to outside services)
-- **Phase 7:** Payments (if there are any)
-- **Phase 8:** Polish, error handling, edge cases
-- **Phase 9:** Pre-launch prep (legal pages, security hardening, monitoring)
-- **Phase 10:** Deployment, getting it onto the internet
+- **Build Phase 0:** The riskiest-assumption check. Before any project setup, run the cheap test from Phase 6 (the landing page, the ten DMs, the fake-door button) and record the result against the pass/fail signal in the plan's Riskiest Assumption section. This phase gets its own checkpoint block like every other, and the build proper only starts once the bet survives.
+- **Build Phase 1:** Project setup and folder structure
+- **Build Phase 2:** Database setup and the data model
+- **Build Phase 3:** Authentication (sign up, log in, log out)
+- **Build Phase 4:** The core feature, the main thing the app does
+- **Build Phase 5:** Secondary features
+- **Build Phase 6:** Integrations (connecting to outside services)
+- **Build Phase 7:** Payments (if there are any)
+- **Build Phase 8:** Polish, error handling, edge cases
+- **Build Phase 9:** Pre-launch prep (legal pages, security hardening, monitoring)
+- **Build Phase 10:** Deployment, getting it onto the internet
 
 Adapt to the actual project. Some apps have no payments. Some have AI features big enough for their own phase. Use your judgment.
 
-**Teach GitHub and "going live" at the right moments, not all in one dump.** Spread it out, guided by **[references/GITHUB-AND-DEPLOYMENT.md](references/GITHUB-AND-DEPLOYMENT.md)**: *local* when files first show up, then *Git, commit, push, and GitHub* (and making the account) after the first real chunk works ("let's make sure you can never lose this"), the *secret keys / `.env`* rule the second any API key appears (non-negotiable), and *production, deploying, and staging* at Phase 10. Always tie it back to the two fears every beginner carries: never losing your work, and always being able to get back to a version that worked.
+**Teach GitHub and "going live" at the right moments, not all in one dump.** Spread it out, guided by **[references/GITHUB-AND-DEPLOYMENT.md](references/GITHUB-AND-DEPLOYMENT.md)**: *local* when files first show up, then *Git, commit, push, and GitHub* (and making the account) after the first real chunk works ("let's make sure you can never lose this"), the *secret keys / `.env`* rule the second any API key appears (non-negotiable), and *production, deploying, and staging* at Build Phase 10. Always tie it back to the two fears every beginner carries: never losing your work, and always being able to get back to a version that worked.
 
 **For EACH phase, put a CHECKPOINT block in the plan, in the exact format from [references/PLAN-TEMPLATE.md](references/PLAN-TEMPLATE.md)** (where we are, what we just built, why we built it this way, what's next, questions). Five rules govern every checkpoint, and the template file carries the full version of each: it always waits for the user before continuing, it's plain language with no exceptions, the "why" always points at a specific thing the user said earlier, it shows the result instead of just claiming it ("open localhost:3000, you should see your login page"), and it celebrates specifically, because beginners have no idea how much they've pulled off.
 
@@ -551,9 +581,21 @@ Adapt to the actual project. Some apps have no payments. Some have AI features b
 
 The markdown IS the plan they hand off to start building, and the HTML is what makes them believe they can. The checkpoints keep them from ever getting lost along the way.
 
+## Hidden Moves
+
+A few things the user can ask for at any point. Don't announce the list up front. Mention one when the moment fits ("want me to roast it?"), and let people find the rest.
+
+- **"Roast it."** Switch sides for one message and argue the strongest *honest* case against the idea: the best competitor's answer, the graveyard, the weakest evidence tag, the assumption most likely to be wrong. No cruelty and no invented facts, every point ties to something from the session. End by naming the one criticism that matters most and the test that would settle it. Then switch back.
+- **"How could this fail?"** Run the failure story from Phase 6, whenever they ask.
+- **"Where am I?"** Give the rung on the evidence ladder, the next test, and the phase of the journey, in three lines.
+- **"Give me the card."** Draw or redraw the Verdict Card with the latest state. It's built to be shared, so tell them they can post it.
+
 ## Reference Files
 
 Pull these in when the moment calls for it. Don't load them all up front.
+
+- **[references/EVIDENCE-LADDER.md](references/EVIDENCE-LADDER.md)**: How strong the proof really is: the five-rung evidence ladder (complain, work around, sign up, commit, pay), the assumption list that finds the riskiest belief, and the bottom-up size-and-price check. Pull in at the end of Phase 0 and in Phase 6.
+- **[references/TEST-KIT.md](references/TEST-KIT.md)**: The cheap real-world test, ready to run: which test fits which belief, the ready-to-send scripts (DMs, conversations, waitlist, fake door, pre-order), the pass/fail numbers, and how to read the results when someone comes back. Pull in at Phase 6, at the validate-only ending, and on "I ran the test."
 
 - **[references/GITHUB-AND-DEPLOYMENT.md](references/GITHUB-AND-DEPLOYMENT.md)**: Absolute-beginner teaching on local vs. remote, Git and GitHub, commit and push, secret keys, branches, and the local-to-production path. Use during the build, spread across the moments listed in the build-phases note.
 - **[references/KEEPING-CODE-NAVIGABLE.md](references/KEEPING-CODE-NAVIGABLE.md)**: The architecture wisdom translated for beginners: the microwave principle, one-thing-one-place, beware the middleman, give your app a map. Shapes the Phase 5 blueprint and the checkup lens.
@@ -561,10 +603,10 @@ Pull these in when the moment calls for it. Don't load them all up front.
 - **[references/PRD.md](references/PRD.md)**: The interactive PRD, the final human deliverable: one self-contained tabbed HTML file bundling the whole session with every board embedded live, a re-hydration snapshot, and the "This PRD was created by the vibe-check skill, by Amer Arab" footer. Pull in at Phase 8.
 - **[references/PLAN-TEMPLATE.md](references/PLAN-TEMPLATE.md)**: The verbatim blocks for the Phase 8 plan document: the House Rules paste block, the checkpoint block format and its five rules, the three pre-launch audit prompts, the Working With Your AI Tool checklist, and the debug-logging prompt. Pull in when assembling the plan, so the blocks land word for word.
 - **[references/HTML-BLUEPRINT.md](references/HTML-BLUEPRINT.md)**: The shared HTML scaffold and styling for the visual checkup report (Checkup Mode), inherited by the PRD. One self-contained file, Tailwind plus the diagram engine.
-- **[references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)**: The vibe-check diagram engine: the four JSON-driven boards, their JSON shapes, the shared engine.css, how to render one, and the "Created using Vibe-Check skill" footer. Pull in whenever you draw a hero board.
+- **[references/DIAGRAM-SYSTEM.md](references/DIAGRAM-SYSTEM.md)**: The vibe-check diagram engine: the five JSON-driven boards, their JSON shapes, the `bake.js` helper, the shared engine.css, how to render one, and the "Created using Vibe-Check skill" footer. Pull in whenever you draw a hero board.
 - **[references/EXPERIENCE-BLUEPRINT.md](references/EXPERIENCE-BLUEPRINT.md)**: The Experience Blueprint board's anatomy, layers, colors, and the Checkup current-state variant. Pull in when rendering the blueprint.
 - **[references/MANAGING-YOUR-AI.md](references/MANAGING-YOUR-AI.md)**: How to manage the AI while it builds: the four ground rules, the supervised improvement loop for the messy middle, and the Definition of Done every change clears. Use during the build and bake a short version into the project guide.
-- **[references/DISCOVERY-DEEP-DIVE.md](references/DISCOVERY-DEEP-DIVE.md)**: The fuller discovery method behind Steps 2 to 5: the fetch ladder and Serper.dev setup, the five sorting lenses, the source-verification protocol, the source-bias guardrail, the competitor gap matrix, ICP segmenting, and the "significantly better or no opportunity" rule.
+- **[references/DISCOVERY-DEEP-DIVE.md](references/DISCOVERY-DEEP-DIVE.md)**: The fuller discovery method behind Steps 2 to 5: the fetch ladder and Serper.dev setup, the graveyard walk, the five sorting lenses, the source-verification protocol, the source-bias guardrail, the competitor gap matrix, ICP segmenting, and the "significantly better or no opportunity" rule.
 - **[references/GROWTH-LOOPS.md](references/GROWTH-LOOPS.md)**: The fuller growth-loop playbook behind Phase 6.6: why a loop beats a funnel, the famous examples, the loop taxonomy, the three shapes walked out loud, sketching the loop's math, and the four accelerators.
 - **[references/MULTI-SIDED.md](references/MULTI-SIDED.md)**: For marketplaces and two-sided products: discovering and designing for *every* side, the dependency between them (the second side's basics are the first side's table stakes), and the compound riskiest assumption. Pull in the moment the Phase 0 sides-gate says it's multi-sided.
 - **[references/COLD-START.md](references/COLD-START.md)**: The bootstrapping playbook for any product that needs critical mass: the seven cold-start strategies, how to choose, and setting the minimum-liquidity threshold. Pull in when Phase 6.6 surfaces a cold-start problem.
