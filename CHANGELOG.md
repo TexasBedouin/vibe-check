@@ -2,6 +2,10 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.7.0] - 2026-11-11
+
+- The evidence release: a five-rung evidence ladder, a ready-to-run test kit with a come-back door for results, the graveyard walk, a shareable Verdict Card, mid-session save points, a bake.js helper for the boards, and hidden moves like 'roast it'. Desk research is no longer called validated: it is evidence-checked, with a cheap real-world test to run next.
+
 ## [2.6.1] - 2026-07-17
 
 Reddit fetch ladder corrected. Rung 2 previously sent everyone to a Redlib mirror as the primary way to read a thread. As of 2026-07-17 the durable path is a real browser pointed **straight at the reddit.com thread URL** — a real browser on a residential connection passes Reddit's own bot challenge and renders the full page including comments. The mirror is now the documented fallback for two cases only: an environment that policy-blocks reddit.com in its built-in browser (Claude Code's browser pane does this, but a separate Playwright tool in the same environment is not blocked), or Reddit escalating to a CAPTCHA under heavy repeated load. Updated both SKILL.md Step 2 and references/DISCOVERY-DEEP-DIVE.md rung 2 (plus the Serper note that reading still routes through rung 2). Mirror example refreshed to `redlib.privacyredirect.com` / `l.opnxng.com` since the older instances went dead.

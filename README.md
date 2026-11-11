@@ -143,7 +143,7 @@ Wondering what a session actually looks like? Three examples in [examples/](exam
 
 ## Version
 
-Current version: **2.6.1** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
+Current version: **2.7.0** (see [VERSION](VERSION) and [CHANGELOG.md](CHANGELOG.md)).
 
 When you use vibe-check, it does a quick best-effort check for a newer version and tells you if you're behind. To update, run `git pull` inside `.claude/skills/vibe-check`. Versioning is semantic (MAJOR.MINOR.PATCH).
 
