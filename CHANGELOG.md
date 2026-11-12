@@ -2,6 +2,10 @@
 
 All notable changes to vibe-check. This project uses semantic versioning, MAJOR.MINOR.PATCH: MAJOR for a big restructure, MINOR for a new technique or section, PATCH for small fixes and wording.
 
+## [2.8.0] - 2026-11-12
+
+- Growth levers: the locksmith moment (be where people are when the problem bites), a North Star number, finding the stuck step before speeding anything up, a four-line test card, a do-it-by-hand test, and a seven-step check for where a failed test broke. Ideas from Matt Lerner's Growth Levers and How to Find Them, retold for beginners.
+
 ## [2.7.0] - 2026-11-11
 
 - The evidence release: a five-rung evidence ladder, a ready-to-run test kit with a come-back door for results, the graveyard walk, a shareable Verdict Card, mid-session save points, a bake.js helper for the boards, and hidden moves like 'roast it'. Desk research is no longer called validated: it is evidence-checked, with a cheap real-world test to run next.
