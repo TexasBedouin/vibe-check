@@ -61,7 +61,7 @@ When someone who's never coded before says "I want to build an app that does X,"
 5. **Produces a complete plan document**: structured as the AI coding tool's onboarding manual, plus an **interactive PRD** the human opens in their browser, the whole session in one navigable, self-contained file
 6. **Includes build checkpoints**: so the beginner is never lost during construction. The AI stops after each phase to explain what was just built, why, and what's next.
 7. **Teaches the build-time basics** in language for someone who has never touched code: local vs. GitHub vs. live, how to save and back up code (commit/push/deploy), and keeping secret keys safe.
-8. **Finds a growth loop**: how the app recruits its next user on its own, preferably viral and organic, built into the core flow rather than bolted on, so growth compounds instead of needing a constant push.
+8. **Finds a growth loop, and where to stand**: the locksmith moment (where your users are when the problem bites), the one number that says the app is working, and how the app recruits its next user on its own, preferably viral and organic, built into the core flow rather than bolted on, so growth compounds instead of needing a constant push.
 9. **Handles marketplaces honestly**: when the idea is two-sided, it discovers *both* sides (not just the one the founder happens to be), and helps brainstorm a cold-start plan so the product doesn't launch into an empty room.
 10. **Keeps the app healthy as it grows**: a **Checkup Mode** that gently looks over a messy, grown codebase and tidies it safely, so the AI keeps building cleanly instead of breaking things.
 
@@ -165,6 +165,7 @@ Built by Amer Arab. I spent 12-plus years as a product manager, most of it takin
 - [FrontierCode](https://cognition.ai/) by Cognition: quality over mere correctness, the fail-first test idea and the "working is the floor, not the bar" definition of done
 - [design-shotgun](https://github.com/garrytan/gstack) by Garry Tan / gstack: the side-by-side comparison board, adapted here as plain static HTML
 - [Continuous Discovery Habits](https://www.producttalk.org/) by Teresa Torres (opportunity solution trees): evidence-tagging opportunities, the framing-issues honesty pass, and the riskiest-assumption test
+- [Growth Levers and How to Find Them](https://www.systm.co/growth-levers-matt-lerner-book) by Matt Lerner: the locksmith moment (be where people are when the problem bites), the North Star number, finding the stuck step before speeding anything up, the four-line test card, and how to find where a failed test broke
 - [Growth Loops](https://www.reforge.com/blog/growth-loops) by Brian Balfour / Reforge (with Casey Winters and Kevin Kwok): the funnel-to-loop reframe and the loop taxonomy, translated here into three buildable shapes a beginner can act on (Phase 6.6)
 - [The Last Mile Playbook](https://github.com/TexasBedouin) by Amer Arab: the PM vs Engineer mindset, payment processor gotchas, and the hard-won lessons of shipping a real product as a non-developer
 

@@ -10,6 +10,23 @@ It pairs with [EVIDENCE-LADDER.md](EVIDENCE-LADDER.md). The ladder says which ru
 2. **Test strangers, not friends.** The right people are the ones from discovery: the folks in the communities you mined.
 3. **If it takes two weeks to set up, it's not a test, it's a project.** Pick something you can launch in a day or two.
 
+## Write the test card first (five minutes)
+
+The gap between "just try it" and a real test is about five minutes of writing. Four lines, from Matt Lerner's *Growth Levers*:
+
+- **The risky belief:** "We believe people are not doing ___ because ___."
+- **The test:** "To check, we will ___."
+- **The prediction:** "We expect ___ to happen, by ___." A number and a date.
+- **The decision:** "If we're right, we will ___. If we're wrong, we will ___."
+
+Two things make the card work.
+
+Write the belief about the *person*, not about your idea. "If I add a discount, more people will sign up" just says "I have an idea and I think I'm right." If it fails you've learned nothing about why. "People aren't signing up because they don't believe it will work for their kind of business" is a belief about them, and either result teaches you something. Starting with "people are not doing X because" pushes you toward the second kind.
+
+Fill in the decision line honestly. If you'd do the same thing whichever way the test comes out, skip the test and just do it.
+
+The card goes in the plan's Riskiest Assumption section and the session file.
+
 ## Pick the test that fits the belief
 
 | The risky belief | The test | Rung it earns |
@@ -18,6 +35,7 @@ It pairs with [EVIDENCE-LADDER.md](EVIDENCE-LADDER.md). The ladder says which ru
 | "They'd want my answer to it" | Ten DMs, or a one-page waitlist | 3 |
 | "They'd want this specific feature" | A fake-door button | 3 |
 | "They'd pay for it" | A pre-order or deposit page | 4 |
+| "This feature would change what they do" | Do it by hand for a few people | 2 or 3 |
 
 Offer one test, your pick, with the reason (Rule 2). A beginner who gets four options runs none of them.
 
@@ -37,15 +55,18 @@ Mind the community's rules. Some forbid unsolicited DMs. When they do, post one 
 
 ### The five conversations
 
+Open the way Bob Moesta does: "Imagine I'm filming a documentary about how you ended up here. I'll ask about small details, just talk me through it as best you remember." Then take them back to a specific day. Where were they, what had just happened, who else was there? You're listening for the detail that doesn't fit, because the real reason usually hides behind it. Moesta once learned that a couple bought a house after four years of putting it off because they'd been to a friend's funeral that morning. No list of features would have told him that.
+
 The trap is asking people what they *would* do. People are kind and they guess badly about their future selves. Ask what they *did*.
 
 1. "Tell me about the last time [the problem] happened. What was going on?"
 2. "What did you do about it?"
 3. "What else have you tried? What happened with that?"
 4. "What does it cost you, in time or money, when it goes wrong?"
-5. "If you could wave a wand, what would be different?"
+5. "What almost stopped you from trying something new for this?"
+6. "If you could wave a wand, what would be different?"
 
-Never describe your idea until they've answered all five. The second they hear it, they start being polite. Write down their exact words, the same way discovery keeps quotes verbatim.
+Never describe your idea until they've answered all six. The second they hear it, they start being polite. Write down their exact words, the same way discovery keeps quotes verbatim.
 
 ### The one-page waitlist
 
@@ -62,6 +83,12 @@ Share it once, in the place they already gather, as a helpful post, not an ad. C
 
 For someone who already has a page or an app with visitors. Add a button for the feature that doesn't exist yet. When it's clicked, say so honestly: "We're still building this. Want to know when it's ready?" Count the clicks against the people who saw it. Always tell the truth on the other side of the door. A fake door that pretends is a dark pattern.
 
+### The do-it-by-hand test
+
+Before building a feature, deliver it yourself to a few people and watch what changes. Lerner tells of a small team that wanted to build reminders into their training app and had one engineer. The founders sent WhatsApp reminders by hand to half their users and left the other half alone. The reminded half came back far more often, and building the feature became an easy call.
+
+Pick five to ten people. Do the thing manually for a week: send the message, write the summary, make the match. If you can, leave a similar group alone so you have something to compare against. Write down what people did differently, and how long it took you. If nobody's behavior changes when a human does it carefully, software won't change it either.
+
 ### The pre-order page
 
 The same page as the waitlist, with a price and a way to pay or put down a small deposit, and a clear promise: "You'll be refunded in full if this doesn't ship by [date]." Then keep the promise. Check the payment provider's rules on pre-orders before you take a cent.
@@ -77,24 +104,42 @@ These are rules of thumb to argue with. Small tests are noisy. The point is not 
 | Waitlist page | About 1 in 5 visitors from the right community leaves an email | Fewer than 1 in 20 | Under 100 visitors |
 | Fake door | About 1 in 10 who see the button click it | Fewer than 1 in 50 | Under 100 views |
 | Pre-order | 3 strangers pay or put down a deposit | Lots of visitors, none pay | Under 50 visitors |
+| Do it by hand | Most of the people you helped did the thing you hoped for, and clearly more than the group you left alone | No difference from the group you left alone | Fewer than 5 people helped |
 
 Adjust with the user and say why. A pricey product needs fewer yeses. A free one needs more.
 
-Write the chosen test, the pass line, and the fail line into the plan's Riskiest Assumption section and into the session file (see "Save points" in SKILL.md), so the result can be judged against what was promised.
+Write the test card, the pass line, and the fail line into the plan's Riskiest Assumption section and into the session file (see "Save points" in SKILL.md), so the result can be judged against what was promised.
 
 ## Reading the results (the come-back door)
 
 Someone returns: "I ran the test." This is its own entry point. Don't restart the journey.
 
 1. **Get the facts.** What test, how many people reached, what happened, and the pass/fail line that was written down beforehand. If there's a session file or PRD, read it for the line. If no line was ever written, say so gently, and agree on one now before looking at the result.
-2. **Call it against the line.** Pass, fail, or too early to tell. Use the line as written. Don't move it.
+2. **Call it against the line.** Pass, fail, or too early to tell. Use the line as written. Don't move it. On a fail, run "Find where it broke" below before deciding what it means.
 3. **Mine the words.** Replies and conversations are new quotes. Sort them through the same five lenses as discovery and add them to the needs list. A test often teaches more through what people said than through the count.
 4. **Update the ladder and the list.** Name the new rung. Re-rate the assumption that was tested, then look at the assumption list again and name the next riskiest one.
 5. **Say what's next, one of four ways:**
    - **Pass:** "The bet survived. You've earned the build." Go to planning, or to Build Phase 1 if the plan exists.
    - **Pass, with a twist:** the count passed but people wanted something next to what was offered. Adjust the differentiator, then decide if the twist needs its own quick test.
-   - **Fail:** kind and plain. "This one didn't hold. That cost you a weekend instead of three months." Offer the three honest moves: narrow the group, pivot to what people *did* respond to, or stop.
+   - **Fail, and the test itself was sound:** kind and plain. "This one didn't hold. That cost you a weekend instead of three months." Offer the three honest moves: narrow the group, pivot to what people *did* respond to, or stop.
+   - **Fail, but the test broke before the idea got a fair try:** say which link broke, fix that one thing, and run it again. Change one thing at a time, or the rerun won't tell you anything.
    - **Too early:** name exactly how many more people it takes, and the fastest way to reach them.
 6. **Redraw the Verdict Card** with the new rung and the next test, and save the session file.
 
 Celebrate a clean fail as much as a pass. Both are the test working.
+
+### Find where it broke (before you call it a fail)
+
+A test can fail because the idea is wrong, or because the test never gave the idea a chance. Those need opposite responses, so check before you decide. Walk the chain in order and stop at the first link that broke (the list is Lerner's):
+
+1. **The right people?** Did it reach the specific group from discovery, or whoever happened to scroll past?
+2. **Did they notice it?** Views with no clicks can mean nobody stopped to look.
+3. **Could they read it?** Show it to someone for three seconds and ask what it said.
+4. **Did they understand it?** Ask someone to explain back what it does and what they'd still have to do themselves.
+5. **Did they believe it?** A promise can be clear and still not trusted.
+6. **Did they care?** It can be understood, believed, and simply not matter to them. This is the link that means the idea is in trouble.
+7. **Was the next step worth it?** They wanted it, and the price, the signup, or the effort was more than it was worth to them.
+
+Links 1 to 5 are problems with the test. Fix the first one that broke and run it again. Link 6 is a problem with the idea. Link 7 is a problem with the offer, which is often fixable.
+
+If you can't tell which link broke, the test measured too many things at once. Make the next one smaller.
