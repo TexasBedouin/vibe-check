@@ -108,7 +108,7 @@ To find it, walk the person's path in three stretches and ask what they're doing
 - **The search.** They start looking. What do they type, who do they ask, and what do they think they're looking for? It's often not your kind of product at all.
 - **The choice.** They're comparing and trying things. What worries them, and what's a hassle to switch?
 
-Most builders only chase people in the last stretch, because those people are easy to spot: they search for "best app for X." They're also the fewest, the most expensive to reach, and they've already found your bigger rivals. The earlier stretches hold far more people. They're harder to find because they aren't looking for you yet, so you have to know what they *are* looking for.
+Lerner's argument is that most builders only chase people in the last stretch, because those people are easy to spot: they search for "best app for X." By then they are the smallest group, they cost the most to reach, and they've already found your bigger rivals. The earlier stretches hold more people. They're harder to find because they aren't looking for you yet, so you have to know what they *are* looking for.
 
 A locksmith moment and a growth loop work together. The moment is where the first person finds you. The loop is how that person brings the next one.
 
@@ -116,7 +116,7 @@ Hold it as a guess until real people confirm it. The conversations in [TEST-KIT.
 
 ## The number that means it's working (the North Star)
 
-Also from Lerner. A North Star is one number that goes up each time a user gets real value from the product. It's the scoreboard for the whole app, where the loop number is the scoreboard for one part of it.
+The North Star idea is older than Lerner's book, but his version is the plainest. A North Star is one number that goes up each time a user gets real value from the product. It's the scoreboard for the whole app, where the loop number is the scoreboard for one part of it.
 
 Why not just use money? Because the quickest ways to make more money (raise the price, add an upsell) can make the product worse for the people using it. A new app wins by being clearly more useful, so that's what gets counted first.
 
@@ -135,9 +135,9 @@ Before the app has real users, treat the North Star as a best guess and change i
 
 Lerner calls it the rate-limiting step: the one stage that holds everything else back, like the narrowest part of a pipe. Until it's fixed, work anywhere else barely shows.
 
-Write the journey as a short chain, the same way you sketch the loop's math above: people hear about it, sign up, do the main thing, get the value, bring someone else. Put a rough number on each link. Then ask of each one: "If this doubled, would the whole thing double?" The link where the answer is yes is the stuck step.
+Write the journey as a short chain, the same way you sketch the loop's math above: people hear about it, sign up, do the main thing, get the value, bring someone else. Put a rough number on each link. Lerner's test is "if we doubled this, would the business double?" On paper every link in a chain passes that, so add the practical half: which link has the most room to double? A step that loses nine in ten people has room. A step that already keeps eight in ten doesn't. The stuck step is the one that's far below what's normal for it, and where a fix would flow through to everything after it.
 
-The lowest percentage isn't automatically the one. If nine in ten signups never come back after their first try, finding more signups won't help, however small that signup number looks. And if people love it once they're in but only a handful ever arrive, polishing the inside won't help either.
+The lowest percentage isn't automatically the one, because the size of the crowd matters too. If nine in ten signups never come back after their first try, finding more signups won't help, however small that signup number looks. And if people love it once they're in but only a handful ever arrive, polishing the inside won't help either.
 
 Work on that one step. When it moves, find the next one. It keeps you from building a referral feature for an app nobody finishes setting up.
 
