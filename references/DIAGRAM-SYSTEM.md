@@ -162,7 +162,7 @@ Fields:
 - `legend[]`: `{ "mark": "well|poor|none", "label" }`.
 - `callout`: a short green summary line.
 
-The renderer maps each mark to a glyph: `well` becomes a check, `poor` becomes a squiggle, `none` becomes a cross, `na` becomes a dash.
+The renderer maps each mark to a glyph: `well` becomes a check, `poor` becomes a squiggle, `none` becomes a cross, `na` becomes a dash. Use `na` when a need doesn't apply to that option, or when you found no evidence either way. The legend has no entry for it, so say what it means in the `callout` whenever you use it.
 
 ```json
 {
@@ -194,7 +194,7 @@ Fields:
 - `header`: `{ crumb, title, sub }`.
 - `idea`: the idea in one plain line (about 110 characters at most, because the card is a fixed size; `read` fits about 260 and the quote about 220, and `bake.js` stops on anything longer). `who`: the specific group it's for (the renderer puts "For" in front).
 - `verdict`: one of `test | narrow | stop`. The stamp reads "Worth testing" (green), "Worth testing, narrower" (amber), or "Not worth building as-is" (red). Any other value is rejected by `bake.js`, and a hand-baked card shows a gray "Verdict pending", never a green light by accident. There is no "validated" stamp on purpose: only a passed test earns the next rung.
-- `read`: one or two sentences, what we know and what we don't.
+- `read`: one or two sentences, what we know and what we don't. After a test comes back, the result goes here, and the header `crumb` changes to say so.
 - `rung`: a whole number from 1 to 5, the highest rung with evidence you can point at. Rungs up to it get a check, and the top one is marked "you are here".
 - `need`: `{ "label", "score", "evidence" }`, the top need, with `evidence` as `seen | hunch | guess`.
 - `quote`: `{ "text", "source" }`, the strongest **verified** quote, word for word, and where it came from. Leave it out if nothing passed verification. Never fill it with a paraphrase.

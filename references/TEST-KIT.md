@@ -37,7 +37,7 @@ The card goes in the plan's Riskiest Assumption section and the session file.
 | "They'd pay for it" | A pre-order or deposit page | 4 |
 | "This feature would change what they do" | Do it by hand for a few people (needs existing users) | none, it's a feature check |
 
-Offer one test, your pick, with the reason (Rule 2). A beginner who gets four options runs none of them.
+Offer one test, your pick, with the reason (Rule 2). A beginner who gets four options runs none of them. When two tests fit, pick the cheaper one. The exception: if the graveyard already shows people agreeing and then not paying, test the paying. A pre-order needs a way to take money, and a hosted payment link from a payment provider is enough for a non-coder. No code, but read that provider's rules on pre-orders first.
 
 ## The scripts
 
@@ -77,6 +77,18 @@ One page, four parts, nothing else:
 - **One email box.** "Tell me when it's ready."
 - **One honest line.** "This isn't built yet. I'm checking whether it should be."
 
+Write the page for them. This is the shape, with every blank filled from the session before you hand it over:
+
+> **[The pain, turned into a promise, in their words.]**
+>
+> [What it does for you, in one line.]
+> [The one thing it does that nothing else does.]
+> [The basic it also covers.]
+>
+> **Tell me when it's ready:** [email box]
+>
+> This isn't built yet. I'm checking whether it should be.
+
 Share it once, in the place they already gather, as a helpful post, not an ad. Count visitors as well as signups, or the number means nothing.
 
 ### The fake-door button
@@ -95,6 +107,14 @@ Pick five to ten people. Do the thing manually for a week: send the message, wri
 
 The same page as the waitlist, with a price and a way to pay or put down a small deposit, and a clear promise: "You'll be refunded in full if this doesn't ship by [date]." Then keep the promise. Check the payment provider's rules on pre-orders before you take a cent.
 
+Write this one for them too. Same shape as the waitlist page, with the email box swapped for the price and the promise:
+
+> **Pre-order: [price] for [what they get].**
+>
+> This isn't built yet. I'm checking whether it should be. You'll be refunded in full if it hasn't shipped by [date].
+
+Match the price to how often the problem happens. A monthly price for a problem that comes up twice a year fails for the wrong reason. If the problem is rare, charge per use.
+
 ## The numbers (starting points, not statistics)
 
 These are rules of thumb to argue with. Small tests are noisy. The point is not that these exact numbers are right. The point is that a number is written down before the test runs.
@@ -108,7 +128,7 @@ These are rules of thumb to argue with. Small tests are noisy. The point is not 
 | Pre-order | 3 strangers pay or put down a deposit | Lots of visitors, none pay | Under 50 visitors |
 | Do it by hand | Most of the people you helped did the thing you hoped for (and clearly more than the group you left alone, if you kept one) | Hardly anyone you helped did it, or no difference from the group you left alone | Fewer than 5 people helped |
 
-Adjust with the user and say why. A pricey product needs fewer yeses. A free one needs more.
+Adjust with the user and say why. A pricey product needs fewer yeses. A free one needs more. Set the date on the test card two to three weeks out: long enough to get past the "too early" number, short enough that it stays a test.
 
 Write the test card, the pass line, and the fail line into the plan's Riskiest Assumption section and into the session file (see "Save points" in SKILL.md), so the result can be judged against what was promised.
 
@@ -118,8 +138,8 @@ Someone returns: "I ran the test." This is its own entry point. Don't restart th
 
 1. **Get the facts.** What test, how many people reached, what happened, and the pass/fail line that was written down beforehand. If there's a session file or PRD, read it for the line. If no line was ever written, say so gently, and agree on one now before looking at the result.
 2. **Call it against the line.** Pass, fail, or too early to tell. Use the line as written. Don't move it. On a fail, run "Find where it broke" below before deciding what it means.
-3. **Mine the words.** Replies and conversations are new quotes. Sort them through the same five lenses as discovery and add them to the needs list. A test often teaches more through what people said than through the count.
-4. **Update the ladder and the list.** Name the new rung. Re-rate the assumption that was tested, then look at the assumption list again and name the next riskiest one.
+3. **Mine the words.** Replies and conversations are new quotes. Sort them through the same five lenses as discovery and add them to the needs list. A test often teaches more through what people said than through the count. Replies the user relays to you have no link to check, so tag them "relayed by the user." They count as test evidence in the session file. They don't go on the Verdict Card as the quote unless the user can point to where it was said.
+4. **Update the ladder and the list.** Name the rung. A pass earns the rung the test was aimed at. A fail earns none and costs none, so say that plainly. Re-rate the assumption that was tested, then look at the assumption list again and name the next riskiest one.
 5. **Say what's next.** Pick the one that fits:
    - **Pass:** "The bet survived. You've earned the build." Go to planning, or to Build Phase 1 if the plan exists.
    - **Pass, with a twist:** the count passed but people wanted something next to what was offered. Adjust the differentiator, then decide if the twist needs its own quick test.
@@ -127,7 +147,7 @@ Someone returns: "I ran the test." This is its own entry point. Don't restart th
    - **Fail, and the offer was the problem (link 7):** they wanted it, and the price or the next step was too much. Change the price or shrink the step, and run it again.
    - **Fail, but the test broke before the idea got a fair try (links 1 to 5):** say which link broke, fix that one thing, and run it again. Change one thing at a time, or the rerun won't tell you anything. One rerun per broken link. If the same test has failed twice after fixes, stop blaming the test and treat it as a real fail.
    - **Too early:** name exactly how many more people it takes, and the fastest way to reach them.
-6. **Redraw the Verdict Card** with the new rung and the next test, and save the session file.
+6. **Redraw the Verdict Card** right away, with the result, and save the session file. Put what happened in `read` and change the crumb to "After the test." The verdict becomes `stop` when the idea itself failed, and stays as it was when a rerun is planned. Leave `nextTest` out when there isn't one. If the user then picks a different move, redraw it.
 
 Celebrate a clean fail as much as a pass. Both are the test working.
 
@@ -142,7 +162,7 @@ You walk the chain yourself, from what the user already told you. Ask only for w
 3. **Could they read it?** Show it to someone for three seconds and ask what it said.
 4. **Did they understand it?** Ask someone to explain back what it does and what they'd still have to do themselves.
 5. **Did they believe it?** A promise can be clear and still not trusted.
-6. **Did they care?** It can be understood, believed, and simply not matter to them. This is the link that means the idea is in trouble.
+6. **Did they care?** It can be understood, believed, and simply not matter to them. This is the link that means the idea is in trouble. Watch for the quiet version: they'd use it, it just doesn't come up often enough to pay for. "I'd use it if it was free" is that answer. Treat it as link 6 for the pricing you tested, run the one-line size check from [EVIDENCE-LADDER.md](EVIDENCE-LADDER.md) with the real frequency, and offer three moves: stop, one rerun priced per use, or narrow to the people who have the problem often.
 7. **Was the next step worth it?** They wanted it, and the price, the signup, or the effort was more than it was worth to them.
 
 Links 1 to 5 are problems with the test. Fix the first one that broke and run it again. Link 6 is a problem with the idea. Link 7 is a problem with the offer, which is often fixable.
