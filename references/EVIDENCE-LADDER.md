@@ -64,7 +64,7 @@ No market reports. Three honest numbers, from the bottom up:
 2. **What does the pain cost them today?** The price of the clumsy fix (the tool, the freelancer, the hours). This is the ceiling on what you can charge. Nobody pays more to fix a problem than the problem costs.
 3. **What do the closest tools charge?** Real prices from real pricing pages. This is the anchor people will judge you against.
 
-Then one line of arithmetic, said out loud and held loosely: "If one in a hundred of those people paid about what the workaround costs, that's roughly ___ a month." The number isn't a forecast. It's a smell test with three outcomes:
+Then one line of arithmetic, said out loud and held loosely: "If one in a hundred of those people paid about what the workaround costs, that's roughly ___ a month." If the problem only comes up a few times a year, count it per use instead: people, times how often it happens, times the price per use. The number isn't a forecast. It's a smell test with three outcomes:
 
 - **Clearly enough** for what this person wants (a side income, a small business, a venture bet). Carry on.
 - **Clearly too small.** Say so kindly, and offer three honest moves: widen the group, solve a costlier pain so the price can rise, or stop.
